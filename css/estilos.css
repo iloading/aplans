@@ -1315,7 +1315,7 @@ button:focus {
     }
 
     .alturaMain {
-        height: calc(100vh - 8.8rem) !important;
+        height: calc(100vh - 4.75rem) !important;
         overflow: scroll;
     }
 
