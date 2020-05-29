@@ -1,1 +1,1 @@
-Teste 123
+Projeto final conjunto das UC's de LAB4 , CI & II. A aplans é uma app desenhada e pensada pelo nosso grupo com o objetivo de auxiliar as pessoas do bairro de Santiago a organizar eventos para que a comunidade se aproxime e haja um melhor ambiente entre moradores.
