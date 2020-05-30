@@ -1313,13 +1313,15 @@ button:focus {
 @media (max-width:991.98px) {
 
     /*NAVBAR*/
-    
+    .navbar{
+        display: none !important;
+    }
     .navmobile {
         background-color: rgb(35, 35, 35) !important;
     }
 
     .alturaMain {
-        height: calc(100vh - 4.75rem) !important;
+        height: 100vh !important;
         overflow: scroll;
     }
 
