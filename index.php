@@ -25,7 +25,7 @@
 
 
 
-    <main id="main" class="alturaMain text-white bg-30 d-flex flex-column align-items-start">
+    <main id="main" class="alturaMain text-white bg-index d-flex flex-column align-items-start">
 
         
 

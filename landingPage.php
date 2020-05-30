@@ -2,52 +2,29 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>Bloop</title>
-    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
-    <!--FontAwesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <!--Fonte-->
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--FavIcon-->
-    <link rel="apple-touch-icon" sizes="180x180" href="imagens/favIcon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="imagens/favIcon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="imagens/favIcon/favicon-16x16.png">
-    <link rel="manifest" href="imagens/favIcon/site.webmanifest">
-    <link rel="mask-icon" href="imagens/favIcon/safari-pinned-tab.svg" color="#eab200">
-    <meta name="apple-mobile-web-app-title" content="Bloop">
-    <meta name="application-name" content="Bloop">
-    <meta name="msapplication-TileColor" content="#000000">
-    <meta name="theme-color" content="#eab200">
+    
+    <?php
+    require_once "helpers/hp_head.php";
+    ?>
 
-
-
-
-
-
+    <title>aplans</title>
+   
 
 </head>
 
 
 
 
-<body style="background-color: #1A1A1A; overflow-x: hidden;">
+<body style="overflow-x: hidden;">
 
-    <main class="alturaMainLogin text-white bg-preto d-flex flex-column align-items-center">
+    <main class="alturaMainLogin text-white bg-index d-flex flex-column align-items-center">
         <article class="container-fluid d-flex p-0 mainCentro landingCentro">
             <div class="w-100">
 
 
-                <div class="container-fluid w-100 bg-preto">
+                <div class="container-fluid w-100 bg-index">
                     <div class="w-100">
-                        <div class="card animated bounceInDown myForm w-100 bg-30 borderNone">
+                        <div class="card animated bounceInDown myForm w-100 bg-index borderNone">
                             <div class="text-center mb-4">
                                 <img src="imagens/logo/logo.png" width="300" height="225">
 

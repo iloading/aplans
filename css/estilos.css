@@ -1,10 +1,14 @@
 /*Estilos Gerais*/
 * {
-    font-family: 'Comfortaa', cursive !important;
+    font-family: 'Roboto', cursive !important;
 }
 
 .bg-preto {
     background-color: #1A1A1A !important;
+}
+
+.bg-index {
+    background-color: #3C5E77;
 }
 
 .bg-30 {
@@ -363,7 +367,7 @@ nav {
     z-index: -1;
     transform-origin: 0% 0%;
     transform: translateX(calc(20% - 25px)) translateY(10%) rotate(-45deg);
-    /transform: translateY(10%) translateX(16%) rotate(-45deg);
+    transform: translateY(10%) translateX(16%) rotate(-45deg);
     transition: transform .3s;
 }
 
@@ -815,7 +819,7 @@ footer a:active {
 
 
 .myForm {
-    background-color: #1A1A1A !important;
+    background-color: #3C5E77 !important;
     padding: 15px !important;
     color: white;
 
