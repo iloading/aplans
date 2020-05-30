@@ -23,15 +23,15 @@
   ?>
   <!--/NAV-->
 
-  <main class="alturaMain text-white bg-30 d-flex flex-column align-items-start">
+  <main class="alturaMain text-black bg-white d-flex flex-column align-items-start">
     <article class="container p-0 mb-5 mainCentro">
       <section class="row mt-4 mb-4 ml-0 pl-3 pl-sm-0">
-        <div class="col-2 col-sm-1 text-left pr-0 pl-0">
-          <img src="imagens/settings/settings_amarelo.png" width="60" height="60">
+        <div class="col-2 col-sm-1 text-center pr-0 pl-0">
+          <img src="imagens/settings/back.png" width="30" height="30">
         </div>
 
         <div class="col-9 col-sm-11 align-self-center pl-3 pl-sm-5 pr-0">
-          <p class="m-0 h1 text-left tituloTerms">Settings</p>
+          <p class="m-0 h1 text-left tituloTerms">Outdoor Cinema</p>
 
         </div>
 
