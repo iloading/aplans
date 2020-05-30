@@ -363,7 +363,7 @@ nav {
     z-index: -1;
     transform-origin: 0% 0%;
     transform: translateX(calc(20% - 25px)) translateY(10%) rotate(-45deg);
-    /transform: translateY(10%) translateX(16%) rotate(-45deg);
+    transform: translateY(10%) translateX(16%) rotate(-45deg);
     transition: transform .3s;
 }
 
@@ -1309,13 +1309,15 @@ button:focus {
 @media (max-width:991.98px) {
 
     /*NAVBAR*/
-    
+    .navbar{
+        display: none !important;
+    }
     .navmobile {
         background-color: rgb(35, 35, 35) !important;
     }
 
     .alturaMain {
-        height: calc(100vh - 4.75rem) !important;
+        height: 100vh !important;
         overflow: scroll;
     }
 
