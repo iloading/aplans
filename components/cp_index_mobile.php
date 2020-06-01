@@ -1,11 +1,17 @@
 <div class="container p-3">
-    <section class="row">
-        <div class="col-6 text-left bg-warning">LOGO</div>
-        <div class="col-6 text-right bg-primary">USER ICON</div>
+    <section class="row" style="display: flex; align-items: baseline;">
+        <div class="col-6 text-left" style="height: 100%;">
+            <div class="div-logo"><img src="assets/aplans.png" alt="logotipo"></div>
+        </div>
+        <div class="col-6 text-right" style="height:100%">
+            <div class="avatar-circular" style="float: right;"><img src="assets/avatar.png" alt="avatar"></div>
+        </div>
     </section>
 </div>
 <div class="container p-3">
-    <section class="row pl-3"><p>My plans</p></section>
+    <section class="row pl-3">
+        <p>My plans</p>
+    </section>
     <section class="row">
         <div class="col-3 bg-success">ADD ICON</div>
         <div class="col-9 text-center bg-danger">EVENT / EVENTS</div>
