@@ -1,10 +1,10 @@
 <div class="container p-3">
     <section class="row" style="display: flex; align-items: baseline;">
         <div class="col-6 text-left" style="height: 100%;">
-            <div class="div-logo"><img src="assets/aplans.png" alt="logotipo"></div>
+            <div class="div-logo"><a href="index.php"><img src="assets/aplans.png" alt="logotipo"></a></div>
         </div>
         <div class="col-6 text-right" style="height:100%">
-            <div class="avatar-circular" style="float: right;"><img src="assets/avatar.png" alt="avatar"></div>
+            <div class="avatar-circular"><img src="assets/avatar.png" alt="avatar"></div>
         </div>
     </section>
 </div>

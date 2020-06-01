@@ -56,6 +56,7 @@
   max-height: 100%;
   overflow: hidden;
   border-radius: 50%;
+  float: right;
 }
 
 .avatar-circular img {
@@ -68,11 +69,11 @@
     height: 8vw;
     overflow: hidden;
 }
-.div-logo > img{
+.div-logo img{
     display: block;
     height: 100%;
     max-width: 100%;
-    margin-right: auto;
+    margin: inherit;
 }
 
 
