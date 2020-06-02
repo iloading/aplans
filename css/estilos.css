@@ -378,8 +378,8 @@ nav {
 }
 
 .events{
-    height: 25vw;
-    width: 50vw;
+    height: 20vw;
+    width: 90%;
     justify-content: center;
     align-items: center;
     border-radius:5vw;
