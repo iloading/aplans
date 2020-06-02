@@ -361,6 +361,54 @@ nav {
 
 /*Index*/
 
+.add-event{
+    height: 10vw;
+    width: 10vw;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    background-color: #BAE4AC;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: 5.5vw;
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+}
+
+.events{
+    height: 25vw;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+    border-radius:5vw;
+    text-align: center;
+    display: flex;
+    background-color: #FFFFFF;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: 5.5vw;
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+}
+.events p:first-child{
+    margin: 0;
+    font-size: 5vw;
+}
+.events p:last-child{
+    margin: 0;
+    font-size: 3vw;
+    font-weight: initial;
+}
+
+
+
+
+
+
+
+
 /*Card*/
 .card {
     background-color: inherit !important;

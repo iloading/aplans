@@ -1,5 +1,5 @@
 <div class="container p-3">
-    <section class="row" style="display: flex; align-items: baseline;">
+    <section class="row d-flex" style="align-items: baseline;">
         <div class="col-6 text-left" style="height: 100%;">
             <div class="div-logo"><a href="index.php"><img src="assets/aplans.png" alt="logotipo"></a></div>
         </div>
@@ -12,8 +12,21 @@
     <section class="row pl-3">
         <p>My plans</p>
     </section>
-    <section class="row">
-        <div class="col-3 bg-success">ADD ICON</div>
-        <div class="col-9 text-center bg-danger">EVENT / EVENTS</div>
+    <section class="row d-flex" style="align-items: center;">
+        <div class="col-4">
+            <div class="add-event">+</div>
+        </div>
+        <div class="col-8 text-center ">
+            <div class="events container">
+                <div class="row">
+                    <p class="col-12">Event Name</p>
+                    <p class="col-12">4:20pm, april 20, 2020</p>
+                </div>
+
+
+
+
+            </div>
+        </div>
     </section>
 </div>
