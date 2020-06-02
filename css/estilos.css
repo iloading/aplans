@@ -51,8 +51,8 @@
 
 /*NavBar*/
 .avatar-circular{
-  max-width:10vw;
-  height: 10vw;
+  max-width:calc(15px + 5vw);
+  height: calc(15px + 5vw);
   max-height: 100%;
   overflow: hidden;
   border-radius: 50%;
@@ -65,8 +65,8 @@
 }
 
 .div-logo{
-    width: 100%;
-    height: 8vw;
+    width: calc(10px + 16vw * 3.2); /*manter as proporções da imagem , sendo ela dependente na width da janela*/
+    height: calc(10px + 5vw);
     overflow: hidden;
 }
 .div-logo img{
@@ -388,7 +388,7 @@ nav {
     background-color: #FFFFFF;
     color: #3C5E77;
     font-weight: 700;
-    font-size: 5.5vw;
+    font-size: calc(10px + 1.5vw);
     font-family: 'Nunito', sans-serif !important;
     margin: auto;
 }
