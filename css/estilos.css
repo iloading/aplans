@@ -362,8 +362,8 @@ nav {
 /*Index*/
 
 .add-event{
-    height: 10vw;
-    width: 10vw;
+    height: calc(10px + 7vw);
+    width: calc(10px + 7vw);
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -378,7 +378,7 @@ nav {
 }
 
 .events{
-    height: 20vw;
+    height: calc(10px + 14vw);
     width: 90%;
     justify-content: center;
     align-items: center;
@@ -394,15 +394,17 @@ nav {
 }
 .events p:first-child{
     margin: 0;
-    font-size: 5vw;
+    font-size: calc(10px + 1.5vw);
 }
 .events p:last-child{
     margin: 0;
-    font-size: 3vw;
+    font-size: calc(6px + 1.5vw);
     font-weight: initial;
 }
 
-
+.index-titulos{
+    font-size: calc(13px + 0.7vw);
+}
 
 
 

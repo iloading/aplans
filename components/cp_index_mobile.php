@@ -10,7 +10,7 @@
 </div>
 <div class="container p-3">
     <section class="row pl-3">
-        <p>My plans</p>
+        <p class="index-titulos">Created Plans</p>
     </section>
     <section class="row d-flex" style="align-items: center;">
         <div class="col-4">
