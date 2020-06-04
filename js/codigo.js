@@ -131,22 +131,16 @@ var i=0;
       var html ='<div id="append_no_'+i+'" class="animated bounceInLeft">'+
           '<div class="input-group mt-3">'+
 		  '<div class="input-group-prepend">'+
-		  '<span class="input-group-text br-15" style="">'+
-		  '<i class="fas fa-ellipsis-h"></i></span>'+
 		  '</div>'+
 		  '<input type="text" placeholder="Phone Number (Optional)"  class="form-control"/>'+
 		  '</div>'+
 		  '<div class="input-group mt-3">'+
 		  '<div class="input-group-prepend">'+
-		  '<span class="input-group-text br-15" style="">'+
-		  '<i class="fas fa-ellipsis-h"></i></span>'+
 		  '</div>'+
 		  '<input type="text" placeholder="Adress (Optional)" class="form-control"/>'+
 		  '</div>'+
 		  '<div class="input-group mt-3">'+
 		  '<div class="input-group-prepend">'+
-		  '<span class="input-group-text br-15" style="">'+
-		  '<i class="fas fa-ellipsis-h"></i></span>'+
 		  '</div>'+
 		  '<input type="text" placeholder="Zip Code (Optional)" class="form-control"/>'+
 		  '</div></div>';

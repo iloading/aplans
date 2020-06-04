@@ -7,13 +7,12 @@
                  <div class="w-100">
                      <div class="card animated bounceInDown myForm w-100 bg-index borderNone">
                          <div class="text-center mb-4">
-                             <img src="imagens/logo/logo.png" width="300" height="225">
+                             <img class="div-logo-landingPage div-logo-landingPage-img" src="assets/aplans.png">
 
-                             <p class="pt-2"><span style="color: #eab200">Streaming</span> made simple</p>
                          </div>
 
 
-                         <div class="card-header bg-preto borderNone">
+                         <div class="card-header bg-index borderNone">
                              <ul class="nav nav-tabs row navModal m-0" role="tablist">
                                  <li class=" mb-1 col-6 text-center" role="presentation"><a class="tabsTexto loginTit" href="#loginTab" aria-controls="loginTab" role="tab" data-toggle="tab">Login</a>
 
@@ -31,32 +30,26 @@
                                      <form action="index.html" method="get" id="form1">
                                          <div id="dynamic_container">
                                              <div class="input-group">
-                                                 <div class="input-group-prepend">
-                                                     <span class="input-group-text br-15"><i class="fas fa-user"></i></span>
-                                                 </div>
+                                            
                                                  <input type="text" placeholder="Username" class="form-control" required />
                                              </div>
                                              <div class="input-group mt-3">
-                                                 <div class="input-group-prepend">
-                                                     <span class="input-group-text br-15"><i class="fas fa-lock"></i></span>
-                                                 </div>
+                                                
                                                  <input type="password" placeholder="Password" class="form-control" required />
                                              </div>
                                              <div class="input-group mt-3">
-                                                 <div class="input-group-prepend">
-                                                     <span class="input-group-text br-15"><i class="fas fa-at"></i></span>
-                                                 </div>
+                                                
                                                  <input type="email" placeholder="Email" class="form-control" required />
                                              </div>
                                          </div>
 
                                      </form>
-                                     <div class="card-footer pl-0 borderNone bg-preto">
-                                         <a class="btn btn-secondary btn-sm" id="add_more"><i class="fas fa-plus-circle"></i> Add extra details</a>
-                                         <a class="btn btn-secondary btn-sm" id="remove_more"><i class="fas fa-trash-alt"></i> Remove</a>
+                                     <div class="card-footer p-0 pt-3 borderNone bg-index w-100">
+                                         <a class="btn btn-secondary btn-sm submit_btn add-event m-0" id="add_more">+</a>
+                                         <a class="btn btn-secondary btn-sm submit_btn add-event m-0" id="remove_more">-</a>
                                      </div>
                                      <div class="mt-3">
-                                         <button type="submit" form="form1" value="Submit" class="btn btn-success btn-sm float-right submit_btn"><i class="fas fa-arrow-alt-circle-right"></i> Submit</button>
+                                         <button type="submit" form="form1" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Submit</button>
                                      </div>
                                  </div>
 
@@ -66,31 +59,33 @@
                                          <div id="dynamic_container">
 
                                              <div class="input-group mt-3">
-                                                 <div class="input-group-prepend">
-                                                     <span class="input-group-text br-15"><i class="fas fa-user"></i></span>
-                                                 </div>
-                                                 <input type="text" placeholder="Username" class="form-control" required />
+                                                 
+                                                 <input type="text" placeholder="Email Adress" class="form-control" required />
                                              </div>
                                              <div class="input-group mt-3">
-                                                 <div class="input-group-prepend">
-                                                     <span class="input-group-text br-15"><i class="fas fa-lock"></i></span>
-                                                 </div>
+                                                 
                                                  <input type="password" placeholder="Password" class="form-control" required />
                                              </div>
                                          </div>
                                          <div class="mt-3">
-                                             <button type="submit" form="form2" value="Submit" class="btn btn-success btn-sm float-right submit_btn"><i class="fas fa-arrow-alt-circle-right"></i> Submit</button>
+                                             <button type="submit" form="form2" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Submit</button>
                                          </div>
                                      </form>
                                  </div>
+                                 
                              </div>
+                             
                          </div>
 
                      </div>
                  </div>
              </div>
-
+             <div class="text-center">
+                <p class="mb-0">You are completely safe.</p>
+                <p style="color: #BAE4AC;">Read our Terms & Conditions</p>
+            </div>
          </div>
+         
      </article>
 
 
