@@ -13,20 +13,24 @@
         <p class="index-titulos">Created Plans</p>
     </section>
     <section class="row d-flex" style="align-items: center;">
-        <div class="col-4">
-            <div class="add-event">+</div>
-        </div>
+
         <div class="col-8 text-center ">
             <div class="events container">
                 <div class="row">
-                    <p class="col-12">Event Name</p>
-                    <p class="col-12">4:20pm, april 20, 2020</p>
+                    <?php
+                    echo '<p class="col-12">' . $_SESSION['username'] . ' </p>'
+                    ?>
                 </div>
-
-
-
-
             </div>
         </div>
+
+        <div class="col-4 text-center ">
+            
+            <a class="btn btn-lg bg-verde" href="./scripts/sc_logout.php">ADMIN</a>
+        </div>
+
+
+
+
     </section>
 </div>

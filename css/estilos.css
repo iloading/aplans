@@ -31,6 +31,10 @@
     background-color: black;
 }
 
+.bg-verde{
+    background-color: #BAE4AC;
+}
+
 /*Scroll bar */
 /* width */
 ::-webkit-scrollbar {
