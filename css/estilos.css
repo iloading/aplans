@@ -50,7 +50,32 @@
 
 
 /*NavBar*/
-.LogOut {}
+.avatar-circular{
+  max-width:calc(15px + 5vw);
+  height: calc(15px + 5vw);
+  max-height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  float: right;
+}
+
+.avatar-circular img {
+  width: 100%;
+  height: auto;
+}
+
+.div-logo{
+    width: calc(10px + 16vw * 3.2); /*manter as proporções da imagem , sendo ela dependente na width da janela*/
+    height: calc(10px + 5vw);
+    overflow: hidden;
+}
+.div-logo img{
+    display: block;
+    height: 100%;
+    max-width: 100%;
+    margin: inherit;
+}
+
 
 nav {
     z-index: 10;
@@ -335,6 +360,56 @@ nav {
 
 
 /*Index*/
+
+.add-event{
+    height: calc(10px + 7vw);
+    width: calc(10px + 7vw);
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    background-color: #BAE4AC;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: 5.5vw;
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+}
+
+.events{
+    height: calc(10px + 14vw);
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    border-radius:5vw;
+    text-align: center;
+    display: flex;
+    background-color: #FFFFFF;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: calc(10px + 1.5vw);
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+}
+.events p:first-child{
+    margin: 0;
+    font-size: calc(10px + 1.5vw);
+}
+.events p:last-child{
+    margin: 0;
+    font-size: calc(6px + 1.5vw);
+    font-weight: initial;
+}
+
+.index-titulos{
+    font-size: calc(13px + 0.7vw);
+}
+
+
+
+
+
 
 /*Card*/
 .card {
