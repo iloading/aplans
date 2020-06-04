@@ -25,8 +25,14 @@
         </div>
 
         <div class="col-4 text-center ">
+
+        <?php 
+            if($_SESSION['role'] == 1){
+                echo '<a class="btn btn-lg bg-verde" href="./scripts/sc_logout.php">ADMIN</a>';
+            }
+        ?>
             
-            <a class="btn btn-lg bg-verde" href="./scripts/sc_logout.php">ADMIN</a>
+            
         </div>
 
 
