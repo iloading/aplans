@@ -3,13 +3,13 @@ require_once "../connections/connection.php";
 session_start();
 function verf_pass()
 {
-    $id_user_logado =$_SESSION['id'];
+    $id_user_logado =$_SESSION['id_user_iloading'];
     $verfi_pass = $_POST['pass'];
 
     $link = new_db_connection();
     $stmt = mysqli_stmt_init($link);
 
-    $query = "SELECT password_hash FROM user WHERE id = ?";
+    $query = "SELECT password FROM user WHERE id = ?";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
         mysqli_stmt_bind_param($stmt, 'i', $id_user_logado);

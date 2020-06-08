@@ -1,0 +1,12 @@
+{
+    "version":"0.1.0",
+    "command": "edge",
+    "windows": {
+        "command": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+    },
+    "args": [
+        "localhost\\LAB4\\PHP\\Miniprojeto\\${workspaceRootFolderName}\\${relativeFileDirname}\\${fileBasename}"
+    ],
+    "showOutput": "never",
+    "problemMatchers": []
+}
