@@ -3,7 +3,7 @@ session_start();
 require_once "connections/connection.php";
 ?>
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html lang="zxx">
 
 <head>
 	<?php include_once "helpers/help_meta.php" ?>
@@ -12,36 +12,9 @@ require_once "connections/connection.php";
 </head>
 
 <body>
-
-	<!-- Main wrapper -->
-	<div class="wrapper" id="wrapper">
-	
-		
-
-
-
-		<!-- Start BANNER area -->
-		<div class="ht__bradcaump__area bg-image--6">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="bradcaump__inner text-center">
-							<h2 class="bradcaump-title">Login e Registo</h2>
-							<nav class="bradcaump-content">
-								<a class="breadcrumb_item" href="index.php">Home</a>
-								<span class="brd-separetor">/</span>
-								<span class="breadcrumb_item active">Login/Registo</span>
-							</nav>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End BANNER area -->
-
 		<!-- Login e Registo -->
-		<section class="my_account_area pt--80 pb--55 bg--white">
-			<div class="container">
+	
+			
 
 				<!-- MENSAGENS DE VALIDAÇÃO -->
 				<?php
@@ -82,14 +55,13 @@ require_once "connections/connection.php";
 				<!-- /MENSAGENS DE VALIDAÇÃO -->
 
 
-				<div class="row">
+				
 
 					<?php
 					//SE NAO ESTIVERMOS LOGADOS MOSTRA OS CAMPOS PARA PREENCHER, SE NAO, AVISA QUE JÁ ESTAMOS LOGADOS
 					if (!isset($_SESSION['email_iloading'])) {
 						include_once "components/cp_login.php";
 
-						include_once "components/cp_register.php";
 					} else {
 						echo '<div class="alert alert-danger col-12 text-center h2 alert-dismissible fade show" role="alert">
                         Já se encontra logado
@@ -100,15 +72,11 @@ require_once "connections/connection.php";
 					}
 
 					?>
-				</div>
+				
 			</div>
-		</section>
-		<!-- End My Account Area -->
+		
 
-		<?php include_once "components/cp_footer.php" ?>
 
-	</div>
-	<!-- //Main wrapper -->
 
 	<!-- JS Files -->
 	<?php include_once "helpers/help_js.php" ?>
