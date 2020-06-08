@@ -380,6 +380,8 @@ nav {
 .add-event{
     height: calc(10px + 7vw);
     width: calc(10px + 7vw);
+    max-height: 50px;
+    max-width: 50px;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -954,7 +956,7 @@ input:focus {
     border-radius: 1rem !important;
     border: 0 !important;
     display: none;
-    padding: 0.7rem !important;
+    padding: 0.5rem !important;
     font-size: 1.1rem !important;
 }
 

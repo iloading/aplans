@@ -128,7 +128,7 @@ var i=0;
      $('#add_more').on('click', function(){
 
       i++;
-      var html ='<div id="append_no_'+i+'" class="animated bounceInLeft">'+
+      var html ='<div id="append_no_'+i+'" class="animated bounceInLeft m-0">'+
           '<div class="input-group mt-3">'+
 		  '<div class="input-group-prepend">'+
 		  '</div>'+
@@ -146,7 +146,7 @@ var i=0;
 		  '</div></div>';
 
 	  $('#dynamic_container').append(html);
-	  $('#remove_more').fadeIn(function(){
+       $('#remove_more').css("display", "flex").fadeIn(function(){
 	  	 $(this).show();
 	  });
       $('#add_more').fadeIn(function(){
