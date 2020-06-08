@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "database": "avila_crew",
+            "dialect": "MySQL",
+            "name": "localhost",
+            "port": 3306,
+            "server": "localhost",
+            "username": "root"
+        }
+    ]
+}
