@@ -27,23 +27,23 @@
                          <div class="card-body">
                              <div class="tab-content">
                                  <div role="tabpanel" class="tab-pane container-fluid p-0" id="registerTab">
-                                     <form action="index.html" method="get" id="form1">
+                                     <form action="scripts/sc_register.php" method="post" id="form1">
                                          <div id="dynamic_container">
                                              <div class="input-group">
                                             
-                                                 <input type="text" placeholder="Username" class="form-control" required />
+                                                 <input name="username" type="text" placeholder="Username" class="form-control" required />
                                              </div>
                                              <div class="input-group mt-3">
                                                 
-                                                 <input type="password" placeholder="Password" class="form-control" required />
+                                                 <input name="password" type="password" placeholder="Password" class="form-control" required />
                                              </div>
                                              <div class="input-group mt-3">
                                                 
-                                                 <input type="email" placeholder="Email" class="form-control" required />
+                                                 <input name="email" type="email" placeholder="Email" class="form-control" required />
                                              </div>
                                          </div>
 
-                                     </form>
+                                     
                                      <div class="card-footer p-0 pt-3 borderNone bg-index w-100">
                                          <a class="btn btn-secondary btn-sm submit_btn add-event m-0" id="add_more">+</a>
                                          <a class="btn btn-secondary btn-sm submit_btn add-event m-0" id="remove_more">-</a>
@@ -51,20 +51,21 @@
                                      <div class="mt-3">
                                          <button type="submit" form="form1" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Sign Up</button>
                                      </div>
+                                     </form>
                                  </div>
 
 
                                  <div role="tabpanel" class="tab-pane active container-fluid p-0" id="loginTab">
-                                     <form action="index.html" method="get" id="form2">
+                                     <form action="scripts/sc_login.php" method="post" id="form2">
                                          <div id="dynamic_container">
 
                                              <div class="input-group mt-3">
                                                  
-                                                 <input type="text" placeholder="Email Adress" class="form-control" required />
+                                                 <input type="text" name="email" placeholder="Email Adress" class="form-control" required />
                                              </div>
                                              <div class="input-group mt-3">
                                                  
-                                                 <input type="password" placeholder="Password" class="form-control" required />
+                                                 <input type="password" name="password" placeholder="Password" class="form-control" required />
                                              </div>
                                          </div>
                                          <div class="mt-3">
