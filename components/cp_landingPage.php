@@ -18,7 +18,7 @@
 
                                  </li>
 
-                                 <li class=" mb-1 col-6 text-center" role="presentation" class="active"><a class="tabsTexto loginTit" href="#registerTab" aria-controls="registerTab" role="tab" data-toggle="tab">Register</a>
+                                 <li class=" mb-1 col-6 text-center" role="presentation" class="active"><a class="tabsTexto loginTit" href="#registerTab" aria-controls="registerTab" role="tab" data-toggle="tab">Sign Up</a>
 
                                  </li>
 
@@ -49,7 +49,7 @@
                                          <a class="btn btn-secondary btn-sm submit_btn add-event m-0" id="remove_more">-</a>
                                      </div>
                                      <div class="mt-3">
-                                         <button type="submit" form="form1" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Submit</button>
+                                         <button type="submit" form="form1" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Sign Up</button>
                                      </div>
                                  </div>
 
@@ -68,7 +68,7 @@
                                              </div>
                                          </div>
                                          <div class="mt-3">
-                                             <button type="submit" form="form2" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Submit</button>
+                                             <button type="submit" form="form2" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Login</button>
                                          </div>
                                      </form>
                                  </div>
