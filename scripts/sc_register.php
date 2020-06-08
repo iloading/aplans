@@ -3,11 +3,18 @@ require_once "../connections/connection.php";
 session_start();
 
 if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"]) && isset($_POST["password_confirmar"])) {
+
+    function validate($string){
+        return htmlspecialchars($string,ENT_QUOTES,'UTF-8');
+    }
    
     $email = $_POST['email'];
     $nome = $_POST['nome'];
     $pass = $_POST["password"];
     $pass_confirmar = $_POST["password_confirmar"];
+
+    validate($nome);
+
     if ($pass==$pass_confirmar) {
         $password_hash = password_hash($pass, PASSWORD_DEFAULT);
     };
@@ -59,7 +66,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
 
         $stmt = mysqli_stmt_init($link);
 
-        $query = "INSERT INTO user (email, password_hash, username, telemovel, morada, codigo_postal) VALUES (?,?,?,?,?,?)";
+        $query = "INSERT INTO user (email, password_hash, nome, telemovel, morada, codigo_postal) VALUES (?,?,?,?,?,?)";
 
         if (mysqli_stmt_prepare($stmt, $query)) {
             mysqli_stmt_bind_param($stmt, 'sssiss', $email, $password_hash, $nome, $telemovel, $morada, $codigo_postal);
@@ -73,7 +80,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
                 //LOGIN
                 $stmt = mysqli_stmt_init($link);
 
-                $query = "SELECT password_hash, ref_roles_codigo, id FROM user WHERE email LIKE ?";
+                $query = "SELECT password_hash, ref_roles_id, id FROM user WHERE email LIKE ?";
 
                 if (mysqli_stmt_prepare($stmt, $query)) {
                     mysqli_stmt_bind_param($stmt, 's', $email);
@@ -92,17 +99,16 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
                                 // Feedback de sucesso
                                 //echo "SUCESSO";
                                
-                                header("Location: ../index.php");
+                                //header("Location: ../index.php");
                                 //Nao esquecer de meter uma mensagem na pagina do index a dizer que o registo foi efetuado com sucesso, e o login feito automaticamente
-                            } else {
-                                
+                            } else {                            
                                 echo "FAIL";
                                 //header("Location: ../index.php?msg=2#login");
                             }
                         } else {
                             // Username não existe
                             //echo "FAIL 1";
-                            header("Location: ../index.php?msg=2#login");
+                            //header("Location: ../index.php?msg=2#login");
                         }
                         mysqli_stmt_close($stmt);
                         mysqli_close($link);

@@ -30,7 +30,6 @@
                                      <form action="scripts/sc_register.php" method="post" id="registo">
                                          <div id="dynamic_container">
                                              <div class="input-group">
-                                            
                                                  <input name="nome" type="text" placeholder="Name" class="form-control" required />
                                              </div>
                                              <div class="input-group mt-3">
