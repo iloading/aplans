@@ -7,7 +7,7 @@
                  <div class="w-100">
                      <div class="card animated bounceInDown myForm w-100 bg-index borderNone">
                          <div class="text-center mb-4">
-                             <img class="div-logo-landingPage div-logo-landingPage-img" src="assets/aplans.png">
+                             <img class="div-logo-landingPage div-logo-landingPage-img" src="assets/aplansazul.png">
 
                          </div>
 
@@ -27,19 +27,23 @@
                          <div class="card-body">
                              <div class="tab-content">
                                  <div role="tabpanel" class="tab-pane container-fluid p-0" id="registerTab">
-                                     <form action="scripts/sc_register.php" method="post" id="form1">
+                                     <form action="scripts/sc_register.php" method="post" id="registo">
                                          <div id="dynamic_container">
                                              <div class="input-group">
                                             
-                                                 <input name="username" type="text" placeholder="Username" class="form-control" required />
+                                                 <input name="nome" type="text" placeholder="Name" class="form-control" required />
                                              </div>
                                              <div class="input-group mt-3">
-                                                
+                                                <input name="email" type="email" placeholder="Email" class="form-control" required />
+                                                 
+                                             </div>
+                                             <div class="input-group mt-3">
                                                  <input name="password" type="password" placeholder="Password" class="form-control" required />
+                                                 
                                              </div>
                                              <div class="input-group mt-3">
-                                                
-                                                 <input name="email" type="email" placeholder="Email" class="form-control" required />
+                                                 <input name="password_confirmar" type="password" placeholder="Confirm Password" class="form-control" required />
+                                                 
                                              </div>
                                          </div>
 
@@ -49,14 +53,14 @@
                                          <a class="btn btn-secondary btn-sm submit_btn add-event m-0" id="remove_more">-</a>
                                      </div>
                                      <div class="mt-3">
-                                         <button type="submit" form="form1" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Sign Up</button>
+                                         <button type="submit" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Sign Up</button>
                                      </div>
                                      </form>
                                  </div>
 
 
                                  <div role="tabpanel" class="tab-pane active container-fluid p-0" id="loginTab">
-                                     <form action="scripts/sc_login.php" method="post" id="form2">
+                                     <form action="scripts/sc_login.php" method="post" id="login">
                                          <div id="dynamic_container">
 
                                              <div class="input-group mt-3">
@@ -69,7 +73,7 @@
                                              </div>
                                          </div>
                                          <div class="mt-3">
-                                             <button type="submit" form="form2" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Login</button>
+                                             <button type="submit" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Login</button>
                                          </div>
                                      </form>
                                  </div>
@@ -82,7 +86,7 @@
                  </div>
              </div>
              <div class="text-center">
-                <p class="mb-0">You are completely safe.</p>
+                <p style="color: #3C5E77" class="mb-0">You are completely safe.</p>
                 <p style="color: #BAE4AC;">Read our Terms & Conditions</p>
             </div>
          </div>

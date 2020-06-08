@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-unset($_SESSION['email_iloading']);
-unset($_SESSION['id_user_iloading']);
-unset($_SESSION['role_iloading']);
+unset($_SESSION['email_aplans']);
+unset($_SESSION['id_user_aplans']);
+//unset($_SESSION['role_aplans']);
 
 
 header("Location: ../index.php");

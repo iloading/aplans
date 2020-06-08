@@ -2,21 +2,24 @@
 require_once "../connections/connection.php";
 session_start();
 
-if (isset($_POST["email"]) && isset($_POST["password"])) {
+if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"]) && isset($_POST["password_confirmar"])) {
+   
     $email = $_POST['email'];
-    $pass = $_POST["password"];
-    $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
     $nome = $_POST['nome'];
-    $apelido = $_POST['apelido'];
-    $data_nascimento = $_POST['data'];
-    $data = date("Y-m-d", strtotime($data_nascimento));
-    $telemovel = $_POST['tel'];
-    $morada = $_POST['morada'];
-    $codigo_postal = $_POST['cp'];
-    $localidade = $_POST['localidade'];
-    $nif = $_POST['nif'];
-
+    $pass = $_POST["password"];
+    $pass_confirmar = $_POST["password_confirmar"];
+    if ($pass==$pass_confirmar) {
+        $password_hash = password_hash($pass, PASSWORD_DEFAULT);
+    };
+    if (isset($_POST["telemovel"]) && isset($_POST["morada"]) && isset($_POST["cp"])) {
+        $telemovel = $_POST['telemovel'];
+        $morada = $_POST['morada'];
+        $codigo_postal = $_POST['cp'];
+    }else {
+        $telemovel = "";
+        $morada = "";
+        $codigo_postal = "";
+    }
     
 
     $link = new_db_connection();
@@ -56,10 +59,10 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
         $stmt = mysqli_stmt_init($link);
 
-        $query = "INSERT INTO user (email, password, nome, apelido, data_nascimento, telemovel, morada, codigo_postal, localidade, nif) VALUES (?,?, ?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO user (email, password_hash, username, telemovel, morada, codigo_postal) VALUES (?,?,?,?,?,?)";
 
         if (mysqli_stmt_prepare($stmt, $query)) {
-            mysqli_stmt_bind_param($stmt, 'sssssisisi', $email, $password_hash, $nome, $apelido, $data, $telemovel, $morada, $codigo_postal, $localidade, $nif);
+            mysqli_stmt_bind_param($stmt, 'sssiss', $email, $password_hash, $nome, $telemovel, $morada, $codigo_postal);
 
             // Devemos validar também o resultado do execute!
             if (mysqli_stmt_execute($stmt)) {
@@ -70,7 +73,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                 //LOGIN
                 $stmt = mysqli_stmt_init($link);
 
-                $query = "SELECT password, ref_roles_codigo, id FROM user WHERE email LIKE ?";
+                $query = "SELECT password_hash, ref_roles_codigo, id FROM user WHERE email LIKE ?";
 
                 if (mysqli_stmt_prepare($stmt, $query)) {
                     mysqli_stmt_bind_param($stmt, 's', $email);
@@ -82,14 +85,15 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                             if (password_verify($pass, $password_hash)) {
                                 // Guardar sessão de utilizador
                                 session_start();
-                                $_SESSION["email_iloading"] = $email;
-                               $_SESSION['id_user_iloading'] = $id;
-                               $_SESSION['role_iloading'] = $perfil;
+                               $_SESSION["email_aplans"] = $email;
+                               $_SESSION['id_user_aplans'] = $id;
+                               $_SESSION['role_aplans'] = $perfil;
 
                                 // Feedback de sucesso
                                 //echo "SUCESSO";
                                
                                 header("Location: ../index.php");
+                                //Nao esquecer de meter uma mensagem na pagina do index a dizer que o registo foi efetuado com sucesso, e o login feito automaticamente
                             } else {
                                 
                                 echo "FAIL";
@@ -112,6 +116,8 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                 echo "Error:" . mysqli_error($link);
                 mysqli_close($link);
             }
+        }else{
+            echo "erro";
         }
     }else {
         echo "blablbalb";

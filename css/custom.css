@@ -3,7 +3,7 @@
 }
 
 .bg-index {
-    background-color: #3C5E77 !important;
+    background-color: #F1F3F6 !important;
 }
 
 .alturaMainLogin {
@@ -21,7 +21,7 @@
 }
 
 .myForm {
-    background-color: #3C5E77 !important;
+    background-color: #F1F3F6 !important;
     padding: 15px !important;
     color: white;
 
@@ -94,11 +94,11 @@
 }
 
 .loginTit:link {
-    color: white;
+    color: #3C5E77;
 }
 
 .loginTit:visited {
-    color: white;
+    color: #3C5E77;
 }
 
 .loginTit:hover {
@@ -107,7 +107,7 @@
 }
 
 .loginTit:active {
-    color: white;
+    color: #3C5E77;
 }
 
 .div-logo-landingPage{
