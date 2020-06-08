@@ -999,7 +999,7 @@ input:focus {
 
 .form-control {
     background-color: #fff !important;
-    border: 1px solid rgb(35, 35, 35) !important;
+    border: 0 !important;
     border-radius: 1rem !important;
     padding: 1.5rem !important;
 }
@@ -1012,7 +1012,7 @@ input:focus {
     background-color: #fff !important;
     color: black !important;
     box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0.25);
-    border: 1px solid #1A1A1A !important;
+    border: 0 !important;
 }
 
 .borderNone {
