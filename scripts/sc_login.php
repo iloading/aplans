@@ -11,23 +11,23 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "SELECT password, ref_roles_codigo, id FROM user WHERE email LIKE ?";
+    $query = "SELECT password_hash, id FROM user WHERE email LIKE ?";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
         mysqli_stmt_bind_param($stmt, 's', $email);
 
         if (mysqli_stmt_execute($stmt)) {
 
-            mysqli_stmt_bind_result($stmt, $password_hash, $perfil, $id);
+            mysqli_stmt_bind_result($stmt, $password_hash, $id); //inserir $perfil NUM ESQUECER
 
             if (mysqli_stmt_fetch($stmt)) {
                 
                 if (password_verify($password_inserida, $password_hash)) {
                     // Guardar sessão de utilizador
                     session_start();
-                   $_SESSION["email_iloading"] = $email;
-                   $_SESSION['id_user_iloading'] = $id;
-                   $_SESSION['role_iloading'] = $perfil;
+                   $_SESSION["email_aplans"] = $email;
+                   $_SESSION['id_user_aplans'] = $id;
+                   //$_SESSION['role_aplans'] = $perfil;
 
                     // Feedback de sucesso
                     //echo "SUCESSO";

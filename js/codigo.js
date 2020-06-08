@@ -142,7 +142,7 @@ var i=0;
 		  '<div class="input-group mt-3">'+
 		  '<div class="input-group-prepend">'+
 		  '</div>'+
-		  '<input type="text" name="codigo_postal" placeholder="Zip Code (Optional)" class="form-control"/>'+
+		  '<input type="text" name="cp" placeholder="Zip Code (Optional)" class="form-control"/>'+
 		  '</div></div>';
 
 	  $('#dynamic_container').append(html);
