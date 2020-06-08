@@ -7,7 +7,7 @@ require_once "connections/connection.php";
 
 <head>
 	<?php include_once "helpers/help_meta.php" ?>
-	<title>Login & Registo | Carregosa Vinhos</title>
+	<title>Aplans</title>
 	<?php include_once "helpers/help_css.php" ?>
 </head>
 
@@ -15,8 +15,8 @@ require_once "connections/connection.php";
 
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
-		<!-- Header -->
-		<?php include_once "components/cp_header.php" ?>
+	
+		
 
 
 
