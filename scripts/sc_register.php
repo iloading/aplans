@@ -5,7 +5,9 @@ session_start();
 if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"]) && isset($_POST["password_confirmar"])) {
 
     function validate($string){
-        return htmlspecialchars($string,ENT_QUOTES,'UTF-8');
+        $string_composta=  strip_tags($string);
+        $string_composta2= htmlspecialchars($string_composta,ENT_QUOTES,'UTF-8');
+        return $string_composta2;
     }
    
     $email = $_POST['email'];
@@ -13,7 +15,11 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
     $pass = $_POST["password"];
     $pass_confirmar = $_POST["password_confirmar"];
 
-    validate($nome);
+    
+    //echo validate($nome);
+    echo strip_tags($nome);
+    echo "<hr>";
+    echo htmlspecialchars($nome);
 
     if ($pass==$pass_confirmar) {
         $password_hash = password_hash($pass, PASSWORD_DEFAULT);
@@ -66,7 +72,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
 
         $stmt = mysqli_stmt_init($link);
 
-        $query = "INSERT INTO user (email, password_hash, nome, telemovel, morada, codigo_postal) VALUES (?,?,?,?,?,?)";
+        $query = "INSERT INTO user (email, password_hash, username, telemovel, morada, codigo_postal) VALUES (?,?,?,?,?,?)";
 
         if (mysqli_stmt_prepare($stmt, $query)) {
             mysqli_stmt_bind_param($stmt, 'sssiss', $email, $password_hash, $nome, $telemovel, $morada, $codigo_postal);

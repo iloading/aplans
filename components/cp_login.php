@@ -51,6 +51,13 @@
                                          <a class="btn btn-secondary btn-sm submit_btn add-event m-0" id="add_more">+</a>
                                          <a class="btn btn-secondary btn-sm submit_btn add-event m-0" id="remove_more">-</a>
                                      </div>
+                                     <?php
+                                        $string="/\%-.''<script>alert('boas')</script>";
+                                        echo strip_tags($string);
+                                        echo "<hr>";
+                                        echo htmlspecialchars($string);
+                                     
+                                     ?>
                                      <div class="mt-3">
                                          <button type="submit" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Sign Up</button>
                                      </div>
