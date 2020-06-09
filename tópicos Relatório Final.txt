@@ -1,3 +1,0 @@
--Registo: 
-	Verificação do email (por filter)
-	Verificação do nº telemovel e cp (REGEX - https://regex101.com/)
