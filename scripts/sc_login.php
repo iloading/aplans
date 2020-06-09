@@ -1,10 +1,11 @@
 <?php
 session_start();
 require_once "../connections/connection.php";
+require_once "../scripts/sc_validate_input.php";
 
 if (isset($_POST["email"]) && isset($_POST["password"])) {
-    $email = $_POST['email'];
-    $password_inserida = $_POST['password'];
+    $email = validate($_POST['email']);
+    $password_inserida = validate($_POST['password']);
 
     
     $link = new_db_connection();

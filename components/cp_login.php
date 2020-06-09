@@ -52,11 +52,11 @@
                                          <a class="btn btn-secondary btn-sm submit_btn add-event m-0" id="remove_more">-</a>
                                      </div>
                                      <?php
-                                        $string="/\%-.''<script>alert('boas')</script>";
-                                        echo strip_tags($string);
+                                        $string="/\%-.'&'<script>alert('boas')</script>";
+                                        echo $string1=strip_tags($string);
                                         echo "<hr>";
-                                        echo htmlspecialchars($string);
-                                     
+                                        echo htmlspecialchars($string1, ENT_QUOTES, 'UTF-8');
+
                                      ?>
                                      <div class="mt-3">
                                          <button type="submit" value="Submit" class="btn btn-success btn-sm float-right submit_btn w-100">Sign Up</button>

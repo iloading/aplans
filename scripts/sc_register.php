@@ -1,33 +1,26 @@
 <?php
 require_once "../connections/connection.php";
+require_once "../scripts/sc_validate_input.php";
 session_start();
 
 if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"]) && isset($_POST["password_confirmar"])) {
 
-    function validate($string){
-        $string_composta=  strip_tags($string);
-        $string_composta2= htmlspecialchars($string_composta,ENT_QUOTES,'UTF-8');
-        return $string_composta2;
-    }
    
-    $email = $_POST['email'];
-    $nome = $_POST['nome'];
-    $pass = $_POST["password"];
-    $pass_confirmar = $_POST["password_confirmar"];
+   
+    $email = validate($_POST['email']);
+    $nome = validate($_POST['nome']);
+    $pass = validate($_POST["password"]);
+    $pass_confirmar = validate($_POST["password_confirmar"]);
 
     
-    //echo validate($nome);
-    echo strip_tags($nome);
-    echo "<hr>";
-    echo htmlspecialchars($nome);
 
     if ($pass==$pass_confirmar) {
         $password_hash = password_hash($pass, PASSWORD_DEFAULT);
     };
     if (isset($_POST["telemovel"]) && isset($_POST["morada"]) && isset($_POST["cp"])) {
-        $telemovel = $_POST['telemovel'];
-        $morada = $_POST['morada'];
-        $codigo_postal = $_POST['cp'];
+        $telemovel = validate($_POST['telemovel']);
+        $morada = validate($_POST['morada']);
+        $codigo_postal = validate($_POST['cp']);
     }else {
         $telemovel = "";
         $morada = "";
