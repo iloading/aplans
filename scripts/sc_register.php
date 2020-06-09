@@ -8,9 +8,9 @@ $sucesso = 1;
 if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"]) && isset($_POST["password_confirmar"])) {
 
     if (trim($_POST["email"]) != "" && trim($_POST["password"]) != "" && trim($_POST["password_confirmar"]) != "" && trim($_POST["nome"]) != "") {
-        $email = validate($_POST['email']);
-        $nome = validate($_POST['nome']);
-        $pass = validate($_POST["password"]);
+        $email = trim($_POST['email']);
+        $nome = $_POST['nome'];
+        $pass = $_POST["password"];
         $pass_confirmar = validate($_POST["password_confirmar"]);
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE) {
@@ -34,9 +34,9 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
 
     if (isset($_POST["telemovel"]) && isset($_POST["morada"]) && isset($_POST["cp"])) {
 
-        $telemovel = validate($_POST['telemovel']);
-        $morada = validate($_POST['morada']);
-        $codigo_postal = validate($_POST['cp']);
+        $telemovel = trim($_POST['telemovel']);
+        $morada = trim($_POST['morada']);
+        $codigo_postal = trim($_POST['cp']);
 
         if (trim($_POST["telemovel"]) != "") {
             $pattern = "/(9[1236][0-9]) ?([0-9]{3}) ?([0-9]{3})/";
