@@ -16,45 +16,6 @@ require_once "connections/connection.php";
 	
 			
 
-				<!-- MENSAGENS DE VALIDAÇÃO -->
-				<?php
-
-				if (isset($_GET["msg"])) {
-
-					switch ($_GET["msg"]) {
-						case 0:
-							$message = "Foi redirecionado: Por favor efetue o login ou registe-se para ter acesso a essa página";
-							$class = "alert-warning";
-							break;
-						case 1:
-							$message = "Foi redirecionado: Por favor efetue o login ou registe-se para poder comprar na nossa loja";
-							$class = "alert-success";
-							break;
-						case 2:
-							$message = "Esse email já existe, por favor escolha outro";
-							$class = "alert-danger";
-							break;
-						case 3:
-							$message = "Credenciais inválidas! Tente novamente";
-							$class = "alert-danger";
-							break;
-						default:
-							$_SESSION['msg'] =  false;
-					}
-					if (isset($_SESSION['msg']) && $_SESSION['msg'] == true) {
-						echo "<div class=\"alert $class alert-dismissible fade show\" role=\"alert\">
-                        " . $message . "
-                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-                            <span aria-hidden=\"true\">&times;</span>
-                        </button>
-                        </div>";
-						$_SESSION['msg'] = false;
-					};
-				}
-				?>
-				<!-- /MENSAGENS DE VALIDAÇÃO -->
-
-
 				
 
 					<?php
