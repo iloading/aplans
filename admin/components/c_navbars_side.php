@@ -37,7 +37,7 @@ if ($admin == 1) {
 
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="users.php">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Utilizadores</span></a>
