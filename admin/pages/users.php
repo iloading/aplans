@@ -22,38 +22,34 @@ require_once "../../connections/connection.php";
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-                // var button = $(this).val();
-                $.ajax({ // ajax call starts
-                    url: 'users_table.php', // JQuery loads serverside.php
-                    data: 'button=', // Send value of the clicked button
+        $(document).ready(function() {
+            // var button = $(this).val();
+            $.ajax({ // ajax call starts
+                    url: '../ajax/users_table.php',
                     dataType: 'json', // Choosing a JSON datatype
-                    type: 'GET', // Default is GET
+
                 })
-                        .done(function (data) {
-                            $('#users').html('');
+                .done(function(data) {
+                    $('#users').html('');
 
-                            if (1) {
-                                for (var i in data) {
-                                    $('#users').append('<thead>');
-                                    $('#users').append('<th>' + data[i]["nome"] + '</th>');
-                                    $('#users').append('<th>' + data[i]["email"] + '</th>');
-                                    $('#users').append('<th>' + data[i]["cargo"] + '</th>');
-                                    $('#users').append('<th>' + data[i]["telemovel"] + '</th>');
-                                    $('#users').append('<th>' + data[i]["morada"] + '</th>');
-                                    $('#users').append('<th>' + data[i]["codigo_postal"] + '</th>');
-                                    $('#users').append('</thead>');
+                    for (var i in data) {
+                        var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
 
-                                };
-                            }
-                        })
-                        .fail(function () { // Se existir um erro no pedido
-                            $('#users').html('Data error'); // Escreve mensagem de erro na listagem de vinhos
-                        })
-                ;
-                return false; // keeps the page from not refreshing
+                        $('#users').append(linha);
+                        
+
+
+                    };
+
+                })
+                .fail(function() { // Se existir um erro no pedido
+                    
+                    $('#users').html('Data error'); // Escreve mensagem de erro na listagem de vinhos
+                });
+            return false; // keeps the page from not refreshing
         });
     </script>
 </head>
@@ -110,18 +106,26 @@ require_once "../../connections/connection.php";
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                    <table id="users" class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                   
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        <table class="table table-striped table-hover">
+                                            <thead class="">
+                                                <tr class="bg-primary text-light">
+                                                    <th>Nome</th>
+                                                    <th>Email</th>
+                                                    <th>Cargo</th>
+                                                    <th>Telemóvel</th>
+                                                    <th>Morada</th>
+                                                    <th>Código Postal</th>
+                                                </tr>
+                                            </thead>
+
+                                            <!-- Conteudo a ser escrito dinamicamente em JS e AJAX -->
+                                            <tbody id="users">
+
+                                            </tbody>
+                                            <!-- /.Conteudo a ser escrito dinamicamente em JS e AJAX -->
+
+
+                                        </table>
                                     </div>
                                     <!-- /.table-responsive -->
                                 </div>
@@ -180,11 +184,6 @@ require_once "../../connections/connection.php";
 
 </body>
 
-<!-- <th>Nome</th>
-                                                        <th>Email</th>
-                                                        <th>Cargo</th>
-                                                        <th>Telemóvel</th>
-                                                        <th>Morada</th>
-                                                        <th>Código Postal</th> -->
+
 
 </html>

@@ -47,6 +47,8 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
                 $sucesso = 0;
                 $msg = 1;
             }
+        }else {
+            $telemovel = NULL;
         }
 
         if (trim($_POST["cp"]) != "") {
@@ -60,11 +62,12 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
         }
 
        
-    } else {
-        $telemovel = "";
-        $morada = "";
-        $codigo_postal = "";
-    }
+    } 
+    // else {
+    //     $telemovel = NULL;
+    //     $morada = NULL;
+    //     $codigo_postal = NULL;
+    // }
 
 
 }
