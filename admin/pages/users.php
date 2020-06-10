@@ -39,8 +39,6 @@ require_once "../../connections/connection.php";
                         var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
 
                         $('#users').append(linha);
-                        
-
 
                     };
 
