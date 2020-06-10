@@ -22,7 +22,40 @@ require_once "../../connections/connection.php";
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+                // var button = $(this).val();
+                $.ajax({ // ajax call starts
+                    url: 'users_table.php', // JQuery loads serverside.php
+                    data: 'button=', // Send value of the clicked button
+                    dataType: 'json', // Choosing a JSON datatype
+                    type: 'GET', // Default is GET
+                })
+                        .done(function (data) {
+                            $('#users').html('');
 
+                            if (1) {
+                                for (var i in data) {
+                                    $('#users').append('<thead>');
+                                    $('#users').append('<th>' + data[i]["nome"] + '</th>');
+                                    $('#users').append('<th>' + data[i]["email"] + '</th>');
+                                    $('#users').append('<th>' + data[i]["cargo"] + '</th>');
+                                    $('#users').append('<th>' + data[i]["telemovel"] + '</th>');
+                                    $('#users').append('<th>' + data[i]["morada"] + '</th>');
+                                    $('#users').append('<th>' + data[i]["codigo_postal"] + '</th>');
+                                    $('#users').append('</thead>');
+
+                                };
+                            }
+                        })
+                        .fail(function () { // Se existir um erro no pedido
+                            $('#users').html('Data error'); // Escreve mensagem de erro na listagem de vinhos
+                        })
+                ;
+                return false; // keeps the page from not refreshing
+        });
+    </script>
 </head>
 
 <body id="page-top">
@@ -77,52 +110,18 @@ require_once "../../connections/connection.php";
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <?php
-                                                    $link = new_db_connection();
-
-                                                    $stmt = mysqli_stmt_init($link);
-
-                                                    $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id";
-
-                                                    if (mysqli_stmt_prepare($stmt, $query)) {
-                                                        if (mysqli_stmt_execute($stmt)) {
-                                                            mysqli_stmt_bind_result($stmt, $nome, $email, $telemovel, $morada, $cp, $role);
-
-                                                    ?>
-                                                            <th>Nome</th>
-                                                            <th>Email</th>
-                                                            <th>Cargo</th>
-                                                            <th>Telemóvel</th>
-                                                            <th>Morada</th>
-                                                            <th>Código Postal</th>
-
-
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                        <?php
-
-                                                            while (mysqli_stmt_fetch($stmt)) {
-                                                                echo
-                                                                '<td>' . $nome . '</td>
-                                                                    <td>' . $email . '</td>
-                                                                    <td>' . $role . '</td>
-                                                                    <td>' . $telemovel . '</td>
-                                                                    <td>' . $morada . '</td>
-                                                                    <td>' . $cp . '</td>';
-                                                            }
-                                                        }
-                                                    }
-                                                        ?>
-
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <table id="users" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                   
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                     </div>
                                     <!-- /.table-responsive -->
                                 </div>
@@ -180,5 +179,12 @@ require_once "../../connections/connection.php";
     <script src="../js/demo/chart-pie-demo.js"></script>
 
 </body>
+
+<!-- <th>Nome</th>
+                                                        <th>Email</th>
+                                                        <th>Cargo</th>
+                                                        <th>Telemóvel</th>
+                                                        <th>Morada</th>
+                                                        <th>Código Postal</th> -->
 
 </html>
