@@ -12,14 +12,14 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "SELECT password_hash, id FROM user WHERE email LIKE ?";
+    $query = "SELECT password_hash, id, ref_roles_id FROM users WHERE email LIKE ?";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
         mysqli_stmt_bind_param($stmt, 's', $email);
 
         if (mysqli_stmt_execute($stmt)) {
 
-            mysqli_stmt_bind_result($stmt, $password_hash, $id); //inserir $perfil NUM ESQUECER
+            mysqli_stmt_bind_result($stmt, $password_hash, $id, $role); //inserir $perfil NUM ESQUECER
 
             if (mysqli_stmt_fetch($stmt)) {
                 
@@ -28,7 +28,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                     session_start();
                    $_SESSION["email_aplans"] = $email;
                    $_SESSION['id_user_aplans'] = $id;
-                   //$_SESSION['role_aplans'] = $perfil;
+                   $_SESSION['role_aplans'] = $role;
 
                     // Feedback de sucesso
                     //echo "SUCESSO";

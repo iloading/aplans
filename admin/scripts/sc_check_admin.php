@@ -1,7 +1,8 @@
 <?php
 $admin = 0;
-if (isset($_SESSION['username'])) {
-    if (isset($_SESSION['role']) && $_SESSION['role'] == 1) { 
+if (isset($_SESSION['email_aplans'])) {
+    if (isset($_SESSION['role_aplans']) && $_SESSION['role_aplans'] == 2) { 
         $admin = 1;
+        
     }
 }

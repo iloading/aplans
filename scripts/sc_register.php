@@ -14,9 +14,10 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
         $pass_confirmar = validate($_POST["password_confirmar"]);
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE) {
-            echo "$email is invalid";
-        } else {
-            echo "$email is valid";
+            $sucesso = 0;
+            $msg = 0;
+     
+           
         };
 
 
@@ -77,7 +78,7 @@ if ($sucesso == 1) {
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "SELECT email FROM user WHERE email = ?";
+    $query = "SELECT email FROM users WHERE email = ?";
 
     if (mysqli_stmt_prepare($stmt, $query)) {
 
@@ -109,7 +110,7 @@ if ($sucesso == 1) {
 
         $stmt = mysqli_stmt_init($link);
 
-        $query = "INSERT INTO user (email, password_hash, username, telemovel, morada, codigo_postal) VALUES (?,?,?,?,?,?)";
+        $query = "INSERT INTO users (email, password_hash, nome, telemovel, morada, codigo_postal) VALUES (?,?,?,?,?,?)";
 
         if (mysqli_stmt_prepare($stmt, $query)) {
             mysqli_stmt_bind_param($stmt, 'sssiss', $email, $password_hash, $nome, $telemovel, $morada, $codigo_postal);
@@ -123,7 +124,7 @@ if ($sucesso == 1) {
                 //LOGIN
                 $stmt = mysqli_stmt_init($link);
 
-                $query = "SELECT password_hash, ref_roles_id, id FROM user WHERE email LIKE ?";
+                $query = "SELECT password_hash, ref_roles_id, id FROM users WHERE email LIKE ?";
 
                 if (mysqli_stmt_prepare($stmt, $query)) {
                     mysqli_stmt_bind_param($stmt, 's', $email);
@@ -142,7 +143,7 @@ if ($sucesso == 1) {
                                 // Feedback de sucesso
                                 //echo "SUCESSO";
 
-                                //header("Location: ../index.php");
+                                header("Location: ../index.php");
                                 //Nao esquecer de meter uma mensagem na pagina do index a dizer que o registo foi efetuado com sucesso, e o login feito automaticamente
                             } else {
                                 echo "FAIL";

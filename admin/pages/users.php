@@ -54,7 +54,16 @@ require_once "../../connections/connection.php";
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Gestão de utilizadores</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
                     <!-- Content Row -->
@@ -76,33 +85,42 @@ require_once "../../connections/connection.php";
 
                                                     $stmt = mysqli_stmt_init($link);
 
-                                                    $query = "SELECT id_users, email, username, password_hash, date_creation, roles_description 
-                                                    FROM users 
-                                                    INNER JOIN roles 
-                                                    ON id_roles = ref_id_roles";
+                                                    $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id";
 
                                                     if (mysqli_stmt_prepare($stmt, $query)) {
                                                         if (mysqli_stmt_execute($stmt)) {
-                                                            mysqli_stmt_bind_result($stmt, $id_mentors, $name, $title, $description, $image);
-                                                        }
-                                                    }
+                                                            mysqli_stmt_bind_result($stmt, $nome, $email, $telemovel, $morada, $cp, $role);
+
                                                     ?>
-                                                    <th>Id</th>
-                                                    <th>Username</th>
-                                                    <th>Email</th>
-                                                    <th>Data Criação</th>
-                                                    <th>Perfil</th>
-                                                    <th>Operações</th>
+                                                            <th>Nome</th>
+                                                            <th>Email</th>
+                                                            <th>Cargo</th>
+                                                            <th>Telemóvel</th>
+                                                            <th>Morada</th>
+                                                            <th>Código Postal</th>
+
+
+
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>{id_users}</td>
-                                                    <td><i class="fa fa-ban fa-fw"></i>{username}</td>
-                                                    <td>{email}</td>
-                                                    <td>{date_creation}</td>
-                                                    <td>{roles_descricao}</td>
-                                                    <td><a href='users_edit.php?id={id_users}'><i class=\"fa fa-edit fa-fw\"></a></td>
+                                            <?php
+
+                                                            while (mysqli_stmt_fetch($stmt)) {
+                                                                echo
+
+                                                                    '<td>' . $nome . '</td>
+                                                             <td><i class="fa fa-ban fa-fw"></i>' . $email . '</td>
+                                                             <td>' . $role . '</td>
+                                                            <td>' . $telemovel . '</td>
+                                                            <td>' . $morada . '</td>
+                                                            <td>' . $cp . '</td>';
+                                                            }
+                                                        }
+                                                    }
+                                            ?>
+
                                                 </tr>
                                             </tbody>
                                         </table>

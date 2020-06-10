@@ -2,7 +2,7 @@
 // Verificação de credenciais de acesso à área de administração
 require_once "../scripts/sc_check_admin.php";
 
-if (1) {
+if ($admin == 1) {
 ?>
 
     <!-- Sidebar -->
@@ -56,6 +56,6 @@ if (1) {
     <!-- End of Sidebar -->
 <?php
 } else {
-    //header("Location: ../../index.php");
+    header("Location: ../../index.php");
 }
 ?>

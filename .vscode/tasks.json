@@ -5,7 +5,7 @@
         "command": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
     },
     "args": [
-        "localhost\\LAB4\\PHP\\aplans\\${workspaceRootFolderName}\\${relativeFileDirname}\\${fileBasename}"
+        "localhost\\LAB4\\${workspaceRootFolderName}\\${relativeFileDirname}\\${fileBasename}"
     ],
     "showOutput": "never",
     "problemMatchers": []
