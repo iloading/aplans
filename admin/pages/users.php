@@ -24,6 +24,7 @@ require_once "../../connections/connection.php";
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../css/custom.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+    <!-- Recolher todos os utilizadores na tabela users -->
     <script type="text/javascript">
         $(document).ready(function() {
             // var button = $(this).val();
@@ -44,10 +45,35 @@ require_once "../../connections/connection.php";
 
                 })
                 .fail(function() { // Se existir um erro no pedido
-                    
+
                     $('#users').html('Data error'); // Escreve mensagem de erro na listagem de vinhos
                 });
             return false; // keeps the page from not refreshing
+        });
+    </script>
+    <!-- /.Recolher todos os utilizadores na tabela users -->
+    <!-- /.Recolher todos os utilizadores na tabela users -->
+    <script>
+        $(document).ready(function() {
+            $('#search').keyup(function() {
+
+                $('#users').html(''); //limpa a tabela toda
+                var searchField = $('#search').val(); //o que é inserido na pesquisa
+                var expression = new RegExp(searchField, "i"); //cria uma REGEX que filtra de acordo com o que foi inserido na search
+                $.getJSON('../ajax/users_table.php', function(data) { //abre o ficehrio JSON
+                    for (var i in data) {
+                        //se algum dos campos corresponder ao que foi escrito na search
+                        if (data[i]["nome"].search(expression) != -1 || data[i]["email"].search(expression) != -1 || data[i]["role"].search(expression) != -1 || data[i]["telemovel"].search(expression) != -1 || data[i]["morada"].search(expression) != -1 || data[i]["codigo_postal"].search(expression) != -1) {
+                            //volta a escrever a linha do utilizador correspondente
+                            var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
+
+                            $('#users').append(linha);
+                        }
+                    }
+
+
+                })
+            });
         });
     </script>
 </head>
@@ -83,7 +109,7 @@ require_once "../../connections/connection.php";
                         <h1 class="h3 mb-0 text-gray-800">Gestão de utilizadores</h1>
                         <form class="d-none d-sm-inline-block form-inline ml-auto mr-0 navbar-search">
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" id="search">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button">
                                         <i class="fas fa-search fa-sm"></i>
