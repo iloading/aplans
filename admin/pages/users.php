@@ -82,10 +82,13 @@ require_once "../scripts/sc_check_admin.php";
 
                     var searchField = $('#search').val(); //o que é inserido na pesquisa
                     var expression = new RegExp(searchField, "i"); //cria uma REGEX que filtra de acordo com o que foi inserido na search
-
+                    items = $('#items').val();
+                    itemsQuery = "items=" + items;
                     $.ajax({
                             url: '../ajax/users_table.php',
+                            data: itemsQuery,
                             dataType: 'json', // Choosing a JSON datatype
+                            type: 'GET',
                         })
                         .done(function(data) { //abre o ficehrio JSON
 
