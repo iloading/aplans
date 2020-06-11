@@ -135,30 +135,17 @@ require_once "../scripts/sc_check_admin.php";
 
                     //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
 
-                    switch ($coluna) {
-                        case "nome":
-                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
-                            break;
-                        case "email":
-                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
-                            break;
-                        case "role":
-                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
-                            break;
-                        case "telemovel":
-                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
-                            break;
-                        case "morada":
-                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
-                            break;
-                        case "codigo_postal":
-                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th ></tr>  "
-                            break;
-                        default:
-                            break;
-                    }
+                    var span = "<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span>";
+
+                    console.log($coluna)
+
+
+                    var thead = "<tr class=\"bg-primary text-light cursorclick\"><th id=\"nome\" onclick = \"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th id=\"email\" onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th id=\"role\" onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th id=\"telemovel\" onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th id=\"morada\" onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th id=\"codigo_postal\" onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
+
+
+
                     $('#colunaTabela').append(thead);
-                    $('"#' + $coluna + '"').append(span);
+                    $('#' + $coluna + '').append(span);
 
 
                     //para cada user no array em JSON, escrever uma linha na tabela, já com a ordem correta
@@ -234,22 +221,22 @@ require_once "../scripts/sc_check_admin.php";
                                         <table id="table" class="table table-striped table-hover">
                                             <thead id="colunaTabela">
                                                 <tr class="bg-primary text-light cursorclick">
-                                                    <th onclick="organizar('nome','ASC')">
+                                                    <th id="nome" onclick="organizar('nome','ASC')">
                                                         Nome
                                                     </th>
-                                                    <th onclick="organizar('email','ASC')">
+                                                    <th id="email" onclick="organizar('email','ASC')">
                                                         Email
                                                     </th>
-                                                    <th onclick="organizar('role','ASC')">
+                                                    <th id="role" onclick="organizar('role','ASC')">
                                                         Cargo
                                                     </th>
-                                                    <th onclick="organizar('telemovel','ASC')">
+                                                    <th id="telemovel" onclick="organizar('telemovel','ASC')">
                                                         Telemóvel
                                                     </th>
-                                                    <th onclick="organizar('morada','ASC')">
+                                                    <th id="morada" onclick="organizar('morada','ASC')">
                                                         Morada
                                                     </th>
-                                                    <th onclick="organizar('codigo_postal','ASC')">
+                                                    <th id="codigo_postal" onclick="organizar('codigo_postal','ASC')">
                                                         Código Postal
 
                                                     </th>
