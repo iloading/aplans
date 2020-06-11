@@ -52,7 +52,8 @@ require_once "../../connections/connection.php";
         });
     </script>
     <!-- /.Recolher todos os utilizadores na tabela users -->
-    <!-- /.Recolher todos os utilizadores na tabela users -->
+
+    <!-- Pesquisar de acrdo com qualquer parâmetro -->
     <script>
         $(document).ready(function() {
             $('#search').keyup(function() {
@@ -76,8 +77,9 @@ require_once "../../connections/connection.php";
             });
         });
     </script>
+    <!-- /.Pesquisar de acrdo com qualquer parâmetro -->
 
-
+    <!-- Odernar de acordo com qualquer parâmetro -->
     <script>
         function organizar($coluna, $ordenacao) {
 
@@ -114,16 +116,18 @@ require_once "../../connections/connection.php";
 
             }
 
-            $('#users').html(''); //limpa a tabela toda
-            $('#colunaTabela').html(''); //limpa a tabela toda
+            $('#users').html(''); //limpa o conteúdo da tabela
+            $('#colunaTabela').html(''); //limpa o head da tabela
 
             $.getJSON('../ajax/users_table.php', function(data) { //abre o ficehrio JSON
 
-                data.sort(getorder($coluna, $ordenacao));
-                var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\"><a>Nome</a></th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\"><a>Email</a></th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\"><a> Cargo </a> </th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" > <a> Telemóvel </a> </th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" > <a> Morada </a> </th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" > <a> Código Postal </a> </th ></tr>  "
+                data.sort(getorder($coluna, $ordenacao)); //pega no array e chama a função getorder, passando a coluna onde o user clicou e a ordenação (ASC ou DES)
 
+                //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
+                var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\"><a>Nome</a></th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\"><a>Email</a></th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\"><a> Cargo </a> </th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" > <a> Telemóvel </a> </th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" > <a> Morada </a> </th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" > <a> Código Postal </a> </th ></tr>  "
                 $('#colunaTabela').append(thead);
 
+                //para cada user no array em JSON, escrever uma linha na tabela, já com a ordem correta
                 for (var i in data) {
 
                     var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
@@ -134,7 +138,7 @@ require_once "../../connections/connection.php";
             });
         }
     </script>
-
+    <!-- /.Odernar de acordo com qualquer parâmetro -->
 
 </head>
 
