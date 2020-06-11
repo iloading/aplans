@@ -37,7 +37,7 @@ if ($admin == 1) {
 
       
         <li class="nav-item active mt-auto">
-            <a class="nav-link" href="scripts/sc_logout.php">
+            <a class="nav-link" href="../../scripts/sc_logout.php">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw"></i>
                 <span>Log Out</span></a>
         </li>

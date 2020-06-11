@@ -21,9 +21,13 @@ require_once "connections/connection.php";
 		<?php
 			include_once "admin/components/c_navbars_side_index.php";
 		?>
-
-		<img src="images/PEPE.gif">
-		<h1>WhY YoU Nu AdMiN</h1>
+		<?php 
+			if ($admin != 1) {
+				echo '<img src="images/PEPE.gif">
+				<h1>WhY YoU Nu AdMiN!!!??!!?!</h1>';	
+			}
+		?>
+		
 	<!-- //Main wrapper -->
 
 <!-- Bootstrap core JavaScript-->
