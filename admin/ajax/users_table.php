@@ -7,9 +7,21 @@
     /* create a prepared statement */
     $stmt = mysqli_stmt_init($link);
 
-    $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id";
+    if (isset($_GET['items']) && trim($_GET['items']) != "") {
+        $itemsPorPag = $_GET['items'];
+        
+        $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id LIMIT ?";
+
+        
+    }else {
+        $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id";
+    }
+    
 
     if (mysqli_stmt_prepare($stmt, $query)) {
+        if (isset($_GET['items']) && trim($_GET['items']) != "") {
+            mysqli_stmt_bind_param($stmt, 'i', $itemsPorPag);
+        }
         /* execute the prepared statement */
         if (mysqli_stmt_execute($stmt)){
             /* bind result variables */
@@ -28,6 +40,8 @@
                 $data[] = $row_result;
             }
             print json_encode($data);
+            
+           
         } else {
             echo "Error: " . mysqli_stmt_error($stmt);
         }

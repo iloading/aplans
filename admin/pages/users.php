@@ -29,73 +29,97 @@ require_once "../scripts/sc_check_admin.php";
     <!-- Recolher todos os utilizadores na tabela users -->
     <?php
     if ($admin == 1) {
-        ?>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            // var button = $(this).val();
-            $.ajax({ // ajax call starts
-                    url: '../ajax/users_table.php',
-                    dataType: 'json', // Choosing a JSON datatype
+    ?>
+        <script>
+            function tabela(items) {
+                var itemsQuery = "items=" + items;
 
-                })
-                .done(function(data) {
-                    $('#users').html('');
 
-                    for (var i in data) {
-                        var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
+                $.ajax({ // ajax call starts
+                        url: '../ajax/users_table.php',
+                        data: itemsQuery,
+                        dataType: 'json', // Choosing a JSON datatype
+                        type: 'GET',
+                    })
+                    .done(function(data) {
 
-                        $('#users').append(linha);
+                        $('#users').html('');
 
-                    };
-
-                })
-                .fail(function() { // Se existir um erro no pedido
-
-                    $('#users').html('Data error'); // Escreve mensagem de erro na listagem de vinhos
-                });
-            return false; // keeps the page from not refreshing
-        });
-    </script>
-    <!-- /.Recolher todos os utilizadores na tabela users -->
-
-    <!-- Pesquisar de acrdo com qualquer parâmetro -->
-    <script>
-        $(document).ready(function() {
-            $('#search').keyup(function() {
-
-                $('#users').html(''); //limpa a tabela toda
-                var searchField = $('#search').val(); //o que é inserido na pesquisa
-                var expression = new RegExp(searchField, "i"); //cria uma REGEX que filtra de acordo com o que foi inserido na search
-                $.getJSON('../ajax/users_table.php', function(data) { //abre o ficehrio JSON
-                    for (var i in data) {
-                        //se algum dos campos corresponder ao que foi escrito na search
-                        if (data[i]["nome"].search(expression) != -1 || data[i]["email"].search(expression) != -1 || data[i]["role"].search(expression) != -1 || data[i]["telemovel"].search(expression) != -1 || data[i]["morada"].search(expression) != -1 || data[i]["codigo_postal"].search(expression) != -1) {
-                            //volta a escrever a linha do utilizador correspondente
+                        for (var i in data) {
                             var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
 
                             $('#users').append(linha);
                         }
-                    }
+                    })
+                    .fail(function() { // Se existir um erro no pedido
 
+                        $('#users').html('Data ERROU'); // Escreve mensagem de erro na listagem de vinhos
+                    });
 
-                })
+                return false; // keeps the page from not refreshing
+            };
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                tabela(2); //DEAFULT
+
+                //QUANDO SE ESCOLHE OUTRO VALOR DE ITENS POR PÁG
+                $('#items').change(function() {
+                    items = $(this).val();
+                    tabela(items);
+                });
+
             });
-        });
-    </script>
-    <!-- /.Pesquisar de acrdo com qualquer parâmetro -->
+        </script>
+        <!-- /.Recolher todos os utilizadores na tabela users -->
 
-    <!-- Odernar de acordo com qualquer parâmetro -->
-    <script>
-        function organizar($coluna, $ordenacao) {
+        <!-- Pesquisar de acrdo com qualquer parâmetro -->
+        <script>
+            $(document).ready(function() {
+                $('#search').keyup(function() {
 
-            $ordenacao_atual = $ordenacao;
 
+                    var searchField = $('#search').val(); //o que é inserido na pesquisa
+                    var expression = new RegExp(searchField, "i"); //cria uma REGEX que filtra de acordo com o que foi inserido na search
+
+                    $.ajax({
+                            url: '../ajax/users_table.php',
+                            dataType: 'json', // Choosing a JSON datatype
+                        })
+                        .done(function(data) { //abre o ficehrio JSON
+
+                            $('#users').html(''); //limpa a tabela toda
+
+                            for (var i in data) {
+                                //se algum dos campos corresponder ao que foi escrito na search
+                                if (data[i]["nome"].search(expression) != -1 || data[i]["email"].search(expression) != -1 || data[i]["role"].search(expression) != -1 || data[i]["telemovel"].search(expression) != -1 || data[i]["morada"].search(expression) != -1 || data[i]["codigo_postal"].search(expression) != -1) {
+                                    //volta a escrever a linha do utilizador correspondente
+                                    var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
+
+                                    $('#users').append(linha);
+                                }
+                            };
+
+
+                        }).fail(function() { // Se existir um erro no pedido
+
+                            $('#users').html('Data error'); // Escreve mensagem de erro na listagem de vinhos
+                        });
+                });
+                return false; // keeps the page from not refreshing
+            });
+        </script>
+        <!-- /.Recolher todos os utilizadores na tabela users -->
+
+        <!-- Odernar de acordo com qualquer parâmetro -->
+        <script>
             function getorder($order, $ordenacao_a) {
 
                 return function(a, b) {
 
                     if ($ordenacao_a == "ASC") {
-
+                        $iconOrdenacao = ""
                         $ordenacao_atual = "DES"
 
                         if (a[$order] > b[$order]) {
@@ -121,29 +145,49 @@ require_once "../scripts/sc_check_admin.php";
 
             }
 
-            $('#users').html(''); //limpa o conteúdo da tabela
-            $('#colunaTabela').html(''); //limpa o head da tabela
+            function organizar($coluna, $ordenacao) {
+                items = $('#items').val();
+                itemsQuery = "items=" + items;
 
-            $.getJSON('../ajax/users_table.php', function(data) { //abre o ficehrio JSON
+                $('#users').html(''); //limpa o conteúdo da tabela
+                $('#colunaTabela').html(''); //limpa o head da tabela
 
-                data.sort(getorder($coluna, $ordenacao)); //pega no array e chama a função getorder, passando a coluna onde o user clicou e a ordenação (ASC ou DES)
+                $.ajax({ // ajax call starts
+                        url: '../ajax/users_table.php',
+                        data: itemsQuery,
+                        dataType: 'json', // Choosing a JSON datatype
+                        type: 'GET',
+                    })
+                    .done(function(data) { //abre o ficehrio JSON
 
-                //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
-                var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\"><a>Nome</a></th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\"><a>Email</a></th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\"><a> Cargo </a> </th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" > <a> Telemóvel </a> </th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" > <a> Morada </a> </th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" > <a> Código Postal </a> </th ></tr>  "
-                $('#colunaTabela').append(thead);
+                        data.sort(getorder($coluna, $ordenacao)); //pega no array e chama a função getorder, passando a coluna onde o user clicou e a ordenação (ASC ou DES)
 
-                //para cada user no array em JSON, escrever uma linha na tabela, já com a ordem correta
-                for (var i in data) {
+                        //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
 
-                    var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
+                        var span = "<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span>";
 
-                    $('#users').append(linha);
+                        var thead = "<tr class=\"bg-primary text-light cursorclick\"><th id=\"nome\" onclick = \"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th id=\"email\" onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th id=\"role\" onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th id=\"telemovel\" onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th id=\"morada\" onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th id=\"codigo_postal\" onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>"
 
-                }
-            });
-        }
-    </script>
-    <!-- /.Odernar de acordo com qualquer parâmetro -->
+
+                        $('#users').append(linha);
+
+                        $('#colunaTabela').append(thead);
+                        $('#' + $coluna + '').append(span);
+
+
+                        //para cada user no array em JSON, escrever uma linha na tabela, já com a ordem correta
+                        for (var i in data) {
+
+                            var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
+
+                            $('#users').append(linha);
+
+                        }
+                    });
+
+            }
+        </script>
+        <!-- /.Odernar de acordo com qualquer parâmetro -->
     <?php
     }
     ?>
@@ -190,6 +234,16 @@ require_once "../scripts/sc_check_admin.php";
                             </div>
                         </form>
                     </div>
+                    <!-- Dropdown itens por página -->
+                    <form action="" method="GET">
+                        <label>Itens por página:</label>
+                        <select class="" id="items" name="items">
+                            <option selected="selected" class="dropdown-item " value="2">2</option>
+                            <option class="dropdown-item " value="5">5</option>
+                            <option class="dropdown-item" value="10">10</option>
+                            <option class="dropdown-item" value="20">20</option>
+                        </select>
+                    </form>
 
                     <!-- Content Row -->
                     <div class="row">
