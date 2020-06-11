@@ -29,74 +29,71 @@ require_once "../scripts/sc_check_admin.php";
     <!-- Recolher todos os utilizadores na tabela users -->
     <?php
     if ($admin == 1) {
-        ?>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            // var button = $(this).val();
-            $.ajax({ // ajax call starts
-                    url: '../ajax/users_table.php',
-                    dataType: 'json', // Choosing a JSON datatype
+    ?>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                // var button = $(this).val();
+                $.ajax({ // ajax call starts
+                        url: '../ajax/users_table.php',
+                        dataType: 'json', // Choosing a JSON datatype
 
-                })
-                .done(function(data) {
-                    $('#users').html('');
+                    })
+                    .done(function(data) {
+                        $('#users').html('');
 
-                    for (var i in data) {
-                        var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
-
-                        $('#users').append(linha);
-
-                    };
-
-                })
-                .fail(function() { // Se existir um erro no pedido
-
-                    $('#users').html('Data error'); // Escreve mensagem de erro na listagem de vinhos
-                });
-            return false; // keeps the page from not refreshing
-        });
-    </script>
-    <!-- /.Recolher todos os utilizadores na tabela users -->
-
-    <!-- Pesquisar de acrdo com qualquer parâmetro -->
-    <script>
-        $(document).ready(function() {
-            $('#search').keyup(function() {
-
-                $('#users').html(''); //limpa a tabela toda
-                var searchField = $('#search').val(); //o que é inserido na pesquisa
-                var expression = new RegExp(searchField, "i"); //cria uma REGEX que filtra de acordo com o que foi inserido na search
-                $.getJSON('../ajax/users_table.php', function(data) { //abre o ficehrio JSON
-                    for (var i in data) {
-                        //se algum dos campos corresponder ao que foi escrito na search
-                        if (data[i]["nome"].search(expression) != -1 || data[i]["email"].search(expression) != -1 || data[i]["role"].search(expression) != -1 || data[i]["telemovel"].search(expression) != -1 || data[i]["morada"].search(expression) != -1 || data[i]["codigo_postal"].search(expression) != -1) {
-                            //volta a escrever a linha do utilizador correspondente
+                        for (var i in data) {
                             var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
 
                             $('#users').append(linha);
-                        }
-                    }
 
+                        };
 
-                })
+                    })
+                    .fail(function() { // Se existir um erro no pedido
+
+                        $('#users').html('Data error'); // Escreve mensagem de erro na listagem de vinhos
+                    });
+                return false; // keeps the page from not refreshing
             });
-        });
-    </script>
-    <!-- /.Pesquisar de acrdo com qualquer parâmetro -->
+        </script>
+        <!-- /.Recolher todos os utilizadores na tabela users -->
 
-    <!-- Odernar de acordo com qualquer parâmetro -->
-    <script>
-        function organizar($coluna, $ordenacao) {
+        <!-- Pesquisar de acrdo com qualquer parâmetro -->
+        <script>
+            $(document).ready(function() {
+                $('#search').keyup(function() {
 
-            $ordenacao_atual = $ordenacao;
+                    $('#users').html(''); //limpa a tabela toda
+                    var searchField = $('#search').val(); //o que é inserido na pesquisa
+                    var expression = new RegExp(searchField, "i"); //cria uma REGEX que filtra de acordo com o que foi inserido na search
+                    $.getJSON('../ajax/users_table.php', function(data) { //abre o ficehrio JSON
+                        for (var i in data) {
+                            //se algum dos campos corresponder ao que foi escrito na search
+                            if (data[i]["nome"].search(expression) != -1 || data[i]["email"].search(expression) != -1 || data[i]["role"].search(expression) != -1 || data[i]["telemovel"].search(expression) != -1 || data[i]["morada"].search(expression) != -1 || data[i]["codigo_postal"].search(expression) != -1) {
+                                //volta a escrever a linha do utilizador correspondente
+                                var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
 
+                                $('#users').append(linha);
+                            }
+                        }
+
+
+                    })
+                });
+            });
+        </script>
+        <!-- /.Pesquisar de acrdo com qualquer parâmetro -->
+
+        <!-- Odernar de acordo com qualquer parâmetro -->
+        <script>
             function getorder($order, $ordenacao_a) {
 
                 return function(a, b) {
 
                     if ($ordenacao_a == "ASC") {
 
-                        $ordenacao_atual = "DES"
+                        $ordenacao_atual = "DES";
+                        $iconOrdenacao = "../../assets/ordenarASC.png";
 
                         if (a[$order] > b[$order]) {
                             return 1;
@@ -105,9 +102,10 @@ require_once "../scripts/sc_check_admin.php";
                         }
                         return 0;
 
-                    } else {
+                    } else if ($ordenacao_a == "DES") {
 
-                        $ordenacao_atual = "ASC"
+                        $ordenacao_atual = "" //dá reset à ordenação, fica sem ordenação
+                        $iconOrdenacao = "../../assets/ordenarDESC.png";
 
                         if (a[$order] < b[$order]) {
                             return 1;
@@ -116,34 +114,64 @@ require_once "../scripts/sc_check_admin.php";
                         }
                         return 0;
 
+                    } else { //
+                        $ordenacao_atual = "ASC"
+                        $iconOrdenacao = "";
                     }
                 }
 
             }
 
-            $('#users').html(''); //limpa o conteúdo da tabela
-            $('#colunaTabela').html(''); //limpa o head da tabela
+            function organizar($coluna, $ordenacao) {
 
-            $.getJSON('../ajax/users_table.php', function(data) { //abre o ficehrio JSON
 
-                data.sort(getorder($coluna, $ordenacao)); //pega no array e chama a função getorder, passando a coluna onde o user clicou e a ordenação (ASC ou DES)
 
-                //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
-                var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\"><a>Nome</a></th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\"><a>Email</a></th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\"><a> Cargo </a> </th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" > <a> Telemóvel </a> </th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" > <a> Morada </a> </th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" > <a> Código Postal </a> </th ></tr>  "
-                $('#colunaTabela').append(thead);
+                $('#users').html(''); //limpa o conteúdo da tabela
+                $('#colunaTabela').html(''); //limpa o head da tabela
 
-                //para cada user no array em JSON, escrever uma linha na tabela, já com a ordem correta
-                for (var i in data) {
+                $.getJSON('../ajax/users_table.php', function(data) { //abre o ficehrio JSON
 
-                    var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
+                    data.sort(getorder($coluna, $ordenacao)); //pega no array e chama a função getorder, passando a coluna onde o user clicou e a ordenação (ASC ou DES)
 
-                    $('#users').append(linha);
+                    //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
 
-                }
-            });
-        }
-    </script>
-    <!-- /.Odernar de acordo com qualquer parâmetro -->
+                    switch ($coluna) {
+                        case "nome":
+                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
+                            break;
+                        case "email":
+                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
+                            break;
+                        case "role":
+                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
+                            break;
+                        case "telemovel":
+                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
+                            break;
+                        case "morada":
+                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>  "
+                            break;
+                        case "codigo_postal":
+                            var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span></th ></tr>  "
+                            break;
+                        default:
+                            break;
+                    }
+
+                    $('#colunaTabela').append(thead);
+
+                    //para cada user no array em JSON, escrever uma linha na tabela, já com a ordem correta
+                    for (var i in data) {
+
+                        var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
+
+                        $('#users').append(linha);
+
+                    }
+                });
+            }
+        </script>
+        <!-- /.Odernar de acordo com qualquer parâmetro -->
     <?php
     }
     ?>
@@ -206,22 +234,23 @@ require_once "../scripts/sc_check_admin.php";
                                             <thead id="colunaTabela">
                                                 <tr class="bg-primary text-light cursorclick">
                                                     <th onclick="organizar('nome','ASC')">
-                                                        <a>Nome</a>
+                                                        Nome
                                                     </th>
                                                     <th onclick="organizar('email','ASC')">
-                                                        <a>Email</a>
+                                                        Email
                                                     </th>
                                                     <th onclick="organizar('role','ASC')">
-                                                        <a>Cargo</a>
+                                                        Cargo
                                                     </th>
                                                     <th onclick="organizar('telemovel','ASC')">
-                                                        <a>Telemóvel</a>
+                                                        Telemóvel
                                                     </th>
                                                     <th onclick="organizar('morada','ASC')">
-                                                        <a>Morada</a>
+                                                        Morada
                                                     </th>
                                                     <th onclick="organizar('codigo_postal','ASC')">
-                                                        <a>Código Postal</a>
+                                                        Código Postal
+
                                                     </th>
 
                                                 </tr>
