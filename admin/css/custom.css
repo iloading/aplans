@@ -5,3 +5,7 @@
 .cursorclick{
     cursor: pointer !important;
 }
+.ordenar{
+    height: 10%;
+    padding-left: 10px;
+}
