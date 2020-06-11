@@ -1,7 +1,3 @@
-* {
-    font-family: 'Roboto', sans-serif !important;
-}
-
 .bg-index {
     background-color: #F1F3F6 !important;
 }
@@ -109,9 +105,9 @@
 .loginTit:active {
     color: #3C5E77;
 }
-
+/*manter as proporções da imagem , sendo ela dependente na width da janela*/
 .div-logo-landingPage{
-    width: calc(10px + 16vw * 3.2); /*manter as proporções da imagem , sendo ela dependente na width da janela*/
+    width: calc(10px + 16vw * 3.2); 
     height: calc(10px + 5vw);
     overflow: hidden;
 } 
