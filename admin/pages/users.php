@@ -76,6 +76,66 @@ require_once "../../connections/connection.php";
             });
         });
     </script>
+
+
+    <script>
+        function organizar($coluna, $ordenacao) {
+
+            $ordenacao_atual = $ordenacao;
+
+            function getorder($order, $ordenacao_a) {
+
+                return function(a, b) {
+
+                    if ($ordenacao_a == "ASC") {
+
+                        $ordenacao_atual = "DES"
+
+                        if (a[$order] > b[$order]) {
+                            return 1;
+                        } else if (a[$order] < b[$order]) {
+                            return -1;
+                        }
+                        return 0;
+
+                    } else {
+
+                        $ordenacao_atual = "ASC"
+
+                        if (a[$order] < b[$order]) {
+                            return 1;
+                        } else if (a[$order] > b[$order]) {
+                            return -1;
+                        }
+                        return 0;
+
+                    }
+                }
+
+            }
+
+            $('#users').html(''); //limpa a tabela toda
+            $('#colunaTabela').html(''); //limpa a tabela toda
+
+            $.getJSON('../ajax/users_table.php', function(data) { //abre o ficehrio JSON
+
+                data.sort(getorder($coluna, $ordenacao));
+                var thead = "<tr class=\"bg-primary text-light cursorclick\"><th onclick=\"organizar('nome','" + $ordenacao_atual + "')\"><a>Nome</a></th><th onclick=\"organizar('email','" + $ordenacao_atual + "')\"><a>Email</a></th><th onclick = \"organizar('role','" + $ordenacao_atual + "')\"><a> Cargo </a> </th > <th onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" > <a> Telemóvel </a> </th > <th onclick = \"organizar('morada','" + $ordenacao_atual + "')\" > <a> Morada </a> </th > <th onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" > <a> Código Postal </a> </th ></tr>  "
+
+                $('#colunaTabela').append(thead);
+
+                for (var i in data) {
+
+                    var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
+
+                    $('#users').append(linha);
+
+                }
+            });
+        }
+    </script>
+
+
 </head>
 
 <body id="page-top">
@@ -130,15 +190,28 @@ require_once "../../connections/connection.php";
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-hover">
-                                            <thead class="">
-                                                <tr class="bg-primary text-light">
-                                                    <th>Nome</th>
-                                                    <th>Email</th>
-                                                    <th>Cargo</th>
-                                                    <th>Telemóvel</th>
-                                                    <th>Morada</th>
-                                                    <th>Código Postal</th>
+                                        <table id="table" class="table table-striped table-hover">
+                                            <thead id="colunaTabela">
+                                                <tr class="bg-primary text-light cursorclick">
+                                                    <th onclick="organizar('nome','ASC')">
+                                                        <a>Nome</a>
+                                                    </th>
+                                                    <th onclick="organizar('email','ASC')">
+                                                        <a>Email</a>
+                                                    </th>
+                                                    <th onclick="organizar('role','ASC')">
+                                                        <a>Cargo</a>
+                                                    </th>
+                                                    <th onclick="organizar('telemovel','ASC')">
+                                                        <a>Telemóvel</a>
+                                                    </th>
+                                                    <th onclick="organizar('morada','ASC')">
+                                                        <a>Morada</a>
+                                                    </th>
+                                                    <th onclick="organizar('codigo_postal','ASC')">
+                                                        <a>Código Postal</a>
+                                                    </th>
+
                                                 </tr>
                                             </thead>
 

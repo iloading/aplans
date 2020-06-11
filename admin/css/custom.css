@@ -1,3 +1,7 @@
 #users tr th{
     font-weight: normal;
 }
+
+.cursorclick{
+    cursor: pointer !important;
+}
