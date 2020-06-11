@@ -157,8 +157,9 @@ require_once "../scripts/sc_check_admin.php";
                         default:
                             break;
                     }
-
                     $('#colunaTabela').append(thead);
+                    $('"#' + $coluna + '"').append(span);
+
 
                     //para cada user no array em JSON, escrever uma linha na tabela, já com a ordem correta
                     for (var i in data) {
