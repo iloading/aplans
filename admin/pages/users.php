@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "../../connections/connection.php";
+require_once "../scripts/sc_check_admin.php";
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,11 @@ require_once "../../connections/connection.php";
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../css/custom.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+
     <!-- Recolher todos os utilizadores na tabela users -->
+    <?php
+    if ($admin == 1) {
+        ?>
     <script type="text/javascript">
         $(document).ready(function() {
             // var button = $(this).val();
@@ -139,6 +144,9 @@ require_once "../../connections/connection.php";
         }
     </script>
     <!-- /.Odernar de acordo com qualquer parâmetro -->
+    <?php
+    }
+    ?>
 
 </head>
 
