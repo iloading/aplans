@@ -26,6 +26,8 @@ require_once "../scripts/sc_check_admin.php";
     <link href="../css/custom.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
 
+    
+
     <!-- Recolher todos os utilizadores na tabela users -->
     <?php
     if ($admin == 1) {
@@ -160,6 +162,8 @@ require_once "../scripts/sc_check_admin.php";
             }
         </script>
         <!-- /.Odernar de acordo com qualquer parâmetro -->
+        
+
     <?php
     }
     ?>
@@ -212,8 +216,13 @@ require_once "../scripts/sc_check_admin.php";
 
                         <div class="col-lg-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Utilizadores registados
+                                <div class="row">
+                                    <div class="panel-heading col-6">
+                                        Utilizadores registados
+                                    </div>
+                                    <div  style="text-align: end;" class=" col-6">
+                                        <button class="btn btn-default pull-right add-row"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Row</button>
+                                    </div>
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -240,16 +249,17 @@ require_once "../scripts/sc_check_admin.php";
                                                         Código Postal
 
                                                     </th>
+                                        
 
                                                 </tr>
                                             </thead>
 
                                             <!-- Conteudo a ser escrito dinamicamente em JS e AJAX -->
                                             <tbody id="users">
-
+                                                
                                             </tbody>
                                             <!-- /.Conteudo a ser escrito dinamicamente em JS e AJAX -->
-
+                                            
 
                                         </table>
                                     </div>
