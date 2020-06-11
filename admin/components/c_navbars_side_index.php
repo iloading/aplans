@@ -1,10 +1,8 @@
 <?php
 // Verificação de credenciais de acesso à área de administração
-require_once "../scripts/sc_check_admin.php";
+require_once "admin/scripts/sc_check_admin.php";
 
-if ($admin == 1) {
 ?>
-
     <!-- Sidebar -->
 
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
@@ -19,28 +17,36 @@ if ($admin == 1) {
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
-
+        <?php 
+            if ($admin==1) {
+                echo '<li class="nav-item active">
+                <a class="nav-link" href="admin/pages/users.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Admin Panel</span></a>
+            </li>';
+            }
+        
+        ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Utilizadores</span></a>
-        </li>
+        
 
-        <li class="nav-item active">
-            <a class="nav-link" href="../../index.php">
-                <i class="fa fa-user fa-fw"></i>
-                <span>Voltar área pública</span></a>
-        </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
 
       
+
+        
         <li class="nav-item active mt-auto">
-            <a class="nav-link" href="../../scripts/sc_logout.php">
+            <a class="nav-link" href="scripts/sc_logout.php">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw"></i>
                 <span>Log Out</span></a>
         </li>
+
+        
+        
+       
+
+        
 
         <!-- Sidebar Toggler (Sidebar)
         <div class="text-center d-none d-md-inline">
@@ -49,8 +55,3 @@ if ($admin == 1) {
 
     </ul>
     <!-- End of Sidebar -->
-<?php
-} else {
-    header("Location: ../../index.php");
-}
-?>

@@ -119,8 +119,9 @@ require_once "../scripts/sc_check_admin.php";
                 return function(a, b) {
 
                     if ($ordenacao_a == "ASC") {
-                        $iconOrdenacao = ""
-                        $ordenacao_atual = "DES"
+
+                        $ordenacao_atual = "DES";
+                        $iconOrdenacao = "../../assets/ordenarASC.png";
 
                         if (a[$order] > b[$order]) {
                             return 1;
@@ -129,9 +130,10 @@ require_once "../scripts/sc_check_admin.php";
                         }
                         return 0;
 
-                    } else {
+                    } else if ($ordenacao_a == "DES") {
 
-                        $ordenacao_atual = "ASC"
+                        $ordenacao_atual = "" //dá reset à ordenação, fica sem ordenação
+                        $iconOrdenacao = "../../assets/ordenarDESC.png";
 
                         if (a[$order] < b[$order]) {
                             return 1;
@@ -140,6 +142,9 @@ require_once "../scripts/sc_check_admin.php";
                         }
                         return 0;
 
+                    } else { //
+                        $ordenacao_atual = "ASC"
+                        $iconOrdenacao = "";
                     }
                 }
 
@@ -259,23 +264,24 @@ require_once "../scripts/sc_check_admin.php";
                                         <table id="table" class="table table-striped table-hover">
                                             <thead id="colunaTabela">
                                                 <tr class="bg-primary text-light cursorclick">
-                                                    <th onclick="organizar('nome','ASC')">
-                                                        <a>Nome</a>
+                                                    <th id="nome" onclick="organizar('nome','ASC')">
+                                                        Nome
                                                     </th>
-                                                    <th onclick="organizar('email','ASC')">
-                                                        <a>Email</a>
+                                                    <th id="email" onclick="organizar('email','ASC')">
+                                                        Email
                                                     </th>
-                                                    <th onclick="organizar('role','ASC')">
-                                                        <a>Cargo</a>
+                                                    <th id="role" onclick="organizar('role','ASC')">
+                                                        Cargo
                                                     </th>
-                                                    <th onclick="organizar('telemovel','ASC')">
-                                                        <a>Telemóvel</a>
+                                                    <th id="telemovel" onclick="organizar('telemovel','ASC')">
+                                                        Telemóvel
                                                     </th>
-                                                    <th onclick="organizar('morada','ASC')">
-                                                        <a>Morada</a>
+                                                    <th id="morada" onclick="organizar('morada','ASC')">
+                                                        Morada
                                                     </th>
-                                                    <th onclick="organizar('codigo_postal','ASC')">
-                                                        <a>Código Postal</a>
+                                                    <th id="codigo_postal" onclick="organizar('codigo_postal','ASC')">
+                                                        Código Postal
+
                                                     </th>
 
                                                 </tr>
