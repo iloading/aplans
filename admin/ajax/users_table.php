@@ -10,8 +10,8 @@
     
     if (isset($_GET['items']) && trim($_GET['items']) != "") { // Se houver um limite de itens definido
         $itemsPorPag = $_GET['items'];
-
-        if (isset($_GET['col']) && trim($_GET['col']) != "" && isset($_GET['ord']) && trim($_GET['ord']) != "") { //
+        $search = $_GET['search'];
+        if (isset($_GET['col']) && trim($_GET['col']) != "" && isset($_GET['ord']) && trim($_GET['ord']) != "") { 
             $ordenarPorCol = $_GET['col'];
             $ordem= $_GET['ord'];
 
@@ -49,7 +49,14 @@
                     break;
             }
             
-            $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id ORDER BY ".$tabela." ".$ordenacao." LIMIT ?";
+            if ($search == "") {
+                 $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id ORDER BY " . $tabela . " " . $ordenacao . " LIMIT ?";
+            
+            }else {
+                $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id ORDER BY " . $tabela . " " . $ordenacao . " ";
+                
+            }
+            
             
             //echo $query;
         }else {
@@ -63,8 +70,10 @@
 
     if (mysqli_stmt_prepare($stmt, $query)) {
         if (isset($_GET['items']) && trim($_GET['items']) != "") {
-            if (isset($_GET['col']) && trim($_GET['col']) != "" && isset($_GET['ord']) && trim($_GET['ord']) != "") {                
+            if (isset($_GET['col']) && trim($_GET['col']) != "" && isset($_GET['ord']) && trim($_GET['ord']) != "") {    
+                if ($search == "") {
                 mysqli_stmt_bind_param($stmt, 'i',  $itemsPorPag);
+                }            
             }else {
                 mysqli_stmt_bind_param($stmt, 'i', $itemsPorPag);
             }
