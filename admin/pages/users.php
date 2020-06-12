@@ -31,24 +31,57 @@ require_once "../scripts/sc_check_admin.php";
     if ($admin == 1) {
     ?>
         <script>
-            function tabela(items) {
-                var itemsQuery = "items=" + items;
+            function tabela(items, coluna, ordenacao) {
 
+                var itemsQuery = "items=" + items;
+                var colunaQuery = "col=" + coluna;
+                var orderQuery = "ord=" + ordenacao;
+
+                var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao;
+
+                console.log(query);
 
                 $.ajax({ // ajax call starts
                         url: '../ajax/users_table.php',
-                        data: itemsQuery,
+                        data: query,
                         dataType: 'json', // Choosing a JSON datatype
                         type: 'GET',
                     })
-                    .done(function(data) {
+                    .done(function(data) { //abre o ficehrio JSON
 
-                        $('#users').html('');
+                        $('#users').html(''); //limpa o conteúdo da tabela
+                        $('#colunaTabela').html(''); //limpa o head da tabela
 
+                        if (ordenacao == "ASC") {
+                            iconOrdenacao = "../../assets/ordenarDESC.png";
+                        } else if (ordenacao == "DESC") {
+                            iconOrdenacao = "../../assets/ordenarASC.png";
+                        } else {
+                            iconOrdenacao = ""
+                        }
+
+
+
+                        //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
+                        var span = "<span><img class=\"ordenar\"src='" + iconOrdenacao + "'></span>";
+
+                        var thead = "<tr class=\"bg-primary text-light cursorclick\"><th id=\"nome\"class=\"coluna\">Nome</th><th id=\"email\"class=\"coluna\">Email</th><th id=\"role\"class=\"coluna\">Cargo</th><th id=\"telemovel\"class=\"coluna\">Telemóvel</th><th id=\"morada\"class=\"coluna\">Morada</th><th id=\"codigo_postal\"class=\"coluna\">CódigoPostal</th><tr>"
+
+                        $('#colunaTabela').append(thead);
+                        if (coluna != "") {
+                            $('#' + coluna + '').append(span);
+                        }
+
+
+
+
+                        //para cada user no array em JSON, escrever uma linha na tabela, já com a ordem correta
                         for (var i in data) {
+
                             var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
 
                             $('#users').append(linha);
+
                         }
                     })
                     .fail(function() { // Se existir um erro no pedido
@@ -62,17 +95,43 @@ require_once "../scripts/sc_check_admin.php";
 
         <script>
             $(document).ready(function() {
-                tabela(2); //DEAFULT
+                categoria = $('#ordenarPor').val();
+                ordem = $('#ordem').val();
+                items = $('#items').val();
+                tabela(items, categoria, ordem); //DEAFULT
+
 
                 //QUANDO SE ESCOLHE OUTRO VALOR DE ITENS POR PÁG
                 $('#items').change(function() {
+                    categoria = $('#ordenarPor').val();
+                    ordem = $('#ordem').val();
                     items = $(this).val();
-                    tabela(items);
+                    tabela(items, categoria, ordem);
+
+
                 });
+                $('#ordenarPor').change(function() {
+                    ordem = $('#ordem').val();
+                    items = $('#items').val();
+                    categoria = $(this).val();
+                    tabela(items, categoria, ordem)
+                })
+                $('#ordem').change(function() {
+                    ordem = $(this).val();
+                    items = $('#items').val();
+                    categoria = $('#ordenarPor').val();
+                    tabela(items, categoria, ordem)
+                })
+
+
+
 
             });
         </script>
         <!-- /.Recolher todos os utilizadores na tabela users -->
+
+
+
 
         <!-- Pesquisar de acrdo com qualquer parâmetro -->
         <script>
@@ -119,81 +178,78 @@ require_once "../scripts/sc_check_admin.php";
         <script>
             function getorder($order, $ordenacao_a) {
 
-                return function(a, b) {
+                // return function(a, b) {
 
-                    if ($ordenacao_a == "ASC") {
+                //     if ($ordenacao_a == "ASC") {
 
-                        $ordenacao_atual = "DES";
-                        $iconOrdenacao = "../../assets/ordenarASC.png";
+                //         $ordenacao_atual = "DES";
+                //         $iconOrdenacao = "../../assets/ordenarASC.png";
 
-                        if (a[$order] > b[$order]) {
-                            return 1;
-                        } else if (a[$order] < b[$order]) {
-                            return -1;
-                        }
-                        return 0;
+                //         if (a[$order] > b[$order]) {
+                //             return 1;
+                //         } else if (a[$order] < b[$order]) {
+                //             return -1;
+                //         }
+                //         return 0;
 
-                    } else if ($ordenacao_a == "DES") {
+                //     } else if ($ordenacao_a == "DES") {
 
-                        $ordenacao_atual = "" //dá reset à ordenação, fica sem ordenação
-                        $iconOrdenacao = "../../assets/ordenarDESC.png";
+                //         $ordenacao_atual = "" //dá reset à ordenação, fica sem ordenação
+                //         $iconOrdenacao = "../../assets/ordenarDESC.png";
 
-                        if (a[$order] < b[$order]) {
-                            return 1;
-                        } else if (a[$order] > b[$order]) {
-                            return -1;
-                        }
-                        return 0;
+                //         if (a[$order] < b[$order]) {
+                //             return 1;
+                //         } else if (a[$order] > b[$order]) {
+                //             return -1;
+                //         }
+                //         return 0;
 
-                    } else { //
-                        $ordenacao_atual = "ASC"
-                        $iconOrdenacao = "";
-                    }
-                }
-
-            }
-
-            function organizar($coluna, $ordenacao) {
-                items = $('#items').val();
-                itemsQuery = "items=" + items;
-
-                $('#users').html(''); //limpa o conteúdo da tabela
-                $('#colunaTabela').html(''); //limpa o head da tabela
-
-                $.ajax({ // ajax call starts
-                        url: '../ajax/users_table.php',
-                        data: itemsQuery,
-                        dataType: 'json', // Choosing a JSON datatype
-                        type: 'GET',
-                    })
-                    .done(function(data) { //abre o ficehrio JSON
-
-                        data.sort(getorder($coluna, $ordenacao)); //pega no array e chama a função getorder, passando a coluna onde o user clicou e a ordenação (ASC ou DES)
-
-                        //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
-
-                        var span = "<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span>";
-
-                        var thead = "<tr class=\"bg-primary text-light cursorclick\"><th id=\"nome\" onclick = \"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th id=\"email\" onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th id=\"role\" onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th id=\"telemovel\" onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th id=\"morada\" onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th id=\"codigo_postal\" onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>"
-
-
-                        $('#users').append(linha);
-
-                        $('#colunaTabela').append(thead);
-                        $('#' + $coluna + '').append(span);
-
-
-                        //para cada user no array em JSON, escrever uma linha na tabela, já com a ordem correta
-                        for (var i in data) {
-
-                            var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
-
-                            $('#users').append(linha);
-
-                        }
-                    });
+                //     } else { //
+                //         $ordenacao_atual = "ASC"
+                //         $iconOrdenacao = "";
+                //     }
+                // }
 
             }
+
+            // function organizar($coluna, $ordenacao) {
+            //     items = $('#items').val();
+            //     itemsQuery = "items=" + items;
+
+            //     $('#users').html(''); //limpa o conteúdo da tabela
+            //     $('#colunaTabela').html(''); //limpa o head da tabela
+
+            //     $.ajax({ // ajax call starts
+            //             url: '../ajax/users_table.php',
+            //             data: itemsQuery,
+            //             dataType: 'json', // Choosing a JSON datatype
+            //             type: 'GET',
+            //         })
+            //         .done(function(data) { //abre o ficehrio JSON
+
+            //             data.sort(getorder($coluna, $ordenacao)); //pega no array e chama a função getorder, passando a coluna onde o user clicou e a ordenação (ASC ou DES)
+
+            //             //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
+
+            //             var span = "<span><img class=\"ordenar\"src='" + $iconOrdenacao + "'></span>";
+
+            //             var thead = "<tr class=\"bg-primary text-light cursorclick\"><th id=\"nome\" onclick = \"organizar('nome','" + $ordenacao_atual + "')\">Nome</th><th id=\"email\" onclick=\"organizar('email','" + $ordenacao_atual + "')\">Email</th><th id=\"role\" onclick = \"organizar('role','" + $ordenacao_atual + "')\">Cargo</th > <th id=\"telemovel\" onclick = \"organizar('telemovel','" + $ordenacao_atual + "')\" >Telemóvel</th > <th id=\"morada\" onclick = \"organizar('morada','" + $ordenacao_atual + "')\" >Morada</th > <th id=\"codigo_postal\" onclick = \"organizar('codigo_postal','" + $ordenacao_atual + "')\" >Código Postal</th ></tr>"
+
+            //             $('#colunaTabela').append(thead);
+            //             $('#' + $coluna + '').append(span);
+
+
+            //             //para cada user no array em JSON, escrever uma linha na tabela, já com a ordem correta
+            //             for (var i in data) {
+
+            //                 var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
+
+            //                 $('#users').append(linha);
+
+            //             }
+            //         });
+
+            // }
         </script>
         <!-- /.Odernar de acordo com qualquer parâmetro -->
     <?php
@@ -243,16 +299,38 @@ require_once "../scripts/sc_check_admin.php";
                         </form>
                     </div>
                     <!-- Dropdown itens por página -->
-                    <form action="" method="GET">
-                        <label>Itens por página:</label>
-                        <select class="" id="items" name="items">
-                            <option selected="selected" class="dropdown-item " value="2">2</option>
-                            <option class="dropdown-item " value="5">5</option>
-                            <option class="dropdown-item" value="10">10</option>
-                            <option class="dropdown-item" value="20">20</option>
-                        </select>
-                    </form>
-
+                    <div class="container-fluid p-0">
+                        <section class="row">
+                            <form action="" method="GET" class="col-3">
+                                <label>Itens por página:</label>
+                                <select class="" id="items" name="items">
+                                    <option selected="selected" class="dropdown-item " value="2">2</option>
+                                    <option class="dropdown-item " value="5">5</option>
+                                    <option class="dropdown-item" value="10">10</option>
+                                    <option class="dropdown-item" value="20">20</option>
+                                </select>
+                            </form>
+                            <form action="" method="GET" class="col-3">
+                                <label>Ordenar por:</label>
+                                <select class="" id="ordenarPor" name="items">
+                                    <option selected="selected" class="dropdown-item" selected="selected" value="">Data de Inserção</option>
+                                    <option class="dropdown-item " value="nome">Nome</option>
+                                    <option class="dropdown-item" value="email">Email</option>
+                                    <option class="dropdown-item" value="role">Role</option>
+                                    <option class="dropdown-item" value="telemovel">Telemóvel</option>
+                                    <option class="dropdown-item" value="morada">Morada</option>
+                                    <option class="dropdown-item" value="codigo_postal">Codigo Postal</option>
+                                </select>
+                            </form>
+                            <form action="" method="GET" class="col-3">
+                                <label>De forma:</label>
+                                <select class="" id="ordem" name="items">
+                                    <option selected="selected" class="dropdown-item " value="ASC">Ascendente</option>
+                                    <option class="dropdown-item " value="DESC">Descendente</option>
+                                </select>
+                            </form>
+                        </section>
+                    </div>
                     <!-- Content Row -->
                     <div class="row">
 
@@ -267,27 +345,28 @@ require_once "../scripts/sc_check_admin.php";
                                         <table id="table" class="table table-striped table-hover">
                                             <thead id="colunaTabela">
                                                 <tr class="bg-primary text-light cursorclick">
-                                                    <th id="nome" onclick="organizar('nome','ASC')">
+                                                    <th id="nome" class="coluna">
                                                         Nome
                                                     </th>
-                                                    <th id="email" onclick="organizar('email','ASC')">
+                                                    <th id="email" class="coluna">
                                                         Email
                                                     </th>
-                                                    <th id="role" onclick="organizar('role','ASC')">
+                                                    <th id="role" class="coluna">
                                                         Cargo
                                                     </th>
-                                                    <th id="telemovel" onclick="organizar('telemovel','ASC')">
+                                                    <th id="telemovel" class="coluna">
                                                         Telemóvel
                                                     </th>
-                                                    <th id="morada" onclick="organizar('morada','ASC')">
+                                                    <th id="morada" class="coluna">
                                                         Morada
                                                     </th>
-                                                    <th id="codigo_postal" onclick="organizar('codigo_postal','ASC')">
+                                                    <th id="codigo_postal" class="coluna">
                                                         Código Postal
-
                                                     </th>
 
+
                                                 </tr>
+
                                             </thead>
 
                                             <!-- Conteudo a ser escrito dinamicamente em JS e AJAX -->

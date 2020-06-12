@@ -7,12 +7,55 @@
     /* create a prepared statement */
     $stmt = mysqli_stmt_init($link);
 
-    if (isset($_GET['items']) && trim($_GET['items']) != "") {
+    
+    if (isset($_GET['items']) && trim($_GET['items']) != "") { // Se houver um limite de itens definido
         $itemsPorPag = $_GET['items'];
-        
-        $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id LIMIT ?";
 
-        
+        if (isset($_GET['col']) && trim($_GET['col']) != "" && isset($_GET['ord']) && trim($_GET['ord']) != "") { //
+            $ordenarPorCol = $_GET['col'];
+            $ordem= $_GET['ord'];
+
+            switch ($ordenarPorCol) {
+                case 'nome':
+                    $tabela = "nome";
+                    break;
+                case 'email':
+                $tabela = "email";
+                    break;
+                case 'role':
+                $tabela = "role";
+                    break;
+                case 'telemovel':
+                $tabela = "telemovel";
+                    break;
+                case 'morada':
+                $tabela = "morada";
+                    break;
+                case 'codigo_postal':
+                $tabela = "codigo_postal";
+                    break;
+
+                default:
+                $tabela = "nome";
+                    break;
+            }
+            switch ($ordem) {
+                case 'ASC':
+                    $ordenacao = 'ASC';
+                    break;
+                
+                default:
+                    $ordenacao = 'DESC';
+                    break;
+            }
+            
+            $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id ORDER BY ".$tabela." ".$ordenacao." LIMIT ?";
+            
+            //echo $query;
+        }else {
+            $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id LIMIT ?";
+        }
+    
     }else {
         $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id";
     }
@@ -20,7 +63,14 @@
 
     if (mysqli_stmt_prepare($stmt, $query)) {
         if (isset($_GET['items']) && trim($_GET['items']) != "") {
-            mysqli_stmt_bind_param($stmt, 'i', $itemsPorPag);
+            if (isset($_GET['col']) && trim($_GET['col']) != "" && isset($_GET['ord']) && trim($_GET['ord']) != "") {                
+                mysqli_stmt_bind_param($stmt, 'i',  $itemsPorPag);
+            }else {
+                mysqli_stmt_bind_param($stmt, 'i', $itemsPorPag);
+            }
+            
+
+
         }
         /* execute the prepared statement */
         if (mysqli_stmt_execute($stmt)){
