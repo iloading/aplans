@@ -36,7 +36,6 @@ require_once "../scripts/sc_check_admin.php";
 
                 var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search;
 
-                
 
                 $.ajax({ // ajax call starts
                         url: '../ajax/users_table.php',
@@ -46,7 +45,7 @@ require_once "../scripts/sc_check_admin.php";
                     })
                     .done(function(data) { //abre o ficehrio JSON
 
-                        //$('#search').val(''); //limpa o conteudo da search bar pq ao correr esta função o filtro por keyword não se aplica
+                        
                         $('#users').html(''); //limpa o conteúdo da tabela
                         $('#colunaTabela').html(''); //limpa o head da tabela
 
@@ -72,9 +71,9 @@ require_once "../scripts/sc_check_admin.php";
 
 
                         for (var i in data) {
-                            
+
                             var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
-                                $('#users').append(linha);
+                            $('#users').append(linha);
                         }
 
                     })
@@ -128,7 +127,7 @@ require_once "../scripts/sc_check_admin.php";
                     tabela(items, categoria, ordem, search)
                 });
 
-            return false; // keeps the page from not refreshing
+                return false; // keeps the page from not refreshing
             });
         </script>
         <!-- /.Recolher todos os utilizadores na tabela users -->
