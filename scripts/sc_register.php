@@ -51,7 +51,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
             $telemovel = NULL;
         }
 
-        if (trim($_POST["cp"]) != "") {
+        if ($codigo_postal != "") {
             $pattern = "/^\d{4}-\d{3}?$/";
 
             if (preg_match($pattern, $codigo_postal));

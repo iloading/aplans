@@ -32,6 +32,8 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
                     // Feedback de sucesso
                     //echo "SUCESSO";
+
+                    
                     
                     header("Location: ../index.php");
                 } else {

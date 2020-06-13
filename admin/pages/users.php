@@ -35,24 +35,78 @@ require_once "../scripts/sc_check_admin.php";
     ?>
 
         <script>
-            function update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password) {
+            function mostrarMsg(data1) {
 
-                var query = "email_velho=" + email_velho + "&email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal + "&password=" + password;
 
-                console.log (query);
+                console.log(data1[0]['msgBool'])
+                console.log(data1[0]['msg'])
+
+
+                if (data1[0]['msgBool'] == true) {
+
+                    switch (data1[0]['msg']) {
+                        case 0:
+                            $message = "Preencha todos os campos obrigatórios";
+                            $class = "alert-warning";
+                            break;
+                        case 1:
+                            $message = "O número de telemóvel inserido não é válido. Formato: 9Yx xxx xxx, onde Y pode tomar valores de [1,2,3,6]";
+                            $class = "alert-warning";
+                            break;
+                        case 2:
+                            $message = "O código postal inserido não é válido. Formato: xxxx-xxx";
+                            $class = "alert-warning";
+                            break;
+                        case 3:
+                            $message = "Credenciais inválidas! Tente novamente";
+                            $class = "alert-danger";
+                            break;
+                        default:
+                            data1[0]['msgBool'] = false;
+                    }
+                    if (data1[0]['msgBool'] && data1[0]['msgBool'] == true) {
+
+                        $('#alertMsg').html('');
+
+                        var mensagem = '<div class=\"alert '+$class+' alert-dismissible fade show\"role=\"alert\">' + $message + '<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span>&times;</span></button></div>';
+
+                        $('#alertMsg').append(mensagem);
+
+
+                        data1[0]['msgBool'] = false;
+
+
+
+
+                    };
+                }
+
+
+            }
+        </script>
+
+
+        <script>
+            function update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar) {
+
+                var query = "email_velho=" + email_velho + "&email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal + "&password=" + password + "&password_confirmar=" + password_confirmar;
+
+                console.log(query);
 
                 $.ajax({ // ajax call starts
                         url: '../scripts/sc_update_tabela.php',
                         data: query,
-                        // dataType: 'json', // Choosing a JSON datatype
+                        dataType: 'json', // Choosing a JSON datatype
                         type: 'GET',
                     })
-                    .done(function() {
+                    .done(function(data1) {
                         search = $('#search').val();
                         ordem = $('#ordem').val();
                         items = $('#items').val();
                         categoria = $('#ordenarPor').val();
+                        mostrarMsg(data1);
                         tabela(items, categoria, ordem, search, "manter")
+
                     })
             }
         </script>
@@ -61,7 +115,7 @@ require_once "../scripts/sc_check_admin.php";
 
                 var query = "email_velho=" + email_velho;
 
-                console.log (query);
+                console.log(query);
 
                 $.ajax({ // ajax call starts
                         url: '../scripts/sc_delete_row.php',
@@ -86,7 +140,7 @@ require_once "../scripts/sc_check_admin.php";
 
                 var query = "email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal;
 
-                console.log (query);
+                console.log(query);
 
                 $.ajax({ // ajax call starts
                         url: '../scripts/sc_adicionar_row.php',
@@ -111,9 +165,9 @@ require_once "../scripts/sc_check_admin.php";
 
             function tabela(items, coluna, ordenacao, search, pag) {
                 //SOLUÇÃO ENCONTRADA PARA QUE, QUANDO SE EDITA UM UTILIZADOR, A PÁG NÃO MUDA
-                if (pag == "manter") { 
+                if (pag == "manter") {
                     pag = pagAntiga
-                }else{
+                } else {
                     pagAntiga = pag;
                 }
 
@@ -180,10 +234,10 @@ require_once "../scripts/sc_check_admin.php";
                             $(".modal-body #update_nome").val(data[editarLinha]['nome']);
                             $(".modal-body #email_user").val(data[editarLinha]['email']);
                             if (data[editarLinha]['role'] == "User") {
-                                $(".modal-body #opcao_user").attr("selected","selected");
+                                $(".modal-body #opcao_user").attr("selected", "selected");
                                 $(".modal-body #opcao_admin").removeAttr("selected");
-                            }else{
-                                $(".modal-body #opcao_admin").attr("selected","selected");
+                            } else {
+                                $(".modal-body #opcao_admin").attr("selected", "selected");
                                 $(".modal-body #opcao_user").removeAttr("selected");
                             };
                             $(".modal-body #update_telemovel").val(data[editarLinha]['telemovel']);
@@ -267,15 +321,16 @@ require_once "../scripts/sc_check_admin.php";
                     morada = $('#update_morada').val();
                     codigo_postal = $('#update_codigo_postal').val();
                     password = $('#update_password').val();
-                    
-                    update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password);
+                    password_confirmar = $('#update_password_confirmar').val();
+
+                    update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar);
 
 
                 });
 
                 $('#apagar').on("click", function() {
                     email_velho = $('#email_editar').val();
-                
+
                     apagar(email_velho);
 
 
@@ -288,7 +343,7 @@ require_once "../scripts/sc_check_admin.php";
                     telemovel = $('#update_telemovel').val();
                     morada = $('#update_morada').val();
                     codigo_postal = $('#update_codigo_postal').val();
-                
+
                     adicionar(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal);
 
 
@@ -348,6 +403,12 @@ require_once "../scripts/sc_check_admin.php";
                             </div>
                         </form>
                     </div>
+
+                    <div id="alertMsg"></div>
+
+
+
+
                     <!-- Dropdown itens por página -->
                     <div class="container-fluid p-0">
                         <section class="row">
@@ -460,6 +521,8 @@ require_once "../scripts/sc_check_admin.php";
             </div>
             <!-- End of Main Content -->
 
+
+
             <div class="container">
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
@@ -469,6 +532,7 @@ require_once "../scripts/sc_check_admin.php";
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+
                             </div>
                             <div class="modal-body">
                                 <!-- <form action="#" method="" class=""> -->
@@ -489,7 +553,9 @@ require_once "../scripts/sc_check_admin.php";
                                 <input name="codigo_postal" type="text" id="update_codigo_postal">
                                 <label class="col-12 pl-0 mb-0 mt-2">Preencher Apenas para mudar password</label>
                                 <input name="password" type="password" id="update_password" placeholder="Nova palavra-passe">
+                                <input name="password_confirmar" type="password" id="update_password_confirmar" placeholder="Confirmar palavra-passe">
                                 <input name="emailEditar" type="hidden" id="email_editar">
+
 
                                 <div class="modal-footer">
                                     <button class="btn btn-default" id="apagar" data-dismiss="modal">Delete Row</button>
