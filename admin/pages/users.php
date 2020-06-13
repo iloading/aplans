@@ -31,10 +31,10 @@ require_once "../scripts/sc_check_admin.php";
     if ($admin == 1) {
     ?>
         <script>
-            function tabela(items, coluna, ordenacao, search) {
+            function tabela(items, coluna, ordenacao, search, pag) {
 
 
-                var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search;
+                var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search + "&page=" + pag;
 
 
                 $.ajax({ // ajax call starts
@@ -45,9 +45,10 @@ require_once "../scripts/sc_check_admin.php";
                     })
                     .done(function(data) { //abre o ficehrio JSON
 
-                        
+
                         $('#users').html(''); //limpa o conteúdo da tabela
                         $('#colunaTabela').html(''); //limpa o head da tabela
+                        $('#paginas').html('');
 
                         if (ordenacao == "ASC") {
                             iconOrdenacao = "../../assets/ordenarDESC.png";
@@ -74,7 +75,37 @@ require_once "../scripts/sc_check_admin.php";
 
                             var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
                             $('#users').append(linha);
+
+                            resultados = data[i]["noPaginas"]
                         }
+
+                        for (var index = 0; index < resultados; index++) {
+                            NoEscrever = index + 1;
+
+                            pages = "<a href=\"#\" id='" + NoEscrever + "' class=''>" + NoEscrever + "</a>"
+                            $('#paginas').append(pages);
+
+                            console.log(pag, NoEscrever);
+                            console.log('#' + NoEscrever);
+
+                            if (pag == NoEscrever) {
+                                $("#" + NoEscrever + "").addClass("active");
+                            }
+
+
+
+                        }
+
+
+                        $('#paginas a').on('click', function() { //tem que estar dentro da função tabela porque o menu de paginação é escrito dinamicamente depois da pág carregar
+                            page = $(this).text()
+
+                            search = $('#search').val();
+                            ordem = $('#ordem').val();
+                            items = $('#items').val();
+                            categoria = $('#ordenarPor').val();
+                            tabela(items, categoria, ordem, search, page)
+                        });
 
                     })
                     .fail(function() { // Se existir um erro no pedido
@@ -91,7 +122,7 @@ require_once "../scripts/sc_check_admin.php";
                 ordem = $('#ordem').val();
                 items = $('#items').val();
                 search = $('#search').val();
-                tabela(items, categoria, ordem, search) //DEAFULT
+                tabela(items, categoria, ordem, search, 1) //DEAFULT pág 1
 
 
                 //QUANDO SE ESCOLHE OUTRO VALOR DE ITENS POR PÁG
@@ -100,7 +131,7 @@ require_once "../scripts/sc_check_admin.php";
                     ordem = $('#ordem').val();
                     items = $(this).val();
                     search = $('#search').val();
-                    tabela(items, categoria, ordem, search)
+                    tabela(items, categoria, ordem, search, 1)
 
 
                 });
@@ -109,14 +140,14 @@ require_once "../scripts/sc_check_admin.php";
                     items = $('#items').val();
                     categoria = $(this).val();
                     search = $('#search').val();
-                    tabela(items, categoria, ordem, search)
+                    tabela(items, categoria, ordem, search, 1)
                 })
                 $('#ordem').change(function() {
                     ordem = $(this).val();
                     items = $('#items').val();
                     categoria = $('#ordenarPor').val();
                     search = $('#search').val();
-                    tabela(items, categoria, ordem, search)
+                    tabela(items, categoria, ordem, search, 1)
                 })
 
                 $('#search').keyup(function() {
@@ -124,8 +155,10 @@ require_once "../scripts/sc_check_admin.php";
                     ordem = $('#ordem').val();
                     items = $('#items').val();
                     categoria = $('#ordenarPor').val();
-                    tabela(items, categoria, ordem, search)
+                    tabela(items, categoria, ordem, search, 1)
                 });
+
+
 
                 return false; // keeps the page from not refreshing
             });
@@ -264,6 +297,15 @@ require_once "../scripts/sc_check_admin.php";
                                 <!-- /.panel-body -->
                             </div>
                             <!-- /.panel -->
+                            <div class="pagination">
+
+                                <a href="#" id="-1">&laquo;</a>
+                                <span id="paginas">
+
+                                </span>
+
+                                <a href="#" id="-2">&raquo;</a>
+                            </div>
                         </div>
 
                     </div>
