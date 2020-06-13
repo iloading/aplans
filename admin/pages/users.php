@@ -33,6 +33,22 @@ require_once "../scripts/sc_check_admin.php";
     <?php
     if ($admin == 1) {
     ?>
+
+        <script>
+            function update(email_velho, email_novo){
+
+                var query = "email_velho=" + email_velho + "&email_novo=" + email_novo;
+                
+                $.ajax({ // ajax call starts
+                        url: '../scripts/sc_update_tabela.php',
+                        data: query,
+                        // dataType: 'json', // Choosing a JSON datatype
+                        type: 'GET',
+                    })
+            }
+
+
+        </script>
         <script>
             function tabela(items, coluna, ordenacao, search) {
 
@@ -82,11 +98,15 @@ require_once "../scripts/sc_check_admin.php";
                             $('.editar').on("click", function () {
                                 var editarLinha = $(this).data('id');
                                 $(".modal-body #nome").val(data[editarLinha]['nome']);
-                                $(".modal-body #email").val(data[editarLinha]['email']);
+                                $(".modal-body #email_user").val(data[editarLinha]['email']);
                                 $(".modal-body #role").val(data[editarLinha]['role']);
                                 $(".modal-body #telemovel").val(data[editarLinha]['telemovel']);
                                 $(".modal-body #morada").val(data[editarLinha]['morada']);
                                 $(".modal-body #codigo_postal").val(data[editarLinha]['codigo_postal']);
+
+                                
+                                $(".modal-body #email_editar").val(data[editarLinha]['email']);
+                                
                             });
                         }
 
@@ -141,11 +161,18 @@ require_once "../scripts/sc_check_admin.php";
                     tabela(items, categoria, ordem, search)
                 });
 
-                $('.editar').on("click", function () {
-                    console.log (data[editarLinha]['nome']);
-                    var editarLinha = $(this).data('id');
-                    $(".modal-body #nome").val(data[editarLinha]['nome']);
+                $('#guardar').on("click",function() {
+                    email_velho = $('#email_editar').val();
+                    email_novo = $('#email_user').val();
+                    search = $('#search').val();
+                    ordem = $('#ordem').val();
+                    items = $('#items').val();
+                    categoria = $('#ordenarPor').val();
+                    update(email_velho, email_novo);
+                    tabela(items, categoria, ordem, search)
+                    
                 });
+
 
                 return false; // keeps the page from not refreshing
             });
@@ -314,25 +341,28 @@ require_once "../scripts/sc_check_admin.php";
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="GET" class="">
+                                <!-- <form action="#" method="" class=""> -->
                                     <label class="col-12">Nome</label>
-                                    <input type="text" id="nome">
+                                    <input name="nome" type="text" id="nome">
                                     <label class="col-12">Email</label>
-                                    <input type="text" id="email">
+                                    <input name ="email" type="text" id="email_user">
                                     <label class="col-12">Cargo</label>
-                                    <input type="text" id="role">
+                                    <input name="role" type="text" id="role">
                                     <label class="col-12">Telemóvel</label>
-                                    <input type="text" id="telemovel">
+                                    <input name="telemovel" type="text" id="telemovel">
                                     <label class="col-12">Morada</label>
-                                    <input type="text" id="morada">
+                                    <input name="morada" type="text" id="morada">
                                     <label class="col-12">Código Postal</label>
-                                    <input type="text" id="codigo_postal">
-                                </form>
+                                    <input name="codigo_postal" type="text" id="codigo_postal">
+                                    <input name="emailEditar" type="hidden" id="email_editar">
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Delete Row</button>
+                                        <button class="btn btn-default" id="guardar" data-dismiss="modal">Save</button>
+                                    </div>
+                                <!-- </form> -->
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Delete Row</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
-                            </div>
+                            
                         </div>
 
                     </div>
