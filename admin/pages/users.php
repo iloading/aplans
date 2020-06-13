@@ -34,14 +34,9 @@ require_once "../scripts/sc_check_admin.php";
             function tabela(items, coluna, ordenacao, search) {
 
 
-                if (search != "") {
-                    //cria uma REGEX que irá filtrar de acordo com o que foi inserido na search
-                    expression = new RegExp(search, "i");
-                }
-
                 var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search;
 
-                console.log(query);
+                
 
                 $.ajax({ // ajax call starts
                         url: '../ajax/users_table.php',
@@ -76,31 +71,14 @@ require_once "../scripts/sc_check_admin.php";
                         }
 
 
-
-
-
-
                         for (var i in data) {
-                            if (search != "") {
-                                //SE SE PROCURAR NA SEARCH PASSA A NÃO HAVER LIMITE NA QUERY, SÓ POR ENQUANTO PARA PODER DAR DISPLAY DE TODOS OS RESULTADOS, COMPOR ISTO SE HOUVER TEMPO
-                                if (data[i]["nome"].search(expression) != -1 || data[i]["email"].search(expression) != -1 || data[i]["role"].search(expression) != -1 || data[i]["telemovel"].search(expression) != -1 || data[i]["morada"].search(expression) != -1 || data[i]["codigo_postal"].search(expression) != -1) {
-
-                                    var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
-                                    $('#users').append(linha);
-                                }
-
-                            } else {
-                                var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
+                            
+                            var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
                                 $('#users').append(linha);
-                            }
-
-
-
                         }
 
                     })
                     .fail(function() { // Se existir um erro no pedido
-
                         $('#users').html('Data ERROU'); // Escreve mensagem de erro na listagem de vinhos
                     });
 
@@ -147,34 +125,14 @@ require_once "../scripts/sc_check_admin.php";
                     ordem = $('#ordem').val();
                     items = $('#items').val();
                     categoria = $('#ordenarPor').val();
-
-
                     tabela(items, categoria, ordem, search)
-                    
-                    //cria uma REGEX que irá filtrar de acordo com o que foi inserido na search
-
-
-
-
-
                 });
 
-                return false; // keeps the page from not refreshing
+            return false; // keeps the page from not refreshing
             });
         </script>
         <!-- /.Recolher todos os utilizadores na tabela users -->
 
-
-
-
-        <!-- Pesquisar uma key word em toda a Tabela -->
-        <script>
-            $(document).ready(function() {
-
-
-            });
-        </script>
-        <!-- /.Pesquisar uma key word em toda a Tabela -->
 
 
     <?php

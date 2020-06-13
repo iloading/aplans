@@ -11,10 +11,12 @@
     if (isset($_GET['items']) && trim($_GET['items']) != "") { // Se houver um limite de itens definido
         $itemsPorPag = $_GET['items'];
         $search = $_GET['search'];
+        $wildcard = "%$search%";
+        
         if (isset($_GET['col']) && trim($_GET['col']) != "" && isset($_GET['ord']) && trim($_GET['ord']) != "") { 
             $ordenarPorCol = $_GET['col'];
             $ordem= $_GET['ord'];
-
+            
             switch ($ordenarPorCol) {
                 case 'nome':
                     $tabela = "nome";
@@ -49,21 +51,24 @@
                     break;
             }
             
-            if ($search == "") {
-                 $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id ORDER BY " . $tabela . " " . $ordenacao . " LIMIT ?";
+            if ($search != "") { // SE HOUVER ALGO NA BARRA DE PESQUISA
+            $query = "SELECT nome, email, telemovel, morada, codigo_postal, role 
+                        FROM users
+                        INNER JOIN roles ON roles.id = ref_roles_id 
+                        WHERE nome LIKE ? OR email LIKE ? OR telemovel LIKE ? OR morada LIKE ? OR codigo_postal LIKE ? OR role LIKE ?
+                        ORDER BY " . $tabela . " " . $ordenacao . " 
+                        LIMIT ?";
             
-            }else {
-                $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id ORDER BY " . $tabela . " " . $ordenacao . " ";
+            }else {// SE NÃO HOUVER ALGO NA BARRA DE PESQUISA
+            $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id ORDER BY " . $tabela . " " . $ordenacao . " LIMIT ?";
                 
             }
-            
-            
-            //echo $query;
-        }else {
+
+        }else { //SE POR ALGUMA RAZÃO NÃO HOUVER NADA NO PARAMETRO DA COLUNA OU DA ORDENAÇÃO
             $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id LIMIT ?";
         }
     
-    }else {
+    }else { // SE POR ALGUMA RAZÃO NÃO HOUVER NADA NO PARAMETRO DO LIMITE DE ITEMS POR PÁGINA
         $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id";
     }
     
@@ -71,7 +76,9 @@
     if (mysqli_stmt_prepare($stmt, $query)) {
         if (isset($_GET['items']) && trim($_GET['items']) != "") {
             if (isset($_GET['col']) && trim($_GET['col']) != "" && isset($_GET['ord']) && trim($_GET['ord']) != "") {    
-                if ($search == "") {
+                if ($search != "") {
+                mysqli_stmt_bind_param($stmt, 'ssssssi',  $wildcard,  $wildcard,  $wildcard,  $wildcard,  $wildcard,  $wildcard, $itemsPorPag );
+                }else {
                 mysqli_stmt_bind_param($stmt, 'i',  $itemsPorPag);
                 }            
             }else {
