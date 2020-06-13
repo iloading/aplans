@@ -198,7 +198,7 @@ require_once "../scripts/sc_check_admin.php";
                                 <select class="" id="ordenarPor" name="items">
                                     <option class="dropdown-item " selected="selected" value="nome">Nome</option>
                                     <option class="dropdown-item" value="email">Email</option>
-                                    <option class="dropdown-item" value="role">Role</option>
+                                    <option class="dropdown-item" value="role">Cargo</option>
                                     <option class="dropdown-item" value="telemovel">Telemóvel</option>
                                     <option class="dropdown-item" value="morada">Morada</option>
                                     <option class="dropdown-item" value="codigo_postal">Codigo Postal</option>
