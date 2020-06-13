@@ -35,9 +35,9 @@ require_once "../scripts/sc_check_admin.php";
     ?>
 
         <script>
-            function update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal) {
+            function update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password) {
 
-                var query = "email_velho=" + email_velho + "&email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal;
+                var query = "email_velho=" + email_velho + "&email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal + "&password=" + password;
 
                 console.log (query);
 
@@ -54,6 +54,56 @@ require_once "../scripts/sc_check_admin.php";
                         categoria = $('#ordenarPor').val();
                         tabela(items, categoria, ordem, search, "manter")
                     })
+            }
+        </script>
+        <script>
+            function apagar(email_velho) {
+
+                var query = "email_velho=" + email_velho;
+
+                console.log (query);
+
+                $.ajax({ // ajax call starts
+                        url: '../scripts/sc_delete_row.php',
+                        data: query,
+                        // dataType: 'json', // Choosing a JSON datatype
+                        type: 'GET',
+                    })
+                    .done(function() {
+                        search = $('#search').val();
+                        ordem = $('#ordem').val();
+                        items = $('#items').val();
+                        categoria = $('#ordenarPor').val();
+                        tabela(items, categoria, ordem, search, "manter")
+                    })
+                    .fail(function() { // Se existir um erro no pedido
+                        $('#users').html('Data ERROU'); // Escreve mensagem de erro
+                    });
+            }
+        </script>
+        <script>
+            function adicionar(email_novo, nome, role, telemovel, morada, codigo_postal) {
+
+                var query = "email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal;
+
+                console.log (query);
+
+                $.ajax({ // ajax call starts
+                        url: '../scripts/sc_adicionar_row.php',
+                        data: query,
+                        // dataType: 'json', // Choosing a JSON datatype
+                        type: 'GET',
+                    })
+                    .done(function() {
+                        search = $('#search').val();
+                        ordem = $('#ordem').val();
+                        items = $('#items').val();
+                        categoria = $('#ordenarPor').val();
+                        tabela(items, categoria, ordem, search, "manter")
+                    })
+                    .fail(function() { // Se existir um erro no pedido
+                        $('#users').html('Data ERROU'); // Escreve mensagem de erro
+                    });
             }
         </script>
         <script>
@@ -216,8 +266,30 @@ require_once "../scripts/sc_check_admin.php";
                     telemovel = $('#update_telemovel').val();
                     morada = $('#update_morada').val();
                     codigo_postal = $('#update_codigo_postal').val();
+                    password = $('#update_password').val();
+                    
+                    update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password);
+
+
+                });
+
+                $('#apagar').on("click", function() {
+                    email_velho = $('#email_editar').val();
                 
-                    update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal);
+                    apagar(email_velho);
+
+
+                });
+
+                $('#adicionar').on("click", function() {
+                    email_novo = $('#email_user').val();
+                    nome = $('#update_nome').val();
+                    role = $('#role option').filter(":selected").val();
+                    telemovel = $('#update_telemovel').val();
+                    morada = $('#update_morada').val();
+                    codigo_postal = $('#update_codigo_postal').val();
+                
+                    adicionar(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal);
 
 
                 });
@@ -318,7 +390,7 @@ require_once "../scripts/sc_check_admin.php";
                                         Utilizadores registados
                                     </div>
                                     <div style="text-align: end;" class=" col-6">
-                                        <button class="btn btn-default pull-right add-row editar" href='#' data-toggle='modal' data-target='#myModal' ><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Row</button>
+                                        <button class="btn btn-default pull-right add-row editar" href='#' data-toggle='modal' data-target='#myModal' id="adicionar"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Row</button>
                                     </div>
                                 </div>
                                 <!-- /.panel-heading -->
@@ -400,25 +472,27 @@ require_once "../scripts/sc_check_admin.php";
                             </div>
                             <div class="modal-body">
                                 <!-- <form action="#" method="" class=""> -->
-                                <label class="col-12">Nome</label>
+                                <label class="col-12 pl-0 mb-0 mt-2">Nome</label>
                                 <input name="nome" type="text" id="update_nome">
-                                <label class="col-12">Email</label>
+                                <label class="col-12 pl-0 mb-0 mt-2">Email</label>
                                 <input name="email" type="text" id="email_user">
-                                <label class="col-12">Cargo</label>
+                                <label class="col-12 pl-0 mb-0 mt-2">Cargo</label>
                                 <select name="role" id="role">
                                     <option value="2" id="opcao_admin">Admin</option>
                                     <option value="1" id="opcao_user">User</option>
                                 </select>
-                                <label class="col-12">Telemóvel</label>
+                                <label class="col-12 pl-0 mb-0 mt-2">Telemóvel</label>
                                 <input name="telemovel" type="text" id="update_telemovel">
-                                <label class="col-12">Morada</label>
+                                <label class="col-12 pl-0 mb-0 mt-2">Morada</label>
                                 <input name="morada" type="text" id="update_morada">
-                                <label class="col-12">Código Postal</label>
+                                <label class="col-12 pl-0 mb-0 mt-2">Código Postal</label>
                                 <input name="codigo_postal" type="text" id="update_codigo_postal">
+                                <label class="col-12 pl-0 mb-0 mt-2">Preencher Apenas para mudar password</label>
+                                <input name="password" type="password" id="update_password" placeholder="Nova palavra-passe">
                                 <input name="emailEditar" type="hidden" id="email_editar">
 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Delete Row</button>
+                                    <button class="btn btn-default" id="apagar" data-dismiss="modal">Delete Row</button>
                                     <button class="btn btn-default" id="guardar" data-dismiss="modal">Save</button>
                                 </div>
                                 <!-- </form> -->
