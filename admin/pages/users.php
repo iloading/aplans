@@ -35,9 +35,11 @@ require_once "../scripts/sc_check_admin.php";
     ?>
 
         <script>
-            function update(email_velho, email_novo) {
+            function update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal) {
 
-                var query = "email_velho=" + email_velho + "&email_novo=" + email_novo;
+                var query = "email_velho=" + email_velho + "&email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal;
+
+                console.log (query);
 
                 $.ajax({ // ajax call starts
                         url: '../scripts/sc_update_tabela.php',
@@ -116,8 +118,6 @@ require_once "../scripts/sc_check_admin.php";
                             pages = "<a href=\"#\" id='" + NoEscrever + "' class=''>" + NoEscrever + "</a>"
                             $('#paginas').append(pages);
 
-                            console.log(pag, NoEscrever);
-                            console.log('#' + NoEscrever);
 
                             if (pag == NoEscrever) {
                                 $("#" + NoEscrever + "").addClass("active");
@@ -127,12 +127,18 @@ require_once "../scripts/sc_check_admin.php";
 
                         $('.editar').on("click", function() {
                             var editarLinha = $(this).data('id');
-                            $(".modal-body #nome").val(data[editarLinha]['nome']);
+                            $(".modal-body #update_nome").val(data[editarLinha]['nome']);
                             $(".modal-body #email_user").val(data[editarLinha]['email']);
-                            $(".modal-body #role").val(data[editarLinha]['role']);
-                            $(".modal-body #telemovel").val(data[editarLinha]['telemovel']);
-                            $(".modal-body #morada").val(data[editarLinha]['morada']);
-                            $(".modal-body #codigo_postal").val(data[editarLinha]['codigo_postal']);
+                            if (data[editarLinha]['role'] == "User") {
+                                $(".modal-body #opcao_user").attr("selected","selected");
+                                $(".modal-body #opcao_admin").removeAttr("selected");
+                            }else{
+                                $(".modal-body #opcao_admin").attr("selected","selected");
+                                $(".modal-body #opcao_user").removeAttr("selected");
+                            };
+                            $(".modal-body #update_telemovel").val(data[editarLinha]['telemovel']);
+                            $(".modal-body #update_morada").val(data[editarLinha]['morada']);
+                            $(".modal-body #update_codigo_postal").val(data[editarLinha]['codigo_postal']);
 
 
                             $(".modal-body #email_editar").val(data[editarLinha]['email']);
@@ -205,8 +211,13 @@ require_once "../scripts/sc_check_admin.php";
                 $('#guardar').on("click", function() {
                     email_velho = $('#email_editar').val();
                     email_novo = $('#email_user').val();
-
-                    update(email_velho, email_novo);
+                    nome = $('#update_nome').val();
+                    role = $('#role option').filter(":selected").val();
+                    telemovel = $('#update_telemovel').val();
+                    morada = $('#update_morada').val();
+                    codigo_postal = $('#update_codigo_postal').val();
+                
+                    update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal);
 
 
                 });
@@ -307,7 +318,7 @@ require_once "../scripts/sc_check_admin.php";
                                         Utilizadores registados
                                     </div>
                                     <div style="text-align: end;" class=" col-6">
-                                        <button class="btn btn-default pull-right add-row"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Row</button>
+                                        <button class="btn btn-default pull-right add-row editar" href='#' data-toggle='modal' data-target='#myModal' ><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Row</button>
                                     </div>
                                 </div>
                                 <!-- /.panel-heading -->
@@ -390,17 +401,20 @@ require_once "../scripts/sc_check_admin.php";
                             <div class="modal-body">
                                 <!-- <form action="#" method="" class=""> -->
                                 <label class="col-12">Nome</label>
-                                <input name="nome" type="text" id="nome">
+                                <input name="nome" type="text" id="update_nome">
                                 <label class="col-12">Email</label>
                                 <input name="email" type="text" id="email_user">
                                 <label class="col-12">Cargo</label>
-                                <input name="role" type="text" id="role">
+                                <select name="role" id="role">
+                                    <option value="2" id="opcao_admin">Admin</option>
+                                    <option value="1" id="opcao_user">User</option>
+                                </select>
                                 <label class="col-12">Telemóvel</label>
-                                <input name="telemovel" type="text" id="telemovel">
+                                <input name="telemovel" type="text" id="update_telemovel">
                                 <label class="col-12">Morada</label>
-                                <input name="morada" type="text" id="morada">
+                                <input name="morada" type="text" id="update_morada">
                                 <label class="col-12">Código Postal</label>
-                                <input name="codigo_postal" type="text" id="codigo_postal">
+                                <input name="codigo_postal" type="text" id="update_codigo_postal">
                                 <input name="emailEditar" type="hidden" id="email_editar">
 
                                 <div class="modal-footer">
