@@ -26,7 +26,8 @@ require_once "../scripts/sc_check_admin.php";
     <link href="../css/custom.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
 
-    
+
+
 
     <!-- Recolher todos os utilizadores na tabela users -->
     <?php
@@ -38,7 +39,7 @@ require_once "../scripts/sc_check_admin.php";
 
                 var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search;
 
-                
+
 
                 $.ajax({ // ajax call starts
                         url: '../ajax/users_table.php',
@@ -65,7 +66,7 @@ require_once "../scripts/sc_check_admin.php";
                         //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
                         var span = "<span><img class=\"ordenar\"src='" + iconOrdenacao + "'></span>";
 
-                        var thead = "<tr class=\"bg-primary text-light \"><th id=\"nome\"class=\"coluna\">Nome</th><th id=\"email\"class=\"coluna\">Email</th><th id=\"role\"class=\"coluna\">Cargo</th><th id=\"telemovel\"class=\"coluna\">Telemóvel</th><th id=\"morada\"class=\"coluna\">Morada</th><th id=\"codigo_postal\"class=\"coluna\">Código Postal</th><tr>"
+                        var thead = "<tr class=\"bg-primary text-light \"><th id=\"nome\"class=\"coluna\">Nome</th><th id=\"email\"class=\"coluna\">Email</th><th id=\"role\"class=\"coluna\">Cargo</th><th id=\"telemovel\"class=\"coluna\">Telemóvel</th><th id=\"morada\"class=\"coluna\">Morada</th><th id=\"codigo_postal\"class=\"coluna\">Código Postal</th><th id=\"acao\"class=\"coluna\">Ação</th><tr>"
 
                         $('#colunaTabela').append(thead);
                         if (coluna != "") {
@@ -74,9 +75,19 @@ require_once "../scripts/sc_check_admin.php";
 
 
                         for (var i in data) {
-                            
-                            var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th></tr>";
-                                $('#users').append(linha);
+
+                            var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th><th><a href='#' data-toggle='modal' data-target='#myModal' data-id='"+ i +"' class='editar'>Editar</a></th></tr>";
+                            $('#users').append(linha);
+
+                            $('.editar').on("click", function () {
+                                var editarLinha = $(this).data('id');
+                                $(".modal-body #nome").val(data[editarLinha]['nome']);
+                                $(".modal-body #email").val(data[editarLinha]['email']);
+                                $(".modal-body #role").val(data[editarLinha]['role']);
+                                $(".modal-body #telemovel").val(data[editarLinha]['telemovel']);
+                                $(".modal-body #morada").val(data[editarLinha]['morada']);
+                                $(".modal-body #codigo_postal").val(data[editarLinha]['codigo_postal']);
+                            });
                         }
 
                     })
@@ -94,7 +105,7 @@ require_once "../scripts/sc_check_admin.php";
                 ordem = $('#ordem').val();
                 items = $('#items').val();
                 search = $('#search').val();
-                tabela(items, categoria, ordem, search) //DEAFULT
+                tabela(items, categoria, ordem, search) //DEFAULT
 
 
                 //QUANDO SE ESCOLHE OUTRO VALOR DE ITENS POR PÁG
@@ -130,7 +141,13 @@ require_once "../scripts/sc_check_admin.php";
                     tabela(items, categoria, ordem, search)
                 });
 
-            return false; // keeps the page from not refreshing
+                $('.editar').on("click", function () {
+                    console.log (data[editarLinha]['nome']);
+                    var editarLinha = $(this).data('id');
+                    $(".modal-body #nome").val(data[editarLinha]['nome']);
+                });
+
+                return false; // keeps the page from not refreshing
             });
         </script>
         <!-- /.Recolher todos os utilizadores na tabela users -->
@@ -252,7 +269,9 @@ require_once "../scripts/sc_check_admin.php";
                                                     <th id="codigo_postal" class="coluna">
                                                         Código Postal
                                                     </th>
-                                        
+                                                    <th id="acao" class="coluna">
+                                                        Ação
+                                                    </th>
 
 
                                                 </tr>
@@ -261,10 +280,10 @@ require_once "../scripts/sc_check_admin.php";
 
                                             <!-- Conteudo a ser escrito dinamicamente em JS e AJAX -->
                                             <tbody id="users">
-                                                
+
                                             </tbody>
                                             <!-- /.Conteudo a ser escrito dinamicamente em JS e AJAX -->
-                                            
+
 
                                         </table>
                                     </div>
@@ -283,6 +302,45 @@ require_once "../scripts/sc_check_admin.php";
 
             </div>
             <!-- End of Main Content -->
+
+            <div class="container">
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="GET" class="">
+                                    <label class="col-12">Nome</label>
+                                    <input type="text" id="nome">
+                                    <label class="col-12">Email</label>
+                                    <input type="text" id="email">
+                                    <label class="col-12">Cargo</label>
+                                    <input type="text" id="role">
+                                    <label class="col-12">Telemóvel</label>
+                                    <input type="text" id="telemovel">
+                                    <label class="col-12">Morada</label>
+                                    <input type="text" id="morada">
+                                    <label class="col-12">Código Postal</label>
+                                    <input type="text" id="codigo_postal">
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Delete Row</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
