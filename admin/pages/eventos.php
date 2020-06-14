@@ -454,7 +454,7 @@ require_once "../scripts/sc_check_admin.php";
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Gestão de utilizadores</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Gestão de Eventos</h1>
                         <form class="d-none d-sm-inline-block form-inline ml-auto mr-0 navbar-search">
                             <div class="input-group">
                                 <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" id="search">
