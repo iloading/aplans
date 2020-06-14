@@ -16,10 +16,10 @@
         $page = $_GET['page'];
         $pagAtual = $page;
         $page -=1;
-        $previous_btn = true;
-        $next_btn = true;
-        $first_btn = true;
-        $last_btn = true;
+        // $previous_btn = true;
+        // $next_btn = true;
+        // $first_btn = true;
+        // $last_btn = true;
         $start = $page * $itemsPorPag;
 
 
