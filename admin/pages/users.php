@@ -76,9 +76,14 @@ require_once "../scripts/sc_check_admin.php";
                             $class = "alert-danger";
                             break;
                         case 7:
-                            $message = "Utilizador Inserido com Sucesso, parabéns és um atrasado";
+                            $message = "Utilizador Inserido com Sucesso";
                             $class = "alert-success";
                             break;
+                        case 8:
+                            $message = "Alterou os dados com sucesso!";
+                            $class = "alert-success";
+                            break;
+                        
                         default:
                             data1[0]['msgBool'] = false;
                     }
@@ -93,9 +98,10 @@ require_once "../scripts/sc_check_admin.php";
 
                         data1[0]['msgBool'] = false;
 
+                        //aviso de mensagem é eleminado passado 7segundos
                         setTimeout(function() {
                             $('#alertMsg').html('');;
-                        }, 3000);
+                        }, 7000);
 
                     };
                 }
@@ -111,15 +117,34 @@ require_once "../scripts/sc_check_admin.php";
 
                 console.log(query);
 
+
+
+
+
                 $.ajax({ // ajax call starts
                         url: '../scripts/sc_update_tabela.php',
                         data: query,
                         dataType: 'json', // Choosing a JSON datatype
                         type: 'GET',
+
+
                     })
                     .done(function(data) {
+                        console.log(data[0]['estado']);
+
                         mostrarMsg(data);
 
+                        search = $('#search').val();
+                        ordem = $('#ordem').val();
+                        items = $('#items').val();
+                        categoria = $('#ordenarPor').val();
+                        tabela(items, categoria, ordem, search, "manter");
+
+                        // search = $('#search').val();
+                        // ordem = $('#ordem').val();
+                        // items = $('#items').val();
+                        // categoria = $('#ordenarPor').val();
+                        // tabela(items, categoria, ordem, search, "manter");
                     })
 
             }
@@ -175,7 +200,7 @@ require_once "../scripts/sc_check_admin.php";
             var pagAtual = 1
 
             function tabela(items, coluna, ordenacao, search, pag) {
-                
+
                 if (pag != 1) {
                     pag = pagAtual;
                 }
@@ -184,97 +209,104 @@ require_once "../scripts/sc_check_admin.php";
 
                 var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search + "&page=" + pag;
 
+                $.when(
+                        $.ajax({ // ajax call starts
+                            url: '../ajax/users_table.php',
+                            data: query,
+                            dataType: 'json', // Choosing a JSON datatype
+                            type: 'GET',
 
-                $.ajax({ // ajax call starts
-                        url: '../ajax/users_table.php',
-                        data: query,
-                        dataType: 'json', // Choosing a JSON datatype
-                        type: 'GET',
-                    })
-                    .done(function(data) { //abre o ficehrio JSON
+                        })
 
+                    ).then(
 
-                        $('#users').html(''); //limpa o conteúdo da tabela
-                        $('#colunaTabela').html(''); //limpa o head da tabela
-                        $('#paginas').html('');
-
-                        if (ordenacao == "ASC") {
-                            iconOrdenacao = "../../assets/ordenarDESC.png";
-                        } else if (ordenacao == "DESC") {
-                            iconOrdenacao = "../../assets/ordenarASC.png";
-                        } else {
-                            iconOrdenacao = ""
-                        }
+                        function(data) { //abre o ficehrio JSON
 
 
+                            $('#users').html(''); //limpa o conteúdo da tabela
+                            $('#colunaTabela').html(''); //limpa o head da tabela
+                            $('#paginas').html('');
 
-                        //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
-                        var span = "<span><img class=\"ordenar\"src='" + iconOrdenacao + "'></span>";
-
-                        var thead = "<tr class=\"bg-primary text-light \"><th id=\"nome\"class=\"coluna\">Nome</th><th id=\"email\"class=\"coluna\">Email</th><th id=\"role\"class=\"coluna\">Cargo</th><th id=\"telemovel\"class=\"coluna\">Telemóvel</th><th id=\"morada\"class=\"coluna\">Morada</th><th id=\"codigo_postal\"class=\"coluna\">Código Postal</th><th id=\"acao\"class=\"coluna\">Ação</th><tr>"
-
-                        $('#colunaTabela').append(thead);
-                        if (coluna != "") {
-                            $('#' + coluna + '').append(span);
-                        }
-
-
-                        for (var i in data) {
-
-                            var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th><th><a href='#' data-toggle='modal' data-target='#myModal' data-id='" + i + "' class='editar'>Editar</a></th></tr>";
-                            $('#users').append(linha);
-
-                            resultados = data[i]["noPaginas"]
-                        }
-
-                        for (var index = 0; index < resultados; index++) {
-                            NoEscrever = index + 1;
-
-                            pages = "<a href=\"#\" id='" + NoEscrever + "' class=''>" + NoEscrever + "</a>"
-                            $('#paginas').append(pages);
-
-
-                            if (pag == NoEscrever) {
-                                $("#" + NoEscrever + "").addClass("active");
+                            if (ordenacao == "ASC") {
+                                iconOrdenacao = "../../assets/ordenarDESC.png";
+                            } else if (ordenacao == "DESC") {
+                                iconOrdenacao = "../../assets/ordenarASC.png";
+                            } else {
+                                iconOrdenacao = ""
                             }
 
-                        }
-
-                        $('.editar').on("click", function() {
-                            var editarLinha = $(this).data('id');
-                            $("#modal_editar #update_nome").val(data[editarLinha]['nome']);
-                            $("#modal_editar #email_user").val(data[editarLinha]['email']);
-                            if (data[editarLinha]['role'] == "User") {
-                                $("#modal_editar #opcao_user").attr("selected", "selected");
-                                $("#modal_editar #opcao_admin").removeAttr("selected");
-                            } else {
-                                $("#modal_editar #opcao_admin").attr("selected", "selected");
-                                $("#modal_editar #opcao_user").removeAttr("selected");
-                            };
-                            $("#modal_editar #update_telemovel").val(data[editarLinha]['telemovel']);
-                            $("#modal_editar #update_morada").val(data[editarLinha]['morada']);
-                            $("#modal_editar #update_codigo_postal").val(data[editarLinha]['codigo_postal']);
 
 
-                            $("#modal_editar #email_editar").val(data[editarLinha]['email']);
+                            //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
+                            var span = "<span><img class=\"ordenar\"src='" + iconOrdenacao + "'></span>";
 
-                        });
+                            var thead = "<tr class=\"bg-primary text-light \"><th id=\"nome\"class=\"coluna\">Nome</th><th id=\"email\"class=\"coluna\">Email</th><th id=\"role\"class=\"coluna\">Cargo</th><th id=\"telemovel\"class=\"coluna\">Telemóvel</th><th id=\"morada\"class=\"coluna\">Morada</th><th id=\"codigo_postal\"class=\"coluna\">Código Postal</th><th id=\"acao\"class=\"coluna\">Ação</th><tr>"
+
+                            $('#colunaTabela').append(thead);
+                            if (coluna != "") {
+                                $('#' + coluna + '').append(span);
+                            }
 
 
-                        //Quando se clica numa outra página no menu de navegação
-                        $('#paginas a').on('click', function() { //tem que estar dentro da função tabela porque o menu de paginação é escrito dinamicamente depois da pág carregar
-                            page = $(this).text()
-                            pagAtual = $(this).text();
-                            
+                            for (var i in data) {
 
-                            search = $('#search').val();
-                            ordem = $('#ordem').val();
-                            items = $('#items').val();
-                            categoria = $('#ordenarPor').val();
-                            tabela(items, categoria, ordem, search, page)
-                        });
+                                var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th><th><a href='#' data-toggle='modal' data-target='#myModal' data-id='" + i + "' class='editar'>Editar</a></th></tr>";
+                                $('#users').append(linha);
 
-                    })
+                                resultados = data[i]["noPaginas"]
+                            }
+
+                            for (var index = 0; index < resultados; index++) {
+                                NoEscrever = index + 1;
+
+                                pages = "<a href=\"#\" id='" + NoEscrever + "' class=''>" + NoEscrever + "</a>"
+                                $('#paginas').append(pages);
+
+
+                                if (pag == NoEscrever) {
+                                    $("#" + NoEscrever + "").addClass("active");
+                                }
+
+                            }
+
+                            //Quando se clica no botão de editar de uma linha, escreve o conteúdo do modal 
+                            $('.editar').on("click", function() {
+                                var editarLinha = $(this).data('id');
+
+                                var modal_editar_body = ' <label class="col-12 pl-0 mb-0 mt-2">Nome</label><input name="nome" type="text" id="update_nome" value="' + data[editarLinha]['nome'] + '"><label class="col-12 pl-0 mb-0 mt-2">Email</label><input name="email" type="text" id="email_user" value="' + data[editarLinha]['email'] + '"><label class="col-12 pl-0 mb-0 mt-2">Cargo</label><select name="role" id="modal_role"></select><label class="col-12 pl-0 mb-0 mt-2">Telemóvel</label><input name="telemovel" type="text" id="update_telemovel" value="' + data[editarLinha]['telemovel'] + '"><label class="col-12 pl-0 mb-0 mt-2">Morada</label><input name="morada" type="text" id="update_morada" value="' + data[editarLinha]['morada'] + '"><label class="col-12 pl-0 mb-0 mt-2">Código Postal</label><input name="codigo_postal" type="text" id="update_codigo_postal" value="' + data[editarLinha]['codigo_postal'] + '"><label class="col-12 pl-0 mb-0 mt-2">Preencher Apenas para mudar password</label><input name="password" type="password" id="update_password" placeholder="Nova palavra-passe"><input name="password_confirmar" type="password" id="update_password_confirmar" placeholder="Confirmar palavra-passe"><input name="emailEditar" type="hidden" id="email_editar" value="' + data[editarLinha]['email'] + '">';
+
+
+                                $("#modal_editar").html(modal_editar_body);
+                                $("#modal_role").html('');
+
+                                //se o role do utilizador clicado for admin ou user, muda a option que está selecionada
+                                if (data[editarLinha]['role'] == "Admin") {
+                                    var add_role = '<option value="2" id="opcao_admin" selected="selected">Admin</option><option value="1" id="opcao_user">User</option>'
+
+                                    $("#modal_role").append(add_role);
+                                } else {
+                                    var add_role = '<option value="2" id="opcao_admin">Admin</option><option value="1" id="opcao_user" selected="selected">User</option>'
+                                    $("#modal_role").append(add_role);
+                                }
+
+
+                            });
+
+
+                            //Quando se clica numa outra página no menu de navegação
+                            $('#paginas a').on('click', function() { //tem que estar dentro da função tabela porque o menu de paginação é escrito dinamicamente depois da pág carregar
+                                page = $(this).text()
+                                pagAtual = $(this).text();
+
+
+                                search = $('#search').val();
+                                ordem = $('#ordem').val();
+                                items = $('#items').val();
+                                categoria = $('#ordenarPor').val();
+                                tabela(items, categoria, ordem, search, page)
+                            });
+
+                        })
                     .fail(function() { // Se existir um erro no pedido
                         $('#users').html('Data ERROU'); // Escreve mensagem de erro na listagem de vinhos
                     });
@@ -329,7 +361,7 @@ require_once "../scripts/sc_check_admin.php";
                     email_velho = $('#email_editar').val();
                     email_novo = $('#email_user').val();
                     nome = $('#update_nome').val();
-                    role = $('#role option').filter(":selected").val();
+                    role = $('#modal_role option').filter(":selected").val();
                     telemovel = $('#update_telemovel').val();
                     morada = $('#update_morada').val();
                     codigo_postal = $('#update_codigo_postal').val();
@@ -338,11 +370,9 @@ require_once "../scripts/sc_check_admin.php";
 
                     update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar);
 
-                    search = $('#search').val();
-                    ordem = $('#ordem').val();
-                    items = $('#items').val();
-                    categoria = $('#ordenarPor').val();
-                    tabela(items, categoria, ordem, search, "manter");
+
+
+
 
 
 
@@ -358,11 +388,6 @@ require_once "../scripts/sc_check_admin.php";
                     items = $('#items').val();
                     categoria = $('#ordenarPor').val();
                     tabela(items, categoria, ordem, search, "manter");
-
-
-
-
-
 
                 });
 
@@ -389,6 +414,10 @@ require_once "../scripts/sc_check_admin.php";
 
 
                 return false; // keeps the page from not refreshing
+
+                function guardar() {
+
+                }
             });
         </script>
         <!-- /.Recolher todos os utilizadores na tabela users -->
@@ -492,6 +521,7 @@ require_once "../scripts/sc_check_admin.php";
                                         <button class="btn btn-default pull-right add-row" href='#' data-toggle='modal' data-target='#addRows' id="adicionar"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Row</button>
                                     </div>
                                 </div>
+
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="table-responsive">
@@ -573,34 +603,16 @@ require_once "../scripts/sc_check_admin.php";
 
                             </div>
                             <div class="modal-body" id="modal_editar">
-                                <!-- <form action="#" method="" class=""> -->
-                                <label class="col-12 pl-0 mb-0 mt-2">Nome</label>
-                                <input name="nome" type="text" id="update_nome">
-                                <label class="col-12 pl-0 mb-0 mt-2">Email</label>
-                                <input name="email" type="text" id="email_user">
-                                <label class="col-12 pl-0 mb-0 mt-2">Cargo</label>
-                                <select name="role" id="role">
-                                    <option value="2" id="opcao_admin">Admin</option>
-                                    <option value="1" id="opcao_user">User</option>
-                                </select>
-                                <label class="col-12 pl-0 mb-0 mt-2">Telemóvel</label>
-                                <input name="telemovel" type="text" id="update_telemovel">
-                                <label class="col-12 pl-0 mb-0 mt-2">Morada</label>
-                                <input name="morada" type="text" id="update_morada">
-                                <label class="col-12 pl-0 mb-0 mt-2">Código Postal</label>
-                                <input name="codigo_postal" type="text" id="update_codigo_postal">
-                                <label class="col-12 pl-0 mb-0 mt-2">Preencher Apenas para mudar password</label>
-                                <input name="password" type="password" id="update_password" placeholder="Nova palavra-passe">
-                                <input name="password_confirmar" type="password" id="update_password_confirmar" placeholder="Confirmar palavra-passe">
-                                <input name="emailEditar" type="hidden" id="email_editar">
 
 
-                                <div class="modal-footer">
-                                    <button class="btn btn-default" id="apagar" data-dismiss="modal">Delete Row</button>
-                                    <button class="btn btn-default" id="guardar" data-dismiss="modal">Save</button>
-                                </div>
-                                <!-- </form> -->
                             </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-default" id="apagar" data-dismiss="modal">Delete Row</button>
+                                <button class="btn btn-default" id="guardar" data-dismiss="modal">Save</button>
+                            </div>
+                            <!-- </form> -->
+
 
                         </div>
 
@@ -622,13 +634,13 @@ require_once "../scripts/sc_check_admin.php";
                             <div class="modal-body">
                                 <!-- <form action="#" method="" class=""> -->
                                 <label class="col-12 pl-0 mb-0 mt-2">Nome</label>
-                                <input name="nome" type="text" id="add_nome">
+                                <input name="nome" type="text" id="add_nome" value="">
                                 <label class="col-12 pl-0 mb-0 mt-2">Email</label>
-                                <input name="email" type="text" id="add_email_user">
+                                <input name="email" type="text" id="add_email_user" value="">
                                 <label class="col-12 pl-0 mb-0 mt-2">Cargo</label>
                                 <select name="role" id="add_role">
                                     <option value="2" id="add_opcao_admin">Admin</option>
-                                    <option value="1" id="add_opcao_user">User</option>
+                                    <option value="1" id="add_opcao_user" selected="selected">User</option>
                                 </select>
                                 <label class="col-12 pl-0 mb-0 mt-2">Telemóvel</label>
                                 <input name="telemovel" type="text" id="add_telemovel">

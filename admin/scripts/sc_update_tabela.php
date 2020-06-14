@@ -54,57 +54,35 @@ if (isset($_GET["email_velho"]) && isset($_GET["email_novo"]) && isset($_GET["pa
                 $msg = 2;
             }
         }
+
+        
+    }
+
+    if ($password != '') {
+        if ($password == $password_confirmar) {
+
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+            $query = "UPDATE users SET email = ?, ref_roles_id = ?, nome = ?, telemovel = ?, morada = ?, codigo_postal = ?, password_hash = ?  WHERE email = ?";
+        } else {
+            $sucesso = 0;
+            $msg = 6;
+        };
+    } else {
+        $query = "UPDATE users SET email = ?, ref_roles_id = ?, nome = ?, telemovel = ?, morada = ?, codigo_postal = ?  WHERE email = ?";
     }
 }
 
 if ($sucesso == 1) {
 
 
-    $link = new_db_connection();
-
-    $stmt = mysqli_stmt_init($link);
-
-    $query = "SELECT email FROM users WHERE email = ?";
-
-    if (mysqli_stmt_prepare($stmt, $query)) {
-
-        mysqli_stmt_bind_param($stmt, 's', $email_velho);
-        // Devemos validar também o resultado do execute!
-        if (mysqli_stmt_execute($stmt)) {
-
-            mysqli_stmt_store_result($stmt);
-
-            if (mysqli_stmt_num_rows($stmt) == 1) {
-                $_SESSION['msg'] =  true;
-                $emailExiste = true;
-
-                //header("Location: ../login.php?msg=2");
-            } else {
-                $emailExiste = false;
-            }
-
-            //mysqli_stmt_fetch($stmt);
-
-            mysqli_stmt_close($stmt);
-        }
-    }
-
-    if ($email_existe == false) {
+    
 
         $link = new_db_connection();
 
         $stmt = mysqli_stmt_init($link);
 
-        if ($password != '') {
-            if ($password == $password_confirmar) {
-
-                $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-                $query = "UPDATE users SET email = ?, ref_roles_id = ?, nome = ?, telemovel = ?, morada = ?, codigo_postal = ?, password_hash = ?  WHERE email = ?";
-            };
-        } else {
-            $query = "UPDATE users SET email = ?, ref_roles_id = ?, nome = ?, telemovel = ?, morada = ?, codigo_postal = ?  WHERE email = ?";
-        }
+        
 
 
 
@@ -118,10 +96,21 @@ if ($sucesso == 1) {
             if (mysqli_stmt_execute($stmt)) {
 
                 mysqli_stmt_fetch($stmt);
+                
+                $msg = 8;
+                $data = array();
+
+                $row_result = array();
+                $row_result["msgBool"] = true;
+                $row_result["msg"] = $msg;
+                $row_result["estado"] = "concluido";
+                $data[] = $row_result;
+
+
+                print json_encode($data);
+                //header("Location: ../my_acc.php?msg=1");
                 mysqli_stmt_close($stmt);
                 mysqli_close($link);
-                $_SESSION['msg'] =  true;
-                //header("Location: ../my_acc.php?msg=1");
             }
         } else {
             //algo deu errado
@@ -131,7 +120,7 @@ if ($sucesso == 1) {
 
             //header("Location: ../my_acc.php?msg=3");
         }
-    }
+   
 }else {
     $data = array();
   
