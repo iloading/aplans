@@ -26,7 +26,12 @@ if (isset($_SESSION['email_aplans'])) {
             if ($admin != 1) {
                 echo '<img src="images/PEPE.gif">
 				<h1>WhY YoU Nu AdMiN!!!??!!?!</h1>';
-            } ?>
+            }else {
+                echo '<img src="images/PEPEADMIN.gif">
+				<h1>AdMIn iS In!!!!!!</h1>';
+            }
+            
+        ?>
 		
 	<!-- //Main wrapper -->
 

@@ -5,23 +5,23 @@ require_once "admin/scripts/sc_check_admin.php";
 ?>
 <!-- Sidebar -->
 
-<ul class="navbar-nav bg-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark accordion toggled" style="background-color: #3C5E77;" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+            <img class="w-50 h-50" src="images/logo/aplans_small_logo_green.png">
         </div>
         <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
     </a>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+    
+    
 
 
 
     <li class="nav-item active mt-auto ">
-        <ul class="navbar-nav bg-primary sidebar-dark">
+        <ul class="navbar-nav sidebar-dark" style="background-color: #3C5E77;">
         
             
             <hr class="sidebar-divider my-0">
@@ -36,8 +36,8 @@ require_once "admin/scripts/sc_check_admin.php";
 
             ?>
             <hr class="sidebar-divider my-0">
-            <li class="nav-item active ">
-                <a class="nav-link" href="../../scripts/sc_logout.php">
+            <li class="nav-item active " >
+                <a class="nav-link" href="scripts/sc_logout.php">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw"></i>
                     <span>Log Out</span></a>
             </li>

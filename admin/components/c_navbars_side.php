@@ -7,45 +7,37 @@ if ($admin == 1) {
 
     <!-- Sidebar -->
 
-    <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+    <ul class="navbar-nav sidebar sidebar-dark accordion toggled" style="background-color: #3C5E77;" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.php">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+            <div class="sidebar-brand-icon">
+                <img class="w-50 h-50" src="../../images/logo/aplans_small_logo_green.png">
             </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
         </a>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
+        
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="#">
+        <li class="nav-item active mt-4">
+            <a class="nav-link" href="../pages/users.php">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Utilizadores</span></a>
         </li>
         <hr class="sidebar-divider my-0">
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../pages/eventos.php">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Eventos</span></a>
         </li>
         <hr class="sidebar-divider my-0">
-        <li class="nav-item active">
-            <a class="nav-link" href="../pages/tarefas.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Tarefas</span></a>
-        </li>
-        <hr class="sidebar-divider my-0">
+        
 
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
+        
 
 
         <li class="nav-item active mt-auto ">
-            <ul class="navbar-nav bg-primary sidebar-dark" id="accordionSidebar">
+            <ul class="navbar-nav sidebar-dark" style="background-color: #3C5E77;" id="accordionSidebar">
                 <hr class="sidebar-divider my-0">
                 <li class="nav-item active">
                     <a class="nav-link" href="../../index.php">
