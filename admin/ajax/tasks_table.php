@@ -4,10 +4,11 @@
     // Create a new DB connection
     $link = new_db_connection();
 
-    
+
 
     
     if (isset($_GET['items']) && trim($_GET['items']) != "") { // Se houver um limite de itens definido
+   
         $itemsPorPag = $_GET['items'];
         $search = $_GET['search'];
         $wildcard = "%$search%";
@@ -26,7 +27,7 @@
         /* create a prepared statement */
         $stmt = mysqli_stmt_init($link);
 
-
+    
         if ($search != "") {
         $query = "SELECT COUNT(*) AS count FROM tasks INNER JOIN event_type ON ref_event_type_id = event_type.id
                   WHERE name LIKE ? OR filter LIKE ? OR short_description LIKE ? OR event_type.type LIKE ?";
@@ -62,9 +63,15 @@
                 case 'nome':
                     $tabela = "nome";
                     break;
+
                 case 'filtro':
                 $tabela = "filtro";
                     break;
+
+                case 'tipo':
+                $tabela = "tipo";
+                break;
+
                 case 'descricao':
                 $tabela = "descricao";
                     break;
@@ -137,6 +144,7 @@
                 $row_result = array();
                 $row_result["nome"] = htmlspecialchars($nome);
                 $row_result["filtro"] = htmlspecialchars($filtro);
+                $row_result["tipo"] = htmlspecialchars($tipo);
                 $row_result["descricao"] = htmlspecialchars($descricao);
                 $row_result["noPaginas"] = htmlspecialchars($no_de_pag);
                 $data[] = $row_result;

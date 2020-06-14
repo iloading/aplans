@@ -111,9 +111,9 @@ require_once "../scripts/sc_check_admin.php";
 
 
         <script>
-            function update(id, nome, filtro, descricao) {
+            function update(id, nome, filtro, tipo, descricao) {
 
-                var query = "id" + id + "&nome=" + nome + "&filtro=" + filtro + "&descricao=" + descricao;
+                var query = "id" + id + "&nome=" + nome + "&filtro=" + filtro + "&tipo=" + tipo + "&descricao=" + descricao;
 
                 console.log(query);
 
@@ -167,14 +167,14 @@ require_once "../scripts/sc_check_admin.php";
 
                     })
                     .fail(function() { // Se existir um erro no pedido
-                        $('#users').html('Data ERROU'); // Escreve mensagem de erro
+                        $('#users').html('Data ERROU1'); // Escreve mensagem de erro
                     });
             }
         </script>
         <script>
-            function adicionar(id, nome, filtro, descricao) {
+            function adicionar(id, nome, filtro, tipo, descricao) {
 
-                var query1 = "nome=" + nome + "&filtro=" + filtro + "&descricao=" + descricao;
+                var query1 = "nome=" + nome + "&filtro=" + filtro + "&tipo=" + tipo + "&descricao=" + descricao;
 
                 console.log(query1);
 
@@ -204,7 +204,7 @@ require_once "../scripts/sc_check_admin.php";
                 if (pag != 1) {
                     pag = pagAtual;
                 }
-                
+
 
 
                 var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search + "&page=" + pag;
@@ -215,13 +215,13 @@ require_once "../scripts/sc_check_admin.php";
                             data: query,
                             dataType: 'json', // Choosing a JSON datatype
                             type: 'GET',
-                            
+
                         })
 
                     ).then(
 
                         function(data) { //abre o ficehrio JSON
-            
+
 
                             $('#users').html(''); //limpa o conteúdo da tabela
                             $('#colunaTabela').html(''); //limpa o head da tabela
@@ -240,7 +240,7 @@ require_once "../scripts/sc_check_admin.php";
                             //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
                             var span = "<span><img class=\"ordenar\"src='" + iconOrdenacao + "'></span>";
 
-                            var thead = "<tr class=\"bg-primary text-light \"><th id=\"nome\"class=\"coluna\">Nome</th><th id=\"filtro\"class=\"coluna\">Filtro</th><th id=\"descricao\"class=\"coluna\">Descrição</th><tr>"
+                            var thead = "<tr class=\"bg-primary text-light \"><th id=\"nome\"class=\"coluna\">Nome</th><th id=\"filtro\"class=\"coluna\">Filtro</th><th id=\"tipo\"class=\"coluna\">Tipo</th><th id=\"descricao\"class=\"coluna\">Descrição</th><th id=\"acao\"class=\"coluna\">Ação</th><tr>"
 
                             $('#colunaTabela').append(thead);
                             if (coluna != "") {
@@ -250,7 +250,7 @@ require_once "../scripts/sc_check_admin.php";
 
                             for (var i in data) {
 
-                                var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["filtro"] + "</th><th>" + data[i]["descricao"];
+                                var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["filtro"] + "</th><th>" + data[i]["tipo"] + "</th><th>" + data[i]["descricao"] + "</th><th><a href='#' data-toggle='modal' data-target='#myModal' data-id='" + i + "' class='editar'>Editar</a></th></tr>";
                                 $('#users').append(linha);
 
                                 resultados = data[i]["noPaginas"]
@@ -273,7 +273,7 @@ require_once "../scripts/sc_check_admin.php";
                             $('.editar').on("click", function() {
                                 var editarLinha = $(this).data('id');
 
-                                var modal_editar_body = '<label class="col-12 pl-0 mb-0 mt-2">Nome</label><input name="nome" type="text" id="update_nome" value="' + data[editarLinha]['nome'] + '"><label class="col-12 pl-0 mb-0 mt-2">Filtro</label><select name="filtro" id="modal_filtro"></select><label class="col-12 pl-0 mb-0 mt-2">Descrição</label><input name="descricao" type="text" id="update_descricao" value="' + data[editarLinha]['descricao'] + '">';
+                                var modal_editar_body = '<label class="col-12 pl-0 mb-0 mt-2">Nome</label><input name="nome" type="text" id="update_nome" value="' + data[editarLinha]['nome'] + '"><label class="col-12 pl-0 mb-0 mt-2">Filtro</label><select name="filtro" id="modal_filtro"></select><label class="col-12 pl-0 mb-0 mt-2">Tipo</label><input name="tipo" type="text" id="update_tipo" value="' + data[editarLinha]['descricao'] + '"><label class="col-12 pl-0 mb-0 mt-2">Descrição</label><input name="descricao" type="text" id="update_descricao" value="' + data[editarLinha]['descricao'] + '">';
 
 
                                 $("#modal_editar").html(modal_editar_body);
@@ -281,7 +281,7 @@ require_once "../scripts/sc_check_admin.php";
 
                                 //se o role do utilizador clicado for admin ou user, muda a option que está selecionada
                                 if (data[editarLinha]['filtro'] == "Admin") {
-                                    var add_role = '<option value="2" id="opcao_admin" selected="selected">Predefenido</option><option value="1" id="opcao_user">Criado</option>' 
+                                    var add_role = '<option value="2" id="opcao_admin" selected="selected">Predefenido</option><option value="1" id="opcao_user">Criado</option>'
 
                                     $("#modal_filtro").append(add_role);
                                 } else {
@@ -308,7 +308,7 @@ require_once "../scripts/sc_check_admin.php";
 
                         })
                     .fail(function() { // Se existir um erro no pedido
-                        $('#users').html('Data ERROU'); // Escreve mensagem de erro
+                        $('#users').html('Data ERROU2'); // Escreve mensagem de erro
                     });
 
                 return false; // keeps the page from not refreshing
@@ -361,9 +361,10 @@ require_once "../scripts/sc_check_admin.php";
                     id = $('#id').val();
                     nome = $('#update_nome').val();
                     filtro = $('#modal_filtro option').filter(":selected").val();
+                    tipo = $('#update_tipo').val();
                     descricao = $('#update_descricao').val();
 
-                    update(id, nome, filtro, descricao);
+                    update(id, nome, filtro, tipo, descricao);
 
 
 
@@ -389,9 +390,10 @@ require_once "../scripts/sc_check_admin.php";
                 $('#submeter_row').on("click", function() {
                     nome = $('#add_nome').val();
                     filtro = $('#add_filtro option').filter(":selected").val();
+                    tipo = $('#add_tipo').val();
                     descricao = $('#add_descricao').val();
 
-                    adicionar(nome, filtro, descricao);
+                    adicionar(nome, filtro, tipo, descricao);
 
                     search = $('#search').val();
                     ordem = $('#ordem').val();
@@ -521,10 +523,18 @@ require_once "../scripts/sc_check_admin.php";
                                                     <th id="filtro" class="coluna">
                                                         Filtro
                                                     </th>
+
+                                                    <th id="tipo" class="coluna">
+                                                        Tipo
+                                                    </th>
                                                     <th id="descricao" class="coluna">
                                                         Descrição
                                                     </th>
-                                                    
+
+                                                    <th id="acao" class="coluna">
+                                                        Ação
+                                                    </th>
+
 
 
                                                 </tr>
