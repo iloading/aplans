@@ -68,15 +68,12 @@ require_once "../scripts/sc_check_admin.php";
 
                         $('#alertMsg').html('');
 
-                        var mensagem = '<div class=\"alert '+$class+' alert-dismissible fade show\"role=\"alert\">' + $message + '<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span>&times;</span></button></div>';
+                        var mensagem = '<div class=\"alert ' + $class + ' alert-dismissible fade show\"role=\"alert\">' + $message + '<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span>&times;</span></button></div>';
 
                         $('#alertMsg').append(mensagem);
 
 
                         data1[0]['msgBool'] = false;
-
-
-
 
                     };
                 }
@@ -105,8 +102,6 @@ require_once "../scripts/sc_check_admin.php";
                         items = $('#items').val();
                         categoria = $('#ordenarPor').val();
                         mostrarMsg(data1);
-                        tabela(items, categoria, ordem, search, "manter")
-
                     })
             }
         </script>
@@ -153,7 +148,7 @@ require_once "../scripts/sc_check_admin.php";
                         ordem = $('#ordem').val();
                         items = $('#items').val();
                         categoria = $('#ordenarPor').val();
-                        tabela(items, categoria, ordem, search, "manter")
+                        
                     })
                     .fail(function() { // Se existir um erro no pedido
                         $('#users').html('Data ERROU'); // Escreve mensagem de erro
@@ -250,7 +245,7 @@ require_once "../scripts/sc_check_admin.php";
                         });
 
 
-
+                        //Quando se clica numa outra página no menu de navegação
                         $('#paginas a').on('click', function() { //tem que estar dentro da função tabela porque o menu de paginação é escrito dinamicamente depois da pág carregar
                             page = $(this).text()
 
@@ -324,7 +319,7 @@ require_once "../scripts/sc_check_admin.php";
                     password_confirmar = $('#update_password_confirmar').val();
 
                     update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar);
-
+                    tabela(items, categoria, ordem, search, "manter")
 
                 });
 
@@ -345,7 +340,7 @@ require_once "../scripts/sc_check_admin.php";
                     codigo_postal = $('#update_codigo_postal').val();
 
                     adicionar(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal);
-
+                    tabela(items, categoria, ordem, search, "manter")
 
                 });
 

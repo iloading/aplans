@@ -115,10 +115,6 @@ if ($sucesso == 1) {
             } else {
                 mysqli_stmt_bind_param($stmt, 'sisssss', $email_novo, $role_novo, $nome_novo, $telemovel_novo, $morada_novo, $codigo_postal_novo, $email_velho);
             }
-            echo '<hr>';
-            echo $query;
-            echo '<hr>';
-            echo $email_novo, $role_novo, $nome_novo, $telemovel_novo, $morada_novo, $codigo_postal_novo, $email_velho, $password_hash;
             if (mysqli_stmt_execute($stmt)) {
 
                 mysqli_stmt_fetch($stmt);
