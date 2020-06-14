@@ -9,7 +9,7 @@ if (isset($_SESSION['email_aplans'])) {
 
 <head>
 	<?php include_once "helpers/help_meta.php" ?>
-	<title>Carregosa Vinhos</title>
+	<title>Aplans</title>
 	<?php include_once "helpers/help_css.php" ?>
 	
     
