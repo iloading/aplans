@@ -146,20 +146,24 @@ require_once "../scripts/sc_check_admin.php";
             }
         </script>
         <script>
-            function apagar(email_velho) {
+            function apagar(id) {
 
-                var query = "email_velho=" + email_velho;
+                var query = "id=" + id;
 
                 console.log(query);
 
                 $.ajax({ // ajax call starts
-                        url: '../scripts/sc_delete_row.php',
+                        url: '../scripts/sc_eventos/sc_eventos_delete_row.php',
                         data: query,
                         // dataType: 'json', // Choosing a JSON datatype
                         type: 'GET',
                     })
                     .done(function() {
-                        //Mostrar mensagem
+                        search = $('#search').val();
+                        ordem = $('#ordem').val();
+                        items = $('#items').val();
+                        categoria = $('#ordenarPor').val();
+                        tabela(items, categoria, ordem, search, "manter");
 
                     })
                     .fail(function() { // Se existir um erro no pedido
@@ -168,23 +172,20 @@ require_once "../scripts/sc_check_admin.php";
             }
         </script>
         <script>
-            function adicionar(email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar) {
+            function adicionar(nome, data, slots, descricao, criador, tipo) {
 
-                var query1 = "email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal + "&password=" + password + "&password_confirmar=" + password_confirmar;
+                var query = "nome=" + nome + "&data=" + data + "&slots=" + slots + "&descricao=" + descricao + "&criador=" + criador + "&tipo=" + tipo;
 
-                console.log(query1);
+                console.log(query);
 
                 $.ajax({ // ajax call starts
-                        url: '../scripts/sc_adicionar_row.php',
-                        data: query1,
+                        url: '../scripts/sc_eventos/sc_eventos_adicionar_row.php',
+                        data: query,
                         dataType: 'json', // Choosing a JSON datatype
                         type: 'GET',
                     })
                     .done(function(data) {
                         mostrarMsg(data);
-
-
-
 
                     })
                     .fail(function() { // Se existir um erro no pedido
@@ -375,29 +376,27 @@ require_once "../scripts/sc_check_admin.php";
                 });
 
                 $('#apagar').on("click", function() {
-                    email_velho = $('#email_editar').val();
+                    id = $('#id_evento').val();
 
-                    apagar(email_velho);
+                    apagar(id);
 
-                    search = $('#search').val();
-                    ordem = $('#ordem').val();
-                    items = $('#items').val();
-                    categoria = $('#ordenarPor').val();
-                    tabela(items, categoria, ordem, search, "manter");
+                    //search = $('#search').val();
+                    //ordem = $('#ordem').val();
+                    //items = $('#items').val();
+                    //categoria = $('#ordenarPor').val();
+                    //tabela(items, categoria, ordem, search, "manter");
 
                 });
 
                 $('#submeter_row').on("click", function() {
-                    email_novo = $('#add_email_user').val();
-                    nome = $('#add_nome').val();
-                    role = $('#add_role option').filter(":selected").val();
-                    telemovel = $('#add_telemovel').val();
-                    morada = $('#add_morada').val();
-                    codigo_postal = $('#add_codigo_postal').val();
-                    password = $('#add_password').val();
-                    password_confirmar = $('#add_password_confirmar').val();
+                    nome = $('#update_nome').val();
+                    data = $('#data_evento').val();
+                    slots = $('#slots_evento').val();
+                    descricao = $('#descricao_evento').val();
+                    criador = $('#criador_evento').val();
+                    tipo = $('#tipo_evento').val();
 
-                    adicionar(email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar);
+                    adicionar(nome, data, slots, descricao, criador, tipo);
 
                     search = $('#search').val();
                     ordem = $('#ordem').val();
@@ -630,23 +629,18 @@ require_once "../scripts/sc_check_admin.php";
                             <div class="modal-body">
                                 <!-- <form action="#" method="" class=""> -->
                                 <label class="col-12 pl-0 mb-0 mt-2">Nome</label>
-                                <input name="nome" type="text" id="add_nome" value="">
-                                <label class="col-12 pl-0 mb-0 mt-2">Email</label>
-                                <input name="email" type="text" id="add_email_user" value="">
-                                <label class="col-12 pl-0 mb-0 mt-2">Cargo</label>
-                                <select name="role" id="add_role">
-                                    <option value="2" id="add_opcao_admin">Admin</option>
-                                    <option value="1" id="add_opcao_user" selected="selected">User</option>
-                                </select>
-                                <label class="col-12 pl-0 mb-0 mt-2">Telemóvel</label>
-                                <input name="telemovel" type="text" id="add_telemovel">
-                                <label class="col-12 pl-0 mb-0 mt-2">Morada</label>
-                                <input name="morada" type="text" id="add_morada">
-                                <label class="col-12 pl-0 mb-0 mt-2">Código Postal</label>
-                                <input name="codigo_postal" type="text" id="add_codigo_postal">
-                                <label class="col-12 pl-0 mb-0 mt-2">Password</label>
-                                <input name="password" type="password" id="add_password" placeholder="Nova palavra-passe">
-                                <input name="password_confirmar" type="password" id="add_password_confirmar" placeholder="Confirmar palavra-passe">
+                                <input name="nome" type="text" id="update_nome" value="">
+                                <label class="col-12 pl-0 mb-0 mt-2">Data</label>
+                                <input name="data" type="text" id="data_evento" value="">
+                                <label class="col-12 pl-0 mb-0 mt-2">Tipo</label>
+                                <input name="tipo" type="text" id="tipo_evento" value="">
+                                <label class="col-12 pl-0 mb-0 mt-2">Criador</label>
+                                <input name="criador" type="text" id="criador_evento">
+                                <label class="col-12 pl-0 mb-0 mt-2">Slots</label>
+                                <input name="slots" type="text" id="slots_evento">
+                                <label class="col-12 pl-0 mb-0 mt-2">Descrição</label>
+                                <input name="descricao" type="text" id="descricao_evento">
+
 
 
 

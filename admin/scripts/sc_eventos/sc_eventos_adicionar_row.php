@@ -1,86 +1,71 @@
 <?php
-require_once "../../connections/connection.php";
+require_once "../../../connections/connection.php";
 require_once "../../scripts/sc_validate_input.php";
 session_start();
 
 
 $sucesso = 1;
-
-if (isset($_GET["email_novo"]) && isset($_GET["password"]) && isset($_GET["nome"]) && isset($_GET["password_confirmar"])) {
-
-    if ($_GET["email_novo"] != "") {
-        $email_novo = $_GET['email_novo'];
-        $nome_novo = $_GET['nome'];
-        $pass = $_GET["password"];
-        $pass_confirmar = $_GET["password_confirmar"];
-
-        if (filter_var($email_novo, FILTER_VALIDATE_EMAIL) === FALSE) {
-            $sucesso = 0;
-            $msg = 0;
-        };
+if (isset($_GET["nome"]) && isset($_GET["data"]) && isset($_GET["slots"]) && isset($_GET["descricao"]) && isset($_GET["criador"]) && isset($_GET["tipo"])) {
 
 
-        if ($pass != "") {
-            if ($pass == $pass_confirmar) {
-                $password_hash = password_hash($pass, PASSWORD_DEFAULT);
-            }else {
-                $sucesso = 0;
-                $msg = 6;
-            };
-        }else { //Se a pass não for preenchida
-            $sucesso = 0;
-            $msg = 4;
-     
+        $nome = $_GET['nome'];
+        $data = $_GET['data'];
+        $slots =  $_GET['slots'];
+        $descricao = $_GET['descricao'];
+        $criador = $_GET['criador'];
+        $tipo = $_GET['tipo'];
+
+        
+    $stmt = mysqli_stmt_init($link);
+    $query = "SELECT users.id FROM users INNER JOIN event ON users.id = event.ref_creator_id WHERE users.email = ? ";
+
+    if (mysqli_stmt_prepare($stmt, $query)) {
+
+        mysqli_stmt_bind_param($stmt, 's', $criador);
+
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_bind_result($stmt, $criador_id);
+
+            mysqli_stmt_fetch($stmt);
+
+            //header("Location: ../my_acc.php?msg=1");
+            mysqli_stmt_close($stmt);
         }
-       
-    }else { //Se não for preenchido o email
-        $sucesso = 0;
-        $msg = 0;
+    } else {
+        //algo deu errado
+        mysqli_stmt_close($stmt);
+        mysqli_close($link);
+        $_SESSION['msg'] =  true;
+
+        //header("Location: ../my_acc.php?msg=3");
     }
 
+    $stmt = mysqli_stmt_init($link);
+    $query = "SELECT event_type.id FROM event_type INNER JOIN event ON event_type.id = event.ref_event_type_id WHERE event_type.type = ? ";
+
+    if (mysqli_stmt_prepare($stmt, $query)) {
+
+        mysqli_stmt_bind_param($stmt, 's', $tipo);
+
+        if (mysqli_stmt_execute($stmt)) {
+
+            mysqli_stmt_bind_result($stmt, $tipo_id);
+            mysqli_stmt_fetch($stmt);
 
 
 
-    if (isset($_GET["telemovel"]) && isset($_GET["morada"]) && isset($_GET["codigo_postal"])) {
 
-        $telemovel = $_GET['telemovel'];
-        $morada = $_GET['morada'];
-        $codigo_postal = $_GET['codigo_postal'];
-
-        if (trim($_GET["telemovel"]) != "") {
-            $pattern = "/(9[1236][0-9]) ?([0-9]{3}) ?([0-9]{3})/";
-
-            if (preg_match($pattern, $telemovel)){
-
-            }else { //Se o telemoivel nmão for válido
-                $sucesso = 0;
-                $msg = 1;
-            }
-            
-        }else { //Se for deixado em branco
-            $telemovel = NULL;
+            //header("Location: ../my_acc.php?msg=1");
+            mysqli_stmt_close($stmt);
         }
+    } else {
+        //algo deu errado
+        mysqli_stmt_close($stmt);
+        mysqli_close($link);
+        $_SESSION['msg'] =  true;
 
-        if ($codigo_postal != "") {
-            $pattern = "/^\d{4}-\d{3}?$/";
-
-            if (preg_match($pattern, $codigo_postal)){
-
-            }else {
-                $sucesso = 0;
-                $msg = 2;
-            }
-            
-        }
-
-       
-    } 
-    // else {
-    //     $telemovel = NULL;
-    //     $morada = NULL;
-    //     $codigo_postal = NULL;
-    // }
-
+        //header("Location: ../my_acc.php?msg=3");
+    }
 
 }else { //Se não for inserido um dos valores obrigatórios
     $sucesso = 0;
@@ -90,37 +75,7 @@ if (isset($_GET["email_novo"]) && isset($_GET["password"]) && isset($_GET["nome"
 
 
 
-if ($sucesso == 1) { //Se até a este momento estiver tudo correto, verifica se o email já existe na BD
-    $link = new_db_connection();
 
-    $stmt = mysqli_stmt_init($link);
-
-    $query = "SELECT email FROM users WHERE email = ?";
-
-    if (mysqli_stmt_prepare($stmt, $query)) {
-        mysqli_stmt_bind_param($stmt, 's', $email_novo);
-        // Devemos validar também o resultado do execute!
-        if (mysqli_stmt_execute($stmt)) {
-            mysqli_stmt_store_result($stmt);
-
-            if (mysqli_stmt_num_rows($stmt) == 1) {
-                $sucesso = 0;
-                $msg = 5;
-                $emailExiste = true;
-                
-            
-            } else {
-                $emailExiste = false;
-            }
-
-            //mysqli_stmt_fetch($stmt);
-
-
-
-            mysqli_stmt_close($stmt);
-        }
-    }
-}
     // if ($emailExiste == true) {
     //     $sucesso= 0;
     //     $msg = 5;
@@ -132,10 +87,10 @@ if ($sucesso == 1) {
         
         $stmt = mysqli_stmt_init($link);
 
-        $query = "INSERT INTO users (email, password_hash, nome, telemovel, morada, codigo_postal) VALUES (?,?,?,?,?,?)";
+        $query = "INSERT INTO events (nome, data, slots, descricao ,ref_creator_id, ref_event_type_id) VALUES (?,?,?,?,?,?)";
 
         if (mysqli_stmt_prepare($stmt, $query)) {
-            mysqli_stmt_bind_param($stmt, 'ssssss', $email_novo, $password_hash, $nome_novo, $telemovel, $morada, $codigo_postal);
+            mysqli_stmt_bind_param($stmt, 'sissii', $nome, $data, $slots, $descricao, $criador_id, $tipo_id);
 
             
             if (mysqli_stmt_execute($stmt)) {

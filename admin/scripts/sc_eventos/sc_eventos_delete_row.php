@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once "../../connections/connection.php";
+require_once "../../../connections/connection.php";
 
 
 
 
 
-$email_velho = $_GET['email_velho'];
+$id = $_GET['id'];
 
 
 
@@ -15,10 +15,10 @@ $link = new_db_connection();
 $stmt = mysqli_stmt_init($link);
 
 
-$query = "DELETE FROM users WHERE email = ?";
+$query = "DELETE FROM event WHERE id = ?";
 
 if (mysqli_stmt_prepare($stmt, $query)) {
-    mysqli_stmt_bind_param($stmt, 's', $email_velho);
+    mysqli_stmt_bind_param($stmt, 's', $id);
     if (mysqli_stmt_execute($stmt)) {
 
         mysqli_stmt_close($stmt);
