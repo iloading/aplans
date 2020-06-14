@@ -9,12 +9,14 @@
     
     if (isset($_GET['items']) && trim($_GET['items']) != "") { // Se houver um limite de itens definido
         $itemsPorPag = $_GET['items'];
-    if (isset($_GET['search'])) {
-        $search = $_GET['search'];
-    } else {
-        $search = "";
-    }
-    $wildcard = "%$search%";
+        if (isset($_GET['search'])) {
+            $search = $_GET['search'];
+            
+        }else {
+            $search = "";
+        }
+        $wildcard = "%$search%";
+        
 
         /*PAGINAÇÃO*/ 
         $page = $_GET['page'];
@@ -32,10 +34,10 @@
 
 
         if ($search != "") {
-        $query = "SELECT COUNT(*) AS count FROM users INNER JOIN roles ON roles.id = ref_roles_id
-                  WHERE nome LIKE ? OR email LIKE ? OR telemovel LIKE ? OR morada LIKE ? OR codigo_postal LIKE ? OR role LIKE ?";
+        $query = "SELECT COUNT(*) AS count FROM event INNER JOIN users ON users.id = ref_creator_id INNER JOIN event_type ON event_type.id = ref_event_type_id
+                  WHERE name LIKE ? OR date LIKE ? OR slots LIKE ? OR short_description LIKE ? OR users.nome LIKE ? OR event_type.type LIKE ?";
         }else {
-            $query = "SELECT COUNT(*) AS count FROM users"; // Total records
+            $query = "SELECT COUNT(*) AS count FROM event"; // Total records
         }
         
         if (mysqli_stmt_prepare($stmt, $query)) {
@@ -64,26 +66,26 @@
             
             switch ($ordenarPorCol) {
                 case 'nome':
-                    $tabela = "nome";
+                    $tabela = "name";
                     break;
-                case 'email':
-                $tabela = "email";
+                case 'data':
+                $tabela = "date";
                     break;
-                case 'role':
-                $tabela = "role";
+                case 'slots':
+                $tabela = "slots";
                     break;
-                case 'telemovel':
-                $tabela = "telemovel";
+                case 'descricao':
+                $tabela = "short_description";
                     break;
-                case 'morada':
-                $tabela = "morada";
+                case 'criador':
+                    $tabela = "users.nome";
                     break;
-                case 'codigo_postal':
-                $tabela = "codigo_postal";
+                case 'tipo':
+                $tabela = "event_type.type";
                     break;
 
                 default:
-                $tabela = "nome";
+                $tabela = "name";
                     break;
             }
             switch ($ordem) {
@@ -97,24 +99,35 @@
             }
             
             if ($search != "") { // SE HOUVER ALGO NA BARRA DE PESQUISA
-            $query = "SELECT nome, email, telemovel, morada, codigo_postal, role
-                        FROM users
-                        INNER JOIN roles ON roles.id = ref_roles_id 
-                        WHERE nome LIKE ? OR email LIKE ? OR telemovel LIKE ? OR morada LIKE ? OR codigo_postal LIKE ? OR role LIKE ?
+            $query = "SELECT event.id, name, date, slots, short_description, users.email, event_type.type
+                        FROM event
+                        INNER JOIN users ON users.id = ref_creator_id INNER JOIN event_type ON event_type.id = ref_event_type_id
+                         WHERE name LIKE ? OR date LIKE ? OR slots LIKE ? OR short_description LIKE ? OR users.email LIKE ? OR event_type.type LIKE ?
                         ORDER BY " . $tabela . " " . $ordenacao . " 
                         LIMIT ?, ?";
             
             }else {// SE NÃO HOUVER ALGO NA BARRA DE PESQUISA
-            $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id ORDER BY " . $tabela . " " . $ordenacao . " LIMIT ?, ?";
+            $query = "SELECT event.id, name, date, slots, short_description, users.email, event_type.type
+                        FROM event
+                        INNER JOIN users ON users.id = ref_creator_id INNER JOIN event_type ON event_type.id = ref_event_type_id
+                        ORDER BY " . $tabela . " " . $ordenacao . " 
+                        LIMIT ?, ?";
                 
             }
 
         }else { //SE POR ALGUMA RAZÃO NÃO HOUVER NADA NO PARAMETRO DA COLUNA OU DA ORDENAÇÃO
-            $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id LIMIT ?, ?";
+            $query = "SELECT event.id, name, date, slots, short_description, users.email, event_type.type
+                        FROM event
+                        INNER JOIN users ON users.id = ref_creator_id INNER JOIN event_type ON event_type.id = ref_event_type_id
+                        LIMIT ?, ?";
+                
         }
     
     }else { // SE POR ALGUMA RAZÃO NÃO HOUVER NADA NO PARAMETRO DO LIMITE DE ITEMS POR PÁGINA
-        $query = "SELECT nome, email, telemovel, morada, codigo_postal, role FROM users INNER JOIN roles ON roles.id = ref_roles_id";
+        $query = "SELECT event.id, name, date, slots, short_description, users.email, event_type.type
+                        FROM event
+                        INNER JOIN users ON users.id = ref_creator_id INNER JOIN event_type ON event_type.id = ref_event_type_id";
+                       
     }
 
     /* create a prepared statement */
@@ -142,24 +155,27 @@
         /* execute the prepared statement */
         if (mysqli_stmt_execute($stmt)){
             /* bind result variables */
-            mysqli_stmt_bind_result($stmt, $nome, $email, $telemovel, $morada, $cp, $role);
+            
+            mysqli_stmt_bind_result($stmt,$id, $nome, $data, $slots, $desc, $criador_email, $tipo_evento);
 
             /* fetch values */
-            $data = array();
+            $data1 = array();
             while (mysqli_stmt_fetch($stmt)) {
+
                 $row_result = array();
+                $row_result["id"] = htmlspecialchars($id);
                 $row_result["nome"] = htmlspecialchars($nome);
-                $row_result["email"] = htmlspecialchars($email);
-                $row_result["telemovel"] = htmlspecialchars($telemovel);
-                $row_result["morada"] = htmlspecialchars($morada);
-                $row_result["codigo_postal"] = htmlspecialchars($cp);
-                $row_result["role"] = htmlspecialchars($role);
+                $row_result["data"] = htmlspecialchars($data);
+                $row_result["slots"] = htmlspecialchars($slots);
+                $row_result["descricao"] = htmlspecialchars($desc);
+                $row_result["criador"] = htmlspecialchars($criador_email);
+                $row_result["tipo"] = htmlspecialchars($tipo_evento);
                 $row_result["noPaginas"] = htmlspecialchars($no_de_pag);
-                $data[] = $row_result;
+                $data1[]= $row_result;
 
             }
             
-            print json_encode($data);
+            print json_encode($data1);
             
            
         } else {
