@@ -34,7 +34,7 @@ if ($admin == 1) {
         </li>
         <hr class="sidebar-divider my-0">
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../pages/tarefas.php">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Tarefas</span></a>
         </li>

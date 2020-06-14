@@ -15,7 +15,7 @@ require_once "../scripts/sc_check_admin.php";
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TESTE12</title>
+    <title>aplans</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -111,9 +111,9 @@ require_once "../scripts/sc_check_admin.php";
 
 
         <script>
-            function update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar) {
+            function update(id, nome, filtro, descricao) {
 
-                var query = "email_velho=" + email_velho + "&email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal + "&password=" + password + "&password_confirmar=" + password_confirmar;
+                var query = "id" + id + "&nome=" + nome + "&filtro=" + filtro + "&descricao=" + descricao;
 
                 console.log(query);
 
@@ -122,7 +122,7 @@ require_once "../scripts/sc_check_admin.php";
 
 
                 $.ajax({ // ajax call starts
-                        url: '../scripts/sc_update_tabela.php',
+                        url: '../scripts/tarefas/sc_update_tabela.php',
                         data: query,
                         dataType: 'json', // Choosing a JSON datatype
                         type: 'GET',
@@ -150,14 +150,14 @@ require_once "../scripts/sc_check_admin.php";
             }
         </script>
         <script>
-            function apagar(email_velho) {
+            function apagar(id) {
 
-                var query = "email_velho=" + email_velho;
+                var query = "id=" + id;
 
                 console.log(query);
 
                 $.ajax({ // ajax call starts
-                        url: '../scripts/sc_delete_row.php',
+                        url: '../scripts/tarefas/sc_delete_row.php',
                         data: query,
                         // dataType: 'json', // Choosing a JSON datatype
                         type: 'GET',
@@ -172,14 +172,14 @@ require_once "../scripts/sc_check_admin.php";
             }
         </script>
         <script>
-            function adicionar(email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar) {
+            function adicionar(id, nome, filtro, descricao) {
 
-                var query1 = "email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal + "&password=" + password + "&password_confirmar=" + password_confirmar;
+                var query1 = "nome=" + nome + "&filtro=" + filtro + "&descricao=" + descricao;
 
                 console.log(query1);
 
                 $.ajax({ // ajax call starts
-                        url: '../scripts/sc_adicionar_row.php',
+                        url: '../scripts/tarefas/sc_adicionar_row.php',
                         data: query1,
                         dataType: 'json', // Choosing a JSON datatype
                         type: 'GET',
@@ -204,24 +204,24 @@ require_once "../scripts/sc_check_admin.php";
                 if (pag != 1) {
                     pag = pagAtual;
                 }
-
+                
 
 
                 var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search + "&page=" + pag;
 
                 $.when(
                         $.ajax({ // ajax call starts
-                            url: '../ajax/users_table.php',
+                            url: '../ajax/tasks_table.php',
                             data: query,
                             dataType: 'json', // Choosing a JSON datatype
                             type: 'GET',
-
+                            
                         })
 
                     ).then(
 
                         function(data) { //abre o ficehrio JSON
-
+            
 
                             $('#users').html(''); //limpa o conteúdo da tabela
                             $('#colunaTabela').html(''); //limpa o head da tabela
@@ -240,7 +240,7 @@ require_once "../scripts/sc_check_admin.php";
                             //Antes de escrever o conteúdo organizado, vamos escrever o head da tabela com a variável de ordenação atual para que no próximo clique, troque a ordem
                             var span = "<span><img class=\"ordenar\"src='" + iconOrdenacao + "'></span>";
 
-                            var thead = "<tr class=\"bg-primary text-light \"><th id=\"nome\"class=\"coluna\">Nome</th><th id=\"email\"class=\"coluna\">Email</th><th id=\"role\"class=\"coluna\">Cargo</th><th id=\"telemovel\"class=\"coluna\">Telemóvel</th><th id=\"morada\"class=\"coluna\">Morada</th><th id=\"codigo_postal\"class=\"coluna\">Código Postal</th><th id=\"acao\"class=\"coluna\">Ação</th><tr>"
+                            var thead = "<tr class=\"bg-primary text-light \"><th id=\"nome\"class=\"coluna\">Nome</th><th id=\"filtro\"class=\"coluna\">Filtro</th><th id=\"descricao\"class=\"coluna\">Descrição</th><tr>"
 
                             $('#colunaTabela').append(thead);
                             if (coluna != "") {
@@ -250,7 +250,7 @@ require_once "../scripts/sc_check_admin.php";
 
                             for (var i in data) {
 
-                                var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["email"] + "</th><th>" + data[i]["role"] + "</th><th>" + data[i]["telemovel"] + "</th><th>" + data[i]["morada"] + "</th><th>" + data[i]["codigo_postal"] + "</th><th><a href='#' data-toggle='modal' data-target='#myModal' data-id='" + i + "' class='editar'>Editar</a></th></tr>";
+                                var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["filtro"] + "</th><th>" + data[i]["descricao"];
                                 $('#users').append(linha);
 
                                 resultados = data[i]["noPaginas"]
@@ -273,20 +273,20 @@ require_once "../scripts/sc_check_admin.php";
                             $('.editar').on("click", function() {
                                 var editarLinha = $(this).data('id');
 
-                                var modal_editar_body = ' <label class="col-12 pl-0 mb-0 mt-2">Nome</label><input name="nome" type="text" id="update_nome" value="' + data[editarLinha]['nome'] + '"><label class="col-12 pl-0 mb-0 mt-2">Email</label><input name="email" type="text" id="email_user" value="' + data[editarLinha]['email'] + '"><label class="col-12 pl-0 mb-0 mt-2">Cargo</label><select name="role" id="modal_role"></select><label class="col-12 pl-0 mb-0 mt-2">Telemóvel</label><input name="telemovel" type="text" id="update_telemovel" value="' + data[editarLinha]['telemovel'] + '"><label class="col-12 pl-0 mb-0 mt-2">Morada</label><input name="morada" type="text" id="update_morada" value="' + data[editarLinha]['morada'] + '"><label class="col-12 pl-0 mb-0 mt-2">Código Postal</label><input name="codigo_postal" type="text" id="update_codigo_postal" value="' + data[editarLinha]['codigo_postal'] + '"><label class="col-12 pl-0 mb-0 mt-2">Preencher Apenas para mudar password</label><input name="password" type="password" id="update_password" placeholder="Nova palavra-passe"><input name="password_confirmar" type="password" id="update_password_confirmar" placeholder="Confirmar palavra-passe"><input name="emailEditar" type="hidden" id="email_editar" value="' + data[editarLinha]['email'] + '">';
+                                var modal_editar_body = '<label class="col-12 pl-0 mb-0 mt-2">Nome</label><input name="nome" type="text" id="update_nome" value="' + data[editarLinha]['nome'] + '"><label class="col-12 pl-0 mb-0 mt-2">Filtro</label><select name="filtro" id="modal_filtro"></select><label class="col-12 pl-0 mb-0 mt-2">Descrição</label><input name="descricao" type="text" id="update_descricao" value="' + data[editarLinha]['descricao'] + '">';
 
 
                                 $("#modal_editar").html(modal_editar_body);
-                                $("#modal_role").html('');
+                                $("#modal_filtro").html('');
 
                                 //se o role do utilizador clicado for admin ou user, muda a option que está selecionada
-                                if (data[editarLinha]['role'] == "Admin") {
-                                    var add_role = '<option value="2" id="opcao_admin" selected="selected">Admin</option><option value="1" id="opcao_user">User</option>'
+                                if (data[editarLinha]['filtro'] == "Admin") {
+                                    var add_role = '<option value="2" id="opcao_admin" selected="selected">Predefenido</option><option value="1" id="opcao_user">Criado</option>' 
 
-                                    $("#modal_role").append(add_role);
+                                    $("#modal_filtro").append(add_role);
                                 } else {
-                                    var add_role = '<option value="2" id="opcao_admin">Admin</option><option value="1" id="opcao_user" selected="selected">User</option>'
-                                    $("#modal_role").append(add_role);
+                                    var add_role = '<option value="2" id="opcao_admin">Predefenido</option><option value="1" id="opcao_user" selected="selected">Criado</option>'
+                                    $("#modal_filtro").append(add_role);
                                 }
 
 
@@ -308,7 +308,7 @@ require_once "../scripts/sc_check_admin.php";
 
                         })
                     .fail(function() { // Se existir um erro no pedido
-                        $('#users').html('Data ERROU'); // Escreve mensagem de erro na listagem de vinhos
+                        $('#users').html('Data ERROU'); // Escreve mensagem de erro
                     });
 
                 return false; // keeps the page from not refreshing
@@ -358,17 +358,12 @@ require_once "../scripts/sc_check_admin.php";
                 });
 
                 $('#guardar').on("click", function() {
-                    email_velho = $('#email_editar').val();
-                    email_novo = $('#email_user').val();
+                    id = $('#id').val();
                     nome = $('#update_nome').val();
-                    role = $('#modal_role option').filter(":selected").val();
-                    telemovel = $('#update_telemovel').val();
-                    morada = $('#update_morada').val();
-                    codigo_postal = $('#update_codigo_postal').val();
-                    password = $('#update_password').val();
-                    password_confirmar = $('#update_password_confirmar').val();
+                    filtro = $('#modal_filtro option').filter(":selected").val();
+                    descricao = $('#update_descricao').val();
 
-                    update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar);
+                    update(id, nome, filtro, descricao);
 
 
 
@@ -379,9 +374,9 @@ require_once "../scripts/sc_check_admin.php";
                 });
 
                 $('#apagar').on("click", function() {
-                    email_velho = $('#email_editar').val();
+                    id = $('#id').val();
 
-                    apagar(email_velho);
+                    apagar(id);
 
                     search = $('#search').val();
                     ordem = $('#ordem').val();
@@ -392,16 +387,11 @@ require_once "../scripts/sc_check_admin.php";
                 });
 
                 $('#submeter_row').on("click", function() {
-                    email_novo = $('#add_email_user').val();
                     nome = $('#add_nome').val();
-                    role = $('#add_role option').filter(":selected").val();
-                    telemovel = $('#add_telemovel').val();
-                    morada = $('#add_morada').val();
-                    codigo_postal = $('#add_codigo_postal').val();
-                    password = $('#add_password').val();
-                    password_confirmar = $('#add_password_confirmar').val();
+                    filtro = $('#add_filtro option').filter(":selected").val();
+                    descricao = $('#add_descricao').val();
 
-                    adicionar(email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar);
+                    adicionar(nome, filtro, descricao);
 
                     search = $('#search').val();
                     ordem = $('#ordem').val();
@@ -492,11 +482,8 @@ require_once "../scripts/sc_check_admin.php";
                                 <label>Ordenar por:</label>
                                 <select class="" id="ordenarPor" name="items">
                                     <option class="dropdown-item " selected="selected" value="nome">Nome</option>
-                                    <option class="dropdown-item" value="email">Email</option>
-                                    <option class="dropdown-item" value="role">Cargo</option>
-                                    <option class="dropdown-item" value="telemovel">Telemóvel</option>
-                                    <option class="dropdown-item" value="morada">Morada</option>
-                                    <option class="dropdown-item" value="codigo_postal">Codigo Postal</option>
+                                    <option class="dropdown-item" value="filtro">Filtro</option>
+                                    <option class="dropdown-item" value="descricao">Descricao</option>
                                 </select>
                             </form>
                             <form action="" method="GET" class="col-3">
@@ -515,7 +502,7 @@ require_once "../scripts/sc_check_admin.php";
                             <div class="panel panel-default">
                                 <div class="row">
                                     <div class="panel-heading col-6">
-                                        Utilizadores registados
+                                        Tarefas
                                     </div>
                                     <div style="text-align: end;" class=" col-6">
                                         <button class="btn btn-default pull-right add-row" href='#' data-toggle='modal' data-target='#addRows' id="adicionar"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Row</button>
@@ -531,24 +518,13 @@ require_once "../scripts/sc_check_admin.php";
                                                     <th id="nome" class="coluna">
                                                         Nome
                                                     </th>
-                                                    <th id="email" class="coluna">
-                                                        Email
+                                                    <th id="filtro" class="coluna">
+                                                        Filtro
                                                     </th>
-                                                    <th id="role" class="coluna">
-                                                        Cargo
+                                                    <th id="descricao" class="coluna">
+                                                        Descrição
                                                     </th>
-                                                    <th id="telemovel" class="coluna">
-                                                        Telemóvel
-                                                    </th>
-                                                    <th id="morada" class="coluna">
-                                                        Morada
-                                                    </th>
-                                                    <th id="codigo_postal" class="coluna">
-                                                        Código Postal
-                                                    </th>
-                                                    <th id="acao" class="coluna">
-                                                        Ação
-                                                    </th>
+                                                    
 
 
                                                 </tr>
@@ -635,22 +611,13 @@ require_once "../scripts/sc_check_admin.php";
                                 <!-- <form action="#" method="" class=""> -->
                                 <label class="col-12 pl-0 mb-0 mt-2">Nome</label>
                                 <input name="nome" type="text" id="add_nome" value="">
-                                <label class="col-12 pl-0 mb-0 mt-2">Email</label>
-                                <input name="email" type="text" id="add_email_user" value="">
-                                <label class="col-12 pl-0 mb-0 mt-2">Cargo</label>
-                                <select name="role" id="add_role">
-                                    <option value="2" id="add_opcao_admin">Admin</option>
-                                    <option value="1" id="add_opcao_user" selected="selected">User</option>
+                                <label class="col-12 pl-0 mb-0 mt-2">Filtro</label>
+                                <select name="filtro" id="add_filtro">
+                                    <option value="2" id="add_opcao_admin">Predefenido</option>
+                                    <option value="1" id="add_opcao_user" selected="selected">Criado</option>
                                 </select>
-                                <label class="col-12 pl-0 mb-0 mt-2">Telemóvel</label>
-                                <input name="telemovel" type="text" id="add_telemovel">
-                                <label class="col-12 pl-0 mb-0 mt-2">Morada</label>
-                                <input name="morada" type="text" id="add_morada">
-                                <label class="col-12 pl-0 mb-0 mt-2">Código Postal</label>
-                                <input name="codigo_postal" type="text" id="add_codigo_postal">
-                                <label class="col-12 pl-0 mb-0 mt-2">Password</label>
-                                <input name="password" type="password" id="add_password" placeholder="Nova palavra-passe">
-                                <input name="password_confirmar" type="password" id="add_password_confirmar" placeholder="Confirmar palavra-passe">
+                                <label class="col-12 pl-0 mb-0 mt-2">Descricao</label>
+                                <input name="descricao" type="text" id="add_descricao_user" value="">
 
 
 
