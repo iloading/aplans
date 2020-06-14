@@ -1,6 +1,8 @@
 <?php session_start();
 require_once "connections/connection.php";
-?>
+
+if (isset($_SESSION['email_aplans'])) {
+    ?>
 
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -19,14 +21,12 @@ require_once "connections/connection.php";
 	<div class="wrapper" id="wrapper">
 		
 		<?php
-			include_once "admin/components/c_navbars_side_index.php";
-		?>
-		<?php 
-			if ($admin != 1) {
-				echo '<img src="images/PEPE.gif">
-				<h1>WhY YoU Nu AdMiN!!!??!!?!</h1>';	
-			}
-		?>
+            include_once "admin/components/c_navbars_side_index.php"; ?>
+		<?php
+            if ($admin != 1) {
+                echo '<img src="images/PEPE.gif">
+				<h1>WhY YoU Nu AdMiN!!!??!!?!</h1>';
+            } ?>
 		
 	<!-- //Main wrapper -->
 
@@ -49,3 +49,7 @@ require_once "connections/connection.php";
 </body>
 
 </html>
+<?php
+}else {
+	header("Location: login.php");
+}

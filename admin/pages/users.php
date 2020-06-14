@@ -42,6 +42,8 @@ require_once "../scripts/sc_check_admin.php";
                 console.log(data1[0]['msg'])
 
 
+
+
                 if (data1[0]['msgBool'] == true) {
 
                     switch (data1[0]['msg']) {
@@ -61,6 +63,22 @@ require_once "../scripts/sc_check_admin.php";
                             $message = "Credenciais inválidas! Tente novamente";
                             $class = "alert-danger";
                             break;
+                        case 4:
+                            $message = "Insira uma password";
+                            $class = "alert-danger";
+                            break;
+                        case 5:
+                            $message = "O email que inseriu, já existe.";
+                            $class = "alert-danger";
+                            break;
+                        case 6:
+                            $message = "As palavras passe não correspondem.";
+                            $class = "alert-danger";
+                            break;
+                        case 7:
+                            $message = "Utilizador Inserido com Sucesso, parabéns és um atrasado";
+                            $class = "alert-success";
+                            break;
                         default:
                             data1[0]['msgBool'] = false;
                     }
@@ -74,6 +92,10 @@ require_once "../scripts/sc_check_admin.php";
 
 
                         data1[0]['msgBool'] = false;
+
+                        setTimeout(function() {
+                            $('#alertMsg').html('');;
+                        }, 3000);
 
                     };
                 }
@@ -95,8 +117,8 @@ require_once "../scripts/sc_check_admin.php";
                         dataType: 'json', // Choosing a JSON datatype
                         type: 'GET',
                     })
-                    .done(function(data1) {
-                        mostrarMsg(data1);
+                    .done(function(data) {
+                        mostrarMsg(data);
 
                     })
 
@@ -127,21 +149,25 @@ require_once "../scripts/sc_check_admin.php";
         <script>
             function adicionar(email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar) {
 
-                var query = "email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal + "&password=" + password + "&password_confirmar=" + password_confirmar;
+                var query1 = "email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal + "&password=" + password + "&password_confirmar=" + password_confirmar;
 
-                console.log(query);
+                console.log(query1);
 
                 $.ajax({ // ajax call starts
                         url: '../scripts/sc_adicionar_row.php',
-                        data: query,
-                        // dataType: 'json', // Choosing a JSON datatype
+                        data: query1,
+                        dataType: 'json', // Choosing a JSON datatype
                         type: 'GET',
                     })
-                    .done(function() {
-                        //Mostrar mensagem
+                    .done(function(data) {
+                        mostrarMsg(data);
+
+
+
+
                     })
                     .fail(function() { // Se existir um erro no pedido
-                        $('#users').html('Data ERROU'); // Escreve mensagem de erro
+                        $('#users').html('Data ERReiiiiiiiiiii'); // Escreve mensagem de erro
                     });
             }
         </script>
@@ -149,13 +175,16 @@ require_once "../scripts/sc_check_admin.php";
             var pagAntiga = 1
 
             function tabela(items, coluna, ordenacao, search, pag) {
-                //SOLUÇÃO ENCONTRADA PARA QUE, QUANDO SE EDITA UM UTILIZADOR, A PÁG NÃO MUDA
-                if (pag != pagAntiga && pag == "manter") {
-                    pag = pagAntiga
-                } else {
-                    pagAntiga = pag;
+                switch (pag) {
+                    case "manter":
+                        pag = pagAntiga
+                        // console.log("MANTER" + pag);
+                        break;
+                    default:
+                        pagAntiga = pag
+                        // console.log(pag);
+                        break;
                 }
-                console.log(pag, pagAntiga);
                 var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search + "&page=" + pag;
 
 
@@ -315,7 +344,8 @@ require_once "../scripts/sc_check_admin.php";
                     items = $('#items').val();
                     categoria = $('#ordenarPor').val();
                     tabela(items, categoria, ordem, search, "manter");
-                    tabela(items, categoria, ordem, search, "manter"); //BUG FIX , TABELA A NÃO ATUALIZAR COM APENAS 1x WTF
+
+
 
                 });
 
@@ -329,6 +359,11 @@ require_once "../scripts/sc_check_admin.php";
                     items = $('#items').val();
                     categoria = $('#ordenarPor').val();
                     tabela(items, categoria, ordem, search, "manter");
+                    
+                    
+                    
+                    
+
 
                 });
 
@@ -344,7 +379,12 @@ require_once "../scripts/sc_check_admin.php";
 
                     adicionar(email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar);
 
-
+                    search = $('#search').val();
+                    ordem = $('#ordem').val();
+                    items = $('#items').val();
+                    categoria = $('#ordenarPor').val();
+                    tabela(items, categoria, ordem, search, "manter");
+                    
 
                 });
 
