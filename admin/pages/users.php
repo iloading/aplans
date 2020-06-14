@@ -172,19 +172,16 @@ require_once "../scripts/sc_check_admin.php";
             }
         </script>
         <script>
-            var pagAntiga = 1
+            var pagAtual = 1
 
             function tabela(items, coluna, ordenacao, search, pag) {
-                switch (pag) {
-                    case "manter":
-                        pag = pagAntiga
-                        // console.log("MANTER" + pag);
-                        break;
-                    default:
-                        pagAntiga = pag
-                        // console.log(pag);
-                        break;
+                
+                if (pag != 1) {
+                    pag = pagAtual;
                 }
+
+
+
                 var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search + "&page=" + pag;
 
 
@@ -267,6 +264,8 @@ require_once "../scripts/sc_check_admin.php";
                         //Quando se clica numa outra página no menu de navegação
                         $('#paginas a').on('click', function() { //tem que estar dentro da função tabela porque o menu de paginação é escrito dinamicamente depois da pág carregar
                             page = $(this).text()
+                            pagAtual = $(this).text();
+                            
 
                             search = $('#search').val();
                             ordem = $('#ordem').val();
@@ -359,10 +358,10 @@ require_once "../scripts/sc_check_admin.php";
                     items = $('#items').val();
                     categoria = $('#ordenarPor').val();
                     tabela(items, categoria, ordem, search, "manter");
-                    
-                    
-                    
-                    
+
+
+
+
 
 
                 });
@@ -384,7 +383,7 @@ require_once "../scripts/sc_check_admin.php";
                     items = $('#items').val();
                     categoria = $('#ordenarPor').val();
                     tabela(items, categoria, ordem, search, "manter");
-                    
+
 
                 });
 
