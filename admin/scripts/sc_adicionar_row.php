@@ -168,4 +168,6 @@ if( $admin == 1){
 
         print json_encode($data);
     }
+}else{
+    header("location: ../../index.php");
 }

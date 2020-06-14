@@ -24,6 +24,9 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"])
 
         if ($pass == $pass_confirmar) {
             $password_hash = password_hash($pass, PASSWORD_DEFAULT);
+        }else{
+            $sucesso = 0;
+            $msg = 4;
         };
     }else {
         $sucesso = 0;

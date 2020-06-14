@@ -35,4 +35,6 @@ if ($admin == 1) {
 
         //header("Location: ../my_acc.php?msg=3");
     }
+} else {
+    header("location: ../../../index.php");
 }
