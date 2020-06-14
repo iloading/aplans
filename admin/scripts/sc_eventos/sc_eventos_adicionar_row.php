@@ -129,6 +129,7 @@ if ($sucesso == 1) {
     $data[0] = $row_result;
 
     print json_encode($data);
+    
 }
 
 
