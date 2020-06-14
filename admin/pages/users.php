@@ -97,9 +97,9 @@ require_once "../scripts/sc_check_admin.php";
                     })
                     .done(function(data1) {
                         mostrarMsg(data1);
-                        
+
                     })
-                    
+
             }
         </script>
         <script>
@@ -117,7 +117,7 @@ require_once "../scripts/sc_check_admin.php";
                     })
                     .done(function() {
                         //Mostrar mensagem
-                        
+
                     })
                     .fail(function() { // Se existir um erro no pedido
                         $('#users').html('Data ERROU'); // Escreve mensagem de erro
@@ -155,7 +155,7 @@ require_once "../scripts/sc_check_admin.php";
                 } else {
                     pagAntiga = pag;
                 }
-                console.log (pag, pagAntiga);
+                console.log(pag, pagAntiga);
                 var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search + "&page=" + pag;
 
 
@@ -315,6 +315,7 @@ require_once "../scripts/sc_check_admin.php";
                     items = $('#items').val();
                     categoria = $('#ordenarPor').val();
                     tabela(items, categoria, ordem, search, "manter");
+                    tabela(items, categoria, ordem, search, "manter"); //BUG FIX , TABELA A NÃO ATUALIZAR COM APENAS 1x WTF
 
                 });
 
@@ -343,7 +344,7 @@ require_once "../scripts/sc_check_admin.php";
 
                     adicionar(email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar);
 
-            
+
 
                 });
 
@@ -599,7 +600,7 @@ require_once "../scripts/sc_check_admin.php";
                                 <label class="col-12 pl-0 mb-0 mt-2">Password</label>
                                 <input name="password" type="password" id="add_password" placeholder="Nova palavra-passe">
                                 <input name="password_confirmar" type="password" id="add_password_confirmar" placeholder="Confirmar palavra-passe">
-                               
+
 
 
                                 <div class="modal-footer">
