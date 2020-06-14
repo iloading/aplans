@@ -78,7 +78,6 @@ require_once "../scripts/sc_check_admin.php";
                     };
                 }
 
-
             }
         </script>
 
@@ -97,12 +96,10 @@ require_once "../scripts/sc_check_admin.php";
                         type: 'GET',
                     })
                     .done(function(data1) {
-                        search = $('#search').val();
-                        ordem = $('#ordem').val();
-                        items = $('#items').val();
-                        categoria = $('#ordenarPor').val();
                         mostrarMsg(data1);
+                        
                     })
+                    
             }
         </script>
         <script>
@@ -119,11 +116,8 @@ require_once "../scripts/sc_check_admin.php";
                         type: 'GET',
                     })
                     .done(function() {
-                        search = $('#search').val();
-                        ordem = $('#ordem').val();
-                        items = $('#items').val();
-                        categoria = $('#ordenarPor').val();
-                        tabela(items, categoria, ordem, search, "manter")
+                        //Mostrar mensagem
+                        
                     })
                     .fail(function() { // Se existir um erro no pedido
                         $('#users').html('Data ERROU'); // Escreve mensagem de erro
@@ -131,9 +125,9 @@ require_once "../scripts/sc_check_admin.php";
             }
         </script>
         <script>
-            function adicionar(email_novo, nome, role, telemovel, morada, codigo_postal) {
+            function adicionar(email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar) {
 
-                var query = "email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal;
+                var query = "email_novo=" + email_novo + "&nome=" + nome + "&role=" + role + "&telemovel=" + telemovel + "&morada=" + morada + "&codigo_postal=" + codigo_postal + "&password=" + password + "&password_confirmar=" + password_confirmar;
 
                 console.log(query);
 
@@ -144,11 +138,7 @@ require_once "../scripts/sc_check_admin.php";
                         type: 'GET',
                     })
                     .done(function() {
-                        search = $('#search').val();
-                        ordem = $('#ordem').val();
-                        items = $('#items').val();
-                        categoria = $('#ordenarPor').val();
-                        
+                        //Mostrar mensagem
                     })
                     .fail(function() { // Se existir um erro no pedido
                         $('#users').html('Data ERROU'); // Escreve mensagem de erro
@@ -156,16 +146,16 @@ require_once "../scripts/sc_check_admin.php";
             }
         </script>
         <script>
-            var pagAntiga
+            var pagAntiga = 1
 
             function tabela(items, coluna, ordenacao, search, pag) {
                 //SOLUÇÃO ENCONTRADA PARA QUE, QUANDO SE EDITA UM UTILIZADOR, A PÁG NÃO MUDA
-                if (pag == "manter") {
+                if (pag != pagAntiga && pag == "manter") {
                     pag = pagAntiga
                 } else {
                     pagAntiga = pag;
                 }
-
+                console.log (pag, pagAntiga);
                 var query = "items=" + items + "&col=" + coluna + "&ord=" + ordenacao + "&search=" + search + "&page=" + pag;
 
 
@@ -226,21 +216,21 @@ require_once "../scripts/sc_check_admin.php";
 
                         $('.editar').on("click", function() {
                             var editarLinha = $(this).data('id');
-                            $(".modal-body #update_nome").val(data[editarLinha]['nome']);
-                            $(".modal-body #email_user").val(data[editarLinha]['email']);
+                            $("#modal_editar #update_nome").val(data[editarLinha]['nome']);
+                            $("#modal_editar #email_user").val(data[editarLinha]['email']);
                             if (data[editarLinha]['role'] == "User") {
-                                $(".modal-body #opcao_user").attr("selected", "selected");
-                                $(".modal-body #opcao_admin").removeAttr("selected");
+                                $("#modal_editar #opcao_user").attr("selected", "selected");
+                                $("#modal_editar #opcao_admin").removeAttr("selected");
                             } else {
-                                $(".modal-body #opcao_admin").attr("selected", "selected");
-                                $(".modal-body #opcao_user").removeAttr("selected");
+                                $("#modal_editar #opcao_admin").attr("selected", "selected");
+                                $("#modal_editar #opcao_user").removeAttr("selected");
                             };
-                            $(".modal-body #update_telemovel").val(data[editarLinha]['telemovel']);
-                            $(".modal-body #update_morada").val(data[editarLinha]['morada']);
-                            $(".modal-body #update_codigo_postal").val(data[editarLinha]['codigo_postal']);
+                            $("#modal_editar #update_telemovel").val(data[editarLinha]['telemovel']);
+                            $("#modal_editar #update_morada").val(data[editarLinha]['morada']);
+                            $("#modal_editar #update_codigo_postal").val(data[editarLinha]['codigo_postal']);
 
 
-                            $(".modal-body #email_editar").val(data[editarLinha]['email']);
+                            $("#modal_editar #email_editar").val(data[editarLinha]['email']);
 
                         });
 
@@ -319,7 +309,12 @@ require_once "../scripts/sc_check_admin.php";
                     password_confirmar = $('#update_password_confirmar').val();
 
                     update(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar);
-                    tabela(items, categoria, ordem, search, "manter")
+
+                    search = $('#search').val();
+                    ordem = $('#ordem').val();
+                    items = $('#items').val();
+                    categoria = $('#ordenarPor').val();
+                    tabela(items, categoria, ordem, search, "manter");
 
                 });
 
@@ -328,19 +323,27 @@ require_once "../scripts/sc_check_admin.php";
 
                     apagar(email_velho);
 
+                    search = $('#search').val();
+                    ordem = $('#ordem').val();
+                    items = $('#items').val();
+                    categoria = $('#ordenarPor').val();
+                    tabela(items, categoria, ordem, search, "manter");
 
                 });
 
-                $('#adicionar').on("click", function() {
-                    email_novo = $('#email_user').val();
-                    nome = $('#update_nome').val();
-                    role = $('#role option').filter(":selected").val();
-                    telemovel = $('#update_telemovel').val();
-                    morada = $('#update_morada').val();
-                    codigo_postal = $('#update_codigo_postal').val();
+                $('#submeter_row').on("click", function() {
+                    email_novo = $('#add_email_user').val();
+                    nome = $('#add_nome').val();
+                    role = $('#add_role option').filter(":selected").val();
+                    telemovel = $('#add_telemovel').val();
+                    morada = $('#add_morada').val();
+                    codigo_postal = $('#add_codigo_postal').val();
+                    password = $('#add_password').val();
+                    password_confirmar = $('#add_password_confirmar').val();
 
-                    adicionar(email_velho, email_novo, nome, role, telemovel, morada, codigo_postal);
-                    tabela(items, categoria, ordem, search, "manter")
+                    adicionar(email_novo, nome, role, telemovel, morada, codigo_postal, password, password_confirmar);
+
+            
 
                 });
 
@@ -446,7 +449,7 @@ require_once "../scripts/sc_check_admin.php";
                                         Utilizadores registados
                                     </div>
                                     <div style="text-align: end;" class=" col-6">
-                                        <button class="btn btn-default pull-right add-row editar" href='#' data-toggle='modal' data-target='#myModal' id="adicionar"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Row</button>
+                                        <button class="btn btn-default pull-right add-row" href='#' data-toggle='modal' data-target='#addRows' id="adicionar"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Row</button>
                                     </div>
                                 </div>
                                 <!-- /.panel-heading -->
@@ -529,7 +532,7 @@ require_once "../scripts/sc_check_admin.php";
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" id="modal_editar">
                                 <!-- <form action="#" method="" class=""> -->
                                 <label class="col-12 pl-0 mb-0 mt-2">Nome</label>
                                 <input name="nome" type="text" id="update_nome">
@@ -555,6 +558,52 @@ require_once "../scripts/sc_check_admin.php";
                                 <div class="modal-footer">
                                     <button class="btn btn-default" id="apagar" data-dismiss="modal">Delete Row</button>
                                     <button class="btn btn-default" id="guardar" data-dismiss="modal">Save</button>
+                                </div>
+                                <!-- </form> -->
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="container">
+                <!-- Modal -->
+                <div class="modal fade" id="addRows" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                            </div>
+                            <div class="modal-body">
+                                <!-- <form action="#" method="" class=""> -->
+                                <label class="col-12 pl-0 mb-0 mt-2">Nome</label>
+                                <input name="nome" type="text" id="add_nome">
+                                <label class="col-12 pl-0 mb-0 mt-2">Email</label>
+                                <input name="email" type="text" id="add_email_user">
+                                <label class="col-12 pl-0 mb-0 mt-2">Cargo</label>
+                                <select name="role" id="add_role">
+                                    <option value="2" id="add_opcao_admin">Admin</option>
+                                    <option value="1" id="add_opcao_user">User</option>
+                                </select>
+                                <label class="col-12 pl-0 mb-0 mt-2">Telemóvel</label>
+                                <input name="telemovel" type="text" id="add_telemovel">
+                                <label class="col-12 pl-0 mb-0 mt-2">Morada</label>
+                                <input name="morada" type="text" id="add_morada">
+                                <label class="col-12 pl-0 mb-0 mt-2">Código Postal</label>
+                                <input name="codigo_postal" type="text" id="add_codigo_postal">
+                                <label class="col-12 pl-0 mb-0 mt-2">Password</label>
+                                <input name="password" type="password" id="add_password" placeholder="Nova palavra-passe">
+                                <input name="password_confirmar" type="password" id="add_password_confirmar" placeholder="Confirmar palavra-passe">
+                               
+
+
+                                <div class="modal-footer">
+                                    <button class="btn btn-default" id="submeter_row" data-dismiss="modal">Save</button>
                                 </div>
                                 <!-- </form> -->
                             </div>

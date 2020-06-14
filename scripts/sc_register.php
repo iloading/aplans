@@ -7,11 +7,11 @@ $sucesso = 1;
 
 if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nome"]) && isset($_POST["password_confirmar"])) {
 
-    if (trim($_POST["email"]) != "" && trim($_POST["password"]) != "" && trim($_POST["password_confirmar"]) != "" && trim($_POST["nome"]) != "") {
+    if (trim($_POST["email"]) != "") {
         $email = trim($_POST['email']);
         $nome = $_POST['nome'];
         $pass = $_POST["password"];
-        $pass_confirmar = validate($_POST["password_confirmar"]);
+        $pass_confirmar = $_POST["password_confirmar"];
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE) {
             $sucesso = 0;
