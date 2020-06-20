@@ -2,6 +2,42 @@
     background-color: #F1F3F6 !important;
 }
 
+
+.bg-azul-aplans {
+    background-color: #3C5E77 !important;
+}
+
+.text-azul-aplans {
+    color: #3C5E77 !important;
+}
+
+
+.topRedondo{
+    position: fixed;
+    top: 7.5%;
+    width: 100vw;
+    height: 100vh ;
+    border-radius: 4rem 4rem;
+   
+}
+
+.botoesMain{
+    font-size: 2rem;
+    color: #6D3FE6;
+    text-decoration-style: none;
+}
+
+.avatar-circular{
+  max-height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  float: right;
+  max-width:calc(75px + 5vw);
+  height: calc(75px + 5vw);
+}
+
+
+
 .alturaMainLogin {
     height: 100vh;
 }
