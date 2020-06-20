@@ -46,6 +46,10 @@
                                     $message = "Credenciais inválidas! Tente novamente";
                                     $class = "alert-danger";
                                     break;
+                                case 4:
+                                    $message = "As passwords não são iguais ";
+                                    $class = "alert-danger";
+                                    break;
                                 default:
                                     $_SESSION['msg'] =  false;
                             }

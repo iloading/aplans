@@ -170,7 +170,7 @@
                 $row_result["descricao"] = htmlspecialchars($desc);
                 $row_result["criador"] = htmlspecialchars($criador_email);
                 $row_result["tipo"] = htmlspecialchars($tipo_evento);
-                $row_result["noPaginas"] = htmlspecialchars($no_de_pag);
+                //$row_result["noPaginas"] = htmlspecialchars($no_de_pag);
                 $data1[]= $row_result;
 
             }
