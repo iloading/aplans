@@ -1,5 +1,4 @@
-<!-- Custom css -->
-<link rel="stylesheet" href="teste.css">
+
 <!-- Favicons -->
 <link rel="shortcut icon" href="images/favicon.ico">
 <link rel="apple-touch-icon" href="images/icon.png">
@@ -19,7 +18,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 
-
+<!-- Custom css -->
+<link rel="stylesheet" href="teste.css">
 <!-- Modernizer js -->
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>
 

@@ -2,6 +2,19 @@
     background-color: #F1F3F6 !important;
 }
 
+.bg-azul-aplans {
+    background-color: #3C5E77 !important;
+}
+
+.topRedondo{
+    position: fixed;
+    top: 7.5%;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 4rem 4rem;
+    
+}
+
 .alturaMainLogin {
     height: 100vh;
 }
