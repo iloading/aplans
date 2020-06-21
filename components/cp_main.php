@@ -41,7 +41,7 @@
 
 
 
-     <div class="w-100">
+     <div class="w-100 h-100">
          <button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
          <button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
          <button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
@@ -49,22 +49,22 @@
 
          <div id="Home" class="tabcontent">
              <h3>Home</h3>
-             <p>Home is where the heart is..</p>
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
          </div>
 
          <div id="News" class="tabcontent">
              <h3>News</h3>
-             <p>Some news this fine day!</p>
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
          </div>
 
          <div id="Contact" class="tabcontent">
              <h3>Contact</h3>
-             <p>Get in touch, or swing by for a cup of coffee.</p>
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
          </div>
 
          <div id="About" class="tabcontent">
              <h3>About</h3>
-             <p>Who we are and what we do.</p>
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
          </div>
      </div>
 
