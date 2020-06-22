@@ -6,18 +6,42 @@
     background-color: #3C5E77 !important;
 }
 
+.text-azul-aplans {
+    color: #3C5E77 !important;
+}
+
+
 .topRedondo{
     position: fixed;
     top: 7.5%;
     width: 100vw;
-    height: 100vh;
+    height: 100vh ;
     border-radius: 4rem 4rem;
-    
+   
 }
+
+.botoesMain{
+    font-size: 2rem;
+    color: #6D3FE6;
+    text-decoration-style: none;
+}
+
+.avatar-circular{
+  max-height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  float: right;
+  max-width:calc(75px + 5vw);
+  height: calc(75px + 5vw);
+}
+
+
 
 .alturaMainLogin {
     height: 100vh;
 }
+
+
 
 .mainCentro {
     margin-left: auto !important;
@@ -194,11 +218,75 @@
     width: 90%;
     background-color: #D4D4D8;
     border-radius: 6rem;
-  }
-  
+}
+    
+    
 #myBar4 {
     width: 50%;
     height: 20px;
     background-color: #7041EE;
     border-radius: 6rem;
+}
+
+
+
+
+
+.tablink {
+  color: #6D3FE6;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 2rem;
+  font-size: 2rem;
+  width: 25%;
+  background-color:  #F1F3F6;
+ border-top: 2px lightgray solid;
+ border-bottom: 2px lightgray solid;
+ 
+}
+.tablink:focus{
+    outline: 0px;
+    
+}
+.tablink:hover{
+    font-weight: bold;
+}
+.tablink:active{
+    font-weight: bolder;
+}
+
+/*.tablink:hover {
+  background-color: #777;
+}*/
+
+
+.tabcontent {
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+  margin-top: 3%;
+}
+
+.descricaoFont{
+    font-size: 3rem;
+}
+
+#myProgress1 {
+    width: 90%;
+    background-color: #D4D4D8;
+    border-radius: 6rem;
+  }
+
+#myBar1 {
+    width: 80%;
+    height: 20px;
+    background-color: #7041EE;
+    border-radius: 6rem;
+}
+
+
+.marginT{
+    margin-top: 15%;
 }
