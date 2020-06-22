@@ -22,7 +22,7 @@
 
      </article>
 
-     <article class="w-100">
+     <!--<article class="w-100">
 
 
          <section class="m-4 mb-4 ml-0 pl-sm-0">
@@ -36,19 +36,19 @@
              </div>
 
          </section>
-     </article>
+     </article>-->
 
 
 
 
      <div class="w-100 h-100">
-         <button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
-         <button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
-         <button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
-         <button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+         <button class="tablink" onclick="openPage('Home', this)">Home</button>
+         <button class="tablink" onclick="openPage('News', this)" id="defaultOpen">News</button>
+         <button class="tablink" onclick="openPage('Contact', this)">Contact</button>
+         <button class="tablink" onclick="openPage('About', this)">About</button>
 
          <div id="Home" class="tabcontent">
-             <h3>Home</h3>
+             <h2>Descrição</h2>
              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
          </div>
 
