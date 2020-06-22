@@ -219,3 +219,24 @@
   margin-top: 3%;
 }
 
+.descricaoFont{
+    font-size: 3rem;
+}
+
+#myProgress1 {
+    width: 90%;
+    background-color: #D4D4D8;
+    border-radius: 6rem;
+  }
+
+#myBar1 {
+    width: 80%;
+    height: 20px;
+    background-color: #7041EE;
+    border-radius: 6rem;
+}
+
+
+.marginT{
+    margin-top: 15%;
+}

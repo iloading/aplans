@@ -48,8 +48,26 @@
          <button class="tablink" onclick="openPage('About')">About</button>
 
          <div id="Home" class="tabcontent">
-             <h3>Descrição</h3>
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
+             <h1 class="display-3 font-weight-bold mt-4 ml-4">Descrição</h1>
+             <p class="descricaoFont pt-4 pl-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
+
+             <div class="pl-4 pt-4">
+                 <p class="descricaoFont font-weight-bold">Slots</p>
+
+                 <div id="myProgress1">
+                     <div id="myBar1"></div>
+                 </div>
+                 <h3 class="pt-3">8/10</h3>
+             </div>
+
+             <div class="pl-4 pt-4 marginT">
+                 <p class="descricaoFont font-weight-bold">Tarefas Restantes</p>
+             </div>
+
+
+
+
+
          </div>
 
          <div id="News" class="tabcontent">
@@ -66,7 +84,8 @@
              <h3>About</h3>
              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
          </div>
-     </div>
+
+         </>
 
 
 
