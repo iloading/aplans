@@ -150,3 +150,55 @@
     box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0.25);
     border: 0 !important;
 }
+
+#myProgress1 {
+    width: 90%;
+    background-color: #D4D4D8;
+    border-radius: 6rem;
+  }
+  
+#myBar1 {
+    width: 80%;
+    height: 20px;
+    background-color: #7041EE;
+    border-radius: 6rem;
+}
+
+#myProgress2 {
+    width: 90%;
+    background-color: #D4D4D8;
+    border-radius: 6rem;
+  }
+  
+#myBar2 {
+    width: 30%;
+    height: 20px;
+    background-color: #7041EE;
+    border-radius: 6rem;
+}
+
+#myProgress3 {
+    width: 90%;
+    background-color: #D4D4D8;
+    border-radius: 6rem;
+  }
+  
+#myBar3 {
+    width: 60%;
+    height: 20px;
+    background-color: #7041EE;
+    border-radius: 6rem;
+}
+
+#myProgress4 {
+    width: 90%;
+    background-color: #D4D4D8;
+    border-radius: 6rem;
+  }
+  
+#myBar4 {
+    width: 50%;
+    height: 20px;
+    background-color: #7041EE;
+    border-radius: 6rem;
+}
