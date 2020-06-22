@@ -1,6 +1,6 @@
  <main class="topRedondo bg-index d-flex flex-column align-items-start">
 
-     <article class="container d-flex flex-column p-0 mb-5 alturaMain">
+     <article class="container d-flex flex-column pl-5 pr-5 pt-4 pb-4 alturaMain" style="max-width:inherit;">
 
          <div class="d-flex align-itens-center justify-content-between">
              <div class="d-flex flex-column mr-3">
@@ -42,13 +42,13 @@
 
 
      <div class="w-100 h-100">
-         <button class="tablink" onclick="openPage('Home', this)">Home</button>
-         <button class="tablink" onclick="openPage('News', this)" id="defaultOpen">News</button>
-         <button class="tablink" onclick="openPage('Contact', this)">Contact</button>
-         <button class="tablink" onclick="openPage('About', this)">About</button>
+         <button class="tablink" onclick="openPage('Home')" id="defaultOpen">Home</button>
+         <button class="tablink" onclick="openPage('News')">News</button>
+         <button class="tablink" onclick="openPage('Contact')">Contact</button>
+         <button class="tablink" onclick="openPage('About')">About</button>
 
          <div id="Home" class="tabcontent">
-             <h2>Descrição</h2>
+             <h3>Descrição</h3>
              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
          </div>
 

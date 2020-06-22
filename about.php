@@ -24,7 +24,7 @@
 
 
   <script>
-    function openPage(pageName, elmnt, color) {
+    function openPage(pageName) {
       // Hide all elements with class="tabcontent" by default */
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -32,17 +32,17 @@
         tabcontent[i].style.display = "none";
       }
 
-      // Remove the background color of all tablinks/buttons
+      // Remove todos os font weight's para apenas ficar selecionado o atual
       tablinks = document.getElementsByClassName("tablink");
       for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "";
+        tablinks[i].style.fontWeight = "";
       }
 
       // Show the specific tab content
       document.getElementById(pageName).style.display = "block";
 
-      // Add the specific color to the button used to open the tab content
-      elmnt.style.backgroundColor = color;
+      // Por a bold a tab em que estamos
+      elmnt.style.fontWeight = "bold";
     }
 
     // Get the element with id="defaultOpen" and click on it

@@ -194,6 +194,17 @@
   background-color:  #F1F3F6;
  border-top: 2px lightgray solid;
  border-bottom: 2px lightgray solid;
+ 
+}
+.tablink:focus{
+    outline: 0px;
+    
+}
+.tablink:hover{
+    font-weight: bold;
+}
+.tablink:active{
+    font-weight: bolder;
 }
 
 /*.tablink:hover {
