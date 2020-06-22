@@ -52,16 +52,46 @@
              <p class="descricaoFont pt-4 pl-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
 
              <div class="pl-4 pt-4">
+
                  <p class="descricaoFont font-weight-bold">Slots</p>
 
                  <div id="myProgress1">
                      <div id="myBar1"></div>
                  </div>
-                 <h3 class="pt-3">8/10</h3>
+
+             </div>
+
+             <div class="container-fluid pl-4 pt-4">
+
+                 <div class="row">
+
+                     <div class="col-6">
+                         <h3 class="pt-3">8/10</h3>
+                     </div>
+                     <div class="col-6 text-right">
+                         <h3 class="pt-3">View More +</h3>
+                     </div>
+
+                 </div>
+
              </div>
 
              <div class="pl-4 pt-4 marginT">
                  <p class="descricaoFont font-weight-bold">Tarefas Restantes</p>
+             </div>
+
+             <div class="container-fluid pl-4 pt-4 ">
+                 <div class="row"> 
+                     <div class="col-6 mainTasks">
+                         <h1 class="pt-4 pb-1">Projetor</h1>
+                         <h1 class="pb-4 text-muted">Trazer o projector man</h1>
+                     </div>
+
+                     <div class="col-6">
+                         <h1>Projetor</h1>
+                         <h1>Trazer o projector man</h1>
+                     </div>
+                 </div>
              </div>
 
 
@@ -85,7 +115,7 @@
              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
          </div>
 
-         </>
+     </div>
 
 
 
