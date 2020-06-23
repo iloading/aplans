@@ -81,15 +81,27 @@
              </div>
 
              <div class="container-fluid pl-4 pt-4 ">
-                 <div class="row"> 
+                 <div class="row">
                      <div class="col-6 mainTasks">
                          <h1 class="pt-4 pb-1">Projetor</h1>
                          <h1 class="pb-4 text-muted">Trazer o projector man</h1>
                      </div>
 
                      <div class="col-6">
-                         <h1>Projetor</h1>
-                         <h1>Trazer o projector man</h1>
+                         <div class="form-check selectMargin">
+                             <input class="form-check-input selectSize" type="checkbox" value="" id="defaultCheck1">
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="row mt-4">
+                     <div class="col-6 mainTasks">
+                         <h1 class="pt-4 pb-1">Projetor</h1>
+                         <h1 class="pb-4 text-muted">Trazer o projector man</h1>
+                     </div>
+
+                     <div class="col-6">
+
                      </div>
                  </div>
              </div>

@@ -244,3 +244,13 @@
 .mainTasks{  
     border-left: 10px solid red;
 }
+
+.selectSize{
+    width: 55px;
+    height: 55px; 
+}
+
+.selectMargin{
+    margin-top: 10%;
+    margin-left: 70%;
+}
