@@ -51,17 +51,49 @@
              <h1 class="display-3 font-weight-bold mt-4 ml-4">Descrição</h1>
              <p class="descricaoFont pt-4 pl-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
 
-             <div class="pl-4 pt-4">
-                 <p class="descricaoFont font-weight-bold">Slots</p>
+             <div class="pl-4 pt-4 marginT">
+
+                 <p class="descricaoFont font-weight-bold">Participantes</p>
 
                  <div id="myProgress1">
                      <div id="myBar1"></div>
                  </div>
-                 <h3 class="pt-3">8/10</h3>
+
              </div>
 
-             <div class="pl-4 pt-4 marginT">
+             <div class="container-fluid pl-4 pt-4">
+
+                 <div class="row">
+
+                     <div class="col-6">
+                         <h2 class="pt-2 font-weight-bold" style="color:grey;">8/10</h2>
+                     </div>
+                     <div class="col-6 text-right">
+                         <a href="#" class="pt-3 font-weight-bold" style="font-size: 2rem;text-decoration: none;color:grey;font-style:bold;">Ver mais +</a>
+                     </div>
+
+                 </div>
+
+             </div>
+
+             <div class=" pl-4 pt-4 marginT">
                  <p class="descricaoFont font-weight-bold">Tarefas Restantes</p>
+             </div>
+
+             <div class="container-fluid ml-3 pl-4 pt-4">
+                 <div class="row">
+                     <div class="col-6 mainTasks">
+                         <h1 class="pt-4 pb-1">Projetor</h1>
+                         <h1 class="pb-4 text-muted">Trazer o projector man</h1>
+                     </div>
+
+                     <div class="col-6">
+                         <div class="form-check selectMargin">
+                             <input class="selectSize" type="checkbox" value="" id="defaultCheck1">
+                         </div>
+
+                     </div>
+                 </div>
              </div>
 
 
@@ -176,7 +208,7 @@
              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
          </div>
 
-         </>
+     </div>
 
 
 

@@ -274,7 +274,7 @@
 }
 
 #myProgress1 {
-    width: 90%;
+    width: 100%;
     background-color: #D4D4D8;
     border-radius: 6rem;
   }
@@ -288,5 +288,22 @@
 
 
 .marginT{
-    margin-top: 15%;
+    margin-top: 5%;
 }
+
+.mainTasks{  
+    border-left: 10px solid red;
+}
+
+.selectSize{
+    width: 55px;
+    height: 55px; 
+}
+
+.selectMargin{
+    margin-top: 10%;
+    margin-left: 70%;
+}
+
+
+
