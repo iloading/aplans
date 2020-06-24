@@ -204,8 +204,63 @@
          </div>
 
          <div id="About" class="tabcontent">
-             <h3>About</h3>
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
+            
+            <ul>
+                <div class="row mt-4 d-flex align-items-center">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="images/people/avatar4.jpg">
+                    </div> 
+                    <li class="him">Como é que estão todos?</li>
+                </div>
+
+                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="assets/avatar.png">
+                    </div> 
+                    <li class="me">Pronto para a festa!</li> 
+                </div>
+
+                <div class="row mt-4 d-flex align-items-center">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="images/people/avatar3.jpg">
+                    </div> 
+                    <li class="him">Qual é o filme? Tenho uma sugestão!</li>
+                </div>
+                
+                <div class="row mt-4 d-flex align-items-center">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="images/people/avatar2.jpg">
+                    </div> 
+                    <li class="him">Pipocas Doces ou Salgadas</li>
+                </div>
+
+                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="assets/avatar.png">
+                    </div> 
+                    <li class="me">Pipocas doces FOSHOU</li> 
+                </div>
+
+                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="assets/avatar.png">
+                    </div> 
+                    <li class="me">LMAO</li> 
+                </div>
+
+
+                
+                
+                
+            </ul>
+
+            <div style="position: fixed; bottom: 0; width: 100%;">
+                <hr>
+
+                <div class="p-3 d-flex align-items-center justify-content-left ml-auto mr-5">
+                    <input type="text" placeholder="Escreve algo" class="p-1" style="border: none; border-radius: 20px; font-size: 2rem; width: 60rem; height: 5rem;">
+                </div>
+            </div>
          </div>
 
      </div>
