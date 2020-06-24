@@ -111,7 +111,7 @@
 
           <div class="dropdown-divider m-0"></div>
 
-          <div>
+          
             <div class="row">
               <div class="p-4 ml-4 d-flex">
                 <img src="images/settings/list.png" width="25" height="25">
@@ -191,8 +191,9 @@
 
         </div>
 
-      </div>
-      
+        <div class="d-flex justify-content-center mt-4">
+            <button class="pl-3 pr-3 pt-1 pb-1" style="font-size: 1.4rem; background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500; border: none">Criar Evento</button>
+        </div>
     </article>
 
     

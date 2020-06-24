@@ -60,7 +60,7 @@
                         <img src="images/profile/starfill.png" width="16" height="16">
                         <img src="images/profile/starfill.png" width="16" height="16">
                         <img src="images/profile/starfill.png" width="16" height="16">
-                        <img src="images/profile/starfill.png" width="16" height="16">
+                        <img src="images/profile/star.png" width="16" height="16">
                         
                     </div>
                 </div>
