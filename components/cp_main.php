@@ -249,13 +249,48 @@
                     <li class="me">LMAO</li> 
                 </div>
 
+                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="assets/avatar.png">
+                    </div> 
+                    <li class="me">LMAO</li> 
+                </div>
+
+                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="assets/avatar.png">
+                    </div> 
+                    <li class="me">LMAO</li> 
+                </div>
+
+                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="assets/avatar.png">
+                    </div> 
+                    <li class="me">LMAO</li> 
+                </div>
+
+                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="assets/avatar.png">
+                    </div> 
+                    <li class="me">LMAO</li> 
+                </div>
+
+                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                    <div class=" avatar-circular ml-3 mr-4">
+                        <img src="assets/avatar.png">
+                    </div> 
+                    <li class="me">LMAO</li> 
+                </div>
+
 
                 
                 
                 
             </ul>
 
-            <div style="position: fixed; bottom: 0; width: 100%;">
+            <div style="position: relative; bottom: 0; width: 100%;">
                 <hr>
 
                 <div class="p-3 d-flex align-items-center justify-content-left ml-auto mr-5">
