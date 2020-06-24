@@ -104,104 +104,122 @@
          </div>
 
          <div id="News" class="tabcontent">
-            <div class="row mt-4">
-                    <h1 class="col-5 display-4 font-weight-bold mt-4 ml-4">4 participants</h1>
-                    <div class="p-3 d-flex align-items-center ml-auto mr-5">
-                        <button type="button" class="p-1" style="border: 2px; border-style: dashed; border-color: #6F41E9; border-radius: 20px; font-size: 1rem; width: 5rem; height: 5rem;"><img src="images/people/plus.png" width="25" height="25"></button>
-                    </div>
-            </div>
+             <div class="row mt-4">
+                 <h1 class="col-5 display-4 font-weight-bold mt-4 ml-4">4 Participants</h1>
+                 <div class="p-3 d-flex align-items-center ml-auto mr-5">
+                     <button type="button" class="p-1" style="border: 2px; border-style: dashed; border-color: #6F41E9; border-radius: 20px; font-size: 1rem; width: 5rem; height: 5rem;"><img src="images/people/plus.png" width="25" height="25"></button>
+                 </div>
+             </div>
 
-            <div class="row mb-4 pt-3 pb-3">
-              <div class="pl-0 pt-2 pb-4 pr-0 ml-5 d-flex align-items-center col-2">
-                <div class=" avatar-circular">
-                     <img src="images/people/avatar1.jpg">
-                </div>
-              
-              </div>
+             <div class="row mb-4 pt-3 pb-3">
+                 <div class="pl-0 pt-2 pb-4 pr-0 ml-5 d-flex align-items-center col-2">
+                     <div class=" avatar-circular">
+                         <img src="images/people/avatar1.jpg">
+                     </div>
 
-              <div class="pl-3 d-flex align-items-center col-9">
-                <div class="row">
-                    <div class="col-12 pr-0">
-                        <span class="display-4 font-weight-normal">Miguel Costa</span>
-                        <span class="ml-3 pl-3 pr-3 pt-1 pb-1" style="font-size: 2rem; background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizer</span>
-                    </div>
-                    <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">Popcorn Dealer</h1>
-                </div>
-            </div>
-          </div>
+                 </div>
 
-          <hr>
+                 <div class="pl-3 d-flex align-items-center col-9">
+                     <div class="row">
+                         <div class="col-12 pr-0">
+                             <span class="display-4 font-weight-normal">Miguel Costa</span>
+                             <span class="ml-3 pl-3 pr-3 pt-1 pb-1" style="font-size: 2rem; background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizer</span>
+                         </div>
+                         <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">Popcorn Dealer</h1>
+                     </div>
+                 </div>
+             </div>
 
-          <div class="row mb-4 pt-3 pb-3">
-              <div class="pl-0 pt-2 pb-4 pr-0 ml-5 d-flex align-items-center col-2">
-                <div class=" avatar-circular">
-                <img src="images/people/avatar2.jpg">
-                </div>
-              
-              </div>
+             <hr>
 
-              <div class="pl-3 d-flex align-items-center col-6">
-                <div class="row">
-                    <div class="col-12 pr-0">
-                        <span class="display-4 font-weight-normal">José Marques</span>
-                    </div>
-                    <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">Projector Owner</h1>
-                </div>
-            </div>
-          </div>
+             <div class="row mb-4 pt-3 pb-3">
+                 <div class="pl-0 pt-2 pb-4 pr-0 ml-5 d-flex align-items-center col-2">
+                     <div class=" avatar-circular">
+                         <img src="images/people/avatar2.jpg">
+                     </div>
 
-          <hr>
+                 </div>
 
-          <div class="row mb-4 pt-3 pb-3">
-              <div class="pl-0 pt-2 pb-4 pr-0 ml-5 d-flex align-items-center col-2">
-                <div class=" avatar-circular">
-                    <img src="images/people/avatar3.jpg">
-                </div>
-              
-              </div>
+                 <div class="pl-3 d-flex align-items-center col-6">
+                     <div class="row">
+                         <div class="col-12 pr-0">
+                             <span class="display-4 font-weight-normal">José Marques</span>
+                         </div>
+                         <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">Projector Owner</h1>
+                     </div>
+                 </div>
+             </div>
 
-              <div class="pl-3 d-flex align-items-center col-6">
-                <div class="row">
-                    <div class="col-12 pr-0">
-                        <span class="display-4 font-weight-normal">Pedro Matias</span>
-                    </div>
-                    <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">Snack Man</h1>
-                </div>
-            </div>
-          </div>
+             <hr>
 
-          <hr>
+             <div class="row mb-4 pt-3 pb-3">
+                 <div class="pl-0 pt-2 pb-4 pr-0 ml-5 d-flex align-items-center col-2">
+                     <div class=" avatar-circular">
+                         <img src="images/people/avatar3.jpg">
+                     </div>
 
-          <div class="row mb-4 pt-3 pb-3">
-              <div class="pl-0 pt-2 pb-4 pr-0 ml-5 d-flex align-items-center col-2">
-                <div class=" avatar-circular">
-                    <img src="images/people/avatar4.jpg">
-                </div>
-              
-              </div>
+                 </div>
 
-              <div class="pl-3 d-flex align-items-center col-6">
-                <div class="row">
-                    <div class="col-12 pr-0">
-                        <span class="display-4 font-weight-normal">Diana Sofia</span>
-                    </div>
-                    <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">The Critic</h1>
-                </div>
-            </div>
-          </div>
+                 <div class="pl-3 d-flex align-items-center col-6">
+                     <div class="row">
+                         <div class="col-12 pr-0">
+                             <span class="display-4 font-weight-normal">Pedro Matias</span>
+                         </div>
+                         <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">Snack Man</h1>
+                     </div>
+                 </div>
+             </div>
 
-          <hr>
+             <hr>
 
-            <div class="p-3 d-flex align-items-center justify-content-center ml-auto mr-5">
-                <button type="button" class="p-1" style="border: 2px; border-style: dashed; border-color: #6F41E9; border-radius: 20px; font-size: 2rem; width: 20rem; height: 5rem; color:#6F41E9;">Invite Friends <img src="images/people/plus.png" class="pl-2 pb-2" width="35" height="35"></button>
-            </div>
+             <div class="row mb-4 pt-3 pb-3">
+                 <div class="pl-0 pt-2 pb-4 pr-0 ml-5 d-flex align-items-center col-2">
+                     <div class=" avatar-circular">
+                         <img src="images/people/avatar4.jpg">
+                     </div>
 
-          
+                 </div>
+
+                 <div class="pl-3 d-flex align-items-center col-6">
+                     <div class="row">
+                         <div class="col-12 pr-0">
+                             <span class="display-4 font-weight-normal">Diana Sofia</span>
+                         </div>
+                         <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">The Critic</h1>
+                     </div>
+                 </div>
+             </div>
+
+             <hr>
+
+             <div class="p-3 d-flex align-items-center justify-content-center ml-auto mr-5">
+                 <button type="button" class="p-1" style="border: 2px; border-style: dashed; border-color: #6F41E9; border-radius: 20px; font-size: 2rem; width: 20rem; height: 5rem; color:#6F41E9;">Invite Friends <img src="images/people/plus.png" class="pl-2 pb-2" width="35" height="35"></button>
+             </div>
+
+
          </div>
 
          <div id="Contact" class="tabcontent">
-             <h3>Contact</h3>
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
+             <div class="row mt-4">
+                 <h1 class="col-5 display-4 font-weight-bold mt-4 ml-4">6 Tasks</h1>
+                 <div class="p-3 d-flex align-items-center ml-auto mr-5">
+                     <button type="button" class="p-1" style="border: 2px; border-style: dashed; border-color: #6F41E9; border-radius: 20px; font-size: 1rem; width: 5rem; height: 5rem;"><img src="images/people/plus.png" width="25" height="25"></button>
+                 </div>
+             </div>
+
+
+             <div class="container-fluid ml-3 pl-4 pt-4 mb-5">
+                 <div class="row">
+                     <div class="col-6 mainTasks">
+                         <h1 class="pt-4 pb-1">Projetor</h1>
+                         <h1 class="pb-4 text-muted">Trazer o projector man</h1>
+                     </div>
+                     </div>
+                 </div>
+             </div>
+          
+
+
          </div>
 
          <div id="About" class="tabcontent">
