@@ -1,3 +1,4 @@
+
 .bg-index {
     background-color: #F1F3F6 !important;
 }
@@ -12,11 +13,12 @@
 
 
 .topRedondo{
-    position: fixed;
-    top: 7.5%;
+    position: sticky;
+    
     width: 100vw;
     height: 100vh ;
-    border-radius: 4rem 4rem;
+    border-radius: 4rem 4rem 0 0;
+    overflow: auto;
    
 }
 
@@ -265,7 +267,7 @@
 .tabcontent {
   display: none;
   padding: 100px 20px;
-  height: 100%;
+  
   margin-top: 3%;
 }
 
