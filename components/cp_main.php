@@ -43,10 +43,10 @@
 
 
      <div class="w-100 h-100">
-         <button class="tablink" style="font-size:3rem;" onclick="openPage('Main')" id="defaultOpen">Home</button>
-         <button class="tablink" style="font-size:3rem;" onclick="openPage('People')">Pessoas</button>
-         <button class="tablink" style="font-size:3rem;" onclick="openPage('Tasks')">Tarefas</button>
-         <button class="tablink" style="font-size:3rem;" onclick="openPage('Chat')">Chat</button>
+         <button class="tablink" style="font-size:3rem;" onclick="openPage('Main', this)" id="defaultOpen">Home</button>
+         <button class="tablink" style="font-size:3rem;" onclick="openPage('People', this)">Pessoas</button>
+         <button class="tablink" style="font-size:3rem;" onclick="openPage('Tasks', this)">Tarefas</button>
+         <button class="tablink" style="font-size:3rem;" onclick="openPage('Chat', this)">Chat</button>
 
          <div id="Main" class="tabcontent">
              <h1 class="display-3 font-weight-bold mt-4 ml-4">Descrição</h1>
@@ -214,107 +214,107 @@
                          <h1 class="pt-4 pb-1">Projetor</h1>
                          <h1 class="pb-4 text-muted">Trazer o projector man</h1>
                      </div>
-                     </div>
                  </div>
              </div>
-          
-
-
          </div>
 
-         <div id="Chat" class="tabcontent">
-            
-            <ul>
-                <div class="row mt-4 d-flex align-items-center">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="images/people/avatar4.jpg">
-                    </div> 
-                    <li class="him">Como é que estão todos?</li>
-                </div>
-
-                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="assets/avatar.png">
-                    </div> 
-                    <li class="me">Pronto para a festa!</li> 
-                </div>
-
-                <div class="row mt-4 d-flex align-items-center">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="images/people/avatar3.jpg">
-                    </div> 
-                    <li class="him">Qual é o filme? Tenho uma sugestão!</li>
-                </div>
-                
-                <div class="row mt-4 d-flex align-items-center">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="images/people/avatar2.jpg">
-                    </div> 
-                    <li class="him">Pipocas Doces ou Salgadas</li>
-                </div>
-
-                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="assets/avatar.png">
-                    </div> 
-                    <li class="me">Pipocas doces FOSHOU</li> 
-                </div>
-
-                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="assets/avatar.png">
-                    </div> 
-                    <li class="me">LMAO</li> 
-                </div>
-
-                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="assets/avatar.png">
-                    </div> 
-                    <li class="me">LMAO</li> 
-                </div>
-
-                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="assets/avatar.png">
-                    </div> 
-                    <li class="me">LMAO</li> 
-                </div>
-
-                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="assets/avatar.png">
-                    </div> 
-                    <li class="me">LMAO</li> 
-                </div>
-
-                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="assets/avatar.png">
-                    </div> 
-                    <li class="me">LMAO</li> 
-                </div>
-
-                <div class="row mt-4 d-flex align-items-center flex-row-reverse">
-                    <div class=" avatar-circular ml-3 mr-4">
-                        <img src="assets/avatar.png">
-                    </div> 
-                    <li class="me">LMAO</li> 
-                </div>
 
 
-                
-                
-            </ul>
+     </div>
 
-            <div style="position: relative; bottom: 0; width: 100%;">
-                <hr>
+     <div id="Chat" class="tabcontent container-fluid pt-0">
 
-                <div class="p-3 d-flex align-items-center justify-content-left ml-auto mr-5">
-                    <input type="text" placeholder="Escreve algo" class="p-1" style="border: none; border-radius: 20px; font-size: 2rem; width: 60rem; height: 5rem;">
-                </div>
-            </div>
+         <ul class="container-fluid">
+             <div class="row mt-4 d-flex align-items-center">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="images/people/avatar4.jpg">
+                 </div>
+                 <li class="him">Como é que estão todos?</li>
+             </div>
+
+             <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="assets/avatar.png">
+                 </div>
+                 <li class="me">Pronto para a festa!</li>
+             </div>
+
+             <div class="row mt-4 d-flex align-items-center">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="images/people/avatar3.jpg">
+                 </div>
+                 <li class="him">Qual é o filme? Tenho uma sugestão!</li>
+             </div>
+
+             <div class="row mt-4 d-flex align-items-center">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="images/people/avatar2.jpg">
+                 </div>
+                 <li class="him">Pipocas Doces ou Salgadas</li>
+             </div>
+
+             <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="assets/avatar.png">
+                 </div>
+                 <li class="me">Pipocas doces FOSHOU</li>
+             </div>
+
+             <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="assets/avatar.png">
+                 </div>
+                 <li class="me">LMAO</li>
+             </div>
+
+             <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="assets/avatar.png">
+                 </div>
+                 <li class="me">LMAO</li>
+             </div>
+
+             <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="assets/avatar.png">
+                 </div>
+                 <li class="me">LMAO</li>
+             </div>
+
+             <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="assets/avatar.png">
+                 </div>
+                 <li class="me">LMAO</li>
+             </div>
+
+             <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="assets/avatar.png">
+                 </div>
+                 <li class="me">LMAO</li>
+             </div>
+
+             <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                 <div class=" avatar-circular ml-3 mr-4">
+                     <img src="assets/avatar.png">
+                 </div>
+                 <li class="me">LMAO</li>
+             </div>
+
+
+
+
+         </ul>
+
+         <div style="position: relative; bottom: 0; width: 100%;">
+             <hr>
+
+             <div class="p-3 d-flex align-items-center justify-content-left ml-auto mr-5">
+                 <input type="text" placeholder="Escreve algo" class="p-1" style="border: none; border-radius: 20px; font-size: 2rem; width: 60rem; height: 5rem;">
+             </div>
          </div>
+     </div>
 
      </div>
 
