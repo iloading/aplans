@@ -43,12 +43,12 @@
 
 
      <div class="w-100 h-100">
-         <button class="tablink" onclick="openPage('Home')" id="defaultOpen">Home</button>
-         <button class="tablink" onclick="openPage('News')">News</button>
-         <button class="tablink" onclick="openPage('Contact')">Contact</button>
-         <button class="tablink" onclick="openPage('About')">About</button>
+         <button class="tablink" style="font-size:3rem;" onclick="openPage('Main')" id="defaultOpen">Home</button>
+         <button class="tablink" style="font-size:3rem;" onclick="openPage('People')">Pessoas</button>
+         <button class="tablink" style="font-size:3rem;" onclick="openPage('Tasks')">Tarefas</button>
+         <button class="tablink" style="font-size:3rem;" onclick="openPage('Chat')">Chat</button>
 
-         <div id="Home" class="tabcontent">
+         <div id="Main" class="tabcontent">
              <h1 class="display-3 font-weight-bold mt-4 ml-4">Descrição</h1>
              <p class="descricaoFont pt-4 pl-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
 
@@ -103,9 +103,9 @@
 
          </div>
 
-         <div id="News" class="tabcontent">
+         <div id="People" class="tabcontent">
              <div class="row mt-4">
-                 <h1 class="col-5 display-4 font-weight-bold mt-4 ml-4">4 Participants</h1>
+                 <h1 class="col-5 display-4 font-weight-bold mt-4 ml-4">4 participants</h1>
                  <div class="p-3 d-flex align-items-center ml-auto mr-5">
                      <button type="button" class="p-1" style="border: 2px; border-style: dashed; border-color: #6F41E9; border-radius: 20px; font-size: 1rem; width: 5rem; height: 5rem;"><img src="images/people/plus.png" width="25" height="25"></button>
                  </div>
@@ -199,7 +199,7 @@
 
          </div>
 
-         <div id="Contact" class="tabcontent">
+         <div id="Tasks" class="tabcontent">
              <div class="row mt-4">
                  <h1 class="col-5 display-4 font-weight-bold mt-4 ml-4">6 Tasks</h1>
                  <div class="p-3 d-flex align-items-center ml-auto mr-5">
@@ -222,10 +222,99 @@
 
          </div>
 
-         <div id="About" class="tabcontent">
-             <h3>About</h3>
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
-             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis quaerat ipsam consequuntur numquam qui facere accusantium, delectus consectetur eum animi ipsum, aliquid assumenda odio autem nulla in commodi nam!</p>
+         <div id="Chat" class="tabcontent">
+
+             <ul>
+                 <div class="row mt-4 d-flex align-items-center">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="images/people/avatar4.jpg">
+                     </div>
+                     <li class="him">Como é que estão todos?</li>
+                 </div>
+
+                 <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="assets/avatar.png">
+                     </div>
+                     <li class="me">Pronto para a festa!</li>
+                 </div>
+
+                 <div class="row mt-4 d-flex align-items-center">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="images/people/avatar3.jpg">
+                     </div>
+                     <li class="him">Qual é o filme? Tenho uma sugestão!</li>
+                 </div>
+
+                 <div class="row mt-4 d-flex align-items-center">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="images/people/avatar2.jpg">
+                     </div>
+                     <li class="him">Pipocas Doces ou Salgadas</li>
+                 </div>
+
+                 <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="assets/avatar.png">
+                     </div>
+                     <li class="me">Pipocas doces FOSHOU</li>
+                 </div>
+
+                 <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="assets/avatar.png">
+                     </div>
+                     <li class="me">LMAO</li>
+                 </div>
+
+                 <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="assets/avatar.png">
+                     </div>
+                     <li class="me">LMAO</li>
+                 </div>
+
+                 <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="assets/avatar.png">
+                     </div>
+                     <li class="me">LMAO</li>
+                 </div>
+
+                 <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="assets/avatar.png">
+                     </div>
+                     <li class="me">LMAO</li>
+                 </div>
+
+                 <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="assets/avatar.png">
+                     </div>
+                     <li class="me">LMAO</li>
+                 </div>
+
+                 <div class="row mt-4 d-flex align-items-center flex-row-reverse">
+                     <div class=" avatar-circular ml-3 mr-4">
+                         <img src="assets/avatar.png">
+                     </div>
+                     <li class="me">LMAO</li>
+                 </div>
+
+
+
+
+
+             </ul>
+
+             <div style="position: relative; bottom: 0; width: 100%;">
+                 <hr>
+
+                 <div class="p-3 d-flex align-items-center justify-content-left ml-auto mr-5">
+                     <input type="text" placeholder="Escreve algo" class="p-1" style="border: none; border-radius: 20px; font-size: 2rem; width: 60rem; height: 5rem;">
+                 </div>
+             </div>
          </div>
 
      </div>
