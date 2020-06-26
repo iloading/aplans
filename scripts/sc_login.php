@@ -35,7 +35,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
                     
                     
-                    header("Location: ../index.php");
+                    header("Location: ../home.php");
                 } else {
                     // Password está errada
                     //echo "FAIL";

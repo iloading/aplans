@@ -32,8 +32,8 @@
   overflow: hidden;
   border-radius: 50%;
   float: right;
-  max-width:calc(75px + 5vw);
-  height: calc(75px + 5vw);
+  max-width:calc(45px + 5vw);
+  height: calc(45px + 5vw);
 }
 
 
@@ -337,4 +337,71 @@ ul li{
     word-wrap: break-word;
 }
 
+/*Main page*/
+
+.add-event{
+    height: calc(10px + 7vw);
+    width: calc(10px + 7vw);
+    max-height: 50px;
+    max-width: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    background-color: #BAE4AC;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: 5.5vw;
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+}
+
+.events{
+    height: calc(10px + 14vw);
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    border-radius:5vw;
+    text-align: center;
+    display: flex;
+    background-color: #FFFFFF;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: calc(10px + 1.5vw);
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+}
+.events p:first-child{
+    margin: 0;
+    font-size: calc(10px + 1.5vw);
+}
+.events p:last-child{
+    margin: 0;
+    font-size: calc(6px + 1.5vw);
+    font-weight: initial;
+}
+
+.index-titulos{
+    font-size: calc(13px + 0.7vw);
+}
+
+.amigos{
+    height: calc(45px + 14vh);
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    border-radius:5vw;
+    text-align: center;
+    display: flex;
+    background-color: #FFFFFF;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: calc(10px + 1.5vw);
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+}
+
+
+/*Carrossel MAIN*/
 
