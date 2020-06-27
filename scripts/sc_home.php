@@ -71,15 +71,14 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         /* fetch values */
 
         while (mysqli_stmt_fetch($stmt)) {
-            $row_result1 = array();
-            $row_result1["id_evento"] = htmlspecialchars($id_evento);
-            $row_result1["nome_evento"] = htmlspecialchars($nome_evento);
+            $row_result = array();
+            $row_result["id_evento"] = htmlspecialchars($id_evento);
+            $row_result["nome_evento"] = htmlspecialchars($nome_evento);
 
-            $data["upcoming"][] = $row_result1;
+            $data["upcoming"][] = $row_result;
         }
 
-        //
-        print json_encode($data);
+        //print json_encode($data);
         
 
 
@@ -95,4 +94,97 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     $data[] = $row_result;
     print json_encode($data);
 }
+
+
+
+
+
+
+
+
+
+
+$stmt = mysqli_stmt_init($link);
+
+$query = "SELECT users.nome FROM users INNER JOIN amigos ON users.id = user_id1  WHERE user_id2 = ?";
+
+
+
+if (mysqli_stmt_prepare($stmt, $query)) {
+    mysqli_stmt_bind_param($stmt, 'i', $id_user);
+    // Devemos validar também o resultado do execute!
+
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_bind_result($stmt, $nomeAmigo);
+
+        /* fetch values */
+
+        while (mysqli_stmt_fetch($stmt)) {
+            $row_result = array();
+            $row_result["nomesAmigos"] = htmlspecialchars($nomeAmigo);
+            $data["amigos"][] = $row_result;
+        }
+
+        //print json_encode($data);
+
+
+
+
+        mysqli_stmt_close($stmt);
+    } else {
+        $row_result["erro"] = '1';
+        $data[] = $row_result;
+        print json_encode($data);
+    }
+} else {
+    $row_result["erro"] = '2';
+    $data[] = $row_result;
+    print json_encode($data);
+}
+
+
+
+$stmt = mysqli_stmt_init($link);
+
+$query = "SELECT users.nome FROM users INNER JOIN amigos ON users.id = user_id2  WHERE user_id1 = ?";
+
+
+
+if (mysqli_stmt_prepare($stmt, $query)) {
+    mysqli_stmt_bind_param($stmt, 'i', $id_user);
+    // Devemos validar também o resultado do execute!
+
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_bind_result($stmt, $nomeAmigo);
+
+        /* fetch values */
+
+        while (mysqli_stmt_fetch($stmt)) {
+            $row_result = array();
+            $row_result["nomesAmigos"] = htmlspecialchars($nomeAmigo);
+            $data["amigos"][] = $row_result;
+        }
+
+        //
+        print json_encode($data);
+
+
+
+
+        mysqli_stmt_close($stmt);
+    } else {
+        $row_result["erro"] = '1';
+        $data[] = $row_result;
+        print json_encode($data);
+    }
+} else {
+    $row_result["erro"] = '2';
+    $data[] = $row_result;
+    print json_encode($data);
+}
+
+
+
+
+
 ?>
