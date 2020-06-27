@@ -53,7 +53,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
 
 
-
+//SELECT event.id, event_type.url FROM event INNER JOIN event_type ON ref_event_type_id = event_type.id WHERE ref_event_type_id = 1 
 
 $stmt = mysqli_stmt_init($link);
 
