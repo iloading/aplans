@@ -1,0 +1,1 @@
+Página da home, mostrar todas as informações apenas num array
