@@ -36,11 +36,16 @@ if (isset($_SESSION['email_aplans'])) {
 
         <?php include_once "helpers/help_js.php" ?>
         <?php include_once "ajax/scripts.html" ?>
+
+
+
+
         <script>
             $(document).ready(function() {
                 mostrarHome();
             })
         </script>
+        
     </body>
 
     </html>

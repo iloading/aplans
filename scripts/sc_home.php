@@ -53,11 +53,11 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
 
 
-//SELECT event.id, event_type.url FROM event INNER JOIN event_type ON ref_event_type_id = event_type.id WHERE ref_event_type_id = 1 
+//SELECT event.id, event_type.url FROM event INNER JOIN event_type ON ref_event_type_id = event_type.id WHERE ref_event_type_id = ?
 
 $stmt = mysqli_stmt_init($link);
 
-$query = "SELECT ref_event_id, event.name FROM users_nos_eventos INNER JOIN event ON ref_event_id = event.id WHERE ref_user_id = ?";
+$query = "SELECT ref_event_id, event.name, event_type.url FROM users_nos_eventos INNER JOIN event ON ref_event_id = event.id INNER JOIN event_type ON event_type.id = ref_event_type_id WHERE ref_user_id = ?";
 
 
 
@@ -66,7 +66,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     // Devemos validar também o resultado do execute!
 
     if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_bind_result($stmt, $id_evento, $nome_evento);
+        mysqli_stmt_bind_result($stmt, $id_evento, $nome_evento, $icon_url);
 
         /* fetch values */
 
@@ -74,6 +74,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result = array();
             $row_result["id_evento"] = htmlspecialchars($id_evento);
             $row_result["nome_evento"] = htmlspecialchars($nome_evento);
+            $row_result["icon_tipo"] = htmlspecialchars($icon_url);
 
             $data["upcoming"][] = $row_result;
         }
