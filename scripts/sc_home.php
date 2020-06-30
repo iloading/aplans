@@ -29,7 +29,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $data['created'][] = $row_result;
         }
         if (mysqli_stmt_num_rows($stmt) == 0) {
-            $row_result = array();
+            $row_result = "vazio";
             $data['created'][] = $row_result;
         }
         // print json_encode($data);
@@ -81,7 +81,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $data["upcoming"][] = $row_result;
         }
         if (mysqli_stmt_num_rows($stmt) == 0) {
-            $row_result = array();
+            $row_result = "vazio";
             $data['upcoming'][] = $row_result;
         }
 
@@ -133,7 +133,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $data["amigos"][] = $row_result;
         }
         if (mysqli_stmt_num_rows($stmt) == 0) {
-            $row_result = array();
+            $row_result = "vazio";
             $data['amigos'][] = $row_result;
         }
 

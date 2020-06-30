@@ -17,17 +17,18 @@
            var cardsAmigos ='';
            var listaAmigos= '';
 
-            
-            for (let i = 0; i < data.created.length; i++) {
-                if (i == 0) {
-                    eventosCriados += '<div class="carousel-item active"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
-                    indicators += '<li class="active" data-target="#carouselExampleIndicators1" data-slide-to="'+i+'"></li>'
-                }else{
-                    eventosCriados += '<div class="carousel-item"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
-                    indicators += '<li data-target="#carouselExampleIndicators1" data-slide-to="' + i + '"></li>';
+            console.log(data.created[0]);
+            if (data.created[0] != 'vazio'){
+                for (let i = 0; i < data.created.length; i++) {
+                    if (i == 0) {
+                        eventosCriados += '<div class="carousel-item active"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
+                        indicators += '<li class="active" data-target="#carouselExampleIndicators1" data-slide-to="'+i+'"></li>'
+                    }else{
+                        eventosCriados += '<div class="carousel-item"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
+                        indicators += '<li data-target="#carouselExampleIndicators1" data-slide-to="' + i + '"></li>';
+                    }
+                        
                 }
-                    
-                
             }
             
 
