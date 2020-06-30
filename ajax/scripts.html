@@ -17,14 +17,14 @@
            var cardsAmigos ='';
            var listaAmigos= '';
 
-
+            
             for (let i = 0; i < data.created.length; i++) {
                 if (i == 0) {
                     eventosCriados += '<div class="carousel-item active"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
-                    indicators += '<li class="active"> data-target="#carouselExampleIndicators1" data-slide-to="'+i+'" class=""></li>'
+                    indicators += '<li class="active" data-target="#carouselExampleIndicators1" data-slide-to="'+i+'"></li>'
                 }else{
                     eventosCriados += '<div class="carousel-item"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
-                    indicators += '<li> data-target="#carouselExampleIndicators1" data-slide-to="' + i + '" class=""></li>';
+                    indicators += '<li data-target="#carouselExampleIndicators1" data-slide-to="' + i + '"></li>';
                 }
                     
                 
@@ -45,7 +45,9 @@
 
                 }
 
-                 listaAmigos += '<div class="events container-fluid p-0" style="height: 16vh; max-width:30%;"> <div class="row"> <p class="col-12">' + data.amigos[i]["nomesAmigos"] + '</p><img src="images' + data.amigos[i]["imagem_amigo"] +'"></div> </div> ';
+                listaAmigos +=' <div class="container"> <div class="row"> <div class="col-3 d-flex justify-content-center p-0"> <div> <img class="avatar-circular" src="images' + data.amigos[i]["imagem_amigo"] +'" alt="user"> </div> </div> <div class="col-4 p-0 d-flex align-items-center"> <p class="m-0"><a href="#" class="profile-link">' + data.amigos[i]["nomesAmigos"] + '</a></p> </div> <div class="col-5 d-flex align-items-center justify-content-end"> <button class="btn btn-primary pull-right">Eliminar</button> </div> </div> </div>';
+
+                 //listaAmigos += '<div class="row mb-4 pt-3 pb-3" > <div class="pl-0 pt-2 pb-4 pr-0 ml-5 d-flex align-items-center col-2"> <div class=" avatar-circular"><img src="images' + data.amigos[i][" imagem_amigo"] +'"> </div> </div> <div class="pl-3 d-flex align-items-center col-9"> <div class="row"> <div class="col-12 pr-0"> <span class="display-4 font-weight-normal">' + data.amigos[i]["nomesAmigos"] + '</span></div> <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">Popcorn Dealer</h1> </div> </div> </div>';
                    
             }
 
@@ -79,7 +81,10 @@
                 </button>
             </div>
             <div id="amigosBody"class="modal-body">
-             
+
+
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

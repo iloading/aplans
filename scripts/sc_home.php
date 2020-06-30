@@ -26,8 +26,10 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result = array();
             $row_result["nomeEventoCriado"] = htmlspecialchars($nomeEventoCriado);
             $row_result["dataEventoCriado"] = htmlspecialchars($dataEventoCriado);
-            
-            
+            $data['created'][] = $row_result;
+        }
+        if (mysqli_stmt_num_rows($stmt) == 0) {
+            $row_result = array();
             $data['created'][] = $row_result;
         }
         // print json_encode($data);
@@ -78,6 +80,10 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
             $data["upcoming"][] = $row_result;
         }
+        if (mysqli_stmt_num_rows($stmt) == 0) {
+            $row_result = array();
+            $data['upcoming'][] = $row_result;
+        }
 
         //print json_encode($data);
         
@@ -125,6 +131,10 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result["nomesAmigos"] = htmlspecialchars($nomeAmigo);
             $row_result["imagem_amigo"] = htmlspecialchars($imagemAmigo);
             $data["amigos"][] = $row_result;
+        }
+        if (mysqli_stmt_num_rows($stmt) == 0) {
+            $row_result = array();
+            $data['amigos'][] = $row_result;
         }
 
         //print json_encode($data);
