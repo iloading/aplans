@@ -19,7 +19,7 @@ if (isset($_SESSION['email_aplans'])) {
 
     </head>
 
-    <body>
+    <body class="p-0">
 
 
         <div id="conteudoPagina">
