@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif !important;
+}
 
 .bg-index {
     background-color: #F1F3F6 !important;
