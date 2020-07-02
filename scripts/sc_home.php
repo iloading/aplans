@@ -59,12 +59,12 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
 $stmt = mysqli_stmt_init($link);
 
-$query = "SELECT ref_event_id, event.name, event_type.url FROM users_nos_eventos INNER JOIN event ON ref_event_id = event.id INNER JOIN event_type ON event_type.id = ref_event_type_id WHERE ref_user_id = ?";
+$query = "SELECT event.id, event.name, event_type.url FROM event INNER JOIN event_type ON event_type.id = ref_event_type_id";
 
 
 
 if (mysqli_stmt_prepare($stmt, $query)) {
-    mysqli_stmt_bind_param($stmt, 'i', $id_user);
+   
     // Devemos validar também o resultado do execute!
 
     if (mysqli_stmt_execute($stmt)) {
