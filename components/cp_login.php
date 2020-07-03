@@ -35,7 +35,7 @@
                                     $class = "alert-warning";
                                     break;
                                 case 1:
-                                    $message = "O número de telemóvel inserido não é válido. Formato: 9Yx xxx xxx, onde Y pode tomar valores de [1,2,3,6]";
+                                    $message = "O número de telemóvel inserido não é válido. Formato: 9Yx xxx xxx, onde Y pode tomar os valores [1,2,3,6]";
                                     $class = "alert-warning";
                                     break;
                                 case 2:
