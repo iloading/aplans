@@ -15,7 +15,7 @@
 
 
 
-<body class="bg-azul-aplans">
+<body>
 
 
   <?php

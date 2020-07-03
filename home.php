@@ -23,13 +23,7 @@ if (isset($_SESSION['email_aplans'])) {
 
 
         <div id="conteudoPagina">
-            <?php
-            if ($admin != 1) {
-                //include_once "components/cp_index_mobile.php";
-            } else {
-                //include_once "admin/components/c_navbars_side_index.php";
-            }
-            ?>
+            
 
         </div>
 

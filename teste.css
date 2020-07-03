@@ -16,15 +16,6 @@
 }
 
 
-.topRedondo{
-    position: sticky;
-    width: 100vw;
-    height: 100vh ;
-    border-radius: 4rem 4rem 0 0;
-    overflow: auto;
-   
-}
-
 .botoesMain{
     font-size: 2rem;
     color: #6D3FE6;
@@ -46,6 +37,14 @@
   float: right;
   max-width:calc(30px + 5vw);
   height: calc(30px + 5vw);
+}
+
+.avatar-circular-amigos img{
+    max-width: 100%;
+}
+
+.avatar-circular img{
+    max-width: 100%;
 }
 
 
@@ -276,9 +275,6 @@
 
 .tabcontent {
   display: none;
-  padding: 100px 20px;
-  
-  margin-top: 3%;
 }
 
 .descricaoFont{
