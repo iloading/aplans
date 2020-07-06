@@ -6,17 +6,12 @@ if (isset($_SESSION['email_aplans'])) {
 ?>
 
     <!doctype html>
-    <html class="no-js" lang="zxx">
+    <html lang="en">
 
     <head>
         <?php include_once "helpers/help_meta.php" ?>
         <title>Aplans</title>
         <?php include_once "helpers/help_css.php" ?>
-
-
-
-
-
     </head>
 
     <body class="p-0">
@@ -29,6 +24,7 @@ if (isset($_SESSION['email_aplans'])) {
 
         <?php include_once "helpers/help_js.php" ?>
         <?php include_once "ajax/home.html" ?>
+        <?php include_once "ajax/evento.html" ?>
 
 
 
@@ -39,12 +35,13 @@ if (isset($_SESSION['email_aplans'])) {
             });
 
             //É necessário este formato visto que escrevemos os elementos dinamicamente na página e não seriam acessíveis de outra forma
-            $(document).on('click', '.btn-evento', function() { 
-                console.log($(this).attr("id"));
+            $(document).on('click', '.btn-evento', function() {
+                mostrarEvento($(this).attr("id"))
             });
 
+            
         </script>
-
+        
     </body>
 
     </html>

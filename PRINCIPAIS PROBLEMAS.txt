@@ -1,1 +1,6 @@
 Página da home, mostrar todas as informações apenas num array
+
+Clicar em elementos que foram escritos dinamicamente na página ex:
+$(document).on('click', '.btn-evento', function() {
+                mostrarEvento($(this).attr("id"))
+            });

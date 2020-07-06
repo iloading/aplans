@@ -1,4 +1,4 @@
-<main class="w-100 d-flex flex-column">
+<div class="w-100 d-flex flex-column">
 
     <header class="position-fixed" style="width: inherit; background-color: #F1F3F6">
         <article class="container d-flex flex-column pl-5 pr-5 pt-4 pb-4" style="max-width:inherit;">
@@ -37,18 +37,18 @@
             
 
         </article>
-        <button class="tablink" style="font-size:3rem;" onclick="openPage('Main', this)" id="defaultOpen">Home</button>
-        <button class="tablink" style="font-size:3rem;" onclick="openPage('People', this)">Pessoas</button>
-        <button class="tablink" style="font-size:3rem;" onclick="openPage('Tasks', this)">Tarefas</button>
-        <button class="tablink" style="font-size:3rem;" onclick="openPage('Chat', this)">Chat</button>
+        <button class="tablink"  id="defaultOpen" style="font-size:3rem;" >Home</button>
+        <button class="tablink"  style="font-size:3rem;">Pessoas</button>
+        <button class="tablink"  style="font-size:3rem;" >Tarefas</button>
+        <button class="tablink"  style="font-size:3rem;" >Chat</button>
 
-    </header>
+    </div>
 
 
 
     <div class="w-100 h-100 pl-4 pr-4" style="margin-top: 28rem;">
 
-        <div id="Main" class="tabcontent">
+        <div id="Home" class="tabcontent">
             <h1 class="display-3 font-weight-bold mt-4 ml-4">Descrição</h1>
             <p class="descricaoFont pt-4 pl-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
 
@@ -102,7 +102,7 @@
 
         </div>
 
-        <div id="People" class="tabcontent">
+        <div id="Pessoas" class="tabcontent">
             <div class="row mt-4">
                 <h1 class="col-5 display-4 font-weight-bold mt-4 ml-4">4 participants</h1>
                 <div class="p-3 d-flex align-items-center ml-auto mr-5">
@@ -198,7 +198,7 @@
 
         </div>
 
-        <div id="Tasks" class="tabcontent">
+        <div id="Tarefas" class="tabcontent">
             <div class="row mt-4">
                 <h1 class="col-5 display-4 font-weight-bold mt-4 ml-4">6 Tasks</h1>
                 <div class="p-3 d-flex align-items-center ml-auto mr-5">

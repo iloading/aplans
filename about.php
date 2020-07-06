@@ -4,6 +4,7 @@
 <head>
 
   <?php
+  include_once "helpers/help_meta.php";
   require_once "helpers/help_css.php";
   ?>
 
