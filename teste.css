@@ -415,4 +415,32 @@ ul li{
 
 /*Carrossel MAIN*/
 
+.botaoParticipar {
+    border: none;
+    padding: 0.6rem;
+    text-decoration: none;
+    font-size: 2rem;
+    background-color: #F1F3F6;
+    color: #6F41E9;
+    border: 2px solid #6F41E9;
+    border-radius: 15px;
+}
 
+.botaoParticipar:focus {
+    outline: none;
+}
+
+.botaoAbandonar {
+    border: none;
+    padding: 0.6rem;
+    text-decoration: none;
+    font-size: 2rem;
+    background-color: #6F41E9;
+    color: white;
+    border: 1px solid #6F41E9;
+    border-radius: 15px;
+}
+
+.botaoAbandonar:focus {
+    outline: none;
+}
