@@ -21,15 +21,14 @@ if (isset($_SESSION['email_aplans'])) {
 
     <body class="p-0">
 
-
         <div id="conteudoPagina">
-            
+
 
         </div>
 
 
         <?php include_once "helpers/help_js.php" ?>
-        <?php include_once "ajax/scripts.html" ?>
+        <?php include_once "ajax/home.html" ?>
 
 
 
@@ -37,9 +36,15 @@ if (isset($_SESSION['email_aplans'])) {
         <script>
             $(document).ready(function() {
                 mostrarHome();
-            })
+            });
+
+            //É necessário este formato visto que escrevemos os elementos dinamicamente na página e não seriam acessíveis de outra forma
+            $(document).on('click', '.btn-evento', function() { 
+                console.log($(this).attr("id"));
+            });
+
         </script>
-        
+
     </body>
 
     </html>

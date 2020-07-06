@@ -1,25 +1,40 @@
 <main class="w-100 d-flex flex-column">
 
-    <header class="position-fixed bg-light" style="width: inherit;">
+    <header class="position-fixed" style="width: inherit; background-color: #F1F3F6">
         <article class="container d-flex flex-column pl-5 pr-5 pt-4 pb-4" style="max-width:inherit;">
 
-            <div class="d-flex align-itens-center justify-content-between">
-                <div class="d-flex flex-column mr-3">
-                    <div>
-                        <h1 class="font-weight-bold display-3 text-azul-aplans">Outdoor Cinema</h1>
+            <div class="d-flex align-itens-center justify-content-between row">
+
+                    <div class="d-flex flex-column col-8">
+                        <div>
+                            <h1 class="font-weight-bold display-3 text-azul-aplans">Outdoor Cinema</h1>
+                        </div>
+
+                        <div>
+                            <h2 class="text-secondary">10 pm, august 4, 2020</h2>
+                        </div>
+                        <div class="text-left mt-4 mb-4 d-flex">
+                            <span class="pl-4 pr-4 pt-2 pb-2" style="font-size: 2rem; background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizador</span>
+                            <div class="pl-4 d-flex align-items-center">
+                                <img style="width: 3rem; height:3rem" src="images/settings/gear.png">
+                            </div>   
+                        </div>
+                        <div>
+                            <button type="button" class="botaoParticipar">Participar</button>
+                            <button type="button" class="botaoAbandonar">Abandonar</button>
+                        </div>    	
+                    </div>
+               
+                
+                    <div class="col-4 d-flex flex-column" style="height:100%; align-items: flex-end;"> 
+                        <div class="avatar-circular">
+                            <img class="mw-100" src="assets/avatar.png" alt="avatar">
+                        </div>  
                     </div>
 
-                    <div>
-                        <h2 class="text-secondary">10 pm, august 4, 2020</h2>
-                    </div>
-                </div>
-
-                <div class=" avatar-circular">
-                    <img src="assets/avatar.png">
-                </div>
-
+                    
             </div>
-
+            
 
         </article>
         <button class="tablink" style="font-size:3rem;" onclick="openPage('Main', this)" id="defaultOpen">Home</button>
@@ -31,7 +46,7 @@
 
 
 
-    <div class="w-100 h-100 pl-4 pr-4" style="margin-top: 20rem;">
+    <div class="w-100 h-100 pl-4 pr-4" style="margin-top: 28rem;">
 
         <div id="Main" class="tabcontent">
             <h1 class="display-3 font-weight-bold mt-4 ml-4">Descrição</h1>
@@ -82,8 +97,7 @@
                 </div>
             </div>
 
-
-
+          
 
 
         </div>
@@ -108,7 +122,7 @@
                     <div class="row">
                         <div class="col-12 pr-0">
                             <span class="display-4 font-weight-normal">Miguel Costa</span>
-                            <span class="ml-3 pl-3 pr-3 pt-1 pb-1" style="font-size: 2rem; background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizer</span>
+                            <span class="ml-3 pl-3 pr-3 pt-1 pb-1" style="font-size: 2rem; background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizador</span>
                         </div>
                         <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">Popcorn Dealer</h1>
                     </div>
@@ -338,7 +352,5 @@
     </div>
 
     </div>
-
-
 
 </main>
