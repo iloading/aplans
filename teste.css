@@ -331,6 +331,7 @@ ul li{
     color: #6F41E9;
     max-width: 66%;
     word-wrap: break-word;
+    font-size: 1rem;
 }
   
 .me{
@@ -339,6 +340,7 @@ ul li{
     color: #FA4F3B;
     max-width: 66%;
     word-wrap: break-word;
+    font-size: 1rem;
 }
 
 /*Main page*/
