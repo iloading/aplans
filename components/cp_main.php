@@ -7,16 +7,16 @@
 
                     <div class="d-flex flex-column col-8">
                         <div>
-                            <h1 class="font-weight-bold display-3 text-azul-aplans">Outdoor Cinema</h1>
+                            <h1 class="font-weight-bold text-azul-aplans">Outdoor Cinema</h1>
                         </div>
 
                         <div>
                             <h2 class="text-secondary">10 pm, august 4, 2020</h2>
                         </div>
                         <div class="text-left mt-4 mb-4 d-flex">
-                            <span class="pl-4 pr-4 pt-2 pb-2" style="font-size: 2rem; background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizador</span>
+                            <span class="pl-2 pr-2 pt-1 pb-1" style="background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizador</span>
                             <div class="pl-4 d-flex align-items-center">
-                                <img style="width: 3rem; height:3rem" src="images/settings/gear.png">
+                                <img style="width: 1.5rem; height:1.5rem" src="images/settings/gear.png">
                             </div>   
                         </div>
                         <div>
@@ -37,10 +37,10 @@
             
 
         </article>
-        <button class="tablink"  id="defaultOpen" style="font-size:3rem;" >Home</button>
-        <button class="tablink"  style="font-size:3rem;">Pessoas</button>
-        <button class="tablink"  style="font-size:3rem;" >Tarefas</button>
-        <button class="tablink"  style="font-size:3rem;" >Chat</button>
+        <button class="tablink"  id="defaultOpen">Home</button>
+        <button class="tablink">Pessoas</button>
+        <button class="tablink">Tarefas</button>
+        <button class="tablink">Chat</button>
 
     </div>
 
