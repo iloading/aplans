@@ -9,7 +9,7 @@ $link = new_db_connection();
 
 $stmt = mysqli_stmt_init($link);
 
-$query = "SELECT name, date FROM event WHERE ref_creator_id = ?";
+$query = "SELECT id, name, date FROM event WHERE ref_creator_id = ?";
 
 
 
@@ -18,12 +18,13 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     // Devemos validar também o resultado do execute!
 
     if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_bind_result($stmt, $nomeEventoCriado, $dataEventoCriado);
+        mysqli_stmt_bind_result($stmt, $id, $nomeEventoCriado, $dataEventoCriado);
 
         /* fetch values */
         
         while (mysqli_stmt_fetch($stmt)) {
             $row_result = array();
+            $row_result["id_evento"] = htmlspecialchars($id);
             $row_result["nomeEventoCriado"] = htmlspecialchars($nomeEventoCriado);
             $row_result["dataEventoCriado"] = htmlspecialchars($dataEventoCriado);
             $data['created'][] = $row_result;
@@ -33,11 +34,6 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $data['created'][] = $row_result;
         }
         // print json_encode($data);
-        
-
-        
-
-    
         mysqli_stmt_close($stmt);
     }else {
         $row_result["erro"] = '1';

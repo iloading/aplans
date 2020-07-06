@@ -409,6 +409,9 @@ ul li{
     margin: auto;
 }
 
+.btn-evento{
+    cursor: pointer !important;
+}
 
 /*Carrossel MAIN*/
 

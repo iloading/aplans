@@ -22,10 +22,10 @@
             if (data.created[0] != 'vazio'){
                 for (let i = 0; i < data.created.length; i++) {
                     if (i == 0) {
-                        eventosCriados += '<div class="carousel-item active"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
+                        eventosCriados += '<div id="' + data.created[i]["id_evento"] + '" class="carousel-item active btn-evento"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
                         indicators += '<li class="active" data-target="#carouselExampleIndicators1" data-slide-to="'+i+'"></li>'
                     }else{
-                        eventosCriados += '<div class="carousel-item"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
+                        eventosCriados += '<div id="' + data.created[i]["id_evento"] + '" class="carousel-item btn-evento"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
                         indicators += '<li data-target="#carouselExampleIndicators1" data-slide-to="' + i + '"></li>';
                     }
                         
@@ -35,7 +35,7 @@
 
             for (let i = 0; i < data.upcoming.length; i++) {
                 if (i < 8) {
-                    upcoming += ' <div class="col-3 text-center"> <div class="add-event"><img src="images'+ data.upcoming[i]["icon_tipo"] +'" class="w-50"></div> <p>'+ data.upcoming[i]["nome_evento"]+'</p> </div>';
+                    upcoming += ' <div id="' + data.upcoming[i]["id_evento"] + '" class="col-3 text-center btn-evento"> <div class="add-event"><img src="images'+ data.upcoming[i]["icon_tipo"] +'" class="w-50"></div> <p>'+ data.upcoming[i]["nome_evento"]+'</p> </div>';
                 }
 
                  listaPlanos += '';
@@ -58,10 +58,7 @@
     
             
             var home = '<main id="main" class="alturaMainLogin text-white bg-azul-aplans d-flex flex-column align-items-start"> <div class="container p-3"> <section class="row d-flex" style="align-items: center;"> <div class="col-6 text-left" style="height: 100%;"> <div class="div-logo"><a href="index.php"><img class="mw-100" src="assets/aplans.png" alt="logotipo"></a></div> </div> <div class="col-6 text-right" style="height:100%"> <div class="avatar-circular"><img class="mw-100" src="assets/avatar.png" alt="avatar"></div> </div> </section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos">Created Plans</p> </section> <section class="row" style="align-items: center;"> <div class="col-3"> <div class="add-event">+</div> </div> <div id="carouselExampleIndicators1" class="carousel slide col-8" data-interval="false"> <ol class="carousel-indicators" style="bottom: -6vh;">'+indicators+'</ol> <div class="carousel-inner"> '+eventosCriados+' </div> <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev" style="left: -2vw"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next" style="right: -2vw"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div> </section> </div> <div class="container p-3"><section class="row pl-3"> <p class="index-titulos col-6 p-0">Planos Futuros</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a data-toggle="modal" data-target="#mostarPlanos">Ver todos</a></p> </section><section class="row">'+upcoming+'</section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos col-6 p-0">Meus Amigos</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a data-toggle="modal" data-target="#mostarAmigos">Ver todos</a></p> </section> <section class="row" style="align-items: center;"> <div class="col-3"> <div class="add-event">+</div> </div> <div class="col-9 row p-0">'+cardsAmigos+'</div> </section> </div></main>'
-           
-           
-           
-           
+
            
             $('#conteudoPagina').append(home);
             $('#amigosBody').append(listaAmigos);
