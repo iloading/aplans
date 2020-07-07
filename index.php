@@ -12,19 +12,7 @@ if (isset($_SESSION['email_aplans'])) {
         <?php include_once "helpers/help_meta.php" ?>
         <title>Aplans</title>
         <?php include_once "helpers/help_css.php" ?>
-        <!-- Include jQuery Mobile stylesheets -->
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <!-- Include the jQuery Mobile library -->
-        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script>
-            
-                $("#conteudoPagina").on("swipe", function(event){
-                    console.log("123");
-                });
-        
-    
-        </script>
+
     </head>
 
     <body class="p-0">
@@ -43,18 +31,21 @@ if (isset($_SESSION['email_aplans'])) {
 
 
         <script>
+            /*Carrega a página Home quando a página index.php é carregada pela primeira vez*/
             $(document).ready(function() {
                 mostrarHome();
             });
 
-            //É necessário este formato visto que escrevemos os elementos dinamicamente na página e não seriam acessíveis de outra forma
+            /*
+            Quando se clica num evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova funçao que irá mostrar a interface do evento
+            É necessário este formato visto que escrevemos os elementos dinamicamente na página e não seriam acessíveis de outra forma
+            É passado o id do evento correspondente ao botao onde clicámos na página home como parametro da função
+            */
             $(document).on('click', '.btn-evento', function() {
                 mostrarEvento($(this).attr("id"))
             });
-
-            
         </script>
-        
+
     </body>
 
     </html>
