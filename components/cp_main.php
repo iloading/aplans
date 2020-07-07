@@ -1,4 +1,4 @@
-<main class="w-100 d-flex flex-column">
+<div class="w-100 d-flex flex-column">
 
     <header class="position-fixed" style="width: inherit; background-color: #F1F3F6">
         <article class="container d-flex flex-column pl-5 pr-5 pt-4 pb-4" style="max-width:inherit;">
@@ -7,16 +7,16 @@
 
                     <div class="d-flex flex-column col-8">
                         <div>
-                            <h1 class="font-weight-bold display-3 text-azul-aplans">Outdoor Cinema</h1>
+                            <h1 class="font-weight-bold text-azul-aplans">Outdoor Cinema</h1>
                         </div>
 
                         <div>
                             <h2 class="text-secondary">10 pm, august 4, 2020</h2>
                         </div>
                         <div class="text-left mt-4 mb-4 d-flex">
-                            <span class="pl-4 pr-4 pt-2 pb-2" style="font-size: 2rem; background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizador</span>
+                            <span class="pl-2 pr-2 pt-1 pb-1" style="background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizador</span>
                             <div class="pl-4 d-flex align-items-center">
-                                <img style="width: 3rem; height:3rem" src="images/settings/gear.png">
+                                <img style="width: 1.5rem; height:1.5rem" src="images/settings/gear.png">
                             </div>   
                         </div>
                         <div>
@@ -37,18 +37,18 @@
             
 
         </article>
-        <button class="tablink" style="font-size:3rem;" onclick="openPage('Main', this)" id="defaultOpen">Home</button>
-        <button class="tablink" style="font-size:3rem;" onclick="openPage('People', this)">Pessoas</button>
-        <button class="tablink" style="font-size:3rem;" onclick="openPage('Tasks', this)">Tarefas</button>
-        <button class="tablink" style="font-size:3rem;" onclick="openPage('Chat', this)">Chat</button>
+        <button class="tablink"  id="defaultOpen">Home</button>
+        <button class="tablink">Pessoas</button>
+        <button class="tablink">Tarefas</button>
+        <button class="tablink">Chat</button>
 
-    </header>
+    </div>
 
 
 
     <div class="w-100 h-100 pl-4 pr-4" style="margin-top: 28rem;">
 
-        <div id="Main" class="tabcontent">
+        <div id="Home" class="tabcontent">
             <h1 class="display-3 font-weight-bold mt-4 ml-4">Descrição</h1>
             <p class="descricaoFont pt-4 pl-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui voluptatum maiores debitis vel maxime architecto beatae dolorum, assumenda ab! Suscipit saepe qui soluta nemo sint praesentium doloremque provident dicta.</p>
 
@@ -102,7 +102,7 @@
 
         </div>
 
-        <div id="People" class="tabcontent">
+        <div id="Pessoas" class="tabcontent">
             <div class="row mt-4">
                 <h1 class="col-5 display-4 font-weight-bold mt-4 ml-4">4 participants</h1>
                 <div class="p-3 d-flex align-items-center ml-auto mr-5">
@@ -198,7 +198,7 @@
 
         </div>
 
-        <div id="Tasks" class="tabcontent">
+        <div id="Tarefas" class="tabcontent">
             <div class="row mt-4">
                 <h1 class="col-5 display-4 font-weight-bold mt-4 ml-4">6 Tasks</h1>
                 <div class="p-3 d-flex align-items-center ml-auto mr-5">

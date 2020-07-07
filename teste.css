@@ -190,6 +190,7 @@
     width: 90%;
     background-color: #D4D4D8;
     border-radius: 6rem;
+    
   }
   
 #myBar1 {
@@ -249,8 +250,7 @@
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 2rem;
-  font-size: 2rem;
+  padding: 1rem;
   width: 25%;
   background-color:  #F1F3F6;
  border-top: 2px lightgray solid;
@@ -277,19 +277,16 @@
   display: none;
 }
 
-.descricaoFont{
-    font-size: 3rem;
-}
-
-#myProgress1 {
+#myProgressHome1 {
     width: 100%;
     background-color: #D4D4D8;
     border-radius: 6rem;
+    height: 15px;
   }
 
-#myBar1 {
+#myBarHome1 {
     width: 80%;
-    height: 20px;
+    height: 15px;
     background-color: #7041EE;
     border-radius: 6rem;
 }
@@ -300,12 +297,12 @@
 }
 
 .mainTasks{  
-    border-left: 10px solid red;
+    border-left: 5px solid red;
 }
 
 .selectSize{
-    width: 55px;
-    height: 55px; 
+    width: 30px;
+    height: 30px; 
 }
 
 .selectMargin{
@@ -334,6 +331,7 @@ ul li{
     color: #6F41E9;
     max-width: 66%;
     word-wrap: break-word;
+    font-size: 1rem;
 }
   
 .me{
@@ -342,6 +340,7 @@ ul li{
     color: #FA4F3B;
     max-width: 66%;
     word-wrap: break-word;
+    font-size: 1rem;
 }
 
 /*Main page*/
@@ -419,7 +418,6 @@ ul li{
     border: none;
     padding: 0.6rem;
     text-decoration: none;
-    font-size: 2rem;
     background-color: #F1F3F6;
     color: #6F41E9;
     border: 2px solid #6F41E9;
@@ -434,7 +432,6 @@ ul li{
     border: none;
     padding: 0.6rem;
     text-decoration: none;
-    font-size: 2rem;
     background-color: #6F41E9;
     color: white;
     border: 1px solid #6F41E9;
