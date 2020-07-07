@@ -44,8 +44,8 @@
     overflow: hidden;
     border-radius: 50%;
     float: right;
-    max-width:calc(25px + 5vw);
-    height: calc(25px + 5vw);
+    max-width:calc(5px + 5vw);
+    height: calc(5px + 5vw);
   }
 
 .avatar-circular-amigos img{
@@ -344,6 +344,7 @@ ul li{
     max-width: 66%;
     word-wrap: break-word;
     font-size: 0.9rem;
+    padding: 10px;
 }
   
 .me{
@@ -353,6 +354,7 @@ ul li{
     max-width: 66%;
     word-wrap: break-word;
     font-size: 0.9rem;
+    padding: 10px;
 }
 
 /*Main page*/
