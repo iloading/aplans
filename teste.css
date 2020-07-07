@@ -39,7 +39,19 @@
   height: calc(30px + 5vw);
 }
 
+.avatar-circular-chat{
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    float: right;
+    max-width:calc(25px + 5vw);
+    height: calc(25px + 5vw);
+  }
+
 .avatar-circular-amigos img{
+    max-width: 100%;
+}
+.avatar-circular-chat img{
     max-width: 100%;
 }
 
@@ -293,7 +305,7 @@
 
 
 .marginT{
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 .mainTasks{  
@@ -331,7 +343,7 @@ ul li{
     color: #6F41E9;
     max-width: 66%;
     word-wrap: break-word;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
   
 .me{
@@ -340,7 +352,7 @@ ul li{
     color: #FA4F3B;
     max-width: 66%;
     word-wrap: break-word;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 /*Main page*/
