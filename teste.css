@@ -39,7 +39,19 @@
   height: calc(30px + 5vw);
 }
 
+.avatar-circular-chat{
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    float: right;
+    max-width:calc(5px + 5vw);
+    height: calc(5px + 5vw);
+  }
+
 .avatar-circular-amigos img{
+    max-width: 100%;
+}
+.avatar-circular-chat img{
     max-width: 100%;
 }
 
@@ -293,7 +305,7 @@
 
 
 .marginT{
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 .mainTasks{  
@@ -331,7 +343,8 @@ ul li{
     color: #6F41E9;
     max-width: 66%;
     word-wrap: break-word;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    padding: 10px;
 }
   
 .me{
@@ -340,7 +353,16 @@ ul li{
     color: #FA4F3B;
     max-width: 66%;
     word-wrap: break-word;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    padding: 10px;
+}
+
+.margemConteudo {
+    margin-top: 22rem;
+}
+
+.margemConteudoColapsado {
+    margin-top: 10rem;
 }
 
 /*Main page*/
@@ -348,6 +370,23 @@ ul li{
 .add-event{
     height: calc(10px + 7vw);
     width: calc(10px + 7vw);
+    max-height: 50px;
+    max-width: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    background-color: #BAE4AC;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: 5.5vw;
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+}
+.main-pessoas{
+    height: calc(30px + 7vw);
+    width: calc(30px + 7vw);
     max-height: 50px;
     max-width: 50px;
     justify-content: center;
@@ -416,7 +455,6 @@ ul li{
 
 .botaoParticipar {
     border: none;
-    padding: 0.6rem;
     text-decoration: none;
     background-color: #F1F3F6;
     color: #6F41E9;
@@ -428,13 +466,19 @@ ul li{
     outline: none;
 }
 
+.organizador{
+    background-color: rgba(109, 63, 230, 0.2); 
+    border-radius: 15px; color: #6F41E9;
+    font-weight: 500;
+    border: 2px solid #6F41E9;
+}
+
 .botaoAbandonar {
     border: none;
-    padding: 0.6rem;
     text-decoration: none;
     background-color: #6F41E9;
     color: white;
-    border: 1px solid #6F41E9;
+    border: 2px solid #6F41E9;
     border-radius: 15px;
 }
 
