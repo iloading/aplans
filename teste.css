@@ -365,6 +365,31 @@ ul li{
     margin-top: 10rem;
 }
 
+#nav_pequena{
+    opacity: 0;
+    transition: all 0.25s ease;
+}
+
+#nav_grande{
+    opacity: 0;
+    transition: all 0.25s ease;
+
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    opacity: 1 !important;
+    transition: all 0.25s ease;
+}
+
+.animacao{
+    padding: 3.5rem !important;
+    /* transition: all 0.5s ease; */
+}
+
 /*Main page*/
 
 .add-event{
