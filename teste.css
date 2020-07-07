@@ -447,7 +447,6 @@ ul li{
 
 .botaoParticipar {
     border: none;
-    padding: 0.6rem;
     text-decoration: none;
     background-color: #F1F3F6;
     color: #6F41E9;
@@ -459,13 +458,19 @@ ul li{
     outline: none;
 }
 
+.organizador{
+    background-color: rgba(109, 63, 230, 0.2); 
+    border-radius: 15px; color: #6F41E9;
+    font-weight: 500;
+    border: 2px solid #6F41E9;
+}
+
 .botaoAbandonar {
     border: none;
-    padding: 0.6rem;
     text-decoration: none;
     background-color: #6F41E9;
     color: white;
-    border: 1px solid #6F41E9;
+    border: 2px solid #6F41E9;
     border-radius: 15px;
 }
 
