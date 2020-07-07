@@ -36,12 +36,12 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result["descricao"] = htmlspecialchars($descricao);
             $row_result["ultimoUpdate"] = htmlspecialchars($ultimoUpdate);
 
-            $data['evento'][] = $row_result;
+            $data['home'] = $row_result;
         }
         //Caso ocorra algum erro
         if (mysqli_stmt_num_rows($stmt) == 0) { 
             $row_result = "vazio";
-            $data['evento'][] = $row_result;
+            $data['home'] = $row_result;
         }
         // print json_encode($data);
         mysqli_stmt_close($stmt);
