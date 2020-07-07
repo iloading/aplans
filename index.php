@@ -12,6 +12,19 @@ if (isset($_SESSION['email_aplans'])) {
         <?php include_once "helpers/help_meta.php" ?>
         <title>Aplans</title>
         <?php include_once "helpers/help_css.php" ?>
+        <!-- Include jQuery Mobile stylesheets -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <!-- Include the jQuery Mobile library -->
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script>
+            
+                $("#conteudoPagina").on("swipe", function(event){
+                    console.log("123");
+                });
+        
+    
+        </script>
     </head>
 
     <body class="p-0">

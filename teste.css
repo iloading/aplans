@@ -343,6 +343,14 @@ ul li{
     font-size: 1rem;
 }
 
+.margemConteudo {
+    margin-top: 22rem;
+}
+
+.margemConteudoColapsado {
+    margin-top: 10rem;
+}
+
 /*Main page*/
 
 .add-event{
