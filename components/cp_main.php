@@ -63,6 +63,8 @@
                     </div>
                 </div>
             </div>
+
+        
         </div>
         <div id="Pessoas" class="tabcontent container-fluid">
             <div class="d-flex ml-2 mt-4">
@@ -211,6 +213,9 @@
                 <div class="pl-3 pr-3 pb-3 pt-0 d-flex align-items-center justify-content-left ml-auto"> <input type="text" placeholder="Escreve algo" class="p-1" style="border: none; border-radius: 20px; font-size: 1rem; width: 100rem; height: 3rem;"> </div>
             </div>
         </div>
+
+
+
     </div>
 
     </main>

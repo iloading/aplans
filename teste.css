@@ -390,6 +390,22 @@ ul li{
     /* transition: all 0.5s ease; */
 }
 
+.arrow{
+    width: 1.5rem;
+}
+.posicao_seta{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    left: 0;
+}
+
+.girar_seta{
+    transform: scaleY(-1);
+}
+
 /*Main page*/
 
 .add-event{
