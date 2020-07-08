@@ -367,12 +367,18 @@ ul li{
 
 #nav_pequena{
     opacity: 0;
-    transition: all 0.25s ease;
+    padding: 0;
+    max-height: 700px;
+    transition: all 0.25s ease !important;
+    /* transition:max-height 1s ease-out !important; */
 }
 
 #nav_grande{
     opacity: 0;
-    transition: all 0.25s ease;
+    /*max height necessita de ter um valor para que a anicação ocorra, este número n~~ao influencia nada*/
+    max-height: 100vh; 
+    transition: all 0.25s ease !important;
+    /* transition:max-height 1s ease-out !important; */
 
 }
 
@@ -382,11 +388,16 @@ ul li{
 
 .show {
     opacity: 1 !important;
-    transition: all 0.25s ease;
+    /* transition: all 0.25s ease; */
 }
 
 .animacao{
-    padding: 3.5rem !important;
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+    /* transition: all 0.5s ease; */
+}
+.animacao2{
+    max-height: 4.5rem !important;
     /* transition: all 0.5s ease; */
 }
 
