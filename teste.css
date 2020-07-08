@@ -77,7 +77,7 @@
 }
 
 .myForm {
-    background-color: #F1F3F6 !important;
+    background-color: #3C5E77 !important;
     padding: 15px !important;
     color: white;
 
@@ -150,11 +150,12 @@
 }
 
 .loginTit:link {
-    color: #3C5E77;
+    color: rgba(186, 228, 172, 0.8);
+    font-size: 1.5rem;
 }
 
 .loginTit:visited {
-    color: #3C5E77;
+    color: #BAE4AC;
 }
 
 .loginTit:hover {
@@ -163,7 +164,7 @@
 }
 
 .loginTit:active {
-    color: #3C5E77;
+    color: #BAE4AC;
 }
 /*manter as proporções da imagem , sendo ela dependente na width da janela*/
 .div-logo-landingPage{
