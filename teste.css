@@ -369,7 +369,7 @@ ul li{
     opacity: 0;
     padding: 0;
     max-height: 700px;
-    transition: all 0.25s ease !important;
+    transition: all 0.1s ease !important;
     /* transition:max-height 1s ease-out !important; */
 }
 
@@ -377,7 +377,7 @@ ul li{
     opacity: 0;
     /*max height necessita de ter um valor para que a anicação ocorra, este número n~~ao influencia nada*/
     max-height: 100vh; 
-    transition: all 0.25s ease !important;
+    transition: all 0.1s ease !important;
     /* transition:max-height 1s ease-out !important; */
 
 }
