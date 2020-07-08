@@ -15,6 +15,12 @@
     color: #3C5E77 !important;
 }
 
+.text-branco-evento{
+
+color: #FFFFFF !important;
+
+}
+
 
 .botoesMain{
     font-size: 2rem;
@@ -77,7 +83,7 @@
 }
 
 .myForm {
-    background-color: #F1F3F6 !important;
+    background-color: #3C5E77 !important;
     padding: 15px !important;
     color: white;
 
@@ -150,11 +156,12 @@
 }
 
 .loginTit:link {
-    color: #3C5E77;
+    color: rgba(186, 228, 172, 0.8);
+    font-size: 1.5rem;
 }
 
 .loginTit:visited {
-    color: #3C5E77;
+    color: #BAE4AC;
 }
 
 .loginTit:hover {
@@ -163,7 +170,7 @@
 }
 
 .loginTit:active {
-    color: #3C5E77;
+    color: #BAE4AC;
 }
 /*manter as proporções da imagem , sendo ela dependente na width da janela*/
 .div-logo-landingPage{
@@ -257,7 +264,7 @@
 
 
 .tablink {
-  color: #6D3FE6;
+  color: #3C5E77;
   float: left;
   border: none;
   outline: none;
@@ -365,6 +372,58 @@ ul li{
     margin-top: 10rem;
 }
 
+#nav_pequena{
+    opacity: 0;
+    padding: 0;
+    max-height: 700px;
+    transition: all 0.1s ease !important;
+    /* transition:max-height 1s ease-out !important; */
+}
+
+#nav_grande{
+    opacity: 0;
+    /*max height necessita de ter um valor para que a anicação ocorra, este número n~~ao influencia nada*/
+    max-height: 100vh; 
+    transition: all 0.1s ease !important;
+    /* transition:max-height 1s ease-out !important; */
+
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    opacity: 1 !important;
+    /* transition: all 0.25s ease; */
+}
+
+.animacao{
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+    /* transition: all 0.5s ease; */
+}
+.animacao2{
+    max-height: 4.5rem !important;
+    /* transition: all 0.5s ease; */
+}
+
+.arrow{
+    width: 1.5rem;
+}
+.posicao_seta{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    left: 0;
+}
+
+.girar_seta{
+    transform: scaleY(-1);
+}
+
 /*Main page*/
 
 .add-event{
@@ -454,13 +513,19 @@ ul li{
 /*Carrossel MAIN*/
 
 .botaoParticipar {
-    border: none;
+    border: 1px;
     text-decoration: none;
-    background-color: #F1F3F6;
-    color: #6F41E9;
-    border: 2px solid #6F41E9;
+    background-color: rgba(186, 228, 172, 0.3);
+    color:white;
+    border: 2px solid rgba(186, 228, 172, 0.5);
     border-radius: 15px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    font-weight: 600;
 }
+
 
 .botaoParticipar:focus {
     outline: none;
@@ -474,14 +539,35 @@ ul li{
 }
 
 .botaoAbandonar {
-    border: none;
     text-decoration: none;
-    background-color: #6F41E9;
+    background-color: rgba(255, 89, 89, 0.3);
     color: white;
-    border: 2px solid #6F41E9;
+    border: 2px solid rgba(255, 89, 89, 0.5) ;
     border-radius: 15px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    font-weight: 600;
 }
 
 .botaoAbandonar:focus {
+    outline: none;
+}
+
+.botaoCheio {
+    text-decoration: none;
+    background-color: rgba(119, 118, 118, 0.5);
+    color: white;
+    border: 2px solid rgba(86, 84, 84,0.8);
+    border-radius: 15px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    font-weight: 600;
+}
+
+.botaoCheio:focus {
     outline: none;
 }

@@ -1,35 +1,35 @@
 <div class="w-100 d-flex flex-column">
     <div class="position-fixed" style="width: inherit; background-color: #F1F3F6; z-index:2">
         <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit;">
-                <div class="d-flex align-items-center">
-                    <div class="d-none justify-content-between" id="organizador"> 
-                        <span class="pl-2 pr-2 pt-1 pb-1" style="background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizador</span>
-                        <div class="pl-4 d-flex align-items-center"> <img style="width: 1.5rem; height:1.5rem" src="images/settings/gear.png"> </div>
+            <div class="d-flex align-items-center">
+                <div class="d-none justify-content-between" id="organizador">
+                    <span class="pl-2 pr-2 pt-1 pb-1" style="background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizador</span>
+                    <div class="pl-4 d-flex align-items-center"> <img style="width: 1.5rem; height:1.5rem" src="images/settings/gear.png"> </div>
+                </div>
+                <div class="d-flex justify-content-center" id="imagem">
+                    <div class="avatar-circular d-flex"> <img src="assets/avatar.png"> </div>
+                </div>
+                <div class="d-flex flex-column pl-3 justify-items-center">
+                    <div id="titulo">
+                        <h2 class="font-weight-bold text-branco-evento"> Outdoor Cinema</h2>
                     </div>
-                    <div class="d-flex justify-content-center" id="imagem">
-                        <div class="avatar-circular d-flex"> <img src="assets/avatar.png"> </div>
-                    </div>
-                    <div class="d-flex flex-column pl-3 justify-items-center">
-                        <div id="titulo">
-                            <h2 class="font-weight-bold text-azul-aplans">Outdoor Cinema</h2>
-                        </div>
-                        <div id="data_evento">
-                            <span class="text-secondary">10 pm, august 4, 2020</span>
-                        </div>
-                    </div>
-                    
-                    <div class="d-none justify-content-center" id="botoes_evento"> 
-                        <button type="button" class="botaoParticipar">+ Participar</button> 
-                        <button type="button" class="botaoAbandonar">- Abandonar</button> 
+                    <div id="data_evento">
+                        <span style="color: #F1F3F6;">10 pm, august 4, 2020</span>
                     </div>
                 </div>
-                
-            
-        </article> 
-        
-        <button class="tablink" id="defaultOpen" style="font-size:1.2rem;">Home</button> 
-        <button class="tablink" style="font-size:1.2rem;">Pessoas</button> 
-        <button class="tablink" style="font-size:1.2rem;">Tarefas</button> 
+
+                <div class="d-none justify-content-center" id="botoes_evento">
+                    <button type="button" class="botaoParticipar">+ Participar</button>
+                    <button type="button" class="botaoAbandonar">- Abandonar</button>
+                </div>
+            </div>
+
+
+        </article>
+
+        <button class="tablink" id="defaultOpen" style="font-size:1.2rem;">Home</button>
+        <button class="tablink" style="font-size:1.2rem;">Pessoas</button>
+        <button class="tablink" style="font-size:1.2rem;">Tarefas</button>
         <button class="tablink" style="font-size:1.2rem;">Chat</button>
     </div>
     <div class="w-100 h-100" style="margin-top: 13rem;">
@@ -63,6 +63,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
         <div id="Pessoas" class="tabcontent container-fluid">
             <div class="d-flex ml-2 mt-4">
@@ -211,6 +213,9 @@
                 <div class="pl-3 pr-3 pb-3 pt-0 d-flex align-items-center justify-content-left ml-auto"> <input type="text" placeholder="Escreve algo" class="p-1" style="border: none; border-radius: 20px; font-size: 1rem; width: 100rem; height: 3rem;"> </div>
             </div>
         </div>
+
+
+
     </div>
 
     </main>

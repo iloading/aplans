@@ -149,7 +149,7 @@ if ($sucesso == 1) {
                                 // Feedback de sucesso
                                 //echo "SUCESSO";
 
-                                header("Location: ../home.php");
+                                header("Location: ../index.php");
                                 //Nao esquecer de meter uma mensagem na pagina do index a dizer que o registo foi efetuado com sucesso, e o login feito automaticamente
                             } else {
                                 echo "FAIL";
