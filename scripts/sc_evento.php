@@ -13,7 +13,7 @@ $link = new_db_connection();
 
 $stmt = mysqli_stmt_init($link);
 
-$query = "SELECT ref_event_type_id, ref_creator_id, name, date, slots, short_description, last_message_update FROM event WHERE id = ?";
+$query = "SELECT event_type.url, ref_creator_id, name, date, slots, short_description, last_message_update FROM event INNER JOIN event_type ON event_type.id = ref_event_type_id WHERE event.id = ?";
 
 
 

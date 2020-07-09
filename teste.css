@@ -443,6 +443,23 @@ ul li{
     font-family: 'Nunito', sans-serif !important;
     margin: auto;
 }
+.current-event{
+    height: calc(45px + 7vw);
+    width: calc(45px + 7vw);
+    max-height: 65px;
+    max-width: 65px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    background-color: #BAE4AC;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: 5.5vw;
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+}
 .main-pessoas{
     height: calc(30px + 7vw);
     width: calc(30px + 7vw);
