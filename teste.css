@@ -538,11 +538,7 @@ ul li{
     margin: 0;
     font-size: calc(10px + 1.5vw);
 }
-.events p:last-child{
-    margin: 0;
-    font-size: calc(6px + 1.5vw);
-    font-weight: initial;
-}
+
 
 .index-titulos{
     font-size: calc(13px + 0.7vw);
@@ -628,4 +624,11 @@ ul li{
 
 .botaoCheio:focus {
     outline: none;
+}
+
+.data_evento{
+    margin: 0;
+    font-size: calc(6px + 1.5vw);
+    font-weight: initial;
+
 }

@@ -23,10 +23,19 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         /* fetch values */
         
         while (mysqli_stmt_fetch($stmt)) {
+
+
+            $data_adaptada= date ('Y-m-d\TH:i:s', strtotime($dataEventoCriado));
+            $dia = date ('Y-m-d', strtotime($dataEventoCriado));
+            $hora = date ('H:i', strtotime($dataEventoCriado));
+
+
+            
             $row_result = array();
             $row_result["id_evento"] = htmlspecialchars($id);
             $row_result["nomeEventoCriado"] = htmlspecialchars($nomeEventoCriado);
-            $row_result["dataEventoCriado"] = htmlspecialchars($dataEventoCriado);
+            $row_result["diaEventoCriado"] = htmlspecialchars($dia);
+            $row_result["horaEventoCriado"] = htmlspecialchars($hora);
             $data['created'][] = $row_result;
         }
         if (mysqli_stmt_num_rows($stmt) == 0) {
@@ -69,6 +78,8 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         /* fetch values */
 
         while (mysqli_stmt_fetch($stmt)) {
+
+        
             $row_result = array();
             $row_result["id_evento"] = htmlspecialchars($id_evento);
             $row_result["nome_evento"] = htmlspecialchars($nome_evento);

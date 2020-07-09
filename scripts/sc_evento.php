@@ -27,11 +27,19 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         /* fetch values */
 
         while (mysqli_stmt_fetch($stmt)) {
+
+            
+            
+            $dia = date ('Y-m-d', strtotime($dataEvento));
+            $hora = date ('H:i', strtotime($dataEvento));
+
+
             $row_result = array();
             $row_result["tipo"] = htmlspecialchars($tipoEvento);
             $row_result["criador"] = htmlspecialchars($criador);
             $row_result["nome"] = htmlspecialchars($nomeEvento);
-            $row_result["data"] = htmlspecialchars($dataEvento);
+            $row_result["diaEventoCriado"] = htmlspecialchars($dia);
+            $row_result["horaEventoCriado"] = htmlspecialchars($hora);
             $row_result["slotsMax"] = htmlspecialchars($slots);
             $row_result["descricao"] = htmlspecialchars($descricao);
             $row_result["ultimoUpdate"] = htmlspecialchars($ultimoUpdate);

@@ -21,8 +21,9 @@
             console.log(data.created[0]);
             if (data.created[0] != 'vazio'){
                 for (let i = 0; i < data.created.length; i++) {
+                    //Se for o primeiro tem de estar active
                     if (i == 0) {
-                        eventosCriados += '<div id="' + data.created[i]["id_evento"] + '" class="carousel-item active btn-evento"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
+                        eventosCriados += '<div id="' + data.created[i]["id_evento"] + '" class="carousel-item active btn-evento"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12 data_evento">' + data.created[i]["diaEventoCriado"] + '</p> <p class="col-12 data_evento">' + data.created[i]["horaEventoCriado"] + '</p></div> </div> </div>';
                         indicators += '<li class="active" data-target="#carouselExampleIndicators1" data-slide-to="'+i+'"></li>'
                     }else{
                         eventosCriados += '<div id="' + data.created[i]["id_evento"] + '" class="carousel-item btn-evento"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';

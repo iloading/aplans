@@ -165,7 +165,7 @@
                 
               $data_adaptada= date ('Y-m-d\TH:i:s', strtotime($data));
               $dia = date ('Y-m-d', strtotime($data));
-              $hora = date ('H:i:s', strtotime($data));
+              $hora = date ('H:i', strtotime($data));
                 
 
                 $row_result = array();
