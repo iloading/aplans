@@ -45,6 +45,17 @@ color: #FFFFFF !important;
   height: calc(30px + 5vw);
 }
 
+.avatar-circular-pessoas{
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    float: right;
+    max-width:calc(45px + 5vw);
+    height: calc(45px + 5vw);
+  }
+
+
+
 .avatar-circular-chat{
     max-height: 100%;
     overflow: hidden;
@@ -64,6 +75,14 @@ color: #FFFFFF !important;
 .avatar-circular img{
     max-width: 100%;
 }
+
+.estado-online {
+    height: 25px;
+    width: 25px;
+    background-color: 	#00FF00;
+    border-radius: 50%;
+   
+  }
 
 
 .alturaMainLogin {
@@ -461,10 +480,10 @@ ul li{
     margin: auto;
 }
 .main-pessoas{
-    height: calc(30px + 7vw);
-    width: calc(30px + 7vw);
-    max-height: 50px;
-    max-width: 50px;
+    height: calc(40px + 7vw);
+    width: calc(40px + 7vw);
+    max-height: 65px;
+    max-width: 65px;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -476,6 +495,26 @@ ul li{
     font-size: 5.5vw;
     font-family: 'Nunito', sans-serif !important;
     margin: auto;
+}
+
+.pessoas_largura{
+    height: calc(10px + 14vw);
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    border-radius:5vw;
+    text-align: center;
+    display: flex;
+    /*background-color: #BAE4AC;*/
+    background-color: rgba(186, 228, 172, 0.3);
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: calc(10px + 1.5vw);
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+    height: 20vh; 
+    
+    
 }
 
 .events{
