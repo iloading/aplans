@@ -2,6 +2,16 @@
 require_once "connections/connection.php";
 require_once "admin/scripts/sc_check_admin.php";
 
+if (!isset($_COOKIE['email']) && !isset($_COOKIE['id']) && !isset($_COOKIE['role']) ) {
+    header("location: login.php");
+}else{
+    $_SESSION["email_aplans"] = $_COOKIE['email'];
+    $_SESSION['id_user_aplans'] = $_COOKIE['id'];
+    $_SESSION['role_aplans'] = $_COOKIE['role'];
+}
+
+
+
 if (isset($_SESSION['email_aplans'])) {
 ?>
 

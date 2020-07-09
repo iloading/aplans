@@ -1,11 +1,14 @@
 <?php
 session_start();
 require_once "../connections/connection.php";
-require_once "../scripts/sc_validate_input.php";
+
+
 
 if (isset($_POST["email"]) && isset($_POST["password"])) {
-    $email = validate($_POST['email']);
-    $password_inserida = validate($_POST['password']);
+    $email = $_POST['email'];
+    $password_inserida = $_POST['password'];
+
+   
 
     
     $link = new_db_connection();
@@ -26,9 +29,15 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                 if (password_verify($password_inserida, $password_hash)) {
                     // Guardar sessão de utilizador
                     session_start();
-                   $_SESSION["email_aplans"] = $email;
-                   $_SESSION['id_user_aplans'] = $id;
-                   $_SESSION['role_aplans'] = $role;
+                    $_SESSION["email_aplans"] = $email;
+                    $_SESSION['id_user_aplans'] = $id;
+                    $_SESSION['role_aplans'] = $role;
+                   
+                    
+
+                    setcookie('email', $email, time() + (86400 * 30), "/"); // 86400 = 1 day
+                    setcookie('id', $id, time() + (86400 * 30), "/"); // 86400 = 1 day
+                    setcookie('role', $role, time() + (86400 * 30), "/"); // 86400 = 1 day
 
                     // Feedback de sucesso
                     //echo "SUCESSO";

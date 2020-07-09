@@ -30,8 +30,52 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
             
             
-            $dia = date ('Y-m-d', strtotime($dataEvento));
+            $dia = (int) date ('d', strtotime($dataEvento));
+            $mes = date('m', strtotime($dataEvento));
             $hora = date ('H:i', strtotime($dataEvento));
+            $ano = date('Y', strtotime($dataEvento));
+
+            switch ($mes) {
+                case '01':
+                    $mes = 'janeiro';
+                    break;
+                case '02':
+                    $mes = 'fevereiro';
+                    break;
+                case '03':
+                    $mes = 'março';
+                    break;
+                case '04':
+                    $mes = 'abril';
+                    break;
+                case '05':
+                    $mes = 'maio';
+                    break;
+                case '06':
+                    $mes = 'junho';
+                    break;
+                case '07':
+                    $mes = 'julho';
+                    break;
+                case '08':
+                    $mes = 'agosto';
+                    break;
+                case '09':
+                    $mes = 'setembro';
+                    break;
+                case '10':
+                    $mes = 'outubro';
+                    break;
+                case '11':
+                    $mes = 'novembro';
+                    break;
+                case '12':
+                    $mes = 'dezembro';
+                    break;
+                default:
+                    # code...
+                    break;
+            }
 
 
             $row_result = array();
@@ -39,7 +83,9 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result["criador"] = htmlspecialchars($criador);
             $row_result["nome"] = htmlspecialchars($nomeEvento);
             $row_result["diaEventoCriado"] = htmlspecialchars($dia);
+            $row_result["mesEventoCriado"] = htmlspecialchars($mes);
             $row_result["horaEventoCriado"] = htmlspecialchars($hora);
+            $row_result["anoEventoCriado"] = htmlspecialchars($ano);
             $row_result["slotsMax"] = htmlspecialchars($slots);
             $row_result["descricao"] = htmlspecialchars($descricao);
             $row_result["ultimoUpdate"] = htmlspecialchars($ultimoUpdate);

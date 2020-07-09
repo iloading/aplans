@@ -1,6 +1,11 @@
 ﻿<?php
-session_start();
-require_once "connections/connection.php";
+	session_start();
+	require_once "connections/connection.php";
+
+	if (isset($_COOKIE['email']) && isset($_COOKIE['id']) && isset($_COOKIE['role'])) {
+		header("location: index.php");
+	}
+
 ?>
 <!doctype html>
 <html lang="zxx">
