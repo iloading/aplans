@@ -22,7 +22,7 @@ if ($admin == 1) {
         $descricao = $_GET['descricao'];
         $criador = $_GET['criador'];
         $tipo = $_GET['tipo'];
-        echo $data;
+        
 
 
 
