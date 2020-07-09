@@ -5,7 +5,7 @@
 
             <div class="container-fluid w-100 bg-azul-aplans">
                 <div class="w-100">
-                    <div class="card animated bounceInDown myForm w-100 bg-azul-aplans borderNone">
+                    <div class="p-2 pt-5 card animated bounceInDown myForm w-100 bg-azul-aplans borderNone">
                         <div class="text-center mb-4">
                             <img class="div-logo-landingPage div-logo-landingPage-img" src="images/logo/logo.png">
 

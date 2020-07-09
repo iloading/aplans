@@ -247,7 +247,7 @@ require_once "../scripts/sc_check_admin.php";
 
                             for (var i in data) {
 
-                                var linha = "<tr><th>" + data[i]["nome"] + "</th><th>" + data[i]["data"] + "</th><th>" + data[i]["slots"] + "</th><th>" + data[i]["descricao"] + "</th><th>" + data[i]["criador"] + "</th><th>" + data[i]["tipo"] + "</th><th><a href='#' data-toggle='modal' data-target='#myModal' data-id='" + i + "' class='editar'>Editar</a></th></tr>";
+                                var linha = "<tr><th>" + data[i]["nome"] + "</th><th> Dia " + data[i]["dia"] + " às " + data[i]["hora"] + " </th><th>" + data[i]["slots"] + "</th><th>" + data[i]["descricao"] + "</th><th>" + data[i]["criador"] + "</th><th>" + data[i]["tipo"] + "</th><th><a href='#' data-toggle='modal' data-target='#myModal' data-id='" + i + "' class='editar'>Editar</a></th></tr>";
                                 $('#users').append(linha);
 
                                 resultados = data[i]["noPaginas"]
@@ -270,7 +270,7 @@ require_once "../scripts/sc_check_admin.php";
                             $('.editar').on("click", function() {
                                 var editarLinha = $(this).data('id');
 
-                                var modal_editar_body = ' <label class="col-12 pl-0 mb-0 mt-2">Nome</label><input name="nome" type="text" id="update_nome" value="' + data[editarLinha]['nome'] + '"><label class="col-12 pl-0 mb-0 mt-2">Data</label><input name="data" type="number" id="data_evento" value="' + data[editarLinha]['data'] + '"><label class="col-12 pl-0 mb-0 mt-2">Slots</label><input name="slots" type="text" id="slots_evento" value="' + data[editarLinha]['slots'] + '"><label class="col-12 pl-0 mb-0 mt-2">Descrição</label><input name="descricao" type="text" id="descricao_evento" value="' + data[editarLinha]['descricao'] + '"><label class="col-12 pl-0 mb-0 mt-2">Criador</label><input name="criador" type="text" id="criador_evento" value="' + data[editarLinha]['criador'] + '"><label class="col-12 pl-0 mb-0 mt-2">Tipo de Evento</label><input name="tipo" type="text" id="tipo_evento" value="' + data[editarLinha]['tipo'] + '"><input type="hidden" id="id_evento" value="' + data[editarLinha]['id'] + '">';
+                                var modal_editar_body = ' <label class="col-12 pl-0 mb-0 mt-2">Nome</label><input name="nome" type="text" id="update_nome" value="' + data[editarLinha]['nome'] + '"><label class="col-12 pl-0 mb-0 mt-2">Data</label><input name="data" type="datetime-local" id="data_evento" value="' + data[editarLinha]['data'] + '"><label class="col-12 pl-0 mb-0 mt-2">Slots</label><input name="slots" type="text" id="slots_evento" value="' + data[editarLinha]['slots'] + '"><label class="col-12 pl-0 mb-0 mt-2">Descrição</label><input name="descricao" type="text" id="descricao_evento" value="' + data[editarLinha]['descricao'] + '"><label class="col-12 pl-0 mb-0 mt-2">Criador</label><input name="criador" type="text" id="criador_evento" value="' + data[editarLinha]['criador'] + '"><label class="col-12 pl-0 mb-0 mt-2">Tipo de Evento</label><input name="tipo" type="text" id="tipo_evento" value="' + data[editarLinha]['tipo'] + '"><input type="hidden" id="id_evento" value="' + data[editarLinha]['id'] + '">';
 
 
                                 $("#modal_editar").html(modal_editar_body);

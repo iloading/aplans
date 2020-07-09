@@ -18,6 +18,7 @@ if ($admin == 1) {
         $criador = $_GET['criador'];
         $tipo = $_GET['tipo'];
 
+    
 
         $stmt = mysqli_stmt_init($link);
         $query = "SELECT users.id FROM users INNER JOIN event ON users.id = event.ref_creator_id WHERE users.email = ? ";
@@ -84,9 +85,11 @@ if ($admin == 1) {
     //     echo "email";
     // }
 
+    
 
     if ($sucesso == 1) {
 
+        
         $stmt = mysqli_stmt_init($link);
 
         $query = "INSERT INTO events (nome, data, slots, descricao ,ref_creator_id, ref_event_type_id) VALUES (?,?,?,?,?,?)";

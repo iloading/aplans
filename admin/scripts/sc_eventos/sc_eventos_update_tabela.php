@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "../../../connections/connection.php";
-require_once "sc_eventos/sc_check_admin.php";
+require_once "../sc_check_admin.php";
 
 
 
@@ -22,6 +22,7 @@ if ($admin == 1) {
         $descricao = $_GET['descricao'];
         $criador = $_GET['criador'];
         $tipo = $_GET['tipo'];
+        echo $data;
 
 
 
@@ -89,7 +90,7 @@ if ($admin == 1) {
 
         if (mysqli_stmt_prepare($stmt, $query1)) {
 
-            mysqli_stmt_bind_param($stmt, 'siisisi', $nome, $data, $slots, $descricao, $criador_id, $tipo_id, $id);
+            mysqli_stmt_bind_param($stmt, 'ssisisi', $nome, $data, $slots, $descricao, $criador_id, $tipo_id, $id);
 
             if (mysqli_stmt_execute($stmt)) {
 

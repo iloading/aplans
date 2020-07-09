@@ -162,10 +162,18 @@
             $data1 = array();
             while (mysqli_stmt_fetch($stmt)) {
 
+                
+              $data_adaptada= date ('Y-m-d\TH:i:s', strtotime($data));
+              $dia = date ('Y-m-d', strtotime($data));
+              $hora = date ('H:i:s', strtotime($data));
+                
+
                 $row_result = array();
                 $row_result["id"] = htmlspecialchars($id);
                 $row_result["nome"] = htmlspecialchars($nome);
-                $row_result["data"] = htmlspecialchars($data);
+                $row_result["data"] = htmlspecialchars($data_adaptada);
+                $row_result["hora"] = htmlspecialchars($hora);
+                $row_result["dia"] = htmlspecialchars($dia);
                 $row_result["slots"] = htmlspecialchars($slots);
                 $row_result["descricao"] = htmlspecialchars($desc);
                 $row_result["criador"] = htmlspecialchars($criador_email);
