@@ -20,6 +20,8 @@
            var setaDireita = '';
            var setaEsquerda = '';
            var adicionarNovoEvento = '';
+           var adicionarAmigos ='';
+           var modalAmigos ='';
 
             console.log(data.created[0]);
             if (data.created[0] != 'vazio'){
@@ -38,7 +40,7 @@
                         
                 }
             }else{
-                adicionarNovoEvento += '<div class="col-12"> <div class="add-event">+</div> </div>'
+                adicionarNovoEvento += '<div class="col-10 semEvento"> <div class="add-event" style="margin-top: 7%;margin-bottom:7%;">+</div><div><p style="margin:0;font-weight: 600;text-align: center;">Não tens eventos criados</p><p style="font-weight: 600;text- align: center;">Clica aqui para criar o teu primeiro evento!</p><div></div>'
             }
             
 
@@ -51,26 +53,31 @@
               
             }
             if (data.amigos[0] != 'vazio'){
+
+                  adicionarAmigos += '<div class="col-3"> <div class="add-event">+</div> </div>';
+                  modalAmigos += '<a data-toggle="modal" data-target="#mostarAmigos">Ver todos</a>';
                 for (let i = 0; i < data.amigos.length; i++) {
 
                     if(i<3){
-                        cardsAmigos += '<div class="events container-fluid p-0" style="height: 16vh; max-width:30%;"> <div class="row d-flex justify-content-center"><div><img class="avatar-circular-amigos" src="images' + data.amigos[i]["imagem_amigo"] +'" alt="user"></div><p class="col-12 pt-2">' + data.amigos[i]["nomesAmigos"] + '</p></div> </div> ';
+                        cardsAmigos += '<div class="col-9 row p-0"><div class="events container-fluid p-0" style="height: 16vh; max-width:30%;"> <div class="row d-flex justify-content-center"><div><img class="avatar-circular-amigos" src="images' + data.amigos[i]["imagem_amigo"] +'" alt="user"></div><p class="col-12 pt-2">' + data.amigos[i]["nomesAmigos"] + '</p></div> </div></div> ';
 
                     }
 
+                    
                     listaAmigos +=' <div class="container"> <div class="row"> <div class="col-3 d-flex justify-content-center p-0"> <div class="pb-2 pt-2"> <img class="avatar-circular" src="images' + data.amigos[i]["imagem_amigo"] +'" alt="user"> </div> </div> <div class="col-4 p-0 d-flex align-items-center"> <p class="m-0"><a href="#" class="text-dark">' + data.amigos[i]["nomesAmigos"] + '</a></p> </div> <div class="col-5 d-flex align-items-center justify-content-end"><img src="images/profile/more.png" class="w-25"></div> </div> </div><hr>';
 
                     //listaAmigos += '<div class="row mb-4 pt-3 pb-3" > <div class="pl-0 pt-2 pb-4 pr-0 ml-5 d-flex align-items-center col-2"> <div class=" avatar-circular"><img src="images' + data.amigos[i][" imagem_amigo"] +'"> </div> </div> <div class="pl-3 d-flex align-items-center col-9"> <div class="row"> <div class="col-12 pr-0"> <span class="display-4 font-weight-normal">' + data.amigos[i]["nomesAmigos"] + '</span></div> <h1 class="col-12 display-6 font-weight-light" style="margin-bottom: 8px;">Popcorn Dealer</h1> </div> </div> </div>';
                     
                 }
+            }else{
+                cardsAmigos +='<div class="col-10 semEvento container"> <div class="row"><div class="col-2"><div class="add-event" style="margin-top: 50%;margin-bottom:50%;">+</div></div><div class="col-10 d-flex flex-column justify-content-center align-items-center"><p class="d-flex align-items-center" style="font-weight: 600;margin:0;">És novo na aplicação?</p><p class="d-flex align-items-center" style="font-weight: 600;margin:0;">Adiciona novos amigos!</p></div></div> </div>';
             }
-
           
             
         
 
             
-            var home = '<main id="main" class="alturaMainLogin text-white bg-azul-aplans d-flex flex-column align-items-start"> <div class="container p-3"> <section class="row d-flex" style="align-items: center;"> <div class="col-6 text-left" style="height: 100%;"> <div class="div-logo"><a href="index.php"><img class="mw-100" src="assets/aplans.png" alt="logotipo"></a></div> </div><div class="col-6 text-right dropdown" style="height:100%"> <div class="avatar-circular"><img  onclick="menu_avatar()" class="mw-100 dropbtn" src="assets/avatar.png" alt="avatar"></div> <div id="myDropdown" class="dropdown-content"><div class="d-flex justify-content-between"><div><img src="images/others/utilizador.png" style="width:20px;"></div><div><p class="m-0">Perfil</p></div></div><div class="d-flex justify-content-between"><div><img src="images/others/settings.png" style="width:20px;"></div><div><p class="m-0">Admin</p></div></div><div class="d-flex justify-content-between" style="background-color: rgba(240,52,52,0.5);/* background-color: white; */"><div><img src="images/others/sair.png" style="width:20px;"></div><div><p class="m-0 font-weight-bold">Sair</p></div></div></div> </div> </section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos">Created Plans</p> </section> <section class="row" style="align-items: center;"> '+adicionarNovoEvento+' <div id="carouselExampleIndicators1" class="carousel slide col-8 m-auto" data-interval="false"> <ol class="carousel-indicators" style="bottom: -6vh;">'+indicators+'</ol> <div class="carousel-inner"> '+eventosCriados+' </div> '+setaEsquerda+' '+setaDireita+'</div> </section> </div> <div class="container p-3"><section class="row pl-3"> <p class="index-titulos col-6 p-0">Planos Futuros</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a data-toggle="modal" data-target="#mostarPlanos">Ver todos</a></p> </section><section class="row">'+upcoming+'</section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos col-6 p-0">Meus Amigos</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a data-toggle="modal" data-target="#mostarAmigos">Ver todos</a></p> </section> <section class="row" style="align-items: center;"> <div class="col-3"> <div class="add-event">+</div> </div> <div class="col-9 row p-0">'+cardsAmigos+'</div> </section> </div></main>'
+            var home = '<main id="main" class="alturaMainLogin text-white bg-azul-aplans d-flex flex-column align-items-start"> <div class="container p-3"> <section class="row d-flex" style="align-items: center;"> <div class="col-6 text-left" style="height: 100%;"> <div class="div-logo"><a href="index.php"><img class="mw-100" src="assets/aplans.png" alt="logotipo"></a></div> </div><div class="col-6 text-right dropdown" style="height:100%"> <div class="avatar-circular"><img  onclick="menu_avatar()" class="mw-100 dropbtn" src="assets/avatar.png" alt="avatar"></div> <div id="myDropdown" class="dropdown-content"><div class="d-flex justify-content-between"><div><img src="images/others/utilizador.png" style="width:20px;"></div><div><p class="m-0">Perfil</p></div></div><div class="d-flex justify-content-between"><div><img src="images/others/settings.png" style="width:20px;"></div><div><p class="m-0">Admin</p></div></div><div class="d-flex justify-content-between" style="background-color: rgba(240,52,52,0.5);/* background-color: white; */"><div><img src="images/others/sair.png" style="width:20px;"></div><div><p class="m-0 font-weight-bold">Sair</p></div></div></div> </div> </section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos">Created Plans</p> </section> <section class="row justify-content-center" style="align-items: center;"> '+adicionarNovoEvento+' <div id="carouselExampleIndicators1" class="carousel slide col-8 m-auto" data-interval="false"> <ol class="carousel-indicators" style="bottom: -6vh;">'+indicators+'</ol> <div class="carousel-inner"> '+eventosCriados+' </div> '+setaEsquerda+' '+setaDireita+'</div> </section> </div> <div class="container p-3"><section class="row pl-3"> <p class="index-titulos col-6 p-0">Planos Futuros</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a data-toggle="modal" data-target="#mostarPlanos">Ver todos</a></p> </section><section class="row">'+upcoming+'</section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos col-6 p-0">Meus Amigos</p> <p class="index-titulos text-right col-6 " style="font-size:small;">'+modalAmigos+'</p> </section> <section class="row" style="align-items: center;"> '+adicionarAmigos+''+cardsAmigos+' </section> </div></main>'
 
            
             $('#conteudoPagina').append(home);
