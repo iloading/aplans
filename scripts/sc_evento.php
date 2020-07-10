@@ -126,7 +126,7 @@ if ($evento_existe == true) {
     
     $stmt = mysqli_stmt_init($link);
 
-    $query = "SELECT ref_user_id, users.nome FROM users_nos_eventos INNER JOIN users ON ref_user_id = users.id WHERE ref_event_id = ?";
+    $query = "SELECT ref_user_id, users.nome, users.url FROM users_nos_eventos INNER JOIN users ON ref_user_id = users.id WHERE ref_event_id = ?";
 
 
 
@@ -135,7 +135,7 @@ if ($evento_existe == true) {
         // Devemos validar também o resultado do execute!
 
         if (mysqli_stmt_execute($stmt)) {
-            mysqli_stmt_bind_result($stmt, $id_user_evento, $nome_user_evento);
+            mysqli_stmt_bind_result($stmt, $id_user_evento, $nome_user_evento, $avatar_user);
 
             /* fetch values */
         
@@ -145,6 +145,14 @@ if ($evento_existe == true) {
                 if ($organizador == false && $id_user_evento == $criador && $id_user_evento == $id_user) {
                     $organizador = true;
                 }
+                /*Verificação parecida mas desta vez é para dar display na lista de participantes - havia outras formas de fazer xD */
+                if ($id_user_evento == $criador) {
+                    $user_organizador = true;
+                }else {
+                    $user_organizador = false;
+                }
+
+
                 if ($user_participando == false && $id_user_evento == $id_user) {
                     $user_participando = true;
                 }
@@ -153,6 +161,8 @@ if ($evento_existe == true) {
                 $row_result2 = array();
                 $row_result2["id_user_evento"] = htmlspecialchars($id_user_evento);
                 $row_result2["nome_user_evento"] = htmlspecialchars($nome_user_evento);
+                $row_result2["avatar_user"] = htmlspecialchars($avatar_user);
+                $row_result2["user_organizador"] = htmlspecialchars($user_organizador);
 
                 $data['pessoas'][] = $row_result2;
             }
