@@ -19,6 +19,12 @@
 <body>
 
 
+
+
+
+
+
+
   <?php
   require_once "components/cp_main.php";
   ?>
