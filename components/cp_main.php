@@ -1,14 +1,31 @@
 <div class="w-100 d-flex flex-column">
     <div class="position-fixed" style="width: inherit; background-color: #F1F3F6; z-index:2">
         <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit;">
+
+      
+
+
+
             <div class="d-flex align-items-center">
                 <div class="d-none justify-content-between" id="organizador">
                     <span class="pl-2 pr-2 pt-1 pb-1" style="background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500;">Organizador</span>
                     <div class="pl-4 d-flex align-items-center"> <img style="width: 1.5rem; height:1.5rem" src="images/settings/gear.png"> </div>
                 </div>
-                <div class="d-flex justify-content-center" id="imagem">
-                    <div class="avatar-circular d-flex"> <img src="assets/avatar.png"> </div>
-                </div>
+
+                
+                    <div class="d-flex justify-content-center dropdown" id="imagem">
+                        <div  class="avatar-circular d-flex"> 
+                            <img  onclick="myFunction()" class="dropbtn" src="assets/avatar.png"> 
+                        </div>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                   
+                
+
                 <div class="d-flex flex-column pl-3 justify-items-center">
                     <div id="titulo">
                         <h2 class="font-weight-bold text-branco-evento"> Outdoor Cinema</h2>
@@ -219,3 +236,4 @@
     </div>
 
     </main>
+
