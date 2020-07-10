@@ -1,6 +1,6 @@
 <?php
 require_once "../connections/connection.php";
-require_once "../scripts/sc_validate_input.php";
+
 session_start();
 
 $sucesso = 1;
@@ -95,7 +95,7 @@ if ($sucesso == 1) {
             mysqli_stmt_store_result($stmt);
 
             if (mysqli_stmt_num_rows($stmt) == 1) {
-                $_SESSION['msg'] =  true;
+                $msg = 5;
                 $emailExiste = true;
 
                 //header("Location: ../login.php?msg=2");
@@ -176,7 +176,8 @@ if ($sucesso == 1) {
             echo "erro";
         }
     } else {
-        echo "blablbalb";
+        $_SESSION["msg"] = true;
+        header("Location: ../login.php?msg=" . $msg . "");
     }
 
 }else {
