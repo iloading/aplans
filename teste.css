@@ -45,6 +45,14 @@ color: #FFFFFF !important;
   height: calc(30px + 5vw);
 }
 
+.avatar-circular-tarefas{
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    float: right;
+    width: 25px;
+  }
+
 .avatar-circular-pessoas{
     max-height: 100%;
     overflow: hidden;
@@ -74,6 +82,19 @@ color: #FFFFFF !important;
 
 .avatar-circular img{
     max-width: 100%;
+}
+
+.imagem_tarefas {
+    bottom: -20%;
+}
+
+.texto_tarefas{
+    font-size: 0.45rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .estado-online {
