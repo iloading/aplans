@@ -50,6 +50,10 @@
                                     $message = "As passwords não são iguais ";
                                     $class = "alert-danger";
                                     break;
+                                case 5:
+                                    $message = "O email que inseriu já existe. Já tem uma conta? Faça login!";
+                                    $class = "alert-danger";
+                                    break;
                                 default:
                                     $_SESSION['msg'] =  false;
                             }
