@@ -1,6 +1,6 @@
 <?php
 require_once "../connections/connection.php";
-//require_once "../scripts/sc_validate_input.php";
+
 session_start();
 
 $sucesso = 1;
