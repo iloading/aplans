@@ -16,7 +16,7 @@
 
 
 
-<body class="bg-azul-aplans">
+<body>
 
   <!--NAV-->
   <!--/NAV-->

@@ -654,15 +654,28 @@ ul li{
 
 }
 
+/*Pagina de Criação de Evento*/
+
+.botaoCriarEvento{
+    font-size: 1.4rem; 
+    background-color: rgba(109, 63, 230, 0.2); 
+    border-radius: 20px; 
+    color: #6F41E9; 
+    font-weight: 500; 
+    border: none
+}
+
 .semEvento{
     background-color: rgba(255,255,255,0.2);
     border-radius: 16px;
     border: 2px solid white;
 }
 
+.botaoCriarEvento:focus {
+    outline:none;
+}
 
-
-
+/*/Pagina de Criação de Evento*/
 
 
 

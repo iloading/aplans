@@ -16,7 +16,7 @@
 
 
 
-<body class="bg-azul-aplans">
+<body>
 
   <!--NAV-->
   <!--/NAV-->
@@ -24,7 +24,7 @@
   <main class="text-black bg-white d-flex flex-column align-items-start topRedondo">
     <article class="container p-0 mb-5 mainCentro">
       <section class="row mt-4 mb-4 ml-0 pl-sm-0">
-        <div class="col-2 col-sm-1 pr-0 pl-0 pt-1 d-flex align-items-center justify-content-center">
+        <div class="col-2 col-sm-1 pr-0 pl-0 d-flex align-items-center justify-content-center">
           <img src="images/settings/back.png" width="30" height="30">
         </div>
 
@@ -192,7 +192,7 @@
         </div>
 
         <div class="d-flex justify-content-center mt-4">
-            <button class="pl-3 pr-3 pt-1 pb-1" style="font-size: 1.4rem; background-color: rgba(109, 63, 230, 0.2); border-radius: 20px; color: #6F41E9; font-weight: 500; border: none">Criar Evento</button>
+            <button class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Criar Evento</button>
         </div>
     </article>
 
