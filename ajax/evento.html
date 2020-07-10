@@ -136,16 +136,24 @@
         }, 1000);
       }
 
+
+
+      /*--------------------------------- QUANDO A PAGINA CARREGAR TODA ----------------------------*/
       $(document).ready(function () {
+
         /*Quando a função acaba, seleciona a tab escolhida por deafult que neste caso é a Home*/
         $("#defaultOpen").trigger("click");
-        margem();
+
         /*Quando a função acaba, deteta qual é o tamanho da nav e atribui a respetiva margem top ao conteudo*/
+        margem();
+        
 
         window.onscroll = function () {
-          //console.log($(window).scrollTop());
           scrollFunction();
         };
+
+
+
 
         /*FUNÇOES USADAS QUANDO A PAGINA DE EVENTO É CARREGADA*/
 
@@ -164,6 +172,9 @@
           /*Ajusta a margem do conteudo, consoante o tamanho da nav*/
           $("#margem_conteudo").css("margin-top", margemTop);
         }
+
+
+
 
         function scrollFunction() {
           /*se o utilizador fizer scroll*/
@@ -212,6 +223,9 @@
             }, 100);
           }
         }
+
+
+        
       });
     });
   }
