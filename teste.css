@@ -665,6 +665,12 @@ ul li{
     border: none
 }
 
+.semEvento{
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    border: 2px solid white;
+}
+
 .botaoCriarEvento:focus {
     outline:none;
 }
