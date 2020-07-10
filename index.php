@@ -56,6 +56,11 @@ if (isset($_SESSION['email_aplans'])) {
             });
         </script>
 
+
+<script>
+
+</script>
+
     </body>
 
     </html>
