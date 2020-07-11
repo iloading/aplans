@@ -26,34 +26,30 @@
 
       var evento =
         '<div class="w-100 d-flex flex-column"> <div class="position-fixed" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta"><article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"><div class="d-flex flex-column show" id="nav_grande"> <div class="d-flex justify-content-between" id="organizador"> <div class="d-flex align-items-center " > <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div>  </div> <div class="d-flex justify-content-center" id="imagem"> <div class="text-center btn-evento"> <div class="current-event"><img src="images' + tipo +'" class="w-50"></div></div> </div> <div class="d-flex justify-content-center" id="titulo"> <h3 class="font-weight-bold text-branco-evento">' +titulo +'</h3> </div> <div class="d-flex justify-content-center" id="data_evento"> <p style= "color:#F1F3F6">Dia <strong>' +diaEvento +"</strong> de <strong>" +mesEvento +"</strong> de <strong>" +anoEvento +"</strong> às <strong>" +horaEvento +'</strong> </p> </div> <div class="d-flex justify-content-center" id="botoes_evento"> </div> </div><div class="align-items-center hide" id="nav_pequena"><div class="d-flex align-items-center pr-3"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div><div class="d-flex justify-content-center" id="imagem"> <div class="text-center btn-evento"> <div class="current-event"><img src="images' +tipo +'" class="w-50"></div></div> </div> <div class="d-flex flex-column pl-3 justify-items-center"> <div id="titulo"> <h4 class="font-weight-bold text-branco-evento">' +titulo +'</h4> </div> <div id="data_evento"> <span style= "color:#F1F3F6">Dia <strong>' + diaEvento + "</strong> de <strong>" + mesEvento + "</strong> de <strong>" + anoEvento + "</strong> às <strong>" + horaEvento +'</strong> </span> </div> </div></div></article><div id="navegacao"> <button class="tablink" id="defaultOpen" style="font-size:1.2rem;">Home</button> <button class="tablink" style="font-size:1.2rem;">Pessoas</button> <button class="tablink" style="font-size:1.2rem;">Tarefas</button> <button class="tablink" style="font-size:1.2rem;">Chat</button></div> </div> <div class="w-100 pt-3" id="margem_conteudo"> <div id="Home" class="tabcontent container-fluid"> <h5 class="font-weight-bold ml-2">Descrição</h5> <p class="descricaoFont pt-1 ml-2">' +descricao +
-        '</p> <div class="ml-2 mr-2 marginT"> <h5 class="font-weight-bold">Participantes</h5> <div id="myProgressHome1"> <div id="myBarHome1"></div> </div> </div> <div class="container-fluid pt-2"> <div class="row"> <div class="col-6"> <h6 class="pt-2 font-weight-bold" style="color:grey;">8/' +slotsMax +'</h6> </div> <div class="col-6 d-flex align-items-center" style="justify-content: flex-end"> <a href="#" class="font-weight-bold" style="font-size: 1rem;text-decoration: none;color:grey;font-style:bold;">Ver mais +</a> </div> </div> </div> <div class=" ml-2 marginT"> <h5 class="font-weight-bold">Tarefas Restantes</h5> </div> <div class="container-fluid p-4"> <div class="row"> <div class="col-8 mainTasks"> <p class="pb-1 pt-2 m-0 font-weight-bold">Projetor</p> <span class="text-muted m-0 pb-2">Trazer o projector man</span> </div> <div class="col-4 d-flex align-items-center justify-content-end position-relative"> <div class="form-check text-right"> <input class="selectSize" type="checkbox" value="" id="defaultCheck1"> </div><div class="position-absolute imagem_tarefas d-flex"><div><img class="avatar-circular-tarefas" src="images/people/avatar1.jpg"></div><div><img class="avatar-circular-tarefas" src="images/people/avatar2.jpg"></div><div class="position-relative text-center"><img class="avatar-circular-tarefas" src="images/people/avatar5.jpg"><div class="position-absolute text-white texto_tarefas "><span>+ X</span></div></div></div> </div> </div> </div><div class="container-fluid p-4"> <div class="row"> <div class="col-8 mainTasks"> <p class="pb-1 pt-2 m-0 font-weight-bold">Projetor</p> <span class="text-muted m-0 pb-2">Trazer o projector man</span> </div> <div class="col-4 d-flex align-items-center justify-content-end position-relative"> <div class="form-check text-right"> <input class="selectSize" type="checkbox" value="" id="defaultCheck1"> </div><div class="position-absolute imagem_tarefas d-flex"><div><img class="avatar-circular-tarefas" src="images/people/avatar1.jpg"></div><div><img class="avatar-circular-tarefas" src="images/people/avatar2.jpg"></div><div class="position-relative text-center"><img class="avatar-circular-tarefas" src="images/people/avatar5.jpg"><div class="position-absolute text-white texto_tarefas "><span>+ X</span></div></div></div> </div> </div> </div><div class="posicao_seta" id="girar_seta"><img class="arrow"src="images/others/down.png"></div></div> <div id="Pessoas" class="tabcontent container-fluid"> <div id="participantes_do_evento" class="d-flex flex-wrap"></div><div class="posicao_seta" id="girar_seta2"><img class="arrow"src="images/others/down.png"></div></div><div id="Tarefas" class="tabcontent container-fluid"><div class="d-flex align-items-center"> <h5 class="font-weight-bold ml-2">6 Tarefas</h5> <div class="p-0 d-flex align-items-center justify-content-end ml-auto"> <button type="button" class="p-1" style="border: 2px; border-style: dashed; border-color: #6F41E9; border-radius: 10px; width: 2.5rem; height: 2.5rem;"><img src="images/people/plus.png" width="15" height="15"></button> </div> </div><div class="container-fluid pl-4 pt-4 pb-4 pr-0 "> <div class="row"> <div class="col-8 mainTasks"><p class="pb-1 pt-2 m-0  font-weight-bold">Projetor</p> <p class="text-muted m-0 pb-2">Trazer o projector man</p> </div> <div class="col-4 d-flex align-items-center justify-content-end position-relative"> <div class="form-check text-right"> <input class="selectSize" type="checkbox" value="" id="defaultCheck1"> </div><div class="position-absolute imagem_tarefas d-flex"><div><img class="avatar-circular-tarefas" src="images/people/avatar1.jpg"></div><div><img class="avatar-circular-tarefas" src="images/people/avatar2.jpg"></div><div class="position-relative text-center"><img class="avatar-circular-tarefas" src="images/people/avatar5.jpg"><div class="position-absolute text-white texto_tarefas "><span>+ X</span></div></div></div> </div> </div> </div><div class="posicao_seta" id="girar_seta3"><img class="arrow"src="images/others/down.png"></div></div> <div id="Chat" class="tabcontent container-fluid pt-0 pl-3 pr-3"> <ul class="container-fluid p-0"> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-2"> <img src="images/people/avatar4.jpg"> </div> <li class="him">Como é que estão todos?</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-2 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">Pronto para a festa!</li> </div> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="images/people/avatar3.jpg"> </div> <li class="him">Qual é o filme? Tenho uma sugestão!</li> </div> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="images/people/avatar2.jpg"> </div> <li class="him">Pipocas Doces ou Salgadas</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">Pipocas doces FOSHOU</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> </ul> <div style="position: relative; bottom: 0; width: 100%;"> <hr> <div class="pl-3 pr-3 pb-3 pt-0 d-flex align-items-center justify-content-left ml-auto"> <input type="text" placeholder="Escreve algo" class="p-1" style="border: none; border-radius: 20px; font-size: 1rem; width: 100rem; height: 3rem;"> </div> </div> </div> </div>';
+        '</p> <div class="ml-2 mr-2 marginT"> <h5 class="font-weight-bold">Participantes</h5> <div id="myProgressHome1"> <div id="myBarHome1"></div> </div> </div> <div class="container-fluid pt-2"> <div class="row"> <div class="col-6"> <h6 class="pt-2 font-weight-bold" style="color:grey;">8/' +slotsMax +'</h6> </div> <div class="col-6 d-flex align-items-center" style="justify-content: flex-end"> <a href="#" class="font-weight-bold" style="font-size: 1rem;text-decoration: none;color:grey;font-style:bold;">Ver mais +</a> </div> </div> </div> <div class=" ml-2 marginT"> <h5 class="font-weight-bold">Tarefas Restantes</h5> </div> <div class="tarefas_restantes_div"></div><div class="posicao_seta" id="girar_seta"><img class="arrow"src="images/others/down.png"></div></div> <div id="Pessoas" class="tabcontent container-fluid"> <div id="participantes_do_evento" class="d-flex flex-wrap"></div><div class="posicao_seta" id="girar_seta2"><img class="arrow"src="images/others/down.png"></div></div><div id="Tarefas" class="tabcontent container-fluid"><div class="d-flex align-items-center"> <h5 class="font-weight-bold ml-2"><span id="num_tarefas">6</span> Tarefas</h5> <div class="p-0 d-flex align-items-center justify-content-end ml-auto"> <button type="button" class="p-1" style="border: 2px; border-style: dashed; border-color: #6F41E9; border-radius: 10px; width: 2.5rem; height: 2.5rem;"><img src="images/people/plus.png" width="15" height="15"></button> </div> </div><div class="tarefas_div"></div><div class="posicao_seta" id="girar_seta3"><img class="arrow"src="images/others/down.png"></div></div> <div id="Chat" class="tabcontent container-fluid pt-0 pl-3 pr-3"> <ul class="container-fluid p-0"> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-2"> <img src="images/people/avatar4.jpg"> </div> <li class="him">Como é que estão todos?</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-2 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">Pronto para a festa!</li> </div> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="images/people/avatar3.jpg"> </div> <li class="him">Qual é o filme? Tenho uma sugestão!</li> </div> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="images/people/avatar2.jpg"> </div> <li class="him">Pipocas Doces ou Salgadas</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">Pipocas doces FOSHOU</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> </ul> <div style="position: relative; bottom: 0; width: 100%;"> <hr> <div class="pl-3 pr-3 pb-3 pt-0 d-flex align-items-center justify-content-left ml-auto"> <input type="text" placeholder="Escreve algo" class="p-1" style="border: none; border-radius: 20px; font-size: 1rem; width: 100rem; height: 3rem;"> </div> </div> </div> </div>';
 
       $("#conteudoPagina").append(evento);
 
       
-      /*Verificação caso não existam pessoas no evento, por default, existe pelo menos uma pessoa (o organizador)*/
+      /*Verificação caso não existam pessoas no evento, por default, existe pelo menos uma pessoa (o organizador), só se algo estranho acontecer é que esta verificação não vai ser verdadeira but.. pode acontecer e temos solução para isso :)*/
       if (data["info"] != "erro") {
-
-
 
         /*-------------------------Interface Pessoas------------------------*/
 
-        
-        
         for (let a = 0; a < data["pessoas"].length; a++) {
           id_user_evento = data["pessoas"][a]["id_user_evento"];
           nome_user_evento = data["pessoas"][a]["nome_user_evento"];
           avatar_url_user = data["pessoas"][a]["avatar_user"];
           user_organizador = data["pessoas"][a]["user_organizador"];
 
-          div_participante = '<div class="pessoas_largura" id="'+id_user_evento+'"> <div class=" d-flex flex-column justify-content-center" style="position: relative;"> <span class="estado-online"></span> <div class="mt-3 d-flex justify-content-center"> <img class="avatar-circular-pessoas" src="images'+ avatar_url_user+'" alt="user" /> </div> <div class="mt-3"> <p class=" pt-2">'+nome_user_evento+'</p> </div> </div></div>'
+          div_participante = '<div class="pessoas_largura mt-3" id="'+id_user_evento+'"> <div class=" d-flex flex-column justify-content-center" style="position: relative;"> <span class="estado-online"></span> <div class="mt-3 d-flex justify-content-center"> <img class="avatar-circular-pessoas" src="images'+ avatar_url_user+'" alt="user" /> </div> <div class="mt-3"> <p class=" pt-2">'+nome_user_evento+'</p> </div> </div></div>'
           
 
           if (user_organizador == 1) {
             //QUANDO O USER NA INTERFACE PESSOAS É O ORGANIZADOR
             //METER O BOTAO ROXO DE ORGANIZADOR QUE TINHAMOS
             //FAZERRRRRRRRRRRRR MIKEEEEEEEEEE DAVIDDDDDDDDDDDDD
-            div_participante = '<div class="pessoas_largura" id="'+id_user_evento+'"> <div class="d-flex flex-column justify-content-center" style="position: relative;"> <span class="estado-online"></span> <div class="mt-3 d-flex justify-content-center"> <img class="avatar-circular-pessoas" src="images'+ avatar_url_user+'" alt="user" /> </div> <div class="mt-3"> <p class="pt-2">'+nome_user_evento+' Organizador</p> </div> </div></div>'
+            div_participante = '<div class="pessoas_largura mt-3" id="'+id_user_evento+'"> <div class="d-flex flex-column justify-content-center" style="position: relative;"> <span class="estado-online"></span> <div class="mt-3 d-flex justify-content-center"> <img class="avatar-circular-pessoas" src="images'+ avatar_url_user+'" alt="user" /> </div> <div class="mt-3"> <p class="pt-2">'+nome_user_evento+' Organizador</p> </div> </div></div>'
           }
 
           $("#participantes_do_evento").append(div_participante);
@@ -94,6 +90,71 @@
           }
           $("#botoes_evento").append(botao_estado_lotacao);
         }
+
+
+        
+        /*-------------------------Interface Tarefas do Evento--------------------------*/
+
+        /*Se existirem tarefas no evento*/
+        var verificação = data["sem_tarefas"];
+        if (verificação == 0) {
+
+          num_tarefas = data["tasks"].length;
+          $("#num_tarefas").html(num_tarefas);
+
+
+          for (let a = 0; a < num_tarefas; a++) {
+            var id_task = data["tasks"][a]["id"];
+            var nome_task = data["tasks"][a]["name"];
+            var descricao = data["tasks"][a]["descricao"];
+            
+            /*Se não existirem users na tarefa*/
+            if (!("users" in data["tasks"][a])) {
+              num_users_na_tarefa = 0
+            }else{
+              num_users_na_tarefa = data["tasks"][a]["users"].length
+            }
+
+            
+              
+            
+            var tarefa = '<div class="container-fluid pl-4 pt-4 pb-4 pr-0" id="'+id_task+'"> <div class="row"> <div class="col-8 mainTasks"><pclass="pb-1 pt-2 m-0  font-weight-bold">'+nome_task +'</pclass=> <p class="text-muted m-0 pb-2">'+descricao+'</p> </div> <div class="col-4 d-flexalign-items-center justify-content-end position-relative"> <div class="form-check text-right"> <input class="selectSize" type="checkbox"value="" id="defaultCheck1"> </div><div class=" avatares'+a+' position-absolute imagem_tarefas d-flex"></div> </div> </div> </div>';
+            $(".tarefas_div").append(tarefa);
+            /*Se não existirem users na tarefa aparece a tarefa na página Home*/
+            if (num_users_na_tarefa == 0) {
+              $(".tarefas_restantes_div").append(tarefa);
+            /*Caso tenha users, apenas aparece na página Tarefas*/
+            }else{
+              users_a_mais = 0;
+              for (var b = 0; b < data["tasks"][a]["users"].length; b++) {
+                /*Mostra os 3 primerios users*/
+                if (b <= 2) {
+                  users_url = data["tasks"][a]["users"][b]['url_user'];
+                  users_id = data["tasks"][a]["users"][b]['id_user'];
+                  avatar_user = '<div><img id="'+users_id+'" class="avatar-circular-tarefas" src="images'+users_url+'"></div>';
+                  $(".avatares"+a).append(avatar_user);
+                }else{
+                  users_a_mais++;
+                }
+              }
+              /*Se houver mais de três users na tarefa, mostra apenas mais uma div a sinalizar quantos users a mais estão nessa tarefa*/
+              if (users_a_mais != 0) {
+                avatar_users_demais = '<div class="position-relative text-center"><img class="avatar-circular-tarefas" src="images/people/avatar5jpg"><div class="position-absolute text-white texto_tarefas "><span>+ '+users_a_mais+'</span></div></div>';
+                $(".avatares"+a).append(avatar_users_demais);
+              }
+            }  
+          }
+          
+        /*Se não houver tarefas no evento*/
+        }else{
+          num_tarefas = 0
+          $("#num_tarefas").html(num_tarefas);
+        }
+        
+        
+        
+        
+
 
         /*Se por algum motivo houver um evento sem participante nenhum*/
       } else {
@@ -216,8 +277,9 @@
 </script>
 
 <script>
-  /*FUNCIONAMENTO DOS TAB CONTENTS QUE PERMITE NAVEGAR ENTRE AS 4 TABS*/
+  /*FUNCIONAMENTO DOS TAB CONTENTS QUE PERMITE NAVEGAR ENTRE AS 4 TABS (HOME PESSOAS TASKS E CHAT)*/
   $(document).on("click", ".tablink", function () {
+
     function margem() {
       tamanhoJanela = $(window).height();
       tamanhoNav = $("#navCompleta").height();
