@@ -36,6 +36,7 @@ if (isset($_SESSION['email_aplans'])) {
         <?php include_once "helpers/help_js.php" ?>
         <?php include_once "ajax/home.html" ?>
         <?php include_once "ajax/evento.html" ?>
+        <?php include_once "ajax/criar_evento.html" ?>
 
 
 
@@ -53,6 +54,10 @@ if (isset($_SESSION['email_aplans'])) {
             */
             $(document).on('click', '.btn-evento', function() {
                 mostrarEvento($(this).attr("id"))
+            });
+
+            $(document).on('click', '.add-event', function() {
+                mostrarCriarEvento()
             });
         </script>
 

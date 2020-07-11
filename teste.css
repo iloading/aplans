@@ -730,3 +730,36 @@ ul li{
       right: 0;
 
   }
+
+  /*Criar Eventos*/
+
+.textareaDescricao{
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      resize: both;
+}
+.textareaDescricao:focus{
+    outline:none !important;
+}
+
+.textareaDescricao[contenteditable]:empty::before{
+    content: "Insira a descrição do evento";
+    color: grey;
+}
+
+.textareaLocal{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    resize: both;
+}
+.textareaLocal:focus{
+  outline:none !important;
+}
+
+.textareaLocal[contenteditable]:empty::before{
+  content: "Insira o local do evento";
+  color: grey;
+}
+

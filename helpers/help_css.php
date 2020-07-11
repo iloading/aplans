@@ -16,3 +16,4 @@
 <!-- Custom css -->
 <link rel="stylesheet" href="teste.css">
 
+<link href="css/jquery.nice-number.css" rel="stylesheet">

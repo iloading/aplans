@@ -8,7 +8,7 @@
   require_once "helpers/help_css.php";
   ?>
 
-  <title>Bloop | </title>
+  <title>Aplans</title>
 
 
 </head>
@@ -22,181 +22,48 @@
   <!--/NAV-->
 
   <main class="text-black bg-white d-flex flex-column align-items-start topRedondo">
-    <article class="container p-0 mb-5 mainCentro">
-      <section class="row mt-4 mb-4 ml-0 pl-sm-0">
-        <div class="col-2 col-sm-1 pr-0 pl-0 d-flex align-items-center justify-content-center">
-          <img src="images/settings/back.png" width="30" height="30">
-        </div>
-
-        <div class="col-8 col-sm-10 align-self-center pl-0">
-          <p class="m-0 h1 text-left tituloTerms font-weight-normal" style="font-size: 2rem;">Outdoor Cinema</p>
-
-        </div>
-
-        <div class="col-1 col-sm-1 pr-0 pl-2 pt-1 d-flex align-items-center justify-content-center">
-          <img src="images/settings/trash.png" width="30" height="30">
-        </div>
-
-      </section>
-
-
-
-      <div class="container-fluid p-0">
-
-        <div>
-
-        <div class="dropdown-divider m-0"></div>
-          <div>
-            <div class="row">
-              <div class="p-4 ml-4 d-flex align-items-center">
-                <img src="images/settings/clock.png" width="25" height="25">
-              
+    <div class="w-100 d-flex flex-column">
+      <div class="position-fixed" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta">
+        <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav">
+          <div class="align-items-center">
+            <div class="d-flex align-items-center pr-3"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div>
+            <div class="d-flex justify-content-center" id="imagem">
+              <div class="text-center btn-evento">
+                <div class="current-event"><img src="images/tipos_evento/Vector.png" class="w-50"></div>
               </div>
-
-              <div class="p-3 d-flex align-items-center">
-                <p class="settingsTituloTab m-0">10 pm, august 4, 2020</p>
+            </div>
+            <div class="d-flex flex-column pl-3 justify-items-center">
+              <div id="titulo">
+                <h4 class="font-weight-bold text-branco-evento"><input type="text" placeholder="Choose Name"></h4>
+              </div>
+              <div id="data_evento"><input type="date"></div>
             </div>
           </div>
-
-          <div class="dropdown-divider m-0"></div>
-
+        </article>
+      </div>
+      <div class="w-100 pt-3" style="margin-top: 13rem;" id="margem_conteudo">
+        <div class="container-fluid">
+          <h5 class="font-weight-bold">Local</h5>
+          <span class="textareaLocal" role="textbox" contenteditable></span>
+          <h5 class="font-weight-bold pt-2">Descrição</h5>
+          <span class="textareaDescricao" role="textbox" contenteditable></span>
+          <div>
+            <h5 class="font-weight-bold pt-2">Participantes</h5>
+          </div>
+          <div class="container-fluid pt-2">
+            <input id="participantes" type="number" value="0" min="0" max="250"></input>
+          </div>
+          <div class="marginT">
+            <h5 class="font-weight-bold">Tarefas</h5>
+          </div>
+          <div class="tarefas_restantes_div"></div>
+         
+        </div>
           
-          <div>
-            <div class="row">
-              <div class="p-4 ml-4 d-flex align-items-center">
-                <img src="images/settings/location.png" width="25" height="25">
-              
-              </div>
-
-              <div class="p-3 d-flex align-items-center">
-                <p class="settingsTituloTab m-0">Key Gardens</p>
-            </div>
-          </div>
-
-          <div class="dropdown-divider m-0"></div>
-          
-          <div>
-            <div class="row">
-              <div class="p-4 ml-4 d-flex align-items-center">
-                <img src="images/settings/click.png" width="25" height="25">
-              
-              </div>
-
-              <div class="p-3 d-flex align-items-center">
-                <p class="settingsTituloTab m-0">Cultural</p>
-            </div>
-            <div class="p-3 d-flex align-items-center ml-auto mr-4">
-              <button type="button" class="p-1" style="border: none; border-radius: 5px; font-size: 1rem">Tipo de Evento <img src="images/settings/draw.png" width="18" height="17" class="pl-1"></button>
-            </div>
-          </div>
-
-          <div class="dropdown-divider m-0"></div>
-
-
-
-          <div>
-            <div class="row">
-              <div class="p-4 ml-4 d-flex align-items-center">
-                <img src="images/settings/team.png" width="25" height="25">
-              
-              </div>
-
-              <div class="p-3 d-flex align-items-center">
-                <p class="settingsTituloTab m-0">10</p>
-            </div>
-            <div class="p-3 d-flex align-items-center ml-auto mr-4">
-              <button type="button" class="p-1" style="border: none; border-radius: 5px; font-size: 1rem">Ver participantes <img src="images/settings/draw.png" width="18" height="17" class="pl-1"></button>
-            </div>
-          </div>
-
-          <div class="dropdown-divider m-0"></div>
-
-          
-            <div class="row">
-              <div class="p-4 ml-4 d-flex">
-                <img src="images/settings/list.png" width="25" height="25">
-              
-              </div>
-              <div>
-                <div class="pl-3 pt-4 d-flex align-items-center">
-                  <p class="settingsTituloTab m-0">Adicionar tarefa</p>
-                </div>
-                <div class="pl-3 pt-1 d-flex align-items-center">
-                  <p class="settingsTituloTab m-0" style="font-size: 1rem">Descrição</p>
-                </div>
-              </div> 
-              <div class="p-3 d-flex align-items-center ml-auto mr-4">
-                <img src="images/settings/add.png" width="22" height="20" class="pl-1">
-            </div>
-          </div>
-
-          <div>
-            <div class="row">
-              <div class="p-4 ml-4 d-flex">
-                <img src="images/settings/list.png" width="25" height="25" style="display:none;">
-              
-              </div>
-              <div class="ml-4 pt-4">
-                <div class="pl-3  d-flex align-items-center"  style="border-left: 3px solid red">
-                  <p class="settingsTituloTab m-0" style="color:red">Pipocas</p>
-                </div>
-                <div class="pl-3 pt-1 d-flex align-items-center"  style="border-left: 3px solid red">
-                  <p class="settingsTituloTab m-0" style="font-size: 1rem">5 baldes necessários</p>
-                </div>
-              </div> 
-              <div class="p-3 d-flex align-items-center ml-auto mr-4">
-                <img src="images/settings/minus.png" width="22" height="20" class="pl-1">
-            </div>
-          </div>
-
-          <div>
-            <div class="row">
-              <div class="p-4 ml-4 d-flex">
-                <img src="images/settings/list.png" width="25" height="25" style="display:none;">
-              
-              </div>
-              <div class="ml-4 pt-4">
-                <div class="pl-3  d-flex align-items-center"  style="border-left: 3px solid blue">
-                  <p class="settingsTituloTab m-0" style="color:blue">Bebidas</p>
-                </div>
-                <div class="pl-3 pt-1 d-flex align-items-center"  style="border-left: 3px solid blue">
-                  <p class="settingsTituloTab m-0" style="font-size: 1rem">Trazer as bebidas alcoólicas</p>
-                </div>
-              </div> 
-              <div class="p-3 d-flex align-items-center ml-auto mr-4">
-                <img src="images/settings/minus.png" width="22" height="20" class="pl-1">
-            </div>
-          </div>
-
-          <div>
-            <div class="row">
-              <div class="p-4 ml-4 d-flex">
-                <img src="images/settings/list.png" width="25" height="25" style="display:none;">
-              
-              </div>
-              <div class="ml-4 pt-4">
-                <div class="pl-3  d-flex align-items-center"  style="border-left: 3px solid green">
-                  <p class="settingsTituloTab m-0" style="color:green">Ecrã Branco</p>
-                </div>
-                <div class="pl-3 pt-1 d-flex align-items-center"  style="border-left: 3px solid green">
-                  <p class="settingsTituloTab m-0" style="font-size: 1rem">Um bem grande</p>
-                </div>
-              </div> 
-              <div class="p-3 d-flex align-items-center ml-auto mr-4">
-                <img src="images/settings/minus.png" width="22" height="20" class="pl-1">
-            </div>
-          </div>
-
-          
-
         </div>
+      </div>
 
-        <div class="d-flex justify-content-center mt-4">
-            <button class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Criar Evento</button>
-        </div>
-    </article>
 
-    
 
   </main>
 
@@ -205,7 +72,13 @@
   require_once "helpers/help_js.php"
   ?>
 
+<script>
+  $(function(){
 
+    $('#participantes').niceNumber();
+
+  });
+</script>
 
 
 
