@@ -207,6 +207,117 @@ if ($evento_existe == true) {
         $data[] = $row_result;
         print json_encode($data);
     }
+
+
+    $stmt = mysqli_stmt_init($link);
+
+    $query = "SELECT tasks_do_evento.ref_tasks_id, tasks.name, tasks.short_description FROM tasks_do_evento INNER JOIN tasks ON tasks.id = ref_tasks_id  WHERE tasks_do_evento.ref_event_id = ?";
+
+    // $query = "SELECT users_nos_eventos.ref_user_id, tasks_do_evento.ref_tasks_id FROM tasks_de_users INNER JOIN users_nos_eventos ON ref_users_nos_eventos_id = users_nos_eventos.id INNER JOIN tasks_do_evento ON tasks_do_evento.id = ref_tasks_do_evento_id WHERE tasks_do_evento.ref_event_id = ?";
+
+
+    if (mysqli_stmt_prepare($stmt, $query)) {
+        mysqli_stmt_bind_param($stmt, 'i', $id_evento);
+        // Devemos validar também o resultado do execute!
+
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_bind_result($stmt, $task_id, $task_name, $task_descricao);
+
+            /* fetch values */
+
+            while (mysqli_stmt_fetch($stmt)) {
+
+
+                /*Gravar todas as tasks do evento em questão*/
+                $row_result2 = array();
+                $row_result2["id"] = htmlspecialchars($task_id);
+                $row_result2["name"] = htmlspecialchars($task_name);
+                $row_result2["descricao"] = htmlspecialchars($task_descricao);
+                
+                $data['tasks'][] = $row_result2;
+            }
+            
+            if (mysqli_stmt_num_rows($stmt) == 0) {
+                $sem_tarefas = 1;
+                $verificacao = $sem_tarefas;
+            } else {
+                $sem_tarefas = 0;
+                $verificacao = $sem_tarefas;
+            }
+            $data['sem_tarefas'] = $verificacao;
+
+
+        
+            mysqli_stmt_close($stmt);
+        } else {
+            $row_result["erro"] = '1';
+            $data[] = $row_result;
+            print json_encode($data);
+        }
+    } else {
+        $row_result["erro"] = '2';
+        $data[] = $row_result;
+        print json_encode($data);
+    }
+    
+    
+    
+if ($sem_tarefas == 0) {
+
+
+    $stmt = mysqli_stmt_init($link);
+
+
+    $query = "SELECT users_nos_eventos.ref_user_id, tasks_do_evento.ref_tasks_id, users.url  FROM tasks_de_users INNER JOIN users_nos_eventos ON ref_users_nos_eventos_id = users_nos_eventos.id INNER JOIN tasks_do_evento ON tasks_do_evento.id = ref_tasks_do_evento_id INNER JOIN users ON users.id = users_nos_eventos.ref_user_id WHERE tasks_do_evento.ref_event_id = ?";
+
+
+    if (mysqli_stmt_prepare($stmt, $query)) {
+        mysqli_stmt_bind_param($stmt, 'i', $id_evento);
+        // Devemos validar também o resultado do execute!
+
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_bind_result($stmt, $id_user_na_task, $id_task_do_user, $url_avatar_user);
+
+            /* fetch values */
+            
+            while (mysqli_stmt_fetch($stmt)) {
+                $row_result = array();
+                /*Gravar todas as tasks do evento em questão*/
+                
+                $row_result['id_user'] = htmlspecialchars($id_user_na_task);
+                $row_result['url_user'] = htmlspecialchars($url_avatar_user);
+                $row_result_no_need["id_task"] = htmlspecialchars($id_task_do_user);
+                
+                /*Escreve os users na respetiva task */
+                for ($i=0; $i <count($data['tasks']); $i++) {
+                    if ($data['tasks'][$i]['id'] == $row_result_no_need["id_task"]) {
+                        $data['tasks'][$i]['users'][] = $row_result;
+                    }
+                }
+            }
+
+            
+
+
+            
+            mysqli_stmt_close($stmt);
+        } else {
+            $row_result["erro"] = '1';
+            $data[] = $row_result;
+            print json_encode($data);
+        }
+    } else {
+        $row_result["erro"] = '2';
+        $data[] = $row_result;
+        print json_encode($data);
+    }
+}
+
+
+
+
+
+
 }
 
 
