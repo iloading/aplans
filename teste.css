@@ -662,7 +662,8 @@ ul li{
     border-radius: 20px; 
     color: #6F41E9; 
     font-weight: 500; 
-    border: none
+    border: none;
+    width:60%;
 }
 
 .semEvento{
@@ -732,12 +733,32 @@ ul li{
   }
 
   /*Criar Eventos*/
+.textareaEventoNome{
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      resize: both;
+      border-bottom: 1px solid lightgrey;
+      color: white;
+      text-align: center;
+}
+.textareaEventoNome:focus{
+    outline:none !important;
+}
 
+.textareaEventoNome[contenteditable]:empty::before{
+    content: "Nome do evento";
+    color: white;
+    
+}
+
+  
 .textareaDescricao{
       display: block;
       width: 100%;
       overflow: hidden;
       resize: both;
+      border-bottom: 1px solid lightgrey;
 }
 .textareaDescricao:focus{
     outline:none !important;
@@ -746,13 +767,19 @@ ul li{
 .textareaDescricao[contenteditable]:empty::before{
     content: "Insira a descrição do evento";
     color: grey;
+    
 }
+
+
+
+
 
 .textareaLocal{
     display: block;
     width: 100%;
     overflow: hidden;
     resize: both;
+   border-bottom: 1px solid lightgrey;
 }
 .textareaLocal:focus{
   outline:none !important;
@@ -763,3 +790,77 @@ ul li{
   color: grey;
 }
 
+
+
+.textareaTarefasNome{
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      resize: both;
+      border-bottom: 1px solid lightgrey;
+}
+.textareaTarefasNome:focus{
+    outline:none !important;
+}
+
+.textareaTarefasNome[contenteditable]:empty::before{
+    content: "Nome da tarefa";
+    color: grey;
+    
+}
+
+
+
+
+
+
+.textareaTarefasDescricao{
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      resize: both;
+      border-bottom: 1px solid lightgrey;
+}
+.textareaTarefasDescricao:focus{
+    outline:none !important;
+}
+
+.textareaTarefasDescricao[contenteditable]:empty::before{
+    content: "Descrição";
+    color: grey;
+    
+}
+
+
+
+.botao_criar_evento_align{
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(111,65,233,1) 300%);
+}
+
+.botaoMenus{
+    padding: 0.7rem 1.4rem;
+    background-color: #BAE4AC;
+    border: none;
+    font-weight: 900;
+}
+
+.botaoMenus:active{
+    background-color: #90b485;
+    border: none;
+}
+
+
+button:focus{
+    outline: none !important;
+}
+
+.nParticipantes{
+    border: none;
+}
+.nParticipantes:focus{
+    outline: none;
+    background-color: rgb(231, 228, 228);
+}

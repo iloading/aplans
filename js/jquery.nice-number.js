@@ -2,7 +2,7 @@
   $.fn.niceNumber = function(options) {
     var settings = $.extend({
       autoSize: true,
-      autoSizeBuffer: 3,
+      autoSizeBuffer: 6,
       buttonDecrement: '-',
       buttonIncrement: "+",
       buttonPosition: 'around'
@@ -52,6 +52,7 @@
       // Generate buttons
       var $minusButton = $('<button/>')
         .attr('type', 'button')
+        .attr('class', 'botaoMenus')
         .html(settings.buttonDecrement)
         .on('mousedown mouseup mouseleave', function(event){
           changeInterval(event.type, interval, function(){
@@ -74,6 +75,7 @@
 
       var $plusButton = $('<button/>')
         .attr('type', 'button')
+        .attr('class', 'botaoMenus')
         .html(settings.buttonIncrement)
         .on('mousedown mouseup mouseleave', function(event){
           changeInterval(event.type, interval, function(){
