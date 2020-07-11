@@ -535,7 +535,7 @@ ul li{
     font-size: calc(10px + 1.5vw);
     font-family: 'Nunito', sans-serif !important;
     margin: auto;
-    height: 20vh; 
+    height: 21vh; 
     
     
 }
@@ -720,3 +720,13 @@ ul li{
   
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .show {display:block;}
+
+
+
+  .pessoas_avatar_posicao{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+
+  }
