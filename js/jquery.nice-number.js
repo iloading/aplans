@@ -2,7 +2,7 @@
   $.fn.niceNumber = function(options) {
     var settings = $.extend({
       autoSize: true,
-      autoSizeBuffer: 1,
+      autoSizeBuffer: 3,
       buttonDecrement: '-',
       buttonIncrement: "+",
       buttonPosition: 'around'
