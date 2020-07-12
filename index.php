@@ -2,9 +2,9 @@
 require_once "connections/connection.php";
 require_once "admin/scripts/sc_check_admin.php";
 
-if (!isset($_COOKIE['email']) && !isset($_COOKIE['id']) && !isset($_COOKIE['role']) ) {
+if (!isset($_COOKIE['email']) && !isset($_COOKIE['id']) && !isset($_COOKIE['role'])) {
     header("location: login.php");
-}else{
+} else {
     $_SESSION["email_aplans"] = $_COOKIE['email'];
     $_SESSION['id_user_aplans'] = $_COOKIE['id'];
     $_SESSION['role_aplans'] = $_COOKIE['role'];
@@ -42,9 +42,17 @@ if (isset($_SESSION['email_aplans'])) {
 
 
         <script>
+            
+            /*Calcula a altura do conteudo consoante o tamanho do ecra que estamos a usar para que não fique com barras brancas no final da página*/
+            function alturaConteudo() {
+                if ($(window).height() > $("main").height()) {
+                    $("main").css("height", $(window).height())
+                }
+            }
             /*Carrega a página Home quando a página index.php é carregada pela primeira vez*/
             $(document).ready(function() {
                 mostrarHome();
+
             });
 
             /*
@@ -62,9 +70,9 @@ if (isset($_SESSION['email_aplans'])) {
         </script>
 
 
-<script>
+        <script>
 
-</script>
+        </script>
 
     </body>
 
