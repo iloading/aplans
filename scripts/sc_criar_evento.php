@@ -2,7 +2,12 @@
     require_once "../connections/connection.php";
 
     session_start();
-    
+
+
+    if (isset($_POST["local"]) && isset($_POST["descricao"]) && isset($_POST["nome_tarefa"]) && isset($_POST["descricao_tarefa"])) {
+
+
+
     $id_user = $_SESSION['id_user_aplans'];
     $data = array();
 
@@ -31,6 +36,14 @@
             }
         }
     }
+
+
+
+
+
+
+
+
 
     print json_encode($data);
 ?>
