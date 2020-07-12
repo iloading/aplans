@@ -733,6 +733,40 @@ ul li{
   }
 
   /*Criar Eventos*/
+
+
+.img_tipo_evento{
+
+    height: calc(45px + 7vw);
+    width: calc(45px + 7vw);
+    max-height: 65px;
+    max-width: 65px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    background-color: #90b485;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: 5.5vw;
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
+    border: 4px dashed  #BAE4AC;
+
+}
+
+.text_alterarTipo{
+
+    color: white;
+    position: absolute;
+    bottom: -38%;
+    font-size: 0.7rem;
+    font-weight: normal;
+    width: max-content;
+
+}
+
 .textareaEventoNome{
       display: block;
       width: 100%;
