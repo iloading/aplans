@@ -700,12 +700,12 @@ ul li{
   .dropdown-content {
     display: none;
     position: absolute;
-    right: 10%;
-    top: 100%;
+    top: 115%;
     background-color: #f1f1f1;
     min-width: 70px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 16;
+    width: 90vw;
   }
   
   /* Links inside the dropdown */
@@ -953,4 +953,22 @@ button:focus{
 
 
 
+}
+
+.botao-circular{
+    height: calc(10px + 7vw);
+    width: calc(10px + 7vw);
+    max-height: 50px;
+    max-width: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    background-color: #BAE4AC;
+    color: #3C5E77;
+    font-weight: 700;
+    font-size: 5.5vw;
+    font-family: 'Nunito', sans-serif !important;
+    margin: auto;
 }

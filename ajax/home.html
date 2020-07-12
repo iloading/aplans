@@ -55,14 +55,14 @@
                 }
             }else{
                 /*Quando nao ha eventos criados pelo user*/
-                adicionarNovoEvento += '<div class="col-10 semEvento"> <div class="add-event" style="margin-top: 7%;margin-bottom:7%;">+</div><div><p style="margin:0;font-weight: 600;text-align: center;">Não tens eventos criados</p><p style="font-weight: 600;text-align: center;">Clica aqui para criar o teu primeiro evento!</p><div></div>'
+                adicionarNovoEvento += '<div class="col-10 semEvento"> <div class="botao-circular" style="margin-top: 7%;margin-bottom:7%;">+</div><div><p style="margin:0;font-weight: 600;text-align: center;">Não tens eventos criados</p><p style="font-weight: 600;text-align: center;">Clica aqui para criar o teu primeiro evento!</p><div></div>'
             }
             
 
             for (let i = 0; i < data.upcoming.length; i++) {
                 if (i < 8) {
                     /*HTML dos proximos eventos de toda a aplicacao, limitado a 8*/
-                    upcoming += ' <div id="' + data.upcoming[i]["id_evento"] + '" class="col-3 text-center btn-evento"> <div class="add-event"><img src="images'+ data.upcoming[i]["icon_tipo"] +'" class="w-50"></div> <p>'+ data.upcoming[i]["nome_evento"]+'</p> </div>';
+                    upcoming += ' <div id="' + data.upcoming[i]["id_evento"] + '" class="col-3 text-center btn-evento"> <div class="botao-circular"><img src="images'+ data.upcoming[i]["icon_tipo"] +'" class="w-50"></div> <p>'+ data.upcoming[i]["nome_evento"]+'</p> </div>';
                 }
                 /*lista de todos os eventos do modal ver mais*/
                  listaPlanos += '';
@@ -71,7 +71,7 @@
             if (data.amigos[0] != 'vazio'){
 
             /*HTML botao adicionar amigos*/
-                  adicionarAmigos += '<div class="col-3"> <div class="add-event">+</div> </div>';
+                  adicionarAmigos += '<div class="col-3"> <div class="botao-circular">+</div> </div>';
             /*Modal de ver todos os amigos*/
                   modalAmigos += '<a data-toggle="modal" data-target="#mostarAmigos">Ver todos</a>';
 
@@ -99,7 +99,7 @@
                 }
             }else{
                  /*Quando o user nao tem amigos*/
-                cardsAmigos +='<div class="col-10 semEvento container"> <div class="row"><div class="col-2"><div class="add-event" style="margin-top: 50%;margin-bottom:50%;">+</div></div><div class="col-10 d-flex flex-column justify-content-center align-items-center"><p class="d-flex align-items-center" style="font-weight: 600;margin:0;">És novo na aplicação?</p><p class="d-flex align-items-center" style="font-weight: 600;margin:0;">Adiciona novos amigos!</p></div></div> </div>';
+                cardsAmigos +='<div class="col-10 semEvento container"> <div class="row"><div class="col-2"><div class="botao-circular" style="margin-top: 50%;margin-bottom:50%;">+</div></div><div class="col-10 d-flex flex-column justify-content-center align-items-center"><p class="d-flex align-items-center" style="font-weight: 600;margin:0;">És novo na aplicação?</p><p class="d-flex align-items-center" style="font-weight: 600;margin:0;">Adiciona novos amigos!</p></div></div> </div>';
             }
           
             
@@ -118,14 +118,18 @@
     }
         /* Quando o utilizador clica no seu avatar */
           function menu_avatar() {
-            document.getElementById("myDropdown").classList.toggle("show");
+            $("#myDropdown").toggleClass("show");
           }
+
+        $(document).on("click", "#menuAvatar", function() {
+            menu_tipo_evento();
+        });
+
 
 
         
           // O dropdown fecha se o utilizador clicar fora dele 
           window.onclick = function(event) {
-            $('#menuAvatar').onclick = menu_avatar();
             if (!event.target.matches('.dropbtn')) {
               var dropdowns = document.getElementsByClassName("dropdown-content");
               var i;
