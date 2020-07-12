@@ -55,7 +55,7 @@
                 }
             }else{
                 /*Quando nao ha eventos criados pelo user*/
-                adicionarNovoEvento += '<div class="col-10 semEvento"> <div class="botao-circular" style="margin-top: 7%;margin-bottom:7%;">+</div><div><p style="margin:0;font-weight: 600;text-align: center;">Não tens eventos criados</p><p style="font-weight: 600;text-align: center;">Clica aqui para criar o teu primeiro evento!</p><div></div>'
+                adicionarNovoEvento += '<div class="col-10 semEvento"> <div class="add-event" style="margin-top: 7%;margin-bottom:7%;">+</div><div><p style="margin:0;font-weight: 600;text-align: center;">Não tens eventos criados</p><p style="font-weight: 600;text-align: center;">Clica aqui para criar o teu primeiro evento!</p><div></div>'
             }
             
 
@@ -106,7 +106,7 @@
         
 
             
-            var home = '<main id="main" class="text-white bg-azul-aplans d-flex flex-column align-items-start"> <div class="container p-3"> <section class="row d-flex" style="align-items: center;"> <div class="col-6 text-left" style="height: 100%;"> <div class="div-logo"><a href="index.php"><img class="mw-100" src="assets/aplans.png" alt="logotipo"></a></div> </div><div class="col-6 text-right dropdown" style="height:100%"> <div class="avatar-circular"><img id="menuAvatar" class="mw-100 dropbtn" src="assets/avatar.png" alt="avatar"></div> <div id="myDropdown" class="dropdown-content"><div class="d-flex justify-content-between"><div><img src="images/others/utilizador.png" style="width:20px;"></div><div><p class="m-0">Perfil</p></div></div><div class="d-flex justify-content-between"><div><img src="images/others/settings.png" style="width:20px;"></div><div><p class="m-0">Admin</p></div></div><div class="d-flex justify-content-between" style="background-color: rgba(240,52,52,0.5);/* background-color: white; */"><div><img src="images/others/sair.png" style="width:20px;"></div><div><p class="m-0 font-weight-bold">Sair</p></div></div></div> </div> </section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos">Created Plans</p> </section> <section class="row justify-content-center" style="align-items: center;"> '+adicionarNovoEvento+' <div id="carouselExampleIndicators1" class="carousel slide col-8 m-auto" data-interval="false"> <ol class="carousel-indicators" style="bottom: -6vh;">'+indicators+'</ol> <div class="carousel-inner"> '+eventosCriados+' </div> '+setaEsquerda+' '+setaDireita+'</div> </section> </div> <div class="container p-3"><section class="row pl-3"> <p class="index-titulos col-6 p-0">Planos Futuros</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a data-toggle="modal" data-target="#mostarPlanos">Ver todos</a></p> </section><section class="row">'+upcoming+'</section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos col-6 p-0">Meus Amigos</p> <p class="index-titulos text-right col-6 " style="font-size:small;">'+modalAmigos+'</p> </section> <section class="row" style="align-items: center;"> '+adicionarAmigos+'' + start_div +''+cardsAmigos+'' + end_div +' </section> </div></main>'
+            var home = '<main id="main" class="text-white bg-azul-aplans d-flex flex-column align-items-start"> <div class="container p-3"> <section class="row d-flex" style="align-items: center;"> <div class="col-6 text-left" style="height: 100%;"> <div class="div-logo"><a href="index.php"><img class="mw-100" src="assets/aplans.png" alt="logotipo"></a></div> </div><div class="col-6 text-right dropdown" style="height:100%"> <div class="avatar-circular"><img id="menuAvatar" class="mw-100 dropbtn" src="assets/avatar.png" alt="avatar"></div> <div id="myDropdown" class="dropdown-content_avatar"><div class="d-flex justify-content-between"><div><img src="images/others/utilizador.png" style="width:20px;"></div><div><p class="m-0">Perfil</p></div></div><div class="d-flex justify-content-between"><div><img src="images/others/settings.png" style="width:20px;"></div><div><p class="m-0">Admin</p></div></div><div class="d-flex justify-content-between" style="background-color: rgba(240,52,52,0.5);/* background-color: white; */"><div><img src="images/others/sair.png" style="width:20px;"></div><div><p class="m-0 font-weight-bold">Sair</p></div></div></div> </div> </section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos">Created Plans</p> </section> <section class="row justify-content-center" style="align-items: center;"> '+adicionarNovoEvento+' <div id="carouselExampleIndicators1" class="carousel slide col-8 m-auto" data-interval="false"> <ol class="carousel-indicators" style="bottom: -6vh;">'+indicators+'</ol> <div class="carousel-inner"> '+eventosCriados+' </div> '+setaEsquerda+' '+setaDireita+'</div> </section> </div> <div class="container p-3"><section class="row pl-3"> <p class="index-titulos col-6 p-0">Planos Futuros</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a data-toggle="modal" data-target="#mostarPlanos">Ver todos</a></p> </section><section class="row">'+upcoming+'</section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos col-6 p-0">Meus Amigos</p> <p class="index-titulos text-right col-6 " style="font-size:small;">'+modalAmigos+'</p> </section> <section class="row" style="align-items: center;"> '+adicionarAmigos+'' + start_div +''+cardsAmigos+'' + end_div +' </section> </div></main>'
 
            
             $('#conteudoPagina').append(home);
@@ -122,8 +122,11 @@
           }
 
         $(document).on("click", "#menuAvatar", function() {
-            menu_tipo_evento();
+            menu_avatar();
         });
+
+
+        
 
 
 
@@ -131,7 +134,7 @@
           // O dropdown fecha se o utilizador clicar fora dele 
           window.onclick = function(event) {
             if (!event.target.matches('.dropbtn')) {
-              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var dropdowns = document.getElementsByClassName("dropdown-content_avatar");
               var i;
               for (i = 0; i < dropdowns.length; i++) {
                 var openDropdown = dropdowns[i];

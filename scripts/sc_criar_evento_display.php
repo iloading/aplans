@@ -13,7 +13,7 @@
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "INSERT";
+    $query = "SELECT id, type, url FROM event_type";
 
     if (mysqli_stmt_prepare($stmt, $query)) { 
         if (mysqli_stmt_execute($stmt)) {
@@ -34,3 +34,6 @@
     }
 
     print json_encode($data);
+
+
+?>
