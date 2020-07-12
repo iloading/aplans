@@ -128,9 +128,9 @@
 
   </main>
 
-  <!--<div class="d-flex botao_criar_evento_align justify-content-center pb-4 pt-4">
+  <div class="d-flex botao_criar_evento_align justify-content-center pb-4 pt-4">
     <button class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Criar Evento</button>
-  </div>-->
+  </div>
 
 
   <?php
@@ -143,6 +143,14 @@
       $('#participantes').niceNumber();
 
     });
+  </script>
+
+  <script>
+    $('#data_evento').datetimepicker({
+      icons: {
+        date: "fa fa-calendar-o"
+      }
+    })
   </script>
 
 
