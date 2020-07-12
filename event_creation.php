@@ -34,10 +34,12 @@
             </div>
             <div class="d-flex flex-column align-items-center mt-2">
 
-              <div class="mb-2" style="width: 50%;">
+              <div class="mb-2" style="width: 100%;">
                 <span class="textareaEventoNome" role="textbox" contenteditable></span>
               </div>
-              <div id="data_evento"><input type="datetime-local" style="background:none;color:white;border:none;border-bottom:1px solid lightgrey"></div>
+              <div id="data_evento">
+                <input type="datetime-local" style="background:none;color:white;border:none;font-size:0.9rem;">
+              </div>
             </div>
           </div>
         </article>
@@ -73,7 +75,10 @@
               <div class="position-relative" style="width: 70%;">
                 <span class="textareaTarefasNome mb-3" role="textbox" contenteditable></span>
                 <span class="textareaTarefasDescricao mb-3" role="textbox" contenteditable></span>
-                <input class="position-absolute" type="color">
+                <div class="d-flex">
+                  <p class="mr-4">Cor da tarefa :</p>
+                  <input type="color">
+                </div>
               </div>
 
               <div style="width:30%;display:flex;">

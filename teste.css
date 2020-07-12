@@ -738,7 +738,6 @@ ul li{
       width: 100%;
       overflow: hidden;
       resize: both;
-      border-bottom: 1px solid lightgrey;
       color: white;
       text-align: center;
 }
@@ -747,18 +746,29 @@ ul li{
 }
 
 .textareaEventoNome[contenteditable]:empty::before{
-    content: "Nome do evento";
+    content: "Insira o nome do evento";
     color: white;
+    font-size: 1.3rem;
     
 }
 
+
+input:focus{
+    outline: none;
+}
+
   
+
+
+
+
 .textareaDescricao{
       display: block;
       width: 100%;
       overflow: hidden;
       resize: both;
       border-bottom: 1px solid lightgrey;
+      transition: 0.5s;
 }
 .textareaDescricao:focus{
     outline:none !important;
@@ -774,12 +784,16 @@ ul li{
 
 
 
+
+
+
 .textareaLocal{
     display: block;
-    width: 100%;
+    width: 60%;
     overflow: hidden;
     resize: both;
    border-bottom: 1px solid lightgrey;
+   transition: 0.5s;
 }
 .textareaLocal:focus{
   outline:none !important;
@@ -790,14 +804,23 @@ ul li{
   color: grey;
 }
 
+.textareaLocal:focus{
+    width: 100%;
+    transition: 0.5s;
+}
+
+
+
+
 
 
 .textareaTarefasNome{
       display: block;
-      width: 100%;
+      width: 70%;
       overflow: hidden;
       resize: both;
       border-bottom: 1px solid lightgrey;
+      transition: 0.5s;
 }
 .textareaTarefasNome:focus{
     outline:none !important;
@@ -809,6 +832,10 @@ ul li{
     
 }
 
+.textareaTarefasNome:focus{
+    width: 100%;
+    transition: 0.5s;
+}
 
 
 
@@ -820,6 +847,8 @@ ul li{
       overflow: hidden;
       resize: both;
       border-bottom: 1px solid lightgrey;
+    
+      
 }
 .textareaTarefasDescricao:focus{
     outline:none !important;
@@ -830,6 +859,7 @@ ul li{
     color: grey;
     
 }
+
 
 
 
