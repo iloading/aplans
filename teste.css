@@ -705,7 +705,7 @@ ul li{
     min-width: 70px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 16;
-    width: 90vw;
+    width: 70vw;
   }
   
   /* Links inside the dropdown */
