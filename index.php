@@ -42,7 +42,6 @@ if (isset($_SESSION['email_aplans'])) {
 
 
         <script>
-            
             /*Calcula a altura do conteudo consoante o tamanho do ecra que estamos a usar para que não fique com barras brancas no final da página*/
             function alturaConteudo() {
                 if ($(window).height() > $("main").height()) {
@@ -63,7 +62,8 @@ if (isset($_SESSION['email_aplans'])) {
             $(document).on('click', '.btn-evento', function() {
                 mostrarEvento($(this).attr("id"))
             });
-
+            
+            /* Quando se clica no botão de adicionar evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova funçao que irá mostrar a interface de criação do evento*/
             $(document).on('click', '.add-event', function() {
                 mostrarCriarEvento()
             });
