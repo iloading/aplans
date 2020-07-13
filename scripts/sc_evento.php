@@ -17,7 +17,7 @@ $link = new_db_connection();
 /*------------------------------INTERFACE HOME----------------------*/
 $stmt = mysqli_stmt_init($link);
 
-$query = "SELECT event_type.url, ref_creator_id, name, date, slots, short_description, last_message_update FROM event INNER JOIN event_type ON event_type.id = ref_event_type_id WHERE event.id = ?";
+$query = "SELECT event_type.url, ref_creator_id, name, date, slots, short_description, last_message_update, local FROM event INNER JOIN event_type ON event_type.id = ref_event_type_id WHERE event.id = ?";
 
 
 
@@ -26,7 +26,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     // Devemos validar também o resultado do execute!
 
     if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_bind_result($stmt, $tipoEvento, $criador, $nomeEvento, $dataEvento, $slots, $descricao, $ultimoUpdate);
+        mysqli_stmt_bind_result($stmt, $tipoEvento, $criador, $nomeEvento, $dataEvento, $slots, $descricao, $ultimoUpdate, $local);
 
         /* fetch values */
 
@@ -93,6 +93,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result["slotsMax"] = htmlspecialchars($slots);
             $row_result["descricao"] = htmlspecialchars($descricao);
             $row_result["ultimoUpdate"] = htmlspecialchars($ultimoUpdate);
+            $row_result["local"] = htmlspecialchars($local);
 
             $data['home'] = $row_result;
 
