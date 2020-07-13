@@ -783,6 +783,40 @@ ul li{
     
 }
 
+
+
+/*menu add amigos*/
+.dropdown-content_amigosAdd{
+    display: none;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0,0,0,0.8);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 16;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content_amigosAdd div {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content_amigosAdd a:hover {background-color: #ddd}
+
+   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+   .showAmigosAdd {
+    display:block;
+    
+}
+
   .pessoas_avatar_posicao{
       position: absolute;
       top: 0;

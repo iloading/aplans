@@ -186,7 +186,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         }
 
         //
-        print json_encode($data);
+        //print json_encode($data);
 
 
 
@@ -203,6 +203,48 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     print json_encode($data);
 }
 
+
+
+//buscar todos os users
+
+$stmt = mysqli_stmt_init($link);
+
+$query = "SELECT id, nome, url FROM users ";
+
+
+
+if (mysqli_stmt_prepare($stmt, $query)) {
+ 
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_bind_result($stmt, $id_user, $nome_user, $imagem_user);
+
+        /* fetch values */
+
+        while (mysqli_stmt_fetch($stmt)) {
+            $row_result = array();
+            $row_result["id_user"] = htmlspecialchars($id_user);
+            $row_result["nomes_user"] = htmlspecialchars($nome_user);
+            $row_result["imagem_user"] = htmlspecialchars($imagem_user);
+            $data["utilizadores"][] = $row_result;
+        }
+
+        //
+        print json_encode($data);
+
+
+
+
+        mysqli_stmt_close($stmt);
+    } else {
+        $row_result["erro"] = '1';
+        $data[] = $row_result;
+        print json_encode($data);
+    }
+} else {
+    $row_result["erro"] = '2';
+    $data[] = $row_result;
+    print json_encode($data);
+}
 
 
 
