@@ -43,28 +43,28 @@
                     $('#tipoEventoImg').attr("src",imgUrl);
                 })
 
-
-                var contador = 0;
+                /*Adcionar tarefas apenas à páginas de HTML */
+                var num_tarefas = 0;
 
                 $("#adicionarTarefa").click(function () {
 
-                    contador ++
-                    console.log(contador);
+                    num_tarefas ++
+                    
 
                     var nomeTarefaEvento = $(".textareaTarefasNome").html();
                     var descricaoTarefaEvento = $(".textareaTarefasDescricao").html();
                     var corTarefa = $("#corTarefa").val();
 
-                    var novaTarefa = '<div id="Tarefa" class="pt-4 mt-3 d-flex"> <div style="width: 10%;"></div> <div style="width: 60%;"> <div class="pl-3 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsTituloTab m-0" style="color:'+corTarefa+'">'+nomeTarefaEvento+'</p> </div> <div class="pl-3 pt-1 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsTituloTab m-0" style="font-size: 1rem">'+descricaoTarefaEvento+'</p> </div> </div> <div class="d-flex align-items-center justify-content-center eliminarTarefa" style="width: 30%;"> <img style="width: 20%;" src="images/settings/minus.png"> </div> </div>'
+                    var novaTarefa = '<div id="Tarefa'+num_tarefas+'" class="Tarefa pt-4 mt-3 d-flex"> <div style="width: 10%;"></div> <div style="width: 60%;"> <div class="pl-3 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsTituloTab m-0" style="color:'+corTarefa+'">'+nomeTarefaEvento+'</p> </div> <div class="pl-3 pt-1 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsDescTab m-0" style="font-size: 1rem">'+descricaoTarefaEvento+'</p> </div> </div> <div class="d-flex align-items-center justify-content-center eliminarTarefa" style="width: 30%;"> <img style="width: 20%;" src="images/settings/minus.png"> </div> </div>'
 
                     $('#tarefasAdicionadas').append(novaTarefa);
                   
                 })
-
+                /*Eliminar cada tarefa individualemnte */
                 $(document).on('click', '.eliminarTarefa', function () {
 
-                    $(this).parents('#Tarefa').remove();
-                    
+                    $(this).parents('.Tarefa').remove();
+                    num_tarefas--
                  })
 
 
@@ -109,18 +109,31 @@
 
                 //Quando se clica no botao de criar evento faz um pedido de ajax
                   $(".botaoCriarEvento").click(function () {
+                        
                         var nomeEvento = $(".textareaEventoNome").html();
                         var idTipoEvento =$("#selectTipo").val();
                         var dataEvento = $("#dataEvento").val();
                         var localEvento = $(".textareaLocal").html();
                         var descricaoEvento = $(".textareaDescricao").html();
                         var participantesEvento = $("#participantes").val();
-                       
+                        var query_de_tarefas = "";
+
+                        /*Se não houver tarefas, o ciclo for nem corre e, assim, não existem erros*/
+                        for (let m = 1; m <= num_tarefas; m++) {
+                            
+                            var nomeTarefa = $("#Tarefa"+m).find('.settingsTituloTab').html();
+                            var descTarefa = $("#Tarefa"+m).find('.settingsDescTab').html();
+                            var corTarefa = $("#Tarefa"+m).find('.settingsTituloTab').css("color");
+                        
+                            query_de_tarefas += "&tarefa"+m+"nome="+nomeTarefa+"&tarefa"+m+"descricao="+descTarefa+"&tarefa"+m+"cor="+corTarefa;
+                        }
+                        
 
                         var nomeTarefaEvento = $(".textareaTarefasNome").html();
-                        var eventoQuery = "nomeEvento=" + nomeEvento + "&idTipoEvento=" +idTipoEvento + "&dataEvento=" + dataEvento +"&localEvento=" + localEvento +"&descricaoEvento=" + descricaoEvento + "&participantesEvento=" + participantesEvento;
+                        var eventoQuery = "nomeEvento=" + nomeEvento + "&idTipoEvento=" +idTipoEvento + "&dataEvento=" + dataEvento +"&localEvento=" + localEvento +"&descricaoEvento=" + descricaoEvento + "&participantesEvento=" + participantesEvento + query_de_tarefas + "&numTarefas=" + num_tarefas;
 
-
+                        
+                        
                         $.ajax({
                           // ajax call starts
                           url: "scripts/sc_criar_evento.php",
@@ -130,7 +143,7 @@
 
 
                       }).done(function (data) {
-                        console.log(data);
+                            window.location.href = "index.php";
                       })
                       
                 })

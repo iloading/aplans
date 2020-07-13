@@ -9,7 +9,23 @@ if (!isset($_COOKIE['email']) && !isset($_COOKIE['id']) && !isset($_COOKIE['role
     $_SESSION['id_user_aplans'] = $_COOKIE['id'];
     $_SESSION['role_aplans'] = $_COOKIE['role'];
 }
+if (isset($_SESSION["msg"])) {
+    $msgInfo = $_SESSION["msg"];
+    switch ($msgInfo) {
+        case '1':
+            $msgConteudo = '<div class="alert alert-success m-0 p-3">O evento foi criado com sucesso! <span id="close-info" class="close">x</span></li></div>';
+            break;
+        case '2':
+            $msgConteudo = '<div class="alert alert-danger m-0 p-3">Ocorreu um erro na criação do evento. Não inseriu os dados todos corretamente.<span id="close-info" class="close">x</span></li></div>';
+            break;
 
+        default:
+            $msgConteudo = "";
+            break;
+    }
+} else {
+    $msgConteudo = "";
+}
 
 
 if (isset($_SESSION['email_aplans'])) {
@@ -26,7 +42,7 @@ if (isset($_SESSION['email_aplans'])) {
     </head>
 
     <body class="p-0">
-
+        <div id="mensagemInfo" class=""><?= $msgConteudo ?></div>
         <div id="conteudoPagina">
 
 
@@ -62,11 +78,19 @@ if (isset($_SESSION['email_aplans'])) {
             $(document).on('click', '.btn-evento', function() {
                 mostrarEvento($(this).attr("id"))
             });
-            
+
             /* Quando se clica no botão de adicionar evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova funçao que irá mostrar a interface de criação do evento*/
             $(document).on('click', '.add-event', function() {
                 mostrarCriarEvento()
             });
+            
+            $('#mensagemInfo').on('click', function() {
+                
+                $(this).html(" ");
+                <?php 
+                unset($_SESSION['msg'])
+                ?>
+            })
         </script>
 
 
