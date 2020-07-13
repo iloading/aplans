@@ -73,7 +73,7 @@
             /*HTML botao adicionar amigos*/
                   adicionarAmigos += '<div class="col-3"> <div class="botao-circular">+</div> </div>';
             /*Modal de ver todos os amigos*/
-                  modalAmigos += '<a data-toggle="modal" data-target="#mostarAmigos">Ver todos</a>';
+                  modalAmigos += '<a id="menuAmigos" class="dropbtn">Ver todos</a><div id="mostrarAmigos" class="dropdown-content_amigos"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharAmigos"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: black"><div><img src="images/others/search.png" style="width:20px;"></div><div><p class="m-0">Procurar</p></div></div></div>';
 
 
                 /*Dar fix no tamanho dos cards dos amigos*/
@@ -90,10 +90,6 @@
                         cardsAmigos += '<div class="events container-fluid p-0" style="height: 16vh; max-width:30%;"> <div class="row d-flex justify-content-center"><div><img class="avatar-circular-amigos" src="images' + data.amigos[i]["imagem_amigo"] +'" alt="user"></div><p class="col-12 pt-2">' + data.amigos[i]["nomesAmigos"] + '</p></div> </div> ';
 
                     }
-
-                    /*Lista de amigos do modal, ver todos os amigos*/
-                    listaAmigos +=' <div class="container"> <div class="row"> <div class="col-3 d-flex justify-content-center p-0"> <div class="pb-2 pt-2"> <img class="avatar-circular" src="images' + data.amigos[i]["imagem_amigo"] +'" alt="user"> </div> </div> <div class="col-4 p-0 d-flex align-items-center"> <p class="m-0"><a href="#" class="text-dark">' + data.amigos[i]["nomesAmigos"] + '</a></p> </div> <div class="col-5 d-flex align-items-center justify-content-end"><img src="images/profile/more.png" class="w-25"></div> </div> </div><hr>';
-
                    
                     
                 }
@@ -127,10 +123,6 @@
 
 
         
-
-
-
-        
           // O dropdown fecha se o utilizador clicar fora dele 
           window.onclick = function(event) {
             if (!event.target.matches('.dropbtn')) {
@@ -145,6 +137,25 @@
             }
           }
 
+
+
+
+
+        /*Quando o user carrega no Ver todos nos amigos*/
+          function menu_amigos() {
+            $("#mostrarAmigos").addClass("showAmigos");
+          }
+
+        $(document).on("click", "#menuAmigos", function() {
+            menu_amigos();
+        });
+
+        $(document).on("click", "#fecharAmigos", function() {
+            $("#mostrarAmigos").removeClass('showAmigos');
+        });
+
+    
+
           $(window).on('resize', function(){
               location.reload();
           })
@@ -156,29 +167,6 @@
 
 
 <!------------------------------- MODAIS -------------------------------->
-
-
-<!-- Modal -->
-<div class="modal fade" id="mostarAmigos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Amigos</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div id="amigosBody"class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="mostarPlanos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
