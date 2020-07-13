@@ -84,7 +84,7 @@
                   
 
             /*VER MAIS modal para lista de amigos*/
-                modalAmigos = '<a id="menuAmigos" class="dropbtn">Ver todos</a><div id="mostrarAmigos" class="dropdown-content_amigos"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharAmigos"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><p class="m-0">Procurar</p></div></div><div id="mostrarTodosAmigos" class="d-flex flex-column w-100 p-0 mt-2"></div></div>';
+                modalAmigos = '<a id="menuAmigos" class="dropbtn">Ver todos</a><div id="mostrarAmigos" class="dropdown-content_amigos"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharAmigos"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="searchAmigos" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="mostrarTodosAmigos" class="d-flex flex-column w-100 p-0 mt-2"></div></div>';
 
 
                 for (let i = 0; i < data.amigos.length; i++) {
@@ -102,13 +102,8 @@
                 }
             }else{
                  /*Quando o user nao tem amigos ainda adicionados*/
-                    cardsAmigos +='<div class="col-10 semEvento container"> <div class="row dropbtn" id="abrirListaAdd"><div class="col-2"><div class="botao-circular" style="margin-top: 50%;margin-bottom:50%;">+</div></div><div class="col-10 d-flex flex-column justify-content-center align-items-center"><p class="d-flex align-items-center" style="font-weight: 600;margin:0;">És novo na aplicação?</p><p class="d-flex align-items-center" style="font-weight: 600;margin:0;">Adiciona novos amigos!</p></div></div> </div> <div id="mostrarAmigosAdd" class="dropdown-content_amigosAdd"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharAmigos"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><p class="m-0">Procurar</p></div></div><div id="mostrarTodosAmigosAdd" class="d-flex flex-column w-100 p-0 mt-2"></div></div></div>';
+                    cardsAmigos +='<div class="col-10 semEvento container"> <div class="row dropbtn" id="abrirListaAdd"><div class="col-2"><div class="botao-circular" style="margin-top: 50%;margin-bottom:50%;">+</div></div><div class="col-10 d-flex flex-column justify-content-center align-items-center"><p class="d-flex align-items-center" style="font-weight: 600;margin:0;">És novo na aplicação?</p><p class="d-flex align-items-center" style="font-weight: 600;margin:0;">Adiciona novos amigos!</p></div></div> </div> <div id="mostrarAmigosAdd" class="dropdown-content_amigosAdd"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharAmigos"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="search_pessoas" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="mostrarTodosAmigosAdd" class="d-flex flex-column w-100 p-0 mt-2"></div></div></div>';
 
-            /*Lista de todos os users da app para seram adicionados*/
-                     for (let i = 0; i < data.utilizadores.length; i++) {
-                         mostrarListaAmigosAdd += '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["imagem_user"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nomes_user"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Adicionar</button></div></div>';
-
-                     }
 
 
   
@@ -124,8 +119,51 @@
             $('#amigosBody').append(listaAmigos);
             $('#upcomingPlans').append(listaPlanos);
             $('#mostrarTodosAmigos').append(mostrarListaAmigos);
-            $('#mostrarTodosAmigosAdd').append(mostrarListaAmigosAdd);
+           
             
+            
+            $('#search_pessoas').keyup(function() {
+                search = $(this).val();
+                console.log(search);
+                if (search != '') {
+                    nome_inserido = "nome=" + search;
+                
+                    $.ajax({ // ajax call starts
+                    url: 'scripts/sc_search_pessoas.php',
+                    data: nome_inserido,
+                    dataType: 'json', // Choosing a JSON datatype
+                    type: 'GET',
+
+                    })
+                    .done(function (data) {
+                    
+                    
+                    
+                    if (data.utilizadores != undefined) {
+
+                        if (data.utilizadores == 'vazio') {
+                            $('#mostrarTodosAmigosAdd').html(' ');
+                        }else{
+                            /*Lista de todos os users da app para seram adicionados*/
+                            for (let i = 0; i < data.utilizadores.length; i++) {
+                                mostrarListaAmigosAdd = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Adicionar</button></div></div>';
+
+                                $('#mostrarTodosAmigosAdd').append(mostrarListaAmigosAdd);
+                            }
+                        }
+                        
+                    }
+
+                    
+
+                    })
+                }else{
+                    $('#mostrarTodosAmigosAdd').html(' ');
+                }
+
+               
+            });
+
 
 
             alturaConteudo()
