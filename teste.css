@@ -1139,3 +1139,33 @@ button:focus{
 #mostrarAmigosAdd{
     z-index: 200;
 }
+
+
+
+
+/*Perfil user*/
+
+.form-control-perfil {
+    background-color: #fff !important;
+   
+    border-radius: 1rem !important;
+    padding: 1.5rem !important;
+}
+
+.form-control-perfil:hover {
+    background-color: #fff !important;
+}
+
+.form-control-perfil:focus {
+    background-color: #fff !important;
+    color: black !important;
+    box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0.25);
+    border: 0 !important;
+}
+
+.perfil_Inputs{
+    border: 2px solid #BAE4AC;
+    border-radius: 24px;
+    padding: 10px;
+
+}

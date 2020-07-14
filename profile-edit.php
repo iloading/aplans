@@ -52,44 +52,79 @@
 
 
 
-    <div class="container p-0 mb-5  d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="height:100vh;">
+    <div class="container p-0 mb-5  d-flex flex-column pl-4 pr-4 pt-4 pb-4 mt-4" style="height:100vh;">
 
       <div>
-        <div class="container d-flex flex-column">
+        <div class="container d-flex flex-column mb-4 p-0">
+
+          <h5 class="font-weight-bold">Email</h5>
+          <input class="perfil_Inputs" type="email">
+
+        </div>
+
+        <div class="container d-flex flex-column mb-4 p-0">
+
+          <h5 class="font-weight-bold">Morada</h5>
+          <input class="perfil_Inputs" type="email">
+
+        </div>
+
+
+        <div class="container d-flex p-0 mb-4">
+
+          <div class="container d-flex flex-column p-0">
+            <h5 class="font-weight-bold">Telemovel</h5>
+            <input class="perfil_Inputs" type="email">
+          </div>
+
+
+          <div class="container d-flex flex-column p-0">
+            <h5 class="font-weight-bold">Genero</h5>
+            <select class="perfil_Inputs" name="genero">
+              <option value="volvo">Gordinhas</option>
+              <option value="saab">Assim assim</option>
+              <option value="opel">Cona larga</option>
+              <option value="audi">Meloes</option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="container d-flex flex-column mb-4 p-0">
 
           <h5 class="font-weight-bold">Descrição</h5>
-          <p>ola</p>
+          <input class="perfil_Inputs" type="text">
 
         </div>
 
-        <div class="container d-flex flex-column">
+        <div class="container d-flex flex-column p-0">
 
-          <h5 class="font-weight-bold"></h5>
-          <p>ola</p>
+          <h5 class="font-weight-bold">Preferencias</h5>
+
+          <div>
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label for="vehicle1"> I have a bike</label><br>
+          </div>
+          <div>
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label for="vehicle1"> I have a bike</label><br>
+          </div>
+          <div>
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label for="vehicle1"> I have a bike</label><br>
+          </div>
+          <div>
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label for="vehicle1"> I have a bike</label><br>
+          </div>
+
 
         </div>
 
-        <div class="container d-flex flex-column">
 
-          <h5 class="font-weight-bold">Descrição</h5>
-          <p>ola</p>
-
-
-        </div>
-
-        <div class="container d-flex flex-column">
-
-          <h5 class="font-weight-bold">Descrição</h5>
-          <p>ola</p>
-
-
-        </div>
 
       </div>
-
-
-
-    </div>
 
 
 
