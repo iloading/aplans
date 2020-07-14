@@ -1298,8 +1298,8 @@ button:focus{
   .showPreferencias {display:block;}
 
 .botaoPreferencias{
-    background-color:rgba(109, 63, 230, 0.2) ;
-    border: 2px solid #6F41E9;
+    background-color:#BAE4AC ;
+    border: 2px solid #9abd8e;
     border-radius: 24px;
     padding: 10px;
 }
