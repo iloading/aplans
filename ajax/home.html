@@ -26,7 +26,7 @@
            var end_div ='';
            var mostrarListaAmigos ='';
            var mostrarListaAmigosAdd = '';
-           
+          
            
 
             console.log(data.created[0]);
@@ -84,7 +84,7 @@
                   
 
             /*VER MAIS modal para lista de amigos*/
-                modalAmigos = '<a id="menuAmigos" class="dropbtn">Ver todos</a><div id="mostrarAmigos" class="dropdown-content_amigos"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharAmigos"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="searchAmigos" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="mostrarTodosAmigos" class="d-flex flex-column w-100 p-0 mt-2"></div></div>';
+                modalAmigos = '<a id="menuAmigos" class="dropbtn">Ver todos</a><div id="mostrarAmigos" class="dropdown-content_amigos"><div class="d-flex flex-column p-0" id="mostrarMaisConteudo"><div class="w-100 justify-content-center" id="fecharAmigos"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="searchAmigos" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="mostrarTodosAmigos" class="d-flex flex-column w-100 p-0 mt-2"></div><div id="verMais"><p>Ver Mais</p></div></div></div>';
 
 
                 for (let i = 0; i < data.amigos.length; i++) {
@@ -94,8 +94,7 @@
                         cardsAmigos += '<div class="events container-fluid p-0" style="height: 16vh; max-width:30%;"> <div class="row d-flex justify-content-center"><div><img class="avatar-circular-amigos" src="images' + data.amigos[i]["imagem_amigo"] +'" alt="user"></div><p class="col-12 pt-2">' + data.amigos[i]["nomesAmigos"] + '</p></div> </div> ';
 
                     }
-                    /*Lista de amigos*/
-                    mostrarListaAmigos += '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.amigos[i]["imagem_amigo"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.amigos[i]["nomesAmigos"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Remover</button></div></div>';
+                    
 
                    
 
@@ -118,7 +117,7 @@
             $('#conteudoPagina').append(home);
             $('#amigosBody').append(listaAmigos);
             $('#upcomingPlans').append(listaPlanos);
-            $('#mostrarTodosAmigos').append(mostrarListaAmigos);
+            
            
             
             /*Utiliza a barra de pesquisa, para pesquisar por todos os users*/
@@ -151,6 +150,8 @@
                                 $('#mostrarTodosAmigosAdd').append(mostrarListaAmigosAdd);
                             }
                         }
+
+                      
                         
                     }
 
@@ -166,43 +167,34 @@
 
 
             /*Utiliza a barra de pesquisa, para pesquisar por os amigos de um utilizador*/
+           
+            var pagina = 1; /*Iniciar var globar para ser lida mais a frente*/
             $('#searchAmigos').keyup(function() {
+                
+                pagina = 1; /*sem que e mudado o nome na search bar pag da reset a 1*/
                 search = $(this).val();
-                // console.log(search);
                 if (search == '') {
                     search = 'vazio';
                 }
-                    nome_amigos = "nome=" + search;
+                   
 
-                    // console.log(nome_amigos);
-                    $.ajax({ // ajax call starts
-                    url: 'scripts/sc_search_amigos.php',
-                    data: nome_amigos,
-                    dataType: 'json', // Choosing a JSON datatype
-                    type: 'GET',
 
-                    })
-                    .done(function (data) {
-                        console.log(data);
-                        if (data.utilizadores != undefined) {
-                            $('#mostrarTodosAmigos').html(' ');
-                        
-                            /*Lista de todos os users da app para seram adicionados*/
-                            for (let i = 0; i < data.utilizadores.length; i++) {
-                                mostrarListaAmigos = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Remover</button></div></div>';
-
-                                $('#mostrarTodosAmigos').append(mostrarListaAmigos);
-                            }
-                            
-                            
-                        }
-
-                    })
+                $('#mostrarTodosAmigos').html(' ');/*Limpa os resultados que possam estar anteriormwente apresentados*/
+                pesquisarAmigos(search,pagina);/*pedido de ajax de acordo com a barra de pesquisa */
 
                
             });
 
+            $('#verMais').on("click", function () { /*quando se clica no btn VER MAIS*/
 
+                pagina++ /*pagina aumenta, faz com que sejam apresnetados mais resultados (Infinite scroll)*/
+                search = $("#searchAmigos").val();/*mantem o nome que estiver no input*/
+                if (search == '') {
+                    search = 'vazio';
+                }
+               
+                pesquisarAmigos(search,pagina)/*pedido de ajax de acordo com a barra de pesquisa*/
+            })
 
             alturaConteudo()
         })
@@ -234,11 +226,51 @@
 
 
 
+    function pesquisarAmigos(nome_amigos,pagina) {
 
+         query_nome_amigos = "nome=" + nome_amigos + "&pag=" + pagina;
+
+        // console.log(nome_amigos);
+        $.ajax({ // ajax call starts
+            url: 'scripts/sc_search_amigos.php',
+            data: query_nome_amigos,
+            dataType: 'json', // Choosing a JSON datatype
+            type: 'GET',
+
+        })
+            .done(function (data) {
+                console.log(data);
+                if (data.utilizadores != undefined) {
+
+
+                    /*Codigo HTML de cada amigo*/
+                    for (let i = 0; i < data.utilizadores.length; i++) {
+                        mostrarListaAmigos = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Remover</button></div></div>';
+
+
+
+                        $('#mostrarTodosAmigos').append(mostrarListaAmigos);
+                    }
+
+
+
+                }
+
+               
+
+            })
+
+    }
 
         /*Quando o user carrega no Ver todos nos amigos*/
           function menu_amigos() {
-            $("#mostrarAmigos").addClass("showAmigos");
+            $("#mostrarAmigos").addClass("showAmigos");/*abre o modal de todos os amigos*/
+             search = $("#searchAmigos").val();/*le o valor que esta na input*/
+              if (search == '') {
+                  search = 'vazio';
+              }
+              
+              pesquisarAmigos(search,1)/*quando se abre o modal apresenta apenas alguns amigos*/
           }
 
         $(document).on("click", "#menuAmigos", function() {

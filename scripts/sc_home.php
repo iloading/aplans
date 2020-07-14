@@ -162,7 +162,6 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 }
 
 
-
 $stmt = mysqli_stmt_init($link);
 
 $query = "SELECT users.nome,users.url FROM users INNER JOIN amigos ON users.id = user_id2  WHERE user_id1 = ?";

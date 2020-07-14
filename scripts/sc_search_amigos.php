@@ -10,6 +10,9 @@ $link = new_db_connection();
 if (isset($_GET['nome'])) {
     
     $search = $_GET['nome'];
+    $pagina = $_GET['pag'];
+    $items = 2;
+    $pos_pesquisa = ($pagina-1) * $items;
 
     $wildcard = "%$search%";
 
@@ -17,10 +20,10 @@ if (isset($_GET['nome'])) {
 
 
     if ($search != "vazio") {
-        $query = "SELECT users.id, users.nome, users.url FROM users INNER JOIN amigos ON users.id = user_id1  WHERE user_id2 = ? AND users.nome LIKE ?";
+        $query = "SELECT users.id, users.nome, users.url FROM users INNER JOIN amigos ON users.id = user_id1  WHERE user_id2 = ? AND users.nome LIKE ? ORDER BY users.nome LIMIT ?, ?";
 
         if (mysqli_stmt_prepare($stmt, $query)) { 
-            mysqli_stmt_bind_param($stmt, 'is', $id_user ,$wildcard);
+            mysqli_stmt_bind_param($stmt, 'isii', $id_user ,$wildcard, $pos_pesquisa, $items);
             if (mysqli_stmt_execute($stmt)) {
                 mysqli_stmt_bind_result($stmt, $id, $nome, $url);
 
@@ -47,11 +50,11 @@ if (isset($_GET['nome'])) {
     $stmt = mysqli_stmt_init($link);
 
    
-        $query = "SELECT users.id, users.nome, users.url FROM users INNER JOIN amigos ON users.id = user_id2  WHERE user_id1 = ? AND users.nome LIKE ?";
+        $query = "SELECT users.id, users.nome, users.url FROM users INNER JOIN amigos ON users.id = user_id2  WHERE user_id1 = ? AND users.nome LIKE ? ORDER BY users.nome LIMIT ?, ?";
 
 
-        if (mysqli_stmt_prepare($stmt, $query)) { 
-            mysqli_stmt_bind_param($stmt, 'is', $id_user ,$wildcard);
+        if (mysqli_stmt_prepare($stmt, $query)) {
+            mysqli_stmt_bind_param($stmt, 'isii', $id_user, $wildcard, $pos_pesquisa, $items);
             if (mysqli_stmt_execute($stmt)) {
                 mysqli_stmt_bind_result($stmt, $id, $nome, $url);
 
@@ -71,10 +74,11 @@ if (isset($_GET['nome'])) {
         }
 
     }else {
-        $query = "SELECT users.id, users.nome, users.url FROM users INNER JOIN amigos ON users.id = user_id1  WHERE user_id2 = ?";
+        $query = "SELECT users.id, users.nome, users.url FROM users INNER JOIN amigos ON users.id = user_id1  WHERE user_id2 = ? ORDER BY users.nome LIMIT ?, ?";
 
         if (mysqli_stmt_prepare($stmt, $query)) { 
-            mysqli_stmt_bind_param($stmt, 'i', $id_user);
+            
+            mysqli_stmt_bind_param($stmt, 'iii', $id_user, $pos_pesquisa, $items);
             if (mysqli_stmt_execute($stmt)) {
                 mysqli_stmt_bind_result($stmt, $id, $nome, $url);
 
@@ -101,11 +105,11 @@ if (isset($_GET['nome'])) {
     $stmt = mysqli_stmt_init($link);
 
    
-        $query = "SELECT users.id, users.nome, users.url FROM users INNER JOIN amigos ON users.id = user_id2  WHERE user_id1 = ?";
+        $query = "SELECT users.id, users.nome, users.url FROM users INNER JOIN amigos ON users.id = user_id2  WHERE user_id1 = ? ORDER BY users.nome LIMIT ?, ?";
 
 
-        if (mysqli_stmt_prepare($stmt, $query)) { 
-            mysqli_stmt_bind_param($stmt, 'i', $id_user);
+        if (mysqli_stmt_prepare($stmt, $query)) {
+            mysqli_stmt_bind_param($stmt, 'iii', $id_user, $pos_pesquisa, $items);
             if (mysqli_stmt_execute($stmt)) {
                 mysqli_stmt_bind_result($stmt, $id, $nome, $url);
 
