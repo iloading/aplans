@@ -1084,3 +1084,17 @@ button:focus{
     font-family: 'Nunito', sans-serif !important;
     margin: auto;
 }
+
+
+#mensagemInfo{
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    padding: 1rem;
+    transform: translate(-50%);
+    top: 1%;
+    z-index: 99;
+}
+.outline{
+    outline: 1px solid red;
+}
