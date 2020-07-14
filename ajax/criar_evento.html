@@ -53,7 +53,7 @@
                 var num_tarefas = 0;
 
                 $("#adicionarTarefa").click(function () {
-
+                   
                     num_tarefas ++
                     
 
@@ -196,7 +196,7 @@
                         if (sucesso == 1) {
 
                             var eventoQuery = "nomeEvento=" + nomeEvento + "&idTipoEvento=" +idTipoEvento + "&dataEvento=" + dataEvento +"&localEvento=" + localEvento +"&descricaoEvento=" + descricaoEvento + "&participantesEvento=" + participantesEvento + query_de_tarefas + "&numTarefas=" + num_tarefas;
-
+                            console.log(eventoQuery);
                             $.ajax({
                                 // ajax call starts
                                 url: "scripts/sc_criar_evento.php",
@@ -205,7 +205,14 @@
                                 data: eventoQuery,
 
                             }).done(function (data) {
-                                    window.location.href = "index.php";
+                                if (data['criarEvento'] == "sucesso") {
+                                    /*1 = mensagem de sucesso*/
+                                    mostrarInfo("1");
+                                    /*Muda diretamente para a pág de evento que foi criado*/
+                                    mostrarEvento(data['id_evento_criado']);
+                                }
+                                
+                                   
                             })
                         }
                         
