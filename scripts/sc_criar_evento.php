@@ -8,6 +8,7 @@
         $sucesso = 1;
         $row_results_erro= array();
         $criador = $_SESSION['id_user_aplans'];
+        $num_tarefas = $_GET['numTarefas'];
 
         /*Verificações para se algum campo não estiver preenchido,*/
 
@@ -61,11 +62,16 @@
         }
 
         if ($sucesso == 1) {
-        
+
             $data = array();
-
-
             $link = new_db_connection();
+
+
+           
+        
+
+
+            
 
             $stmt = mysqli_stmt_init($link);
 
@@ -89,7 +95,42 @@
                 $data['criarEvento'] = "erro";
             }
 
-        /*Se faltar algum parametro*/ 
+
+            for ($i = 0; $i < $num_tarefas; $i++) {
+
+                // '&tarefa"+m+"nome="+nomeTarefa+"&tarefa"+m+"descricao="+descTarefa+"&tarefa"+m+"cor="+corTarefa';
+
+                $nome_tarefa = $_GET['tarefa' . $i . 'nome'];
+                $descricao_tarefa = $_GET['tarefa' . $i . 'descricao'];
+                $cor_tarefa = $_GET['tarefa' . $i . 'cor'];
+
+                $stmt = mysqli_stmt_init($link);
+
+                $query = "INSERT INTO event (ref_event_type_id, ref_creator_id, name, date, slots, short_description, local) VALUES (?,?,?,?,?,?,?)";
+
+
+                if (mysqli_stmt_prepare($stmt, $query)) {
+
+                    mysqli_stmt_bind_param($stmt, "iississ", $idTipoEvento, $criador, $nome, $dataEvento, $slotsMax, $descricaoEvento, $localEvento);
+
+                    if (mysqli_stmt_execute($stmt)) {
+
+                        $_SESSION['msg'] = 1;
+                        $data['criarEvento'] = "sucesso";
+                    } else {
+                        $data['criarEvento'] = "erro";
+                    }
+                } else {
+                    $data['criarEvento'] = "erro";
+                }
+            }
+
+
+
+
+
+
+        /*Se faltar algum parametro mostra o erro na pág home (só se o JS for manipulado por um eventual atacante)*/ 
         }else {
             $_SESSION['msg'] = 2;
             $data['criarEvento'] = "erro";

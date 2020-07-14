@@ -212,7 +212,7 @@ if ($evento_existe == true) {
 
     $stmt = mysqli_stmt_init($link);
 
-    $query = "SELECT tasks_do_evento.ref_tasks_id, tasks.name, tasks.short_description FROM tasks_do_evento INNER JOIN tasks ON tasks.id = ref_tasks_id  WHERE tasks_do_evento.ref_event_id = ?";
+    $query = "SELECT id, name, short_description, cor FROM tasks_do_evento WHERE ref_event_id = ?";
 
     // $query = "SELECT users_nos_eventos.ref_user_id, tasks_do_evento.ref_tasks_id FROM tasks_de_users INNER JOIN users_nos_eventos ON ref_users_nos_eventos_id = users_nos_eventos.id INNER JOIN tasks_do_evento ON tasks_do_evento.id = ref_tasks_do_evento_id WHERE tasks_do_evento.ref_event_id = ?";
 
@@ -222,18 +222,17 @@ if ($evento_existe == true) {
         // Devemos validar também o resultado do execute!
 
         if (mysqli_stmt_execute($stmt)) {
-            mysqli_stmt_bind_result($stmt, $task_id, $task_name, $task_descricao);
+            mysqli_stmt_bind_result($stmt, $task_id, $task_name, $task_descricao, $task_cor);
 
             /* fetch values */
 
             while (mysqli_stmt_fetch($stmt)) {
-
-
                 /*Gravar todas as tasks do evento em questão*/
                 $row_result2 = array();
                 $row_result2["id"] = htmlspecialchars($task_id);
                 $row_result2["name"] = htmlspecialchars($task_name);
                 $row_result2["descricao"] = htmlspecialchars($task_descricao);
+                $row_result2["cor"] = htmlspecialchars($task_cor);
                 
                 $data['tasks'][] = $row_result2;
             }
@@ -269,7 +268,7 @@ if ($sem_tarefas == 0) {
     $stmt = mysqli_stmt_init($link);
 
 
-    $query = "SELECT users_nos_eventos.ref_user_id, tasks_do_evento.ref_tasks_id, users.url  FROM tasks_de_users INNER JOIN users_nos_eventos ON ref_users_nos_eventos_id = users_nos_eventos.id INNER JOIN tasks_do_evento ON tasks_do_evento.id = ref_tasks_do_evento_id INNER JOIN users ON users.id = users_nos_eventos.ref_user_id WHERE tasks_do_evento.ref_event_id = ?";
+    $query = "SELECT users_nos_eventos.ref_user_id, tasks_do_evento.id, users.url  FROM tasks_de_users INNER JOIN users_nos_eventos ON ref_users_nos_eventos_id = users_nos_eventos.id INNER JOIN tasks_do_evento ON tasks_do_evento.id = ref_tasks_do_evento_id INNER JOIN users ON users.id = users_nos_eventos.ref_user_id WHERE tasks_do_evento.id = ?";
 
 
     if (mysqli_stmt_prepare($stmt, $query)) {
