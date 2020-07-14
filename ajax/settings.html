@@ -1,0 +1,237 @@
+<script>
+    function settingsEvento(idEvento) {
+        
+        console.log(idEvento);
+
+        var settings_evento = "idEvento=" + idEvento;
+
+        $.ajax({
+        // ajax call starts
+        url: "scripts/sc_evento.php",
+        dataType: "json", // Choosing a JSON datatype
+        type: "GET",
+        data: settings_evento,
+
+        }).done(function (data) {
+            console.log(data);
+            $("#conteudoPagina").html(""); //limpar o conteudo da pagina
+
+            var cardTipoEvento = '';
+
+
+            var nomeEvento = data["home"]["nome"];
+            var localEvento = data["home"]["local"];
+            var descricaoEvento = data["home"]["descricao"];
+            var slotsEvento = data["home"]["slotsMax"];
+            var dataEvento = data["home"]["dataCompleta"];
+
+            $(".textareaEventoNome").html(nomeEvento);
+            $(".textareaLocal").html(localEvento);
+            $(".textareaDescricao").html(descricaoEvento);
+            $(".nParticipantes").val(slotsEvento);
+            $(".nParticipantes").val(slotsEvento);
+            $("#data_input").val(dataEvento);
+    
+
+            /*Interface de Settings do Evento*/
+
+            var settingsEvento = '<main class="position-relative text-black bg-white d-flex flex-column align-items-start topRedondo"> <div class="w-100 d-flex flex-column"> <div class="d-flex" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta"> <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"> <div class="align-items-center"> <div class="d-flex align-items-center justify-content-between position-relative"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> <img style="width: 3rem; position:absolute;right:0" src="images/settings/trash.png"> </div> <div class="d-flex justify-content-center" id="imagem"> <div class="text-center"> <div class="img_tipo_evento menu_tipo_evento" style="position:relative;"><img class="dropbtn" src="images/others/click.png" style="width: 40%;"> <div id="dropdown_tipo" class="dropdown-content"> <div class="d-flex align-items-center justify-content-center" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0"><img src="images/tipos_evento/Vector.png" class="w-50" ;"></div> <div> <p class="m-0" style="font-size: 1rem">Churrascada</p> </div> </div> <div class="d-flex align-items-center justify-content-center" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0"><img src="images/tipos_evento/Vector.png" class="w-50"></div> <div> <p class="m-0" style="font-size: 1rem">Churrascada</p> </div> </div> <div class="d-flex align-items-center justify-content-center" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0"><img src="images/tipos_evento/Vector.png" style="width:20px;"></div> <div> <p class="m-0 " style="font-size: 1rem">Churrascada</p> </div> </div> </div> <div class="text_alterarTipo">Alterar tipo de evento</div> </div> </div> </div> <div class="d-flex flex-column align-items-center mt-2"> <div class="mb-2 mt-2" style="width: 100%;"> <span class="textareaEventoNome" role="textbox" contenteditable>'+nomeEvento+'</span> </div> <div id="data_evento" style="position:relative;"> <input id="data_input" type="datetime-local" value="'+dataEvento+'" style="background:none;color:white;border:none;font-size:0.9rem;"> </div> </div> </div> </article> </div> <div class="w-100 pt-3"> <div class="container-fluid"> <h2 class="font-weight-bold mb-3">Dados do Evento</h2> <form> <div class="mb-4"> <h5 class="font-weight-bold">Local</h5> <span class="textareaLocal" role="textbox" contenteditable>'+localEvento+'</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Descrição</h5> <span class="textareaDescricao" role="textbox" contenteditable>'+descricaoEvento+'</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Nº máximo participantes</h5> <div class="container-fluid pt-2 pl-0"> <input class="nParticipantes" id="participantes" type="number" value="'+slotsEvento+'" min="2" max="250"></input> </div> </div> <div class="mb-4"> <h5 class="font-weight-bold">Adicionar tarefa</h5> <div class="d-flex"> <div class="position-relative" style="width: 70%;"> <span class="textareaTarefasNome mb-3" role="textbox" contenteditable></span> <span class="textareaTarefasDescricao mb-3" role="textbox" contenteditable></span> <div class="d-flex"> <p class="mr-4">Cor da tarefa :</p> <input type="color"> </div> </div> <div style="width:30%;display:flex;"> <div class="botao-circular">+</div> </div> </div> <div class="pt-4 mt-3 d-flex"> <div style="width: 10%;"></div> <div style="width: 60%;"> <div class="pl-3 d-flex align-items-center" style="border-left: 3px solid red"> <p class="settingsTituloTab m-0" style="color:red">Pipocas</p> </div> <div class="pl-3 pt-1 d-flex align-items-center" style="border-left: 3px solid red"> <p class="settingsTituloTab m-0" style="font-size: 1rem">5 baldes necessários</p> </div> </div> <div class="d-flex align-items-center justify-content-center" style="width: 30%;"> <img style="width: 20%;" src="images/settings/minus.png"> </div> </div> </div> </form> <div class="tarefas_restantes_div"></div> </div> </div> </div> <div class="position-relative w-100 d-flex botao_criar_evento_align justify-content-center pb-4 pt-4"> <button class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Guardar Alterações</button> </div> </main>'
+
+            $("#conteudoPagina").append(settingsEvento);
+
+            $(document).ready(function(){
+
+                if ($(window).height() > $("main").height()) {
+                    $(".botao_criar_evento_align").removeClass("position-relative")
+                    $(".botao_criar_evento_align").addClass("position-fixed")
+                    $("#alturaCriarEvento").css({"max-height": "90vh", "overflow": "auto"})
+                }
+
+                $(".selectTipoEvento").click(function () {
+                    var selecionarEvento = $(this).attr('id');
+                    $('#selectTipo').val(selecionarEvento);
+                    var imgUrl = $(this).find("img").attr("src");
+                    $('#tipoEventoImg').attr("src",imgUrl);
+                })
+
+                /*Adcionar tarefas apenas às páginas de HTML */
+                var num_tarefas = 0;
+
+                $("#adicionarTarefa").click(function () {
+                   
+                    num_tarefas ++
+                    
+
+                    var nomeTarefaEvento = $(".textareaTarefasNome").html();
+                    var descricaoTarefaEvento = $(".textareaTarefasDescricao").html();
+                    var corTarefa = $("#corTarefa").val();
+
+                    var novaTarefa = '<div id="Tarefa'+num_tarefas+'" class="Tarefa pt-4 mt-3 d-flex"> <div style="width: 10%;"></div> <div style="width: 60%;"> <div class="pl-3 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsTituloTab m-0" style="color:'+corTarefa+'">'+nomeTarefaEvento+'</p> </div> <div class="pl-3 pt-1 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsDescTab m-0" style="font-size: 1rem">'+descricaoTarefaEvento+'</p> </div> </div> <div class="d-flex align-items-center justify-content-center eliminarTarefa" style="width: 30%;"> <img style="width: 20%;" src="images/settings/minus.png"> </div> </div>'
+
+                    $('#tarefasAdicionadas').append(novaTarefa);
+                  
+                })
+                /*Eliminar cada tarefa individualemnte */
+                $(document).on('click', '.eliminarTarefa', function () {
+
+                    $(this).parents('.Tarefa').remove();
+                    num_tarefas--
+                 })
+
+
+               
+                alturaConteudo()
+                $('#participantes').niceNumber();
+
+                $(window).on('resize', function(){
+                    location.reload();
+                })
+
+
+                /* Quando o utilizador clica no seu avatar tipo eventos */
+                function menu_tipo_evento() {
+                    $("#dropdown_tipo").toggleClass("show");
+                }
+
+                
+                $(".dropbtn").click(function () {
+                    menu_tipo_evento();
+                })
+
+                $(".menu-tipo-evento").click(function () {
+                    menu_tipo_evento();
+                })
+
+
+                // O dropdown de tipos de evento fecha se o utilizador clicar fora dele 
+                window.onclick = function (event) {
+                    if (!event.target.matches('.dropbtn')) {
+                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                        var i;
+                        for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            if (openDropdown.classList.contains('show')) {
+                                openDropdown.classList.remove('show');
+                            }
+                        }
+                    }
+                }
+
+
+                //Quando se clica no botao de criar evento verifica se todos os campos estão preenchidos e faz um pedido de ajax
+                //Para além destas verificações em JS, as mesmas são feitas em PHP caso um atacante se desse ao trabalho de alterar o código JS
+                //A diferença é que se estas verificações forem ultrapassadas em JS, o erro é apresentado na página Home e não são gravados os inputs que estavam preenchidos. Poderiamos fazer tal coisa, mas não nos pareceu necessário~
+                
+                  $(".botaoCriarEvento").click(function () {
+                        
+                        var nomeEvento = $(".textareaEventoNome").html();
+                        var idTipoEvento =$("#selectTipo").val();
+                        var dataEvento = $("#dataEvento").val();
+                        var localEvento = $(".textareaLocal").html();
+                        var descricaoEvento = $(".textareaDescricao").html();
+                        var participantesEvento = $("#participantes").val();
+                        var query_de_tarefas = "";  
+
+                        var sucesso = 1;
+                        /*Verificação Nome*/
+                        if (nomeEvento== "") {
+                            $('.textareaEventoNome').addClass("outline");
+                            sucesso = 0;
+                        }else{
+                            $('.textareaEventoNome').removeClass("outline");
+                        }
+
+                        /*Verificação Tipo Evento*/
+                        if (idTipoEvento == "") {
+                            $('.img_tipo_evento ').addClass("outline");
+                            sucesso = 0;
+                        }else{
+                            $('.img_tipo_evento ').removeClass("outline");
+                        }
+                        /*Verificação data*/
+                        if (dataEvento == "") {
+                            $('#data_evento ').addClass("outline");
+                            sucesso = 0;
+                        }else{
+                            $('#data_evento ').removeClass("outline");
+                        }
+
+                        /*Verificação local*/
+                        if (localEvento== "") {
+                            $('.textareaLocal').addClass("outline");
+                            sucesso = 0;
+                        }else{
+                            $('.textareaLocal').removeClass("outline");
+                        }
+
+                        /*Verificação local*/
+                        if (descricaoEvento== "") {
+                            $('.textareaDescricao ').addClass("outline");
+                            sucesso = 0;
+                        }else{
+                            $('.textareaDescricao ').removeClass("outline");
+                        }
+
+                        /*Verificação num participantes*/
+                        if (participantesEvento== "" || participantesEvento<2 || participantesEvento>250 ) {
+                            $('.nice-number ').addClass("outline");
+                            sucesso = 0;
+                        }else{
+                            $('.nice-number ').removeClass("outline");
+                        }
+
+
+
+                        /*Se não houver tarefas, o ciclo for nem corre e, assim, não existem erros*/
+                        for (let m = 1; m <= num_tarefas; m++) {
+                            
+                            var nomeTarefa = $("#Tarefa"+m).find('.settingsTituloTab').html();
+                            var descTarefa = $("#Tarefa"+m).find('.settingsDescTab').html();
+                            var corTarefa = $("#Tarefa"+m).find('.settingsTituloTab').css("color");
+                        
+                            query_de_tarefas += "&tarefa"+m+"nome="+nomeTarefa+"&tarefa"+m+"descricao="+descTarefa+"&tarefa"+m+"cor="+corTarefa;
+                        }
+                        
+                        
+
+
+                        
+
+                    
+                        if (sucesso == 1) {
+
+                            var eventoQuery = "nomeEvento=" + nomeEvento + "&idTipoEvento=" +idTipoEvento + "&dataEvento=" + dataEvento +"&localEvento=" + localEvento +"&descricaoEvento=" + descricaoEvento + "&participantesEvento=" + participantesEvento + query_de_tarefas + "&numTarefas=" + num_tarefas;
+                            console.log(eventoQuery);
+                            $.ajax({
+                                // ajax call starts
+                                url: "scripts/sc_criar_evento.php",
+                                dataType: "json", // Choosing a JSON datatype
+                                type: "GET",
+                                data: eventoQuery,
+
+                            }).done(function (data) {
+                                if (data['criarEvento'] == "sucesso") {
+                                    /*1 = mensagem de sucesso*/
+                                    mostrarInfo("1");
+                                    /*Muda diretamente para a pág de evento que foi criado*/
+                                    mostrarEvento(data['id_evento_criado']);
+                                }
+                                
+                                   
+                            })
+                        }
+                        
+                      
+                })
+               
+            })
+        
+
+        });
+    }
+
+     
+
+    
+</script>
+

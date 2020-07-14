@@ -43,7 +43,7 @@ if (isset($_SESSION['email_aplans'])) {
     </head>
 
     <body class="p-0">
-        <div id="mensagemInfo" class=""></div>
+        <div id="mensagemInfo" class="d-none"></div>
         <div id="conteudoPagina">
 
 
@@ -54,6 +54,7 @@ if (isset($_SESSION['email_aplans'])) {
         <?php include_once "ajax/home.html" ?>
         <?php include_once "ajax/evento.html" ?>
         <?php include_once "ajax/criar_evento.html" ?>
+        <?php include_once "ajax/settings.html" ?>
 
 
 
@@ -82,10 +83,11 @@ if (isset($_SESSION['email_aplans'])) {
                         break;
 
                 }
-                
+                $('#mensagemInfo').removeClass("d-none");
                 $('#mensagemInfo').html(msgConteudo);
                 setTimeout(() => {
                     $('#mensagemInfo').html(" ");
+                    $('#mensagemInfo').addClass("d-none");
                 }, 5000);
 
             }
@@ -102,13 +104,22 @@ if (isset($_SESSION['email_aplans'])) {
             É passado o id do evento correspondente ao botao onde clicámos na página home como parametro da função
             */
             $(document).on('click', '.btn-evento', function() {
-                mostrarEvento($(this).attr("id"))
+                idEvento = $(this).attr("id")
+                
+                mostrarEvento(idEvento)
+                
+                /*Quando se clica no botão das settings dentro de um evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova função que irá mostrar a interface das settings de um evento*/
+                $(document).on('click', '#settings_evento', function() {
+                settingsEvento(idEvento)
+            });
             });
 
             /* Quando se clica no botão de adicionar evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova funçao que irá mostrar a interface de criação do evento*/
             $(document).on('click', '.add-event', function() {
                 mostrarCriarEvento()
             });
+
+            
 
             $('#mensagemInfo').on('click', function() {
 

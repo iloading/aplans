@@ -38,6 +38,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $mes = date('m', strtotime($dataEvento));
             $hora = date ('H:i', strtotime($dataEvento));
             $ano = date('Y', strtotime($dataEvento));
+            $dataCompleta = date('Y-m-d\TH:i', strtotime($dataEvento));
 
             switch ($mes) {
                 case '01':
@@ -94,6 +95,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result["descricao"] = htmlspecialchars($descricao);
             $row_result["ultimoUpdate"] = htmlspecialchars($ultimoUpdate);
             $row_result["local"] = htmlspecialchars($local);
+            $row_result["dataCompleta"] = htmlspecialchars($dataCompleta);
 
             $data['home'] = $row_result;
 
