@@ -24,27 +24,39 @@
   <main class="text-black bg-white d-flex flex-column align-items-start topRedondo">
 
 
+    <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav">
+      <div class="d-flex flex-column">
 
-    <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;">
-      <div class="align-items-center d-flex">
-        <div class="d-flex align-items-center pr-3 ">
-          <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png">
+
+        <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center "> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div>
         </div>
-        <div class=" avatar-circular">
-          <img src="assets/avatar.png">
-        </div>
-        <div class="d-flex flex-column pl-3">
-          <h5 class="font-weight-bold text-branco-evento m-0">Casandra Kalafa</h5>
-          <p class="m-0 text-branco-evento" style="margin-bottom: 8px;">22, student</p>
-          <div>
-            <img src="images/profile/starfill.png" width="16" height="16">
-            <img src="images/profile/starfill.png" width="16" height="16">
-            <img src="images/profile/starfill.png" width="16" height="16">
-            <img src="images/profile/starfill.png" width="16" height="16">
-            <img src="images/profile/star.png" width="16" height="16">
+
+
+
+        <div class="d-flex justify-content-center">
+          <div class="text-center btn-evento">
+            <div class=" avatar-circular">
+              <img src="assets/avatar.png">
+            </div>
           </div>
         </div>
+
+
+        <div class="d-flex justify-content-center">
+          <h3 class="font-weight-bold text-branco-evento">Casandra Faneca</h3>
+        </div>
+
+
+
+        <div class="d-flex justify-content-center">
+          <p style="color:#F1F3F6">22, student</p>
+        </div>
+
+
+
       </div>
+
     </article>
 
 
@@ -52,39 +64,41 @@
 
 
 
-    <div class="container p-0 mb-5  d-flex flex-column pl-4 pr-4 pt-4 pb-4 mt-4" style="height:100vh;">
+    <div class="positon-relative container p-0 mb-5  d-flex flex-column pl-4 pr-4 pt-4 pb-4 m-0">
 
       <div>
         <div class="container d-flex flex-column mb-4 p-0">
 
           <h5 class="font-weight-bold">Email</h5>
-          <input class="perfil_Inputs" type="email">
+
+
+          <span class="perfil_Inputs" role="textbox" contenteditable></span>
 
         </div>
 
         <div class="container d-flex flex-column mb-4 p-0">
 
           <h5 class="font-weight-bold">Morada</h5>
-          <input class="perfil_Inputs" type="email">
+          <span class="perfil_Inputs" role="textbox" contenteditable></span>
 
         </div>
 
 
         <div class="container d-flex p-0 mb-4">
 
-          <div class="container d-flex flex-column p-0">
+          <div class="container d-flex flex-column p-0 mr-2" style="width: 55%;">
             <h5 class="font-weight-bold">Telemovel</h5>
-            <input class="perfil_Inputs" type="email">
+            <span class="perfil_Inputs" role="textbox" contenteditable></span>
           </div>
 
 
-          <div class="container d-flex flex-column p-0">
+          <div class="container d-flex flex-column p-0" style="width: 45%;">
             <h5 class="font-weight-bold">Genero</h5>
             <select class="perfil_Inputs" name="genero">
-              <option value="volvo">Gordinhas</option>
-              <option value="saab">Assim assim</option>
-              <option value="opel">Cona larga</option>
-              <option value="audi">Meloes</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Outros">Outros</option>
+
             </select>
 
           </div>
@@ -94,46 +108,102 @@
         <div class="container d-flex flex-column mb-4 p-0">
 
           <h5 class="font-weight-bold">Descrição</h5>
-          <input class="perfil_Inputs" type="text">
+          <span class="perfil_Inputs" role="textbox" contenteditable></span>
 
         </div>
 
-        <div class="container d-flex flex-column p-0">
 
-          <h5 class="font-weight-bold">Preferencias</h5>
 
-          <div>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-            <label for="vehicle1"> I have a bike</label><br>
+        <div class="container d-flex flex-column mb-4 p-0">
+
+
+          <div class="perfil_Inputs text-center dropbtn" id="preferenciasMenu">
+            <h5 class="font-weight-bold m-0 pt-2 pb-2">Preferencias</h5>
+            <div class="d-flex justify-content-center">
+              <img style="width: 1.1rem; height:1.1rem;transform: rotate(270deg);" src="images/others/back (5).png">
+            </div>
           </div>
-          <div>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-            <label for="vehicle1"> I have a bike</label><br>
-          </div>
-          <div>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-            <label for="vehicle1"> I have a bike</label><br>
-          </div>
-          <div>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-            <label for="vehicle1"> I have a bike</label><br>
+
+          <div id="preferenciasDrop" class="dropdown-content_preferencias">
+            <div class="p-0">
+
+
+              <div class="d-flex">
+                <div>
+                  <img src="images/others/utilizador.png" style="width:20px;"></div>
+                <div>
+                  <p class="m-0">Preferencia</p>
+                </div>
+                <div class="position-absolute" style="right: 5%;">
+                  <input type="checkbox">
+                </div>
+              </div>
+
+
+              <div class="d-flex">
+                <div>
+                  <img src="images/others/settings.png" style="width:20px;">
+                </div>
+                <div>
+                  <p class="m-0">Preferencia</p>
+                </div>
+                <div class="position-absolute" style="right: 5%;">
+                  <input type="checkbox">
+                </div>
+              </div>
+
+
+              <div class="d-flex" style="background-color: rgba(240,52,52,0.5);/* background-color: white; */">
+                <div><img src="images/others/sair.png" style="width:20px;">
+              </div>
+                <div>
+                  <p class="m-0 font-weight-bold">Preferencia</p>
+                </div>
+                <div class="position-absolute" style="right: 5%;">
+                  <input type="checkbox">
+                </div>
+              </div>
+
+
+
+            </div>
+
+            <div class="w-100 position-absolute text-center" id="fecharPessoasAdd" style="bottom:0;">
+              <img src="images/others/close.png" style="width:3rem;">
+            </div>
           </div>
 
 
         </div>
+
 
 
 
       </div>
 
 
-
   </main>
+
+
 
   <?php
   require_once "helpers/help_js.php"
   ?>
 
+  <script>
+    /* Quando o utilizador clica no seu avatar */
+    function menu_avatar() {
+      $("#preferenciasDrop").toggleClass("showPreferencias");
+    }
+
+    $(document).on("click", "#preferenciasMenu", function() {
+      menu_avatar();
+    });
+
+    $(document).on("click", "#fecharPessoasAdd", function() {
+      $("#preferenciasDrop").removeClass('showPreferencias');
+    });
+  </script>
 
 
 

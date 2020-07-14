@@ -24,27 +24,29 @@
   <main class="text-black bg-white d-flex flex-column align-items-start topRedondo">
 
 
+    <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav">
+      <div class="d-flex flex-column">
 
-    <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;">
-      <div class="align-items-center d-flex">
-        <div class="d-flex align-items-center pr-3 ">
-          <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png">
+
+        <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center "> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div>
         </div>
-        <div class=" avatar-circular">
-          <img src="assets/avatar.png">
+
+
+
+
+
+
+        <div class="d-flex justify-content-center">
+          <h3 class="font-weight-bold text-branco-evento">Casandra Faneca</h3>
         </div>
-        <div class="d-flex flex-column pl-3">
-          <h5 class="font-weight-bold text-branco-evento m-0">Casandra Kalafa</h5>
-          <p class="m-0 text-branco-evento" style="margin-bottom: 8px;">22, student</p>
-          <div>
-            <img src="images/profile/starfill.png" width="16" height="16">
-            <img src="images/profile/starfill.png" width="16" height="16">
-            <img src="images/profile/starfill.png" width="16" height="16">
-            <img src="images/profile/starfill.png" width="16" height="16">
-            <img src="images/profile/star.png" width="16" height="16">
-          </div>
-        </div>
+
+
+
+
+
       </div>
+
     </article>
 
 
@@ -52,45 +54,67 @@
 
 
 
-    <div class="container p-0 mb-5  d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="height:100vh;">
+    <div class="positon-relative container p-0 mb-5  d-flex flex-column pl-4 pr-4 pt-4 pb-4 m-0">
 
       <div>
-        <div class="container d-flex flex-column">
 
-          <h5 class="font-weight-bold">Descrição</h5>
-          <p>ola</p>
 
+
+        <div>
+          <div class="container d-flex flex-column mb-4 p-0">
+            <h5 class="font-weight-bold">Email</h5>
+            <p>email@ua.pt</p>
+          </div>
+
+          <div class="container d-flex flex-column mb-4 p-0">
+            <h5 class="font-weight-bold">Morada</h5>
+            <p>email@ua.pt</p>
+          </div>
         </div>
 
-        <div class="container d-flex flex-column">
-
-          <h5 class="font-weight-bold"></h5>
-          <p>ola</p>
-
-        </div>
-
-        <div class="container d-flex flex-column">
-
-          <h5 class="font-weight-bold">Descrição</h5>
-          <p>ola</p>
-
-
-        </div>
-
-        <div class="container d-flex flex-column">
-
-          <h5 class="font-weight-bold">Descrição</h5>
-          <p>ola</p>
-
-
+        <div class="d-flex justify-content-center">
+          <div class="text-center btn-evento">
+            <div class=" avatar-circular">
+              <img src="assets/avatar.png">
+            </div>
+          </div>
         </div>
 
       </div>
 
 
+      <div class="container d-flex p-0 mb-4">
+
+        <div class="container d-flex flex-column p-0 mr-2" style="width: 55%;">
+          <h5 class="font-weight-bold">Telemóvel</h5>
+          <p>email@ua.pt</p>
+        </div>
+
+
+        <div class="container d-flex flex-column p-0" style="width: 45%;">
+          <h5 class="font-weight-bold">Género</h5>
+          <p>email@ua.pt</p>
+        </div>
+
+      </div>
+
+      <div class="container d-flex flex-column mb-4 p-0">
+
+        <h5 class="font-weight-bold">Descrição</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eveniet numquam, minima optio voluptates repudiandae sed itaque iure ex obcaecati nostrum deleniti, fuga expedita sequi, omnis placeat impedit porro illum?</p>
+
+      </div>
+
+
+
+
+
+
+
+
+
 
     </div>
-
 
 
   </main>

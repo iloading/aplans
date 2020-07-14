@@ -1143,7 +1143,7 @@ button:focus{
 
 
 
-/*Perfil user*/
+/*Perfil user e editar*/
 
 .form-control-perfil {
     background-color: #fff !important;
@@ -1163,9 +1163,146 @@ button:focus{
     border: 0 !important;
 }
 
+
+
+
+
+.perfil_Inputs_nome{
+    border: 2px solid #BAE4AC;
+    border-radius: 24px;
+    padding: 10px;
+    background-color: #BAE4AC;
+    
+}
+
+.perfil_Inputs_nome:focus{
+    outline: none !important;
+}
+
+.perfil_Inputs_nome[contenteditable]:empty::before{
+    content: "Insira o seu nome";
+    color: grey;
+    
+}
+
+.perfil_Inputs_email{
+    border: 2px solid #BAE4AC;
+    border-radius: 24px;
+    padding: 10px;
+    background-color: #BAE4AC;
+    
+}
+
+.perfil_Inputs_email:focus{
+    outline: none !important;
+}
+
+.perfil_Inputs_email[contenteditable]:empty::before{
+    content: "Insira o seu email";
+    color: grey;
+    
+}
+
 .perfil_Inputs{
     border: 2px solid #BAE4AC;
     border-radius: 24px;
     padding: 10px;
-
+    background-color: #BAE4AC;
+    
 }
+
+.perfil_Inputs:focus{
+    outline: none !important;
+}
+
+
+.perfil_Inputs_morada{
+    border: 2px solid #BAE4AC;
+    border-radius: 24px;
+    padding: 10px;
+    background-color: #BAE4AC;
+    
+}
+
+.perfil_Inputs_morada:focus{
+    outline: none !important;
+}
+
+.perfil_Inputs_morada[contenteditable]:empty::before{
+    content: "Insira a sua morada";
+    color: grey;
+    
+}
+
+.perfil_Inputs_telemovel{
+    border: 2px solid #BAE4AC;
+    border-radius: 24px;
+    padding: 10px;
+    background-color: #BAE4AC;
+    
+}
+
+.perfil_Inputs_telemovel:focus{
+    outline: none !important;
+}
+
+.perfil_Inputs_telemovel[contenteditable]:empty::before{
+    content: "Nº de telefone";
+    color: grey;
+    
+}
+.perfil_Inputs_descricao{
+    border: 2px solid #BAE4AC;
+    border-radius: 24px;
+    padding: 10px;
+    background-color: #BAE4AC;
+    
+}
+
+.perfil_Inputs_descricao:focus{
+    outline: none !important;
+}
+
+.perfil_Inputs_descricao[contenteditable]:empty::before{
+    content: "Insira a descrição do seu perfil";
+    color: grey;
+    
+}
+
+
+.dropdown-content_preferencias{
+    display: none;
+    position: absolute;
+    top: 0;
+    background-color: #f1f1f1;
+    min-width: 70px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 16;
+    right: 0%;
+    width: 100%;
+    height: 100vh;
+
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content_preferencias div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content_preferencias a:hover {background-color: #ddd}
+
+  .showPreferencias {display:block;}
+
+.botaoPreferencias{
+    background-color:rgba(109, 63, 230, 0.2) ;
+    border: 2px solid #6F41E9;
+    border-radius: 24px;
+    padding: 10px;
+}
+
+
+

@@ -53,6 +53,7 @@ if (isset($_SESSION['email_aplans'])) {
         <?php include_once "ajax/home.html" ?>
         <?php include_once "ajax/evento.html" ?>
         <?php include_once "ajax/criar_evento.html" ?>
+        <?php include_once "ajax/editar_perfil.html" ?>
 
 
 
@@ -83,11 +84,16 @@ if (isset($_SESSION['email_aplans'])) {
             $(document).on('click', '.add-event', function() {
                 mostrarCriarEvento()
             });
-            
+
+
+            $(document).on('click', '#abrirPerfil', function() {
+                editarPerfil()
+            });
+
             $('#mensagemInfo').on('click', function() {
-                
+
                 $(this).html(" ");
-                <?php 
+                <?php
                 unset($_SESSION['msg'])
                 ?>
             })
