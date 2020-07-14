@@ -92,7 +92,7 @@
                 })
 
 
-                // O dropdown fecha se o utilizador clicar fora dele 
+                // O dropdown de tipos de evento fecha se o utilizador clicar fora dele 
                 window.onclick = function (event) {
                     if (!event.target.matches('.dropbtn')) {
                         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -107,7 +107,10 @@
                 }
 
 
-                //Quando se clica no botao de criar evento faz um pedido de ajax
+                //Quando se clica no botao de criar evento verifica se todos os campos estão preenchidos e faz um pedido de ajax
+                //Para além destas verificações em JS, as mesmas são feitas em PHP caso um atacante se desse ao trabalho de alterar o código JS
+                //A diferença é que se estas verificações forem ultrapassadas em JS, o erro é apresentado na página Home e não são gravados os inputs que estavam preenchidos. Poderiamos fazer tal coisa, mas não nos pareceu necessário~
+                
                   $(".botaoCriarEvento").click(function () {
                         
                         var nomeEvento = $(".textareaEventoNome").html();
@@ -118,10 +121,11 @@
                         var participantesEvento = $("#participantes").val();
                         var query_de_tarefas = "";  
 
-                        
+                        var sucesso = 1;
                         /*Verificação Nome*/
                         if (nomeEvento== "") {
                             $('.textareaEventoNome').addClass("outline");
+                            sucesso = 0;
                         }else{
                             $('.textareaEventoNome').removeClass("outline");
                         }
@@ -129,12 +133,14 @@
                         /*Verificação Tipo Evento*/
                         if (idTipoEvento == "") {
                             $('.img_tipo_evento ').addClass("outline");
+                            sucesso = 0;
                         }else{
                             $('.img_tipo_evento ').removeClass("outline");
                         }
                         /*Verificação data*/
                         if (dataEvento == "") {
                             $('#data_evento ').addClass("outline");
+                            sucesso = 0;
                         }else{
                             $('#data_evento ').removeClass("outline");
                         }
@@ -142,6 +148,7 @@
                         /*Verificação local*/
                         if (localEvento== "") {
                             $('.textareaLocal').addClass("outline");
+                            sucesso = 0;
                         }else{
                             $('.textareaLocal').removeClass("outline");
                         }
@@ -149,6 +156,7 @@
                         /*Verificação local*/
                         if (descricaoEvento== "") {
                             $('.textareaDescricao ').addClass("outline");
+                            sucesso = 0;
                         }else{
                             $('.textareaDescricao ').removeClass("outline");
                         }
@@ -156,6 +164,7 @@
                         /*Verificação num participantes*/
                         if (participantesEvento== "" || participantesEvento<2 || participantesEvento>250 ) {
                             $('.nice-number ').addClass("outline");
+                            sucesso = 0;
                         }else{
                             $('.nice-number ').removeClass("outline");
                         }
@@ -172,23 +181,28 @@
                             query_de_tarefas += "&tarefa"+m+"nome="+nomeTarefa+"&tarefa"+m+"descricao="+descTarefa+"&tarefa"+m+"cor="+corTarefa;
                         }
                         
+                        
 
-                        var nomeTarefaEvento = $(".textareaTarefasNome").html();
-                        var eventoQuery = "nomeEvento=" + nomeEvento + "&idTipoEvento=" +idTipoEvento + "&dataEvento=" + dataEvento +"&localEvento=" + localEvento +"&descricaoEvento=" + descricaoEvento + "&participantesEvento=" + participantesEvento + query_de_tarefas + "&numTarefas=" + num_tarefas;
 
                         
+
+                    
+                        if (sucesso == 1) {
+
+                            var eventoQuery = "nomeEvento=" + nomeEvento + "&idTipoEvento=" +idTipoEvento + "&dataEvento=" + dataEvento +"&localEvento=" + localEvento +"&descricaoEvento=" + descricaoEvento + "&participantesEvento=" + participantesEvento + query_de_tarefas + "&numTarefas=" + num_tarefas;
+
+                            $.ajax({
+                                // ajax call starts
+                                url: "scripts/sc_criar_evento.php",
+                                dataType: "json", // Choosing a JSON datatype
+                                type: "GET",
+                                data: eventoQuery,
+
+                            }).done(function (data) {
+                                    window.location.href = "index.php";
+                            })
+                        }
                         
-                        $.ajax({
-                          // ajax call starts
-                          url: "scripts/sc_criar_evento.php",
-                          dataType: "json", // Choosing a JSON datatype
-                          type: "GET",
-                          data: eventoQuery,
-
-
-                      }).done(function (data) {
-                            window.location.href = "index.php";
-                      })
                       
                 })
                
