@@ -118,7 +118,7 @@
                         var participantesEvento = $("#participantes").val();
                         var query_de_tarefas = "";  
 
-                        console.log(localEvento);
+                        
                         /*Verificação Nome*/
                         if (nomeEvento== "") {
                             $('.textareaEventoNome').addClass("outline");
@@ -178,17 +178,17 @@
 
                         
                         
-                    //     $.ajax({
-                    //       // ajax call starts
-                    //       url: "scripts/sc_criar_evento.php",
-                    //       dataType: "json", // Choosing a JSON datatype
-                    //       type: "GET",
-                    //       data: eventoQuery,
+                        $.ajax({
+                          // ajax call starts
+                          url: "scripts/sc_criar_evento.php",
+                          dataType: "json", // Choosing a JSON datatype
+                          type: "GET",
+                          data: eventoQuery,
 
 
-                    //   }).done(function (data) {
-                    //         window.location.href = "index.php";
-                    //   })
+                      }).done(function (data) {
+                            window.location.href = "index.php";
+                      })
                       
                 })
                
