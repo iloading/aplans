@@ -1098,3 +1098,9 @@ button:focus{
 .outline{
     outline: 1px solid red;
 }
+#mostrarAmigos{
+    z-index: 200;
+}
+#mostrarAmigosAdd{
+    z-index: 200;
+}
