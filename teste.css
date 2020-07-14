@@ -1010,3 +1010,6 @@ button:focus{
     top: 1%;
     z-index: 99;
 }
+.outline{
+    outline: 1px solid red;
+}

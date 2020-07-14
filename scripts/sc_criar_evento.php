@@ -11,51 +11,51 @@
 
         /*Verificações para se algum campo não estiver preenchido,*/
 
-        // if (isset($_GET['numTarefas'])) {
-        //     $num_tarefas = $_GET['numTarefas'];
-        //     $row_results_erro['num_tarefas'] = htmlspecialchars($_GET['numTarefas']) ;
-        // }else {
-        //     $sucesso = 0;
-        // }
-
-        if (isset($_GET['nomeEvento']) && empty($_GET['nomeEvento']) == false) {
+        
+        if (isset($_GET['nomeEvento']) && empty(trim($_GET['nomeEvento'])) == false) {
             $nome = $_GET['nomeEvento'];
             $row_results_erro['nomeEvento'] = htmlspecialchars($_GET['nomeEvento']);
         } else {
             $sucesso = 0;
         }
 
-        if (isset($_GET['idTipoEvento']) && empty($_GET['idTipoEvento']) == false) {
+        if (isset($_GET['idTipoEvento']) && empty(trim($_GET['idTipoEvento'])) == false) {
             $idTipoEvento = $_GET['idTipoEvento'];
             $row_results_erro['idTipoEvento'] = htmlspecialchars($_GET['idTipoEvento']);
         } else {
             $sucesso = 0;
         }
 
-        if (isset($_GET['dataEvento']) && empty($_GET['dataEvento']) == false) {
+        if (isset($_GET['dataEvento']) && empty(trim($_GET['dataEvento'])) == false) {
             $dataEvento = $_GET['dataEvento'];
             $row_results_erro['dataEvento'] = htmlspecialchars($_GET['dataEvento']);
         } else {
             $sucesso = 0;
         }
 
-        if (isset($_GET['localEvento']) && empty($_GET['localEvento']) == false) {
+        if (isset($_GET['localEvento']) && empty(trim($_GET['localEvento'])) == false) {
             $localEvento = $_GET['localEvento'];
             $row_results_erro['localEvento'] = htmlspecialchars($_GET['localEvento']);
         } else {
             $sucesso = 0;
         }
 
-        if (isset($_GET['descricaoEvento']) && empty($_GET['descricaoEvento']) == false) {
+        if (isset($_GET['descricaoEvento']) && empty(trim($_GET['descricaoEvento'])) == false) {
             $descricaoEvento = $_GET['descricaoEvento'];
             $row_results_erro['descricaoEvento'] = htmlspecialchars($_GET['descricaoEvento']);
         } else {
             $sucesso = 0;
         }
 
-        if (isset($_GET['participantesEvento']) && empty($_GET['participantesEvento']) == false) {
-            $slotsMax = $_GET['participantesEvento'];
-            $row_results_erro['participantesEvento'] = htmlspecialchars($_GET['participantesEvento']);
+        if (isset($_GET['participantesEvento']) && empty(trim($_GET['participantesEvento'])) == false) {
+            /*o nº participantes tem que estar entre 2 e 250*/
+            if ($_GET['participantesEvento'] < 2 || $_GET['participantesEvento'] > 250) {
+                $sucesso = 0;
+            }else {
+                $slotsMax = $_GET['participantesEvento'];
+                $row_results_erro['participantesEvento'] = htmlspecialchars($_GET['participantesEvento']);
+            }
+            
         } else {
             $sucesso = 0;
         }
