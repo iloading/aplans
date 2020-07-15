@@ -18,7 +18,7 @@
             for (let i = 0; i < data.tipoEvento.length; i++) {
 
 
-                cardTipoEvento+= '<div id="' + data.tipoEvento[i]["id"] +'" class="d-flex align-items-center position-relative selectTipoEvento" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0 position-relative d-flex" style="left:10%;"><img src="images' + data.tipoEvento[i]["url"] +'" class="w-50";"></div> <div class="position-absolute" style="left:25%;"> <p class="m-0 " style="font-size: 1rem">' + data.tipoEvento[i]["nome"] +'</p> </div> </div>';
+                cardTipoEvento+= '<div id="' + data.tipoEvento[i]["id"] +'" class="d-flex align-items-center position-relative selectTipoEvento" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0 position-relative d-flex" style="left:10%;"><img src="images' + data.tipoEvento[i]["url"] +'" class="w-50";"></div> <div class="position-absolute" style="left:25%;"> <p class="m-0 nomeEventoLista" style="font-size: 1rem">' + data.tipoEvento[i]["nome"] +'</p> </div> </div>';
 
 
             }
@@ -36,17 +36,27 @@
 
             $(document).ready(function(){
 
+                /*Alterar a posição do botão no final da página consoante o tamanho do ecrã*/
                 if ($(window).height() > $("main").height()) {
                     $(".botao_criar_evento_align").removeClass("position-relative")
                     $(".botao_criar_evento_align").addClass("position-fixed")
                     $("#alturaCriarEvento").css({"max-height": "90vh", "overflow": "auto"})
                 }
 
+                /*Mudar o tipo de Evento de acordo com o dropdown*/
                 $(".selectTipoEvento").click(function () {
+                    /*seleciona o id do tipo de evento que o user clickou*/
                     var selecionarEvento = $(this).attr('id');
+                    /*Atribui ao input invisivel esse id*/
                     $('#selectTipo').val(selecionarEvento);
+                    /*Seleciona a src da imagem do tipo de evento que o user clickou*/
                     var imgUrl = $(this).find("img").attr("src");
+                    /*Atribui à div da imagem central essa mesma src*/
                     $('#tipoEventoImg').attr("src",imgUrl);
+                    /*Deteta o nome do evento selecionado*/
+                    var nomeEventoSelecionado = $(this).find('.nomeEventoLista').html();
+                     /*Atribui esse nome à div*/
+                    $('.text_alterarTipo').html(nomeEventoSelecionado);
                 })
 
                 /*Adcionar tarefas apenas à páginas de HTML */
