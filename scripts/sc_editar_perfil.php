@@ -11,14 +11,45 @@ if (isset($_SESSION['id_user_aplans'])) {
     $criador = $_SESSION['id_user_aplans'];
 
 
-    $nome = $_GET['nomePerfil'];
-    $email = $_GET['emailPerfil'];
-    $morada = $_GET['moradaPerfil'];
-    $codigo_postal = $_GET['codigo_postal_perfil'];
-    $telemovel = $_GET['telemovelPerfil'];
-    $genero = $_GET['generoPerfil'];
-    $url = $_GET['urlPerfil'];
-    $descricao = $_GET['descricaoPerfil'];
+
+    if(isset($_GET['nomePerfil']) && isset($_GET['emailPerfil'])){
+
+
+        if ($_GET["nomePerfil"] && $_GET["emailPerfil"] != "") {
+
+            $nome = $_GET['nomePerfil'];
+            $email = $_GET['emailPerfil'];
+
+            //VERIFICAR EMAIL
+
+
+
+
+        }
+
+        if ($_GET["moradaPerfil"] && $_GET["codigo_postal_Perfil"] && $_GET["telemovelPerfil"] && $_GET["generoPerfil"] && $_GET["urlPerfil"] && $_GET["descricaoPerfil"]) {
+
+            $morada = $_GET['moradaPerfil'];
+            $telemovel = $_GET['telemovelPerfil'];
+            $genero = $_GET['generoPerfil'];
+            $url = $_GET['urlPerfil'];
+            $descricao = $_GET['descricaoPerfil'];
+            $codigo_postal = $_GET['codigo_postal_perfil'];
+
+
+
+            //VERIFICAR TELEMOVEL
+            //VERIFICAR POSTAL
+
+
+        }
+
+
+
+    }
+
+   
+  
 
 
 

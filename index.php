@@ -88,6 +88,10 @@ if (isset($_SESSION['email_aplans'])) {
                     case '5':
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Já não é o organizador do evento! Pode agora abandonar o mesmo.<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
+                    case '6':
+                        msgConteudo = '<div class="alert alert-success m-0 p-3">Perfil atualizado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+
 
                     default:
                         msgConteudo = "";
