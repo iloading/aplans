@@ -19,11 +19,21 @@
             var cardTipoEvento = '';
 
 
+            for (let i = 0; i < data.tiposEventoDropdown.length; i++) {
+
+
+                cardTipoEvento+= '<div id="' + data.tiposEventoDropdown[i]["id"] +'" class="d-flex align-items-center position-relative selectTipoEvento" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0 position-relative d-flex" style="left:10%;"><img src="images' + data.tiposEventoDropdown[i]["url"] +'" class="w-50";"></div> <div class="position-absolute" style="left:25%;"> <p class="m-0 nomeEventoLista" style="font-size: 1rem">' + data.tiposEventoDropdown[i]["nome"] +'</p> </div> </div>';
+
+
+            }
+
             var nomeEvento = data["home"]["nome"];
             var localEvento = data["home"]["local"];
             var descricaoEvento = data["home"]["descricao"];
             var slotsEvento = data["home"]["slotsMax"];
             var dataEvento = data["home"]["dataCompleta"];
+            var tipoEvento = data["home"]["tipo"]
+            
 
             $(".textareaEventoNome").html(nomeEvento);
             $(".textareaLocal").html(localEvento);
@@ -31,11 +41,12 @@
             $(".nParticipantes").val(slotsEvento);
             $(".nParticipantes").val(slotsEvento);
             $("#data_input").val(dataEvento);
-    
+            $(".img_tipo_evento").html(tipoEvento)
+        
 
             /*Interface de Settings do Evento*/
 
-            var settingsEvento = '<main class="position-relative text-black bg-white d-flex flex-column align-items-start topRedondo"> <div class="w-100 d-flex flex-column"> <div class="d-flex" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta"> <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"> <div class="align-items-center"> <div class="d-flex align-items-center justify-content-between position-relative"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> <img style="width: 3rem; position:absolute;right:0" src="images/settings/trash.png"> </div> <div class="d-flex justify-content-center" id="imagem"> <div class="text-center"> <div class="img_tipo_evento menu_tipo_evento" style="position:relative;"><img class="dropbtn" src="images/others/click.png" style="width: 40%;"> <div id="dropdown_tipo" class="dropdown-content"> <div class="d-flex align-items-center justify-content-center" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0"><img src="images/tipos_evento/Vector.png" class="w-50" ;"></div> <div> <p class="m-0" style="font-size: 1rem">Churrascada</p> </div> </div> <div class="d-flex align-items-center justify-content-center" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0"><img src="images/tipos_evento/Vector.png" class="w-50"></div> <div> <p class="m-0" style="font-size: 1rem">Churrascada</p> </div> </div> <div class="d-flex align-items-center justify-content-center" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0"><img src="images/tipos_evento/Vector.png" style="width:20px;"></div> <div> <p class="m-0 " style="font-size: 1rem">Churrascada</p> </div> </div> </div> <div class="text_alterarTipo">Alterar tipo de evento</div> </div> </div> </div> <div class="d-flex flex-column align-items-center mt-2"> <div class="mb-2 mt-2" style="width: 100%;"> <span class="textareaEventoNome" role="textbox" contenteditable>'+nomeEvento+'</span> </div> <div id="data_evento" style="position:relative;"> <input id="data_input" type="datetime-local" value="'+dataEvento+'" style="background:none;color:white;border:none;font-size:0.9rem;"> </div> </div> </div> </article> </div> <div class="w-100 pt-3"> <div class="container-fluid"> <h2 class="font-weight-bold mb-3">Dados do Evento</h2> <form> <div class="mb-4"> <h5 class="font-weight-bold">Local</h5> <span class="textareaLocal" role="textbox" contenteditable>'+localEvento+'</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Descrição</h5> <span class="textareaDescricao" role="textbox" contenteditable>'+descricaoEvento+'</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Nº máximo participantes</h5> <div class="container-fluid pt-2 pl-0"> <input class="nParticipantes" id="participantes" type="number" value="'+slotsEvento+'" min="2" max="250"></input> </div> </div> <div class="mb-4"> <h5 class="font-weight-bold">Adicionar tarefa</h5> <div class="d-flex"> <div class="position-relative" style="width: 70%;"> <span class="textareaTarefasNome mb-3" role="textbox" contenteditable></span> <span class="textareaTarefasDescricao mb-3" role="textbox" contenteditable></span> <div class="d-flex"> <p class="mr-4">Cor da tarefa :</p> <input type="color"> </div> </div> <div style="width:30%;display:flex;"> <div class="botao-circular">+</div> </div> </div> <div class="pt-4 mt-3 d-flex"> <div style="width: 10%;"></div> <div style="width: 60%;"> <div class="pl-3 d-flex align-items-center" style="border-left: 3px solid red"> <p class="settingsTituloTab m-0" style="color:red">Pipocas</p> </div> <div class="pl-3 pt-1 d-flex align-items-center" style="border-left: 3px solid red"> <p class="settingsTituloTab m-0" style="font-size: 1rem">5 baldes necessários</p> </div> </div> <div class="d-flex align-items-center justify-content-center" style="width: 30%;"> <img style="width: 20%;" src="images/settings/minus.png"> </div> </div> </div> </form> <div class="tarefas_restantes_div"></div> </div> </div> </div> <div class="position-relative w-100 d-flex botao_criar_evento_align justify-content-center pb-4 pt-4"> <button class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Guardar Alterações</button> </div> </main>'
+            var settingsEvento = '<main class="position-relative text-black bg-white d-flex flex-column align-items-start topRedondo"> <div class="w-100 d-flex flex-column"> <div class="d-flex" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta"> <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"> <div class="align-items-center"> <div class="d-flex align-items-center justify-content-between position-relative"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> <img style="width: 3rem; position:absolute;right:0" src="images/settings/trash.png"> </div> <div class="d-flex justify-content-center" id="imagem"> <div class="text-center"> <div class="img_tipo_evento menu_tipo_evento" style="position:relative;"><img id="tipoEventoImg" class="dropbtn" src="images/'+tipoEvento+'" style="width: 40%;"> <div id="dropdown_tipo" class="dropdown-content">'+cardTipoEvento+' </div> <div class="text_alterarTipo">Alterar tipo de Evento</div> </div> </div> </div> <div class="d-flex flex-column align-items-center mt-2"> <div class="mb-2 mt-2" style="width: 100%;"> <span class="textareaEventoNome" role="textbox" contenteditable>'+nomeEvento+'</span> </div> <div id="data_evento" style="position:relative;"> <input id="data_input" type="datetime-local" value="'+dataEvento+'" style="background:none;color:white;border:none;font-size:0.9rem;"> </div> </div> </div> </article> </div> <div class="w-100 pt-3"> <div class="container-fluid"> <h2 class="font-weight-bold mb-3">Dados do Evento</h2> <form> <div class="mb-4"> <h5 class="font-weight-bold">Local</h5> <span class="textareaLocal" role="textbox" contenteditable>'+localEvento+'</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Descrição</h5> <span class="textareaDescricao" role="textbox" contenteditable>'+descricaoEvento+'</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Nº máximo participantes</h5> <div class="container-fluid pt-2 pl-0"> <input class="nParticipantes" id="participantes" type="number" value="'+slotsEvento+'" min="2" max="250"></input> </div> </div> <div class="mb-4"> <h5 class="font-weight-bold">Adicionar tarefa</h5> <div class="d-flex"> <div class="position-relative" style="width: 70%;"> <span class="textareaTarefasNome mb-3" role="textbox" contenteditable></span> <span class="textareaTarefasDescricao mb-3" role="textbox" contenteditable></span> <div class="d-flex"> <p class="mr-4">Cor da tarefa :</p> <input type="color"> </div> </div> <div style="width:30%;display:flex;"> <div class="botao-circular">+</div> </div> </div> <div class="pt-4 mt-3 d-flex"> <div style="width: 10%;"></div> <div style="width: 60%;"> <div class="pl-3 d-flex align-items-center" style="border-left: 3px solid red"> <p class="settingsTituloTab m-0" style="color:red">Pipocas</p> </div> <div class="pl-3 pt-1 d-flex align-items-center" style="border-left: 3px solid red"> <p class="settingsTituloTab m-0" style="font-size: 1rem">5 baldes necessários</p> </div> </div> <div class="d-flex align-items-center justify-content-center" style="width: 30%;"> <img style="width: 20%;" src="images/settings/minus.png"> </div> </div> </div> </form> <div class="tarefas_restantes_div"></div> </div> </div> </div> <div class="position-relative w-100 d-flex botao_criar_evento_align justify-content-center pb-4 pt-4"> <button class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Guardar Alterações</button> </div> <input id="selectTipoEscolhido" class="d-none" type="number"></main>'
 
             $("#conteudoPagina").append(settingsEvento);
 
@@ -47,11 +58,20 @@
                     $("#alturaCriarEvento").css({"max-height": "90vh", "overflow": "auto"})
                 }
 
+                /*Mudar o tipo de Evento de acordo com o dropdown*/
                 $(".selectTipoEvento").click(function () {
+                    /*seleciona o id do tipo de evento que o user clickou*/
                     var selecionarEvento = $(this).attr('id');
-                    $('#selectTipo').val(selecionarEvento);
+                    /*Atribui ao input invisivel esse id*/
+                    $('#selectTipoEscolhido').val(selecionarEvento);
+                    /*Seleciona a src da imagem do tipo de evento que o user clickou*/
                     var imgUrl = $(this).find("img").attr("src");
+                    /*Atribui à div da imagem central essa mesma src*/
                     $('#tipoEventoImg').attr("src",imgUrl);
+                    /*Deteta o nome do evento selecionado*/
+                    var nomeEventoSelecionado = $(this).find('.nomeEventoLista').html();
+                    /*Atribui esse nome à div*/
+                    $('.text_alterarTipo').html(nomeEventoSelecionado);
                 })
 
                 /*Adcionar tarefas apenas às páginas de HTML */

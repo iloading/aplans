@@ -18,7 +18,7 @@
             for (let i = 0; i < data.tipoEvento.length; i++) {
 
 
-                cardTipoEvento+= '<div id="' + data.tipoEvento[i]["id"] +'" class="d-flex align-items-center position-relative selectTipoEvento" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0 position-relative d-flex" style="left:10%;"><img src="images' + data.tipoEvento[i]["url"] +'" class="w-50";"></div> <div class="position-absolute" style="left:25%;"> <p class="m-0 " style="font-size: 1rem">' + data.tipoEvento[i]["nome"] +'</p> </div> </div>';
+                cardTipoEvento+= '<div id="' + data.tipoEvento[i]["id"] +'" class="d-flex align-items-center position-relative selectTipoEvento" style="border-bottom: 1px solid #E1E2E3"> <div class="botao-circular m-0 p-0 position-relative d-flex" style="left:10%;"><img src="images' + data.tipoEvento[i]["url"] +'" class="w-50";"></div> <div class="position-absolute" style="left:25%;"> <p class="m-0 nomeEventoLista" style="font-size: 1rem">' + data.tipoEvento[i]["nome"] +'</p> </div> </div>';
 
 
             }
@@ -36,25 +36,33 @@
 
             $(document).ready(function(){
 
+                /*Alterar a posição do botão no final da página consoante o tamanho do ecrã*/
                 if ($(window).height() > $("main").height()) {
                     $(".botao_criar_evento_align").removeClass("position-relative")
                     $(".botao_criar_evento_align").addClass("position-fixed")
                     $("#alturaCriarEvento").css({"max-height": "90vh", "overflow": "auto"})
                 }
 
+                /*Mudar o tipo de Evento de acordo com o dropdown*/
                 $(".selectTipoEvento").click(function () {
+                    /*seleciona o id do tipo de evento que o user clickou*/
                     var selecionarEvento = $(this).attr('id');
+                    /*Atribui ao input invisivel esse id*/
                     $('#selectTipo').val(selecionarEvento);
+                    /*Seleciona a src da imagem do tipo de evento que o user clickou*/
                     var imgUrl = $(this).find("img").attr("src");
+                    /*Atribui à div da imagem central essa mesma src*/
                     $('#tipoEventoImg').attr("src",imgUrl);
+                    /*Deteta o nome do evento selecionado*/
+                    var nomeEventoSelecionado = $(this).find('.nomeEventoLista').html();
+                     /*Atribui esse nome à div*/
+                    $('.text_alterarTipo').html(nomeEventoSelecionado);
                 })
 
                 /*Adcionar tarefas apenas à páginas de HTML */
                 var num_tarefas = 0;
-
-                $("#adicionarTarefa").click(function () {
-                   
-                    num_tarefas ++
+                $(document).on('click','#adicionarTarefa', function () {
+                     num_tarefas ++
                     
 
                     var nomeTarefaEvento = $(".textareaTarefasNome").html();
@@ -64,8 +72,14 @@
                     var novaTarefa = '<div id="Tarefa'+num_tarefas+'" class="Tarefa pt-4 mt-3 d-flex"> <div style="width: 10%;"></div> <div style="width: 60%;"> <div class="pl-3 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsTituloTab m-0" style="color:'+corTarefa+'">'+nomeTarefaEvento+'</p> </div> <div class="pl-3 pt-1 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsDescTab m-0" style="font-size: 1rem">'+descricaoTarefaEvento+'</p> </div> </div> <div class="d-flex align-items-center justify-content-center eliminarTarefa" style="width: 30%;"> <img style="width: 20%;" src="images/settings/minus.png"> </div> </div>'
 
                     $('#tarefasAdicionadas').append(novaTarefa);
-                  
+                    // console.log($('#Tarefa'+num_tarefas+'').offset().top);
+                    // $('#conteudoPagina').animate({
+                    //     scrollTop: ($('#Tarefa'+num_tarefas+'').offset().top) + 'px'
+                    // }, 2000);
                 })
+                   
+                   
+                  
                 /*Eliminar cada tarefa individualemnte */
                 $(document).on('click', '.eliminarTarefa', function () {
 

@@ -316,6 +316,31 @@ if ($sem_tarefas == 0) {
 }
 
 
+/*Ir buscar todos os tipos de evento para colocar no dropdown das settings*/
+
+$stmt = mysqli_stmt_init($link);
+
+$query = "SELECT id, type, url FROM event_type";
+
+
+
+if (mysqli_stmt_prepare($stmt, $query)) { 
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_bind_result($stmt, $id, $type, $url);
+
+
+        while (mysqli_stmt_fetch($stmt)) {
+
+            $row_result = array();
+            $row_result["nome"] = htmlspecialchars($type);
+            $row_result["id"] = htmlspecialchars($id);
+            $row_result["url"] = htmlspecialchars($url);
+            
+            $data['tiposEventoDropdown'][] = $row_result;
+
+        }
+    }
+}
 
 
 
