@@ -69,13 +69,16 @@ if (isset($_SESSION['email_aplans'])) {
 
 
             function mostrarInfo(msg) {
-                
+
                 switch (msg) {
                     case '1':
                         msgConteudo = '<div class="alert alert-success m-0 p-3">O evento foi criado com sucesso! <span id="close-info" class="close">x</span></li></div>';
                         break;
                     case '2':
                         msgConteudo = '<div class="alert alert-danger m-0 p-3">Ocorreu um erro na criação do evento. Não inseriu os dados todos corretamente.<span id="close-info" class="close">x</span></li></div>';
+                        break;
+                    case '3':
+                        msgConteudo = '<div class="alert alert-success m-0 p-3">Foi adicionado ao evento com sucesso<span id="close-info" class="close">x</span></li></div>';
                         break;
 
                     default:
@@ -105,13 +108,24 @@ if (isset($_SESSION['email_aplans'])) {
             */
             $(document).on('click', '.btn-evento', function() {
                 idEvento = $(this).attr("id")
-                
+
                 mostrarEvento(idEvento)
-                
+
+                $(document).on('click', '.botaoParticipar', function() {
+                    participarEvento(idEvento)
+                });
+                $(document).on('click', '.botaoAbandonar', function() {
+                    abandonarEvento(idEvento)
+                });
+
+
+
+
+
                 /*Quando se clica no botão das settings dentro de um evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova função que irá mostrar a interface das settings de um evento*/
                 $(document).on('click', '#settings_evento', function() {
-                settingsEvento(idEvento)
-            });
+                    settingsEvento(idEvento)
+                });
             });
 
             /* Quando se clica no botão de adicionar evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova funçao que irá mostrar a interface de criação do evento*/
@@ -119,7 +133,7 @@ if (isset($_SESSION['email_aplans'])) {
                 mostrarCriarEvento()
             });
 
-            
+
 
             $('#mensagemInfo').on('click', function() {
 
