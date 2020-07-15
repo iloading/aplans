@@ -1304,5 +1304,13 @@ button:focus{
     padding: 10px;
 }
 
+.avatar-circular-perfil{
+  max-height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  float: right;
+  max-width:calc(100px + 5vw);
+  height: calc(100px + 5vw);
+}
 
 

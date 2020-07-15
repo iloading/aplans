@@ -24,29 +24,21 @@
   <main class="text-black bg-white d-flex flex-column align-items-start topRedondo">
 
 
-    <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav">
-      <div class="d-flex flex-column">
-
-
-        <div class="d-flex justify-content-between">
-          <div class="d-flex align-items-center "> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div>
+    <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;">
+      <div>
+        <div class="d-flex align-items-center justify-content-between">
+          <img style="width: 1.1rem; height:1.1rem;" src="images/others/back (5).png">
+          <img id="editarPerfil" style="width: 1.1rem; height:1.1rem;" src="images/settings/edit.png">
         </div>
-
-
-
-
-
-
-        <div class="d-flex justify-content-center">
-          <h3 class="font-weight-bold text-branco-evento">Casandra Faneca</h3>
+        <div class="d-flex flex-column align-items-center">
+          <div class="avatar-circular-perfil">
+            <img class="w-100" src="assets/avatar.png">
+          </div>
+          <div class="d-flex justify-content-center">
+            <h3 class="font-weight-bold text-branco-evento m-0">Casandra Faneca</h3>
+          </div>
         </div>
-
-
-
-
-
       </div>
-
     </article>
 
 
@@ -54,56 +46,39 @@
 
 
 
-    <div class="positon-relative container p-0 mb-5  d-flex flex-column pl-4 pr-4 pt-4 pb-4 m-0">
-
-      <div>
+    <div class="positon-relative container p-0 mb-5  d-flex flex-column pl-4 pr-4 pt-4 pb-4 m-0" style="height: 100vh;">
 
 
 
-        <div>
-          <div class="container d-flex flex-column mb-4 p-0">
-            <h5 class="font-weight-bold">Email</h5>
-            <p>email@ua.pt</p>
-          </div>
 
-          <div class="container d-flex flex-column mb-4 p-0">
-            <h5 class="font-weight-bold">Morada</h5>
-            <p>email@ua.pt</p>
-          </div>
-        </div>
-
-        <div class="d-flex justify-content-center">
-          <div class="text-center btn-evento">
-            <div class=" avatar-circular">
-              <img src="assets/avatar.png">
-            </div>
-          </div>
-        </div>
-
+      <div class="container d-flex flex-column mb-4 p-0">
+        <p class="m-0 font-weight-bold" style="padding-bottom: 1%;color:#8bab81;">Email</p>
+        <p style="border-bottom: 2px solid grey;padding-bottom: 2%;font-weight: 600;">email@ua.pt</p>
       </div>
-
-
-      <div class="container d-flex p-0 mb-4">
-
-        <div class="container d-flex flex-column p-0 mr-2" style="width: 55%;">
-          <h5 class="font-weight-bold">Telemóvel</h5>
-          <p>email@ua.pt</p>
-        </div>
-
-
-        <div class="container d-flex flex-column p-0" style="width: 45%;">
-          <h5 class="font-weight-bold">Género</h5>
-          <p>email@ua.pt</p>
-        </div>
-
+      <div class="container d-flex flex-column mb-4 p-0">
+        <p class="m-0 font-weight-bold" style="padding-bottom: 1%;color:#8bab81;">Morada</p>
+        <p style="border-bottom: 2px solid grey;padding-bottom: 2%;font-weight: 600;">Rua da Mamada</p>
       </div>
 
       <div class="container d-flex flex-column mb-4 p-0">
-
-        <h5 class="font-weight-bold">Descrição</h5>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eveniet numquam, minima optio voluptates repudiandae sed itaque iure ex obcaecati nostrum deleniti, fuga expedita sequi, omnis placeat impedit porro illum?</p>
-
+        <p class="m-0 font-weight-bold" style="padding-bottom: 1%;color:#8bab81;">Telemóvel</p>
+        <p style="border-bottom: 2px solid grey;padding-bottom: 2%;font-weight: 600;">918298128</p>
       </div>
+
+      <div class="container d-flex flex-column mb-4 p-0">
+        <p class="m-0 font-weight-bold" style="padding-bottom: 1%;color:#8bab81;">Género</p>
+        <p style="border-bottom: 2px solid grey;padding-bottom: 2%;font-weight: 600;">Não sei bem</p>
+      </div>
+
+      <div class="container d-flex flex-column mb-4 p-0">
+        <p class="m-0 font-weight-bold" style="padding-bottom: 1%;color:#8bab81;">Descrição</p>
+        <p style="border-bottom: 2px solid grey;padding-bottom: 2%;font-weight: 600;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt illo recusandae distinctio maxime odio eligendi ipsa neque, corporis obcaecati? Deleniti sint tempora nam tempore eaque molestias corporis similique voluptatibus minus.</p>
+      </div>
+
+
+
+
+
 
 
 

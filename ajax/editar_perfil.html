@@ -2,7 +2,7 @@
     function editarPerfil() {
 
         $.ajax({ // ajax call starts
-            url: 'scripts/sc_editar_perfil.php',
+            url: 'scripts/sc_editar_perfil_display.php',
             dataType: 'json', // Choosing a JSON datatype
 
         }).done(function (data) {
@@ -10,6 +10,7 @@
 
 
             var cadaPreferencia = '';
+            var cadaGenero = '';
 
 
 
@@ -23,25 +24,50 @@
                  
             }
 
+             for (let i = 0; i < data.genero.length; i++) {
 
 
-            var editarPerfil ='<main class="text-black bg-white d-flex flex-column align-items-start topRedondo"> <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"> <div class="d-flex flex-column"> <div class="d-flex justify-content-between"> <div class="d-flex align-items-center "> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div> </div> <div class="d-flex justify-content-center"> <div class="text-center btn-evento"> <div class=" avatar-circular"> <img src="assets/avatar.png"> </div> </div> </div> <div class="d-flex justify-content-center"> <h3 class="font-weight-bold text-branco-evento">Casandra Faneca</h3> </div>  </div> </article> <div class="positon-relative container p-0 mb-5 d-flex flex-column pl-4 pr-4 pt-4 pb-4 m-0"> <div> <div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Nome</h5> <span class="perfil_Inputs_nome" role="textbox" contenteditable></span> </div> <div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Email</h5> <span class="perfil_Inputs_email" role="textbox" contenteditable></span> </div><div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Morada</h5> <span class="perfil_Inputs_morada" role="textbox" contenteditable></span> </div> <div class="container d-flex p-0 mb-4"> <div class="container d-flex flex-column p-0 mr-2" style="width: 55%;"> <h5 class="font-weight-bold">Telemóvel</h5> <span class="perfil_Inputs_telemovel" role="textbox" contenteditable></span> </div> <div class="container d-flex flex-column p-0" style="width: 45%;"> <h5 class="font-weight-bold">Género</h5> <select class="perfil_Inputs" name="genero" style="color:grey;"> <option value="Masculino">Masculino</option> <option value="Feminino">Feminino</option> <option value="Outros">Outros</option> </select> </div> </div> <div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Descrição</h5> <span class="perfil_Inputs_descricao" role="textbox" contenteditable></span> </div> <div class="container d-flex flex-column mb-4 p-0"> <div class="text-center dropbtn botaoPreferencias" id="preferenciasMenu"> <h5 class="font-weight-bold m-0 pt-2 pb-2" style="color:#3C5E77;">Preferencias</h5> <div class="d-flex justify-content-center" > <img style="width: 1.1rem; height:1.1rem;transform: rotate(270deg);" src="images/others/back (5).png"> </div> </div> <div id="preferenciasDrop" class="dropdown-content_preferencias"> <div class="p-0">'+cadaPreferencia+' </div> <div class="w-100 position-absolute text-center" id="fecharPessoasAdd" style="bottom:0;"> <img src="images/others/close.png" style="width:3rem;"> </div> </div> </div> </div> <div class="text-center"><button class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Atualizar</button></div> </main>';
+                cadaGenero += ' <option default value="Masculino">' + data.genero[i]["sexo"] + '</option>';
+
+
+
+            }
+
+
+
+            var editarPerfil ='<main class="text-black bg-white d-flex flex-column align-items-start topRedondo"> <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;"> <div> <div class="d-flex align-items-center justify-content-between"> <img style="width: 1.1rem; height:1.1rem;" src="images/others/back (5).png"></div> <div class="d-flex flex-column align-items-center"> <div class="avatar-circular-perfil"> <div><img class="w-100" src="assets/avatar.png"></div><img class="w-25" src="images/settings/camera.png"> </div> <div class="d-flex justify-content-center"> <h3 class="font-weight-bold text-branco-evento m-0">' + data.perfil[i]["nome"] + '</h3> </div> </div> </div> </article> <div class="positon-relative container p-0 mb-5 d-flex flex-column pl-4 pr-4 pt-4 pb-4 m-0"> <div> <div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Nome</h5> <span class="perfil_Inputs_nome" role="textbox" contenteditable>' + data.perfil[i]["nome"] + '</span> </div> <div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Email</h5> <span class="perfil_Inputs_email" role="textbox" contenteditable>' + data.perfil[i]["email"] + '</span> </div><div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Morada</h5> <span class="perfil_Inputs_morada" role="textbox" contenteditable>' + data.perfil[i]["morada"] + '</span> </div> <div class="container d-flex p-0 mb-4"> <div class="container d-flex flex-column p-0 mr-2" style="width: 55%;"> <h5 class="font-weight-bold">Telemóvel</h5> <span class="perfil_Inputs_telemovel" role="textbox" contenteditable>' + data.perfil[i]["telemovel"] + '</span> </div> <div class="container d-flex flex-column p-0" style="width: 45%;"> <h5 class="font-weight-bold">Género</h5> <select class="perfil_Inputs" name="genero" style="color:grey;"><option hidden>' + data.perfil[i]["genero"] + '</option >'+cadaGenero+' </select> </div> </div> <div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Descrição</h5> <span class="perfil_Inputs_descricao" role="textbox" contenteditable>' + data.perfil[i]["descricao"] + '</span> </div>  </div> <div class="text-center"><button id="botaoEditarPerfil" class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Atualizar</button></div> </main>';
 
              $("#conteudoPagina").append(editarPerfil);
 
 
 
-            /* Quando o utilizador clica no seu avatar */
-            function menu_avatar() {
-                $("#preferenciasDrop").toggleClass("showPreferencias");
-            }
 
-            $(document).on("click", "#preferenciasMenu", function () {
-                menu_avatar();
-            });
 
-            $(document).on("click", "#fecharPessoasAdd", function () {
-                $("#preferenciasDrop").removeClass('showPreferencias');
+
+
+
+
+
+
+
+            $("#botaoEditarPerfil").click(function () {
+
+
+                 var perfilQuery = "nomePerfil=" + nomePerfil + "&emailPerfil=" + emailPerfil + "&moradaPerfil=" + moradaPerfil + "&telemovelPerfil=" + telemovelPerfil + "&generoPerfil=" + generoPerfil + "&descricaoPerfil=" + descricaoPerfil;
+
+                $.ajax({
+                    // ajax call starts
+                    url: "scripts/sc_editar_perfil.php",
+                    dataType: "json", // Choosing a JSON datatype
+                    type: "GET",
+                    data: perfilQuery,
+
+                }).done(function (data) {
+                    window.location.href = "index.php";
+                })
+
+
+
             });
 
         });
