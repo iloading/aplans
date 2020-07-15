@@ -72,13 +72,19 @@ if (isset($_SESSION['email_aplans'])) {
 
                 switch (msg) {
                     case '1':
-                        msgConteudo = '<div class="alert alert-success m-0 p-3">O evento foi criado com sucesso! <span id="close-info" class="close">x</span></li></div>';
+                        msgConteudo = '<div class="alert alert-success m-0 p-3">O evento foi criado com sucesso! <span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
                     case '2':
-                        msgConteudo = '<div class="alert alert-danger m-0 p-3">Ocorreu um erro na criação do evento. Não inseriu os dados todos corretamente.<span id="close-info" class="close">x</span></li></div>';
+                        msgConteudo = '<div class="alert alert-danger m-0 p-3">Ocorreu um erro na criação do evento. Não inseriu os dados todos corretamente.<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
                     case '3':
-                        msgConteudo = '<div class="alert alert-success m-0 p-3">Foi adicionado ao evento com sucesso<span id="close-info" class="close">x</span></li></div>';
+                        msgConteudo = '<div class="alert alert-success m-0 p-3">Foi adicionado ao evento com sucesso<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+                    case '4':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Abandonou o evento com sucesso<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+                    case '5':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Já não é o organizador do evento! Pode agora abandonar o mesmo.<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
 
                     default:
@@ -86,8 +92,11 @@ if (isset($_SESSION['email_aplans'])) {
                         break;
 
                 }
+
                 $('#mensagemInfo').removeClass("d-none");
                 $('#mensagemInfo').html(msgConteudo);
+
+
                 setTimeout(() => {
                     $('#mensagemInfo').html(" ");
                     $('#mensagemInfo').addClass("d-none");
