@@ -1234,6 +1234,24 @@ button:focus{
     
 }
 
+.perfil_Inputs_postal{
+    border: 2px solid #BAE4AC;
+    border-radius: 24px;
+    padding: 10px;
+    background-color: #BAE4AC;
+    
+}
+
+.perfil_Inputs_postal:focus{
+    outline: none !important;
+}
+
+.perfil_Inputs_postal[contenteditable]:empty::before{
+    content: "Insira o seu codigo postal";
+    color: grey;
+    
+}
+
 .perfil_Inputs_telemovel{
     border: 2px solid #BAE4AC;
     border-radius: 24px;
