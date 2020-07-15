@@ -312,7 +312,7 @@
       });
   }
   function abandonarEvento(idEvento) {
-    // $('organizador_confirm').modal({ show: false})
+    $('#organizador_confirm').modal({ show: false})
     query_participar = "idEvento="+idEvento
     $.ajax({
       // ajax call starts
@@ -340,16 +340,18 @@
                 }).done(function (data) {
                   
                   if (data['trocaOrganizador'] == "sucesso") {
-                    // console.log("TESTEEEE");
-                    // msgSucesso = '<div class="alert alert-success m-0 p-3">Sucesso! Já não é o organizador do evento!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div><br><br><br><br><div class="d-flex justify-content-center"><button id="abandonarDefinitivo"type="button" class="botaoAbandonar" style="background-color: red " >Abandonar - </button></div>'
-                    // $('#organizador_confirm').find(".modal-body").append(msgSucesso)
                     
-                    // $('#abandonarDefinitivo').on("click", function () {
-                    //   $('#organizador_confirm').modal('hide');
-                    //   abandonarEvento(idEvento)
-                    // })
                     $('#organizador_confirm').modal('hide')
+                    $('.modal-backdrop').removeClass('show')
+                    $('.modal-backdrop').addClass('d-none')
+                    $('body').removeClass('modal-open')
                     mostrarInfo("5")
+                    $("#conteudoPagina").html("");
+                    
+                      
+                      mostrarEvento(idEvento)
+                    
+                    
                   }
                 });
           })
