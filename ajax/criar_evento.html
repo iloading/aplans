@@ -61,10 +61,8 @@
 
                 /*Adcionar tarefas apenas à páginas de HTML */
                 var num_tarefas = 0;
-
-                $("#adicionarTarefa").click(function () {
-                   
-                    num_tarefas ++
+                $(document).on('click','#adicionarTarefa', function () {
+                     num_tarefas ++
                     
 
                     var nomeTarefaEvento = $(".textareaTarefasNome").html();
@@ -74,8 +72,14 @@
                     var novaTarefa = '<div id="Tarefa'+num_tarefas+'" class="Tarefa pt-4 mt-3 d-flex"> <div style="width: 10%;"></div> <div style="width: 60%;"> <div class="pl-3 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsTituloTab m-0" style="color:'+corTarefa+'">'+nomeTarefaEvento+'</p> </div> <div class="pl-3 pt-1 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsDescTab m-0" style="font-size: 1rem">'+descricaoTarefaEvento+'</p> </div> </div> <div class="d-flex align-items-center justify-content-center eliminarTarefa" style="width: 30%;"> <img style="width: 20%;" src="images/settings/minus.png"> </div> </div>'
 
                     $('#tarefasAdicionadas').append(novaTarefa);
-                  
+                    // console.log($('#Tarefa'+num_tarefas+'').offset().top);
+                    // $('#conteudoPagina').animate({
+                    //     scrollTop: ($('#Tarefa'+num_tarefas+'').offset().top) + 'px'
+                    // }, 2000);
                 })
+                   
+                   
+                  
                 /*Eliminar cada tarefa individualemnte */
                 $(document).on('click', '.eliminarTarefa', function () {
 
