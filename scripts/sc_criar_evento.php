@@ -67,12 +67,6 @@
             $link = new_db_connection();
 
 
-           
-        
-
-
-            
-
             $stmt = mysqli_stmt_init($link);
 
             $query = "INSERT INTO event (ref_event_type_id, ref_creator_id, name, date, slots, short_description, local) VALUES (?,?,?,?,?,?,?)";
@@ -83,11 +77,16 @@
                 mysqli_stmt_bind_param($stmt, "iississ", $idTipoEvento, $criador, $nome, $dataEvento, $slotsMax, $descricaoEvento, $localEvento);
 
                 if (mysqli_stmt_execute($stmt)) {
-
-                    $_SESSION['msg'] = 1;
-                    $data['criarEvento']= "sucesso";
+                    
+                    // $_SESSION['msg'] = 1;
                     
 
+                    /*Precisamos do id criado automaticamente na BD para a seguir inserir */
+                    $id_evento_criado = mysqli_insert_id($link);
+                    $data['criarEvento'] = "sucesso";
+                    $data['id_evento_criado'] = $id_evento_criado;
+
+                    mysqli_stmt_close($stmt);
                 }else {
                     $data['criarEvento'] = "erro";
                 }
@@ -96,7 +95,25 @@
             }
 
 
-            for ($i = 0; $i < $num_tarefas; $i++) {
+
+            $stmt = mysqli_stmt_init($link);
+
+            $query = "INSERT INTO users_nos_eventos(ref_user_id, ref_event_id) VALUES (?,?)";
+
+
+            if (mysqli_stmt_prepare($stmt, $query)) {
+
+                mysqli_stmt_bind_param($stmt, "ii", $criador, $id_evento_criado);
+
+                if (mysqli_stmt_execute($stmt)) {
+
+                    mysqli_stmt_close($stmt);
+                }
+            }
+
+
+            /*Para cada tarefa que tenha sido inserida, vamos fazer um Insert na BD*/
+            for ($i = 1; $i <= $num_tarefas; $i++) {
 
                 // '&tarefa"+m+"nome="+nomeTarefa+"&tarefa"+m+"descricao="+descTarefa+"&tarefa"+m+"cor="+corTarefa';
 
@@ -106,24 +123,25 @@
 
                 $stmt = mysqli_stmt_init($link);
 
-                $query = "INSERT INTO event (ref_event_type_id, ref_creator_id, name, date, slots, short_description, local) VALUES (?,?,?,?,?,?,?)";
+                $query = "INSERT INTO tasks_do_evento(ref_event_id, name, short_description, cor) VALUES (?,?,?,?)";
 
 
                 if (mysqli_stmt_prepare($stmt, $query)) {
 
-                    mysqli_stmt_bind_param($stmt, "iississ", $idTipoEvento, $criador, $nome, $dataEvento, $slotsMax, $descricaoEvento, $localEvento);
+                    mysqli_stmt_bind_param($stmt, "isss", $id_evento_criado, $nome_tarefa, $descricao_tarefa, $cor_tarefa);
 
                     if (mysqli_stmt_execute($stmt)) {
 
-                        $_SESSION['msg'] = 1;
-                        $data['criarEvento'] = "sucesso";
+                        mysqli_stmt_close($stmt);
                     } else {
-                        $data['criarEvento'] = "erro";
+                        $data['criarTarefaEvento'] = "erro";
                     }
                 } else {
-                    $data['criarEvento'] = "erro";
+                    $data['criarTarefaEvento'] = "erro";
                 }
             }
+
+            
 
 
 
@@ -132,7 +150,7 @@
 
         /*Se faltar algum parametro mostra o erro na pág home (só se o JS for manipulado por um eventual atacante)*/ 
         }else {
-            $_SESSION['msg'] = 2;
+            // $_SESSION['msg'] = 2;
             $data['criarEvento'] = "erro";
         }
 

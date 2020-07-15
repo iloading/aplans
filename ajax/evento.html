@@ -26,7 +26,7 @@
       localEvento = data["home"]["local"];
 
       var evento =
-        '<div class="w-100 d-flex flex-column"> <div class="position-fixed" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta"><article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"><div class="d-flex flex-column show" id="nav_grande"> <div class="d-flex justify-content-between" id="organizador"> <div class="d-flex align-items-center " > <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div>  </div> <div class="d-flex justify-content-center" id="imagem"> <div class="text-center btn-evento"> <div class="current-event"><img src="images' + tipo +'" class="w-50"></div></div> </div> <div class="d-flex justify-content-center" id="titulo"> <h3 class="font-weight-bold text-branco-evento">' +titulo +'</h3> </div> <div class="d-flex justify-content-center" id="data_evento"> <p style= "color:#F1F3F6">Dia <strong>' +diaEvento +"</strong> de <strong>" +mesEvento +"</strong> de <strong>" +anoEvento +"</strong> às <strong>" +horaEvento +'</strong> </p> </div> <div class="d-flex justify-content-center" id="botoes_evento"> </div> </div><div class="align-items-center hide" id="nav_pequena"><div class="d-flex align-items-center pr-3"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div><div class="d-flex justify-content-center" id="imagem"> <div class="text-center btn-evento"> <div class="current-event"><img src="images' +tipo +'" class="w-50"></div></div> </div> <div class="d-flex flex-column pl-3 justify-items-center"> <div id="titulo"> <h4 class="font-weight-bold text-branco-evento">' +titulo +'</h4> </div> <div id="data_evento"> <span style= "color:#F1F3F6">Dia <strong>' + diaEvento + "</strong> de <strong>" + mesEvento + "</strong> de <strong>" + anoEvento + "</strong> às <strong>" + horaEvento +'</strong> </span> </div> </div></div></article><div id="navegacao"> <button class="tablink" id="defaultOpen" style="font-size:1.2rem;">Home</button> <button class="tablink" style="font-size:1.2rem;">Pessoas</button> <button class="tablink" style="font-size:1.2rem;">Tarefas</button> <button class="tablink" style="font-size:1.2rem;">Chat</button></div> </div> <div class="w-100 pt-3" id="margem_conteudo"> <div id="Home" class="tabcontent container-fluid"> <h5 class="font-weight-bold ml-2">Local</h5> <p class="descricaoFont pt-1 ml-2">' +localEvento+'</p><h5 class="font-weight-bold ml-2">Descrição</h5> <p class="descricaoFont pt-1 ml-2">' + descricao +'</p> <div class="ml-2 mr-2 marginT"> <h5 class="font-weight-bold">Participantes</h5> <div id="myProgressHome1"> <div id="myBarHome1"></div> </div> </div> <div class="container-fluid pt-2"> <div class="row"> <div class="col-6"> <h6 class="pt-2 font-weight-bold" style="color:grey;"><span id="num_pessoas_evento"></span>/' +slotsMax +'</h6> </div> <div class="col-6 d-flex align-items-center" style="justify-content: flex-end"> <a href="#" class="font-weight-bold" style="font-size: 1rem;text-decoration: none;color:grey;font-style:bold;">Ver mais +</a> </div> </div> </div> <div class=" ml-2 marginT"> <h5 class="font-weight-bold">Tarefas Restantes</h5> </div> <div class="tarefas_restantes_div"></div><div class="posicao_seta" id="girar_seta"><img class="arrow"src="images/others/down.png"></div></div> <div id="Pessoas" class="tabcontent container-fluid"> <div id="participantes_do_evento" class="d-flex flex-wrap"></div><div class="posicao_seta" id="girar_seta2"><img class="arrow"src="images/others/down.png"></div></div><div id="Tarefas" class="tabcontent container-fluid"><div class="d-flex align-items-center"> <h5 class="font-weight-bold ml-2"><span id="num_tarefas">6</span> Tarefas</h5> <div class="p-0 d-flex align-items-center justify-content-end ml-auto"> <button type="button" class="p-1" style="border: 2px; border-style: dashed; border-color: #6F41E9; border-radius: 10px; width: 2.5rem; height: 2.5rem;"><img src="images/people/plus.png" width="15" height="15"></button> </div> </div><div class="tarefas_div"></div><div class="posicao_seta" id="girar_seta3"><img class="arrow"src="images/others/down.png"></div></div> <div id="Chat" class="tabcontent container-fluid pt-0 pl-3 pr-3"> <ul class="container-fluid p-0"> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-2"> <img src="images/people/avatar4.jpg"> </div> <li class="him">Como é que estão todos?</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-2 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">Pronto para a festa!</li> </div> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="images/people/avatar3.jpg"> </div> <li class="him">Qual é o filme? Tenho uma sugestão!</li> </div> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="images/people/avatar2.jpg"> </div> <li class="him">Pipocas Doces ou Salgadas</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">Pipocas doces FOSHOU</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> </ul> <div style="position: relative; bottom: 0; width: 100%;"> <hr> <div class="pl-3 pr-3 pb-3 pt-0 d-flex align-items-center justify-content-left ml-auto"> <input type="text" placeholder="Escreve algo" class="p-1" style="border: none; border-radius: 20px; font-size: 1rem; width: 100rem; height: 3rem;"> </div> </div> </div> </div>';
+        '<div class="w-100 d-flex flex-column"> <div class="position-fixed" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta"><article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"><div class="d-flex flex-column show" id="nav_grande"> <div class="d-flex justify-content-between" id="organizador"> <div class="d-flex align-items-center " > <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div>  </div> <div class="d-flex justify-content-center" id="imagem"> <div class="text-center btn-evento"> <div class="current-event"><img src="images' + tipo +'" class="w-50"></div></div> </div> <div class="d-flex justify-content-center" id="titulo"> <h3 class="font-weight-bold text-branco-evento">' +titulo +'</h3> </div> <div class="d-flex justify-content-center" id="data_evento"> <p style= "color:#F1F3F6">Dia <strong>' +diaEvento +"</strong> de <strong>" +mesEvento +"</strong> de <strong>" +anoEvento +"</strong> às <strong>" +horaEvento +'</strong> </p> </div> <div class="d-flex justify-content-center" id="botoes_evento"> </div> </div><div class="align-items-center hide" id="nav_pequena"><div class="d-flex align-items-center pr-3"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div><div class="d-flex justify-content-center" id="imagem"> <div class="text-center btn-evento"> <div class="current-event"><img src="images' +tipo +'" class="w-50"></div></div> </div> <div class="d-flex flex-column pl-3 justify-items-center"> <div id="titulo"> <h4 class="font-weight-bold text-branco-evento">' +titulo +'</h4> </div> <div id="data_evento"> <span style= "color:#F1F3F6">Dia <strong>' + diaEvento + "</strong> de <strong>" + mesEvento + "</strong> de <strong>" + anoEvento + "</strong> às <strong>" + horaEvento +'</strong> </span> </div> </div></div></article><div id="navegacao"> <button class="tablink" id="defaultOpen" style="font-size:1.2rem;">Home</button> <button class="tablink" style="font-size:1.2rem;">Pessoas</button> <button class="tablink" style="font-size:1.2rem;">Tarefas</button> <button class="tablink" style="font-size:1.2rem;">Chat</button></div> </div> <div class="w-100 pt-3" id="margem_conteudo"> <div id="Home" class="tabcontent container-fluid"> <h5 class="font-weight-bold ml-2">Local</h5> <p class="descricaoFont pt-1 ml-2">' +localEvento+'</p><h5 class="font-weight-bold ml-2">Descrição</h5> <p class="descricaoFont pt-1 ml-2">' + descricao +'</p> <div class="ml-2 mr-2 marginT"> <h5 class="font-weight-bold">Participantes</h5> <div id="myProgressHome1"> <div id="myBarHome1"></div> </div> </div> <div class="container-fluid pt-2"> <div class="row"> <div class="col-6"> <h6 class="pt-2 font-weight-bold" style="color:grey;"><span id="num_pessoas_evento"></span>/' +slotsMax +'</h6> </div> <div class="col-6 d-flex align-items-center" style="justify-content: flex-end"> <a href="#" class="font-weight-bold" style="font-size: 1rem;text-decoration: none;color:grey;font-style:bold;">Ver mais +</a> </div> </div> </div> <div class=" ml-2 marginT"> <h5 class="font-weight-bold">Tarefas Restantes</h5> </div> <div class="tarefas_restantes_div"></div><div class="posicao_seta" id="girar_seta"><img class="arrow"src="images/others/down.png"></div></div> <div id="Pessoas" class="tabcontent container-fluid"> <div id="participantes_do_evento" class="d-flex flex-wrap"></div><div class="posicao_seta" id="girar_seta2"><img class="arrow"src="images/others/down.png"></div></div><div id="Tarefas" class="tabcontent container-fluid"><div class="d-flex align-items-center"> <h5 class="font-weight-bold ml-2"><span id="num_tarefas">6</span> Tarefas</h5> <div class="p-0 d-flex align-items-center justify-content-end ml-auto"> <button type="button" class="p-1" style="border: 2px; border-style: dashed; border-color: #6F41E9; border-radius: 10px; width: 2.5rem; height: 2.5rem;"><img src="images/people/plus.png" width="15" height="15"></button> </div> </div><div class="tarefas_div"></div><div class="posicao_seta" id="girar_seta3"><img class="arrow"src="images/others/down.png"></div></div> <div id="Chat" class="tabcontent container-fluid pt-0 pl-3 pr-3"> <ul class="container-fluid p-0"> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-2"> <img src="images/people/avatar4.jpg"> </div> <li class="him">Como é que estão todos?</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-2 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">Pronto para a festa!</li> </div> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="images/people/avatar3.jpg"> </div> <li class="him">Qual é o filme? Tenho uma sugestão!</li> </div> <div class="row mt-4 d-flex align-items-center"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="images/people/avatar2.jpg"> </div> <li class="him">Pipocas Doces ou Salgadas</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">Pipocas doces FOSHOU</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> <div class="row mt-4 d-flex align-items-center flex-row-reverse"> <div class=" avatar-circular-chat ml-3 mr-4"> <img src="assets/avatar.png"> </div> <li class="me">LMAO</li> </div> </ul> <div style="position: relative; bottom: 0; width: 100%;"> <hr> <div class="pl-3 pr-3 pb-3 pt-0 d-flex align-items-center justify-content-left ml-auto"> <input type="text" placeholder="Escreve algo" class="p-1" style="border: none; border-radius: 20px; font-size: 1rem; width: 100rem; height: 3rem;"> </div> </div> </div> </div></div><div id="organizador_confirm" class="modal fade justify-content-center align-items-center" role="dialog" style="height:100vh;"> <div id="conteudoModal" class="d-flex h-100 align-items-center"> <div class="modal-dialog"><div class="modal-content"> <div class="modal-header"> <h4 class="modal-title">É o criador do evento</h4><button id="xModal" type="button" class="close" data-dismiss="modal">&times;</button>  </div> <div class="modal-body"> <p>Se deseja sair do evento e deixá-lo ativo, é necessário atribuir as permissões de organizador a outro participante. Caso queira eliminar por completo o evento, por favor utilize a respetiva funcionalidade na página de definições do evento</p> <label for="cars">Novo Organizador:</label> <select name="organizador" id="novo_organizador"></select><input id="GuardarNovoOrganizador" style="float:right" type="submit" value="Guardar Novo Organizador"></div> <div class="modal-footer"> <button id="CancelarModal" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button> </div> </div> </div></div></div>';
 
       $("#conteudoPagina").append(evento);
 
@@ -50,6 +50,12 @@
 
           div_participante = '<div class="pessoas_largura d-flex flex-column justify-content-center position-relative" id="' + id_user_evento + '"> <div class="mt-2 d-flex justify-content-center position-absolute" style="top:0;"> <img class="avatar-circular-pessoas" src="images' + avatar_url_user + '" alt="user" /><span class="estado-online" style="position:absolute;bottom:-5%;"></span> </div> <div class="mt-3 position-absolute"  style="bottom:15%;"> <p class="pt-2 mb-2">' + nome_user_evento +'</p></div> </div>'
           
+          if (id_user_evento != criador) {
+            console.log("id_user"+id_user_evento);
+            console.log("id_organizador"+criador);
+            opcaoMenuTrocarOrganizador = '<option value="'+id_user_evento+'">'+nome_user_evento+'</option>'
+            $("#novo_organizador").append(opcaoMenuTrocarOrganizador);
+          }
           
           
 
@@ -78,7 +84,7 @@
         /*Se o utilizador logado for o organizador do evento aparece a interface de organizador*/
         if (organizador == 1) {
           var div_organizador =
-            '<div class="d-flex" ><span class="pl-2 pr-2 pt-1 pb-1" style="border-radius: 20px; background-color: #BAE4AC; color: #3C5E77; font-weight: 900;">Organizador</span> <div class="d-flex align-items-center pl-2"> <img style="width: 1.5rem; height:1.5rem" src="images/settings/gear.png"> </div></div>';
+            '<div class="d-flex" ><span class="pl-2 pr-2 pt-1 pb-1" style="border-radius: 20px; background-color: #BAE4AC; color: #3C5E77; font-weight: 900;">Organizador</span> <div class="d-flex align-items-center pl-2" id="settings_evento"> <img style="width: 1.5rem; height:1.5rem" src="images/settings/gear.png"> </div></div>';
           $("#organizador").append(div_organizador);
         }
 
@@ -117,6 +123,7 @@
             var id_task = data["tasks"][a]["id"];
             var nome_task = data["tasks"][a]["name"];
             var descricao = data["tasks"][a]["descricao"];
+            var cor_tarefa = data["tasks"][a]["cor"];
             
             /*Se não existirem users na tarefa*/
             if (!("users" in data["tasks"][a])) {
@@ -128,7 +135,7 @@
             
               
             
-            var tarefa = '<div class="container-fluid pl-4 pt-4 pb-4 pr-0" id="'+id_task+'"> <div class="row"> <div class="col-8 mainTasks"><pclass="pb-1 pt-2 m-0  font-weight-bold">'+nome_task +'</pclass=> <p class="text-muted m-0 pb-2">'+descricao+'</p> </div> <div class="col-4 d-flex align-items-center justify-content-end position-relative"> <div class="form-check text-right"> <input class="selectSize" type="checkbox"value="" id="defaultCheck1"> </div><div class=" avatares'+a+' position-absolute imagem_tarefas d-flex"></div> </div> </div> </div>';
+            var tarefa = '<div class="container-fluid pl-4 pt-4 pb-4 pr-0" id="'+id_task+'"> <div class="row"> <div class="col-8" style="border-left: 5px solid '+cor_tarefa+'"><pclass="pb-1 pt-2 m-0  font-weight-bold">'+nome_task +'</p> <p class="text-muted m-0 pb-2">'+descricao+'</p> </div> <div class="col-4 d-flex align-items-center justify-content-end position-relative"> <div class="form-check text-right"> <input class="selectSize" type="checkbox"value="" id="defaultCheck1"> </div><div class=" avatares'+a+' position-absolute imagem_tarefas d-flex"></div> </div> </div> </div>';
             $(".tarefas_div").append(tarefa);
             /*Se não existirem users na tarefa aparece a tarefa na página Home*/
             if (num_users_na_tarefa == 0) {
@@ -283,6 +290,78 @@
         
       });
     });
+  }
+
+
+  function participarEvento(idEvento) {
+    
+    query_participar = "idEvento="+idEvento
+    $.ajax({
+      // ajax call starts
+      url: "scripts/sc_participar_evento.php",
+      dataType: "json", // Choosin
+      type: "GET",
+      data: query_participar,
+
+      }).done(function (data) {
+        // console.log('123');
+        if (data['inserir']=="sucesso") {
+            mostrarInfo("3")
+            mostrarEvento(idEvento)
+        }
+      });
+  }
+  function abandonarEvento(idEvento) {
+    $('#organizador_confirm').modal({ show: false})
+    query_participar = "idEvento="+idEvento
+    $.ajax({
+      // ajax call starts
+      url: "scripts/sc_abandonar_evento.php",
+      dataType: "json", // Choosin
+      type: "GET",
+      data: query_participar,
+
+      }).done(function (data) {
+        
+        if (data['criador'] == 1) {
+
+          $('#organizador_confirm').modal('show')
+          $('#GuardarNovoOrganizador').on("click", function () {
+              novo_organizador= $('#novo_organizador option:selected').val()
+              query_novo_organizador = "idEvento="+idEvento+"&novoOrganizador="+novo_organizador
+              
+              $.ajax({
+                // ajax call starts
+                url: "scripts/sc_trocar_organizador.php",
+                dataType: "json", // Choosin
+                type: "GET",
+                data: query_novo_organizador,
+
+                }).done(function (data) {
+                  
+                  if (data['trocaOrganizador'] == "sucesso") {
+                    
+                    $('#organizador_confirm').modal('hide')
+                    $('.modal-backdrop').removeClass('show')
+                    $('.modal-backdrop').addClass('d-none')
+                    $('body').removeClass('modal-open')
+                    mostrarInfo("5")
+                    $("#conteudoPagina").html("");
+                    
+                      
+                      mostrarEvento(idEvento)
+                    
+                    
+                  }
+                });
+          })
+          
+        }
+        if (data['abandonar']=="sucesso") {
+            mostrarInfo("4")
+            mostrarEvento(idEvento)
+        }
+      });
   }
 </script>
 

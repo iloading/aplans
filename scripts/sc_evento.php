@@ -38,6 +38,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $mes = date('m', strtotime($dataEvento));
             $hora = date ('H:i', strtotime($dataEvento));
             $ano = date('Y', strtotime($dataEvento));
+            $dataCompleta = date('Y-m-d\TH:i', strtotime($dataEvento));
 
             switch ($mes) {
                 case '01':
@@ -94,6 +95,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result["descricao"] = htmlspecialchars($descricao);
             $row_result["ultimoUpdate"] = htmlspecialchars($ultimoUpdate);
             $row_result["local"] = htmlspecialchars($local);
+            $row_result["dataCompleta"] = htmlspecialchars($dataCompleta);
 
             $data['home'] = $row_result;
 
@@ -314,6 +316,31 @@ if ($sem_tarefas == 0) {
 }
 
 
+/*Ir buscar todos os tipos de evento para colocar no dropdown das settings*/
+
+$stmt = mysqli_stmt_init($link);
+
+$query = "SELECT id, type, url FROM event_type";
+
+
+
+if (mysqli_stmt_prepare($stmt, $query)) { 
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_bind_result($stmt, $id, $type, $url);
+
+
+        while (mysqli_stmt_fetch($stmt)) {
+
+            $row_result = array();
+            $row_result["nome"] = htmlspecialchars($type);
+            $row_result["id"] = htmlspecialchars($id);
+            $row_result["url"] = htmlspecialchars($url);
+            
+            $data['tiposEventoDropdown'][] = $row_result;
+
+        }
+    }
+}
 
 
 
