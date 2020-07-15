@@ -285,6 +285,29 @@
       });
     });
   }
+
+
+  function participarEvento(idEvento) {
+    
+    query_participar = "idEvento="+idEvento
+  $.ajax({
+    // ajax call starts
+    url: "scripts/sc_participar_evento.php",
+    dataType: "json", // Choosin
+    type: "GET",
+    data: query_participar,
+
+    }).done(function (data) {
+      console.log('123');
+      if (data['inserir']=="sucesso") {
+          mostrarInfo(3)
+          mostrarEvento(idEvento)
+      }
+    });
+  }
+  function abandonarEvento(idEvento) {
+    
+  }
 </script>
 
 <script>
