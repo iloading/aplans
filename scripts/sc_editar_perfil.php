@@ -89,6 +89,43 @@ if (isset($_SESSION['id_user_aplans'])) {
 
      
             $descricao = $_GET['descricaoPerfil'];
+
+
+
+
+
+
+
+//--------------------------------IMAGEM UPLOAD------------------------------------------------  
+
+        $target_dir  = "../images/upload";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+
+        if (isset($_POST["submit"])) {
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if ($check !== false) {
+                $file_name = basename($_FILES["fileToUpload"]["name"]);
+                $sucesso = 1;
+            } else {
+                $sucesso = 0;
+            }
+        }
+
+        //Se o ficheiro já existir
+        if (file_exists($target_file)) {
+            $sucesso = 0;
+        }
+
+
+        // Só caeita este tipo de formatos
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            $sucesso = 0;        
+        }
+       
+
+
        
       
     }

@@ -22,23 +22,33 @@
   <!--/NAV-->
 
   <main class="text-black bg-white d-flex flex-column align-items-start topRedondo">
-
-
     <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;">
       <div>
-        <div class="d-flex align-items-center justify-content-between">
-          <img style="width: 1.1rem; height:1.1rem;" src="images/others/back (5).png">
-          <img id="editarPerfil" style="width: 1.1rem; height:1.1rem;" src="images/settings/edit.png">
+        <div class="d-flex align-items-center justify-content-between"> <img style="width: 1.1rem; height:1.1rem;" src="images/others/back (5).png">
         </div>
-        <div class="d-flex flex-column align-items-center">
+
+        <div class="d-flex justify-content-center">
           <div class="avatar-circular-perfil">
             <img class="w-100" src="assets/avatar.png">
+
+
           </div>
-          <div class="d-flex justify-content-center">
-            <h3 class="font-weight-bold text-branco-evento m-0">Casandra Faneca</h3>
-          </div>
+          <span class="estado-online" style="position:absolute;bottom:-5%;"></span>
         </div>
+
+        <div class="d-flex justify-content-center">
+          <h3 class="font-weight-bold text-branco-evento m-0">ola</h3>
+        </div>
+
       </div>
+
+
+
+
+
+
+
+
     </article>
 
 
@@ -46,52 +56,43 @@
 
 
 
-    <div class="positon-relative container p-0 mb-5  d-flex flex-column pl-4 pr-4 pt-4 pb-4 m-0" style="height: 100vh;">
 
 
 
 
-      <div class="container d-flex flex-column mb-4 p-0">
-        <p class="m-0 font-weight-bold" style="padding-bottom: 1%;color:#8bab81;">Email</p>
-        <p style="border-bottom: 2px solid grey;padding-bottom: 2%;font-weight: 600;">email@ua.pt</p>
+
+
+
+
+
+
+    <div class="positon-relative container p-0 mb-5 d-flex flex-column pl-4 pr-4 pt-4 pb-4 m-0">
+      <div>
+        <div class="container d-flex flex-column mb-4 p-0">
+          <h5 class="font-weight-bold">Nome</h5> <span id="nomeEditar" class="perfil_Inputs_nome" role="textbox" contenteditable>' + data.perfil[i]["nome"] + '</span>
+        </div>
+        <div class="container d-flex flex-column mb-4 p-0">
+          <h5 class="font-weight-bold">Email</h5> <span id="emailEditar" class="perfil_Inputs_email" role="textbox" contenteditable>' + data.perfil[i]["email"] + '</span>
+        </div>
+        <div class="container d-flex flex-column mb-4 p-0">
+          <h5 class="font-weight-bold">Morada</h5> <span id="moradaEditar" class="perfil_Inputs_morada" role="textbox" contenteditable>' + data.perfil[i]["morada"] + '</span>
+        </div>
+        <div class="container d-flex flex-column mb-4 p-0">
+          <h5 class="font-weight-bold">Codigo Postal</h5> <span id="postalEditar" class="perfil_Inputs_postal" role="textbox" contenteditable>' + data.perfil[i]["codigo_postal"] + '</span>
+        </div>
+        <div class="container d-flex p-0 mb-4">
+          <div class="container d-flex flex-column p-0 mr-2" style="width: 55%;">
+            <h5 class="font-weight-bold">Telemóvel</h5> <span id="telemovelEditar" class="perfil_Inputs_telemovel" role="textbox" contenteditable>' + data.perfil[i]["telemovel"] + '</span>
+          </div>
+          <div class="container d-flex flex-column p-0" style="width: 45%;">
+            <h5 class="font-weight-bold">Género</h5> <select id="novo_organizador" class="perfil_Inputs" name="genero" style="color:grey;">'+cadaGenero+' </select>
+          </div>
+        </div>
+        <div class="container d-flex flex-column mb-4 p-0">
+          <h5 class="font-weight-bold">Descrição</h5> <span id="descricaoEditar" class="perfil_Inputs_descricao" role="textbox" contenteditable>' + data.perfil[i]["descricao"] + '</span>
+        </div>
       </div>
-      <div class="container d-flex flex-column mb-4 p-0">
-        <p class="m-0 font-weight-bold" style="padding-bottom: 1%;color:#8bab81;">Morada</p>
-        <p style="border-bottom: 2px solid grey;padding-bottom: 2%;font-weight: 600;">Rua da Mamada</p>
-      </div>
-
-      <div class="container d-flex flex-column mb-4 p-0">
-        <p class="m-0 font-weight-bold" style="padding-bottom: 1%;color:#8bab81;">Telemóvel</p>
-        <p style="border-bottom: 2px solid grey;padding-bottom: 2%;font-weight: 600;">918298128</p>
-      </div>
-
-      <div class="container d-flex flex-column mb-4 p-0">
-        <p class="m-0 font-weight-bold" style="padding-bottom: 1%;color:#8bab81;">Género</p>
-        <p style="border-bottom: 2px solid grey;padding-bottom: 2%;font-weight: 600;">Não sei bem</p>
-      </div>
-
-      <div class="container d-flex flex-column mb-4 p-0">
-        <p class="m-0 font-weight-bold" style="padding-bottom: 1%;color:#8bab81;">Descrição</p>
-        <p style="border-bottom: 2px solid grey;padding-bottom: 2%;font-weight: 600;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt illo recusandae distinctio maxime odio eligendi ipsa neque, corporis obcaecati? Deleniti sint tempora nam tempore eaque molestias corporis similique voluptatibus minus.</p>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-
-
+      <div class="text-center"><button id="botaoEditarPerfil" class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Atualizar</button></div>
   </main>
 
   <?php
