@@ -29,6 +29,7 @@ if (isset($_SESSION['id_user_aplans'])) {
             $sucesso = 0;
             //echo ('erro falta dados');
             $row[] = '8';
+    
             
         }
 
@@ -93,6 +94,7 @@ if (isset($_SESSION['id_user_aplans'])) {
     }
 
 
+ 
 
 
     if ($sucesso == 1) {
@@ -117,6 +119,7 @@ if (isset($_SESSION['id_user_aplans'])) {
     }else{
 
         $data['erro'] = $row;
+       
 
 
     }

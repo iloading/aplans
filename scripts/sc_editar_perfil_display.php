@@ -51,6 +51,8 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
         while (mysqli_stmt_fetch($stmt)) {
 
+           
+
             $row_result = array();
             $row_result["id"] = htmlspecialchars($id);
             $row_result["nome"] = htmlspecialchars($nome);
@@ -63,6 +65,10 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result["genero"] = htmlspecialchars($genero);
 
             $data['perfil'][] = $row_result;
+
+
+
+           
         }
     }
 }
@@ -93,6 +99,9 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         }
     }
 }
+
+
+
 
 
     print json_encode($data);
