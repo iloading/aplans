@@ -106,8 +106,14 @@ if (isset($_SESSION['email_aplans'])) {
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Codigo Postal invalido<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
                     case '11':
-                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Evento eliminado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Tamanho da imagem demasiado grande<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
+                    case '12':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Formato de imagem inválido<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+                    case '13':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Evento eliminado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;    
 
 
 
@@ -160,6 +166,12 @@ if (isset($_SESSION['email_aplans'])) {
             $(document).on('click', '#editarPerfil', function() {
                 editarPerfil()
             });
+            $(document).on('click', '#logout', function() {
+                document.location.href = 'scripts/sc_logout.php';
+            });
+
+
+
 
             $('#mensagemInfo').on('click', function() {
 
