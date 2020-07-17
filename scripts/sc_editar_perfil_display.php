@@ -63,6 +63,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result["url"] = htmlspecialchars($url);
             $row_result["descricao"] = htmlspecialchars($descricao);
             $row_result["genero"] = htmlspecialchars($genero);
+            
 
             $data['perfil'][] = $row_result;
 

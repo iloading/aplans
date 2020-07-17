@@ -175,6 +175,12 @@ if (isset($_SESSION['email_aplans'])) {
             $(document).on('click', '#editarPerfil', function() {
                 editarPerfil()
             });
+            $(document).on('click', '#logout', function() {
+                document.location.href = 'scripts/sc_logout.php';
+            });
+
+
+
 
             $('#mensagemInfo').on('click', function() {
 

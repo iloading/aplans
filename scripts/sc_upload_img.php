@@ -64,6 +64,8 @@ if($_FILES["file"]["error"] > 0){
             mysqli_stmt_bind_param($stmt, 'si', $path, $id_user);
             if (mysqli_stmt_execute($stmt)) {
 
+
+
                 $data['updatePerfil'] = 'sucesso';
             }
         }
