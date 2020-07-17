@@ -145,21 +145,7 @@ if (isset($_SESSION['email_aplans'])) {
 
                 mostrarEvento(idEvento)
 
-                $(document).on('click', '.botaoParticipar', function() {
-                    participarEvento(idEvento)
-                });
-                $(document).on('click', '.botaoAbandonar', function() {
-                    abandonarEvento(idEvento)
-                });
-
-
-
-
-
-                /*Quando se clica no botão das settings dentro de um evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova função que irá mostrar a interface das settings de um evento*/
-                $(document).on('click', '#settings_evento', function() {
-                    settingsEvento(idEvento)
-                });
+                
             });
 
             /* Quando se clica no botão de adicionar evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova funçao que irá mostrar a interface de criação do evento*/

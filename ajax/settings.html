@@ -250,17 +250,26 @@
                     
                     $('#eliminar_confirm').modal('show')
                     $(document).on('click', '#botaoEliminar', function () {
-                        var eventoEliminar = {idEvento: idEvento};
+                        var eventoEliminar = "idEvento=" + idEvento;
 
                         $.ajax({
                             url: "scripts/sc_eliminar_evento.php",
                             dataType: "json",
-                            type: "POST",
+                            type: "GET",
                             data: eventoEliminar,
                         }).done(function (data) {
+                            console.log(data);
                             if (data['eliminar'] == 'sucesso') {
-                                console.log('123');
-                                mostrarInfo('11');
+                               
+                
+                                $('#eliminar_confirm').modal('hide')
+                                $('.modal-backdrop').removeClass('show')
+                                $('.modal-backdrop').addClass('d-none')
+                                $('body').removeClass('modal-open')
+                                mostrarInfo("11")
+                                $("#conteudoPagina").html("");
+                                
+                                
                                 mostrarHome();
                             }
                         })

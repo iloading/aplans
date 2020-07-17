@@ -11,10 +11,10 @@
       
 
         
-        if (isset($_POST['idEvento'])) {
+        if (isset($_GET['idEvento'])) {
             
             /*Selecionar todas as tasks que estavam associadas ao evento */
-            $idEvento = $_POST['idEvento'];
+            $idEvento = $_GET['idEvento'];
             
             $data = array();
             $link = new_db_connection();
@@ -33,9 +33,14 @@
                     
                     mysqli_stmt_bind_result($stmt, $idTask);
                     while (mysqli_stmt_fetch($stmt)) {
-                        $data['tasks'][] = $idTask; 
+                        $data['tasks'][] = $idTask;
+                        
+                         
                     }
 
+                    if (mysqli_stmt_num_rows($stmt) == 0) {
+                        $numero_tarefas = 0;    
+                    }
 
 
                     mysqli_stmt_close($stmt);
@@ -48,31 +53,34 @@
 
 
             /*Eliminar todos os users associados às tarefas que estavam associadas ao evento */
-            for ($i=0; $i < count($data['tasks']); $i++) { 
+            if ($numero_tarefas != 0) {
+                for ($i=0; $i < count($data['tasks']); $i++) { 
                 
-                $idTask = $data['tasks'][$i];
-
-                $stmt = mysqli_stmt_init($link);
-
-                $query = "DELETE FROM tasks_de_users WHERE ref_tasks_do_evento_id = ?";
-
-                
-                if (mysqli_stmt_prepare($stmt, $query)) {
-                
-                    mysqli_stmt_bind_param($stmt, "i", $idTask);
-
-                    if (mysqli_stmt_execute($stmt)) {
-                        
-                        
-
-                        mysqli_stmt_close($stmt);
+                    $idTask = $data['tasks'][$i];
+    
+                    $stmt = mysqli_stmt_init($link);
+    
+                    $query = "DELETE FROM tasks_de_users WHERE ref_tasks_do_evento_id = ?";
+    
+                    
+                    if (mysqli_stmt_prepare($stmt, $query)) {
+                    
+                        mysqli_stmt_bind_param($stmt, "i", $idTask);
+    
+                        if (mysqli_stmt_execute($stmt)) {
+                            
+                            
+    
+                            mysqli_stmt_close($stmt);
+                        }else {
+                            $data['criarEvento'] = "erro";
+                        }
                     }else {
                         $data['criarEvento'] = "erro";
                     }
-                }else {
-                    $data['criarEvento'] = "erro";
                 }
             }
+           
 
             /*Eliminar todos os users que estavam associados ao evento */
             $stmt = mysqli_stmt_init($link);
