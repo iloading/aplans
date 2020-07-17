@@ -58,12 +58,12 @@
                 var generoPerfil = $('#novo_organizador option:selected').val()
                 var descricaoPerfil = $("#descricaoEditar").html();
                 var codigo_postal_perfil = $("#postalEditar").html();
-                var urlPerfil = $("#urlEditar").html();
+                
 
 
-                 var perfilQuery = "nomePerfil=" + nomePerfil + "&emailPerfil=" + emailPerfil + "&moradaPerfil=" + moradaPerfil + "&telemovelPerfil=" + telemovelPerfil + "&generoPerfil=" + generoPerfil + "&descricaoPerfil=" + descricaoPerfil + "&codigo_postal_perfil=" +codigo_postal_perfil+ "&urlPerfil=" +urlPerfil;
+                 var perfilQuery = "nomePerfil=" + nomePerfil + "&emailPerfil=" + emailPerfil + "&moradaPerfil=" + moradaPerfil + "&telemovelPerfil=" + telemovelPerfil + "&generoPerfil=" + generoPerfil + "&descricaoPerfil=" + descricaoPerfil + "&codigo_postal_perfil=" +codigo_postal_perfil;
 
-                console.log(perfilQuery);
+            
                 $.ajax({
                     // ajax call starts
                     url: "scripts/sc_editar_perfil.php",
@@ -72,7 +72,33 @@
                     data: perfilQuery,
 
                 }).done(function (data) {
+
+                    var fileData = $('#fileToUpload').prop("files")[0];
+                    var formData = new FormData();
+                    formData.append("file",fileData)
                   
+
+
+console.log(formData);
+
+                    $.ajax({
+                        // ajax call starts
+                        url: "scripts/sc_upload_img.php",
+                        dataType: "json", // Choosing a JSON datatype
+                        type: "POST",
+                        data: formData,
+                        cache:false,
+                        contentType:false,
+                        processData:false,
+
+                    }).done(function (data) {
+
+                        console.log(data);
+
+                    })
+
+
+
 
                     if (data['updatePerfil'] == 'sucesso') {
                         window.scrollTo(0,0);
@@ -93,6 +119,8 @@
                        
                        
                     }
+
+
                 })
 
 
