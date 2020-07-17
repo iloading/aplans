@@ -105,6 +105,9 @@ if (isset($_SESSION['email_aplans'])) {
                     case '10':
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Codigo Postal invalido<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
+                    case '11':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Evento eliminado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
 
 
 

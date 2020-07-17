@@ -46,7 +46,7 @@
 
             /*Interface de Settings do Evento*/
 
-            var settingsEvento = '<main class="position-relative text-black bg-white d-flex flex-column align-items-start topRedondo"> <div class="w-100 d-flex flex-column"> <div class="d-flex" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta"> <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"> <div class="align-items-center"> <div class="d-flex align-items-center justify-content-between position-relative"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> <img id="apagarEvento" style="width: 3rem; position:absolute;right:0" src="images/settings/trash.png"> </div> <div class="d-flex justify-content-center" id="imagem"> <div class="text-center"> <div class="img_tipo_evento menu_tipo_evento" style="position:relative;"><img id="tipoEventoImg" class="dropbtn" src="images/'+tipoEvento+'" style="width: 40%;"> <div id="dropdown_tipo" class="dropdown-content">'+cardTipoEvento+' </div> <div class="text_alterarTipo">Alterar tipo de Evento</div> </div> </div> </div> <div class="d-flex flex-column align-items-center mt-2"> <div class="mb-2 mt-2" style="width: 100%;"> <span class="textareaEventoNome" role="textbox" contenteditable>'+nomeEvento+'</span> </div> <div id="data_evento" style="position:relative;"> <input id="data_input" type="datetime-local" value="'+dataEvento+'" style="background:none;color:white;border:none;font-size:0.9rem;"> </div> </div> </div> </article> </div> <div class="w-100 pt-3"> <div class="container-fluid"> <h2 class="font-weight-bold mb-3">Dados do Evento</h2> <form> <div class="mb-4"> <h5 class="font-weight-bold">Local</h5> <span class="textareaLocal" role="textbox" contenteditable>'+localEvento+'</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Descrição</h5> <span class="textareaDescricao" role="textbox" contenteditable>'+descricaoEvento+'</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Nº máximo participantes</h5> <div class="container-fluid pt-2 pl-0"> <input class="nParticipantes" id="participantes" type="number" value="'+slotsEvento+'" min="2" max="250"></input> </div> </div> <div class="mb-4"> <h5 class="font-weight-bold">Adicionar tarefa</h5> <div class="d-flex"> <div class="position-relative" style="width: 70%;"> <div class="d-flex"> <p class="mr-4" style="color: gray">Cor da tarefa :</p> <input id="corTarefa" type="color"> </div><span class="textareaTarefasNome mb-3" role="textbox" contenteditable></span> <span class="textareaTarefasDescricao mb-3" role="textbox" contenteditable></span> </div> <div style="width:30%;display:flex;"> <div id="adicionarTarefa" class="botao-circular">+</div> </div> </div> <div id="tarefasAdicionadas"></div> </div> <div class="tarefas_restantes_div"></div> </div> </div> </div> <div class="position-relative w-100 d-flex botao_criar_evento_align justify-content-center pb-4 pt-4"> <button class="pl-3 pr-3 pt-1 pb-1 botaoAtualizarEvento">Guardar Alterações</button> </div> <input id="selectTipo" class="d-none" type="number"></main>'
+            var settingsEvento = '<main class="position-relative text-black bg-white d-flex flex-column align-items-start topRedondo"> <div class="w-100 d-flex flex-column"> <div class="d-flex" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta"> <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"> <div class="align-items-center"> <div class="d-flex align-items-center justify-content-between position-relative"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> <img id="apagarEvento" style="width: 3rem; position:absolute;right:0" src="images/settings/trash.png"> </div> <div class="d-flex justify-content-center" id="imagem"> <div class="text-center"> <div class="img_tipo_evento menu_tipo_evento" style="position:relative;"><img id="tipoEventoImg" class="dropbtn" src="images/'+tipoEvento+'" style="width: 40%;"> <div id="dropdown_tipo" class="dropdown-content">'+cardTipoEvento+' </div> <div class="text_alterarTipo">Alterar tipo de Evento</div> </div> </div> </div> <div class="d-flex flex-column align-items-center mt-2"> <div class="mb-2 mt-2" style="width: 100%;"> <span class="textareaEventoNome" role="textbox" contenteditable>'+nomeEvento+'</span> </div> <div id="data_evento" style="position:relative;"> <input id="data_input" type="datetime-local" value="'+dataEvento+'" style="background:none;color:white;border:none;font-size:0.9rem;"> </div> </div> </div> </article> </div> <div class="w-100 pt-3"> <div class="container-fluid"> <h2 class="font-weight-bold mb-3">Dados do Evento</h2> <form> <div class="mb-4"> <h5 class="font-weight-bold">Local</h5> <span class="textareaLocal" role="textbox" contenteditable>'+localEvento+'</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Descrição</h5> <span class="textareaDescricao" role="textbox" contenteditable>'+descricaoEvento+'</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Nº máximo participantes</h5> <div class="container-fluid pt-2 pl-0"> <input class="nParticipantes" id="participantes" type="number" value="'+slotsEvento+'" min="2" max="250"></input> </div> </div> <div class="mb-4"> <h5 class="font-weight-bold">Adicionar tarefa</h5> <div class="d-flex"> <div class="position-relative" style="width: 70%;"> <div class="d-flex"> <p class="mr-4" style="color: gray">Cor da tarefa :</p> <input id="corTarefa" type="color"> </div><span class="textareaTarefasNome mb-3" role="textbox" contenteditable></span> <span class="textareaTarefasDescricao mb-3" role="textbox" contenteditable></span> </div> <div style="width:30%;display:flex;"> <div id="adicionarTarefa" class="botao-circular">+</div> </div> </div> <div id="tarefasAdicionadas"></div> </div> <div class="tarefas_restantes_div"></div> </div> </div> </div> <div class="position-relative w-100 d-flex botao_criar_evento_align justify-content-center pb-4 pt-4"> <button class="pl-3 pr-3 pt-1 pb-1 botaoAtualizarEvento">Guardar Alterações</button> </div> <input id="selectTipo" class="d-none" type="number"><div id="eliminar_confirm" class="modal fade justify-content-center align-items-center" role="dialog" style="height:100vh;"> <div id="conteudoModal" class="d-flex h-100 align-items-center"> <div class="modal-dialog"><div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Deseja eliminar o evento?</h5><button id="xModal" type="button" class="close" data-dismiss="modal">&times;</button>  </div> <div class="modal-body"> <p>Se eliminar o evento, todos os utilizadores e todas as tarefas serão eliminadas. Se pretender continuar com esta operação, carregue em eliminar evento.</p></div> <div class="modal-footer d-flex justify-content-between"> <button id="botaoEliminar" type="button" class="btn btn-default text-danger pl-0" data-dismiss="modal">Eliminar Evento</button><button id="CancelarModal" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button> </div> </div> </div></div></div></main>'
 
             $("#conteudoPagina").append(settingsEvento);
 
@@ -245,15 +245,29 @@
                 })
 
                 /*Eliminar o Evento por completo*/
-                // $(document).on('click', '#apagarEvento', function () {
-                //     $.ajax({
-                //         url: "scripts/sc_eliminar_evento.php",
-                //         dataType: "json",
-                //     }).done(function (data) {
-                        
-                //     })
+                $('#eliminar_confirm').modal({ show: false})
+                $(document).on('click', '#apagarEvento', function () {
+                    
+                    $('#eliminar_confirm').modal('show')
+                    $(document).on('click', '#botaoEliminar', function () {
+                        var eventoEliminar = {idEvento: idEvento};
 
-                // })                
+                        $.ajax({
+                            url: "scripts/sc_eliminar_evento.php",
+                            dataType: "json",
+                            type: "POST",
+                            data: eventoEliminar,
+                        }).done(function (data) {
+                            if (data['eliminar'] == 'sucesso') {
+                                console.log('123');
+                                mostrarInfo('11');
+                                mostrarHome();
+                            }
+                        })
+                    })
+                   
+
+                })                
             })
         
 
