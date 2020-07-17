@@ -184,8 +184,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $data["amigos"][] = $row_result;
         }
 
-        //
-        print json_encode($data);
+        //print json_encode($data);
 
 
 
@@ -203,6 +202,41 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 }
 
 
+
+
+
+
+
+
+
+/*----------------- Ir buscar os dados do utilizador logado ----------------*/
+
+$stmt = mysqli_stmt_init($link);
+
+$query = "SELECT id, url FROM users WHERE id = ?";
+
+if (mysqli_stmt_prepare($stmt, $query)) {
+    mysqli_stmt_bind_param($stmt, 'i', $id_user);
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_bind_result($stmt, $id, $url);
+
+
+        while (mysqli_stmt_fetch($stmt)) {
+
+
+
+            $row_result = array();
+            $row_result["id"] = htmlspecialchars($id);
+            $row_result["url"] = htmlspecialchars($url);
+         
+
+            $data['user'][] = $row_result;
+        }
+    }
+}
+
+
+print json_encode($data);
 
 
 ?>
