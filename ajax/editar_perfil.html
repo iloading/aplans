@@ -73,40 +73,40 @@
 
                 }).done(function (data) {
 
-                    var fileData = $('#fileToUpload').prop("files")[0];
-                    var formData = new FormData();
-                    formData.append("file",fileData)
-                  
+                    if(data['updatePerfil'] == 'sucesso'){
 
+                        var fileData = $('#fileToUpload').prop("files")[0];
+                        var formData = new FormData();
+                        formData.append("file", fileData)
 
-console.log(formData);
+                           $.ajax({
+                            // ajax call starts
+                            url: "scripts/sc_upload_img.php",
+                            dataType: "json", // Choosing a JSON datatype
+                            type: "POST",
+                            data: formData,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
 
-                    $.ajax({
-                        // ajax call starts
-                        url: "scripts/sc_upload_img.php",
-                        dataType: "json", // Choosing a JSON datatype
-                        type: "POST",
-                        data: formData,
-                        cache:false,
-                        contentType:false,
-                        processData:false,
+                        }).done(function (data) {
 
-                    }).done(function (data) {
+                            if (data['avatar'] == 'sucesso'){
+                                window.scrollTo(0, 0);
+                                console.log('sucesso');
+                                mostrarInfo("6");
+                                perfil()
+                            }else{
+                                window.scrollTo(0, 0);
+                                mostrarInfo(data['erro']);
+                            }
+                                
 
-                        console.log(data);
+                        })
 
-                    })
+                       
+                        
 
-
-
-
-                    if (data['updatePerfil'] == 'sucesso') {
-                        window.scrollTo(0,0);
-                        console.log('sucesso');
-
-                        mostrarInfo("6");
-                        perfil()
-                         
                     }else{
 
                         for (let i = 0; i < data['erro'].length; i++) {
