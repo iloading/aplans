@@ -54,6 +54,8 @@ if (isset($_SESSION['email_aplans'])) {
         <?php include_once "ajax/home.html" ?>
         <?php include_once "ajax/evento.html" ?>
         <?php include_once "ajax/criar_evento.html" ?>
+        <?php include_once "ajax/editar_perfil.html" ?>
+        <?php include_once "ajax/perfil.html" ?>
         <?php include_once "ajax/settings.html" ?>
 
 
@@ -86,6 +88,26 @@ if (isset($_SESSION['email_aplans'])) {
                     case '5':
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Já não é o organizador do evento! Pode agora abandonar o mesmo.<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
+                    case '6':
+                        msgConteudo = '<div class="alert alert-success m-0 p-3">Perfil atualizado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+
+                    case '7':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">O email inserido não é valido<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+
+                    case '8':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Dados por preencher<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+                    case '9':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Nº de telemovel invalido<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+                    case '10':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Codigo Postal invalido<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+
+
+
 
                     default:
                         msgConteudo = "";
@@ -143,6 +165,12 @@ if (isset($_SESSION['email_aplans'])) {
             });
 
 
+            $(document).on('click', '#abrirPerfil', function() {
+                perfil()
+            });
+            $(document).on('click', '#editarPerfil', function() {
+                editarPerfil()
+            });
 
             $('#mensagemInfo').on('click', function() {
 

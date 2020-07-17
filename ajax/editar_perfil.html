@@ -1,0 +1,138 @@
+<script>
+    function editarPerfil() {
+
+        $.ajax({ // ajax call starts
+            url: 'scripts/sc_editar_perfil_display.php',
+            dataType: 'json', // Choosing a JSON datatype
+
+        }).done(function (data) {
+            $("#conteudoPagina").html(""); //limpar o conteudo da pagina
+
+
+            var cadaPreferencia = '';
+            var cadaGenero = '';
+
+
+
+
+             for (let i = 0; i < data.tipoEvento.length; i++) {
+
+
+                cadaPreferencia += '<div class="d-flex"> <div> <img src="images' + data.tipoEvento[i]["url"] + '" style="width:20px;"></div> <div> <p class="m-0">' + data.tipoEvento[i]["nome"] + '</p> </div> <div class="position-absolute" style="right: 5%;"> <input type="checkbox"> </div> </div>';
+
+                 
+                 
+            }
+
+             for (let i = 0; i < data.genero.length; i++) {
+
+                cadaGenero += '<option value="' + data.genero[i]["id"] + '">' + data.genero[i]["sexo"] + '</option>';
+
+            }
+
+
+
+            var editarPerfil ='<main class="text-black bg-white d-flex flex-column align-items-start topRedondo"> <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;"> <div> <div class="d-flex align-items-center justify-content-between"> <img style="width: 1.1rem; height:1.1rem;" src="images/others/back (5).png"></div> <div class="d-flex flex-column align-items-center"> <div class="avatar-circular-perfil"><div><img class="w-100" src="assets/avatar.png"></div></div> <div class="d-flex justify-content-center"> <h3 class="font-weight-bold text-branco-evento m-0">' + data.perfil[i]["nome"] + '</h3> </div> </div> </div> </article> <div class="positon-relative container p-0 mb-5 d-flex flex-column pl-4 pr-4 pt-4 pb-4 m-0"> <div> <div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Nome</h5> <span id="nomeEditar" class="perfil_Inputs_nome" role="textbox" contenteditable>' + data.perfil[i]["nome"] + '</span> </div> <div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Email</h5> <span id="emailEditar" class="perfil_Inputs_email" role="textbox" contenteditable>' + data.perfil[i]["email"] + '</span> </div><div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Morada</h5> <span id="moradaEditar" class="perfil_Inputs_morada" role="textbox" contenteditable>' + data.perfil[i]["morada"] + '</span> </div> <div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Codigo Postal</h5> <span id="postalEditar" class="perfil_Inputs_postal" role="textbox" contenteditable>' + data.perfil[i]["codigo_postal"] + '</span> </div> <div class="container d-flex p-0 mb-4"> <div class="container d-flex flex-column p-0 mr-2" style="width: 55%;"> <h5 class="font-weight-bold">Telemóvel</h5> <span id="telemovelEditar" class="perfil_Inputs_telemovel" role="textbox" contenteditable>' + data.perfil[i]["telemovel"] + '</span> </div> <div class="container d-flex flex-column p-0" style="width: 45%;"> <h5 class="font-weight-bold">Género</h5> <select id="novo_organizador" class="perfil_Inputs" name="genero" style="color:grey;">'+cadaGenero+' </select> </div> </div> <div class="container d-flex flex-column mb-4 p-0"> <h5 class="font-weight-bold">Descrição</h5> <span id="descricaoEditar" class="perfil_Inputs_descricao" role="textbox" contenteditable>' + data.perfil[i]["descricao"] + '</span> </div>  </div> <div class="text-center"><button id="botaoEditarPerfil" class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Atualizar</button></div><input type="file" name="fileToUpload" id="fileToUpload"> </main>';
+
+             $("#conteudoPagina").append(editarPerfil);
+
+
+
+
+
+
+
+
+
+
+
+
+            $("#botaoEditarPerfil").click(function () {
+
+
+
+                var nomePerfil = $("#nomeEditar").html();
+                var emailPerfil = $("#emailEditar").html();
+                var moradaPerfil = $("#moradaEditar").html();
+                var telemovelPerfil = $("#telemovelEditar").html();
+                var generoPerfil = $('#novo_organizador option:selected').val()
+                var descricaoPerfil = $("#descricaoEditar").html();
+                var codigo_postal_perfil = $("#postalEditar").html();
+                
+
+
+                 var perfilQuery = "nomePerfil=" + nomePerfil + "&emailPerfil=" + emailPerfil + "&moradaPerfil=" + moradaPerfil + "&telemovelPerfil=" + telemovelPerfil + "&generoPerfil=" + generoPerfil + "&descricaoPerfil=" + descricaoPerfil + "&codigo_postal_perfil=" +codigo_postal_perfil;
+
+            
+                $.ajax({
+                    // ajax call starts
+                    url: "scripts/sc_editar_perfil.php",
+                    dataType: "json", // Choosing a JSON datatype
+                    type: "GET",
+                    data: perfilQuery,
+
+                }).done(function (data) {
+
+                    var fileData = $('#fileToUpload').prop("files")[0];
+                    var formData = new FormData();
+                    formData.append("file",fileData)
+                  
+
+
+console.log(formData);
+
+                    $.ajax({
+                        // ajax call starts
+                        url: "scripts/sc_upload_img.php",
+                        dataType: "json", // Choosing a JSON datatype
+                        type: "POST",
+                        data: formData,
+                        cache:false,
+                        contentType:false,
+                        processData:false,
+
+                    }).done(function (data) {
+
+                        console.log(data);
+
+                    })
+
+
+
+
+                    if (data['updatePerfil'] == 'sucesso') {
+                        window.scrollTo(0,0);
+                        console.log('sucesso');
+
+                        mostrarInfo("6");
+                        perfil()
+                         
+                    }else{
+
+                        for (let i = 0; i < data['erro'].length; i++) {
+                            console.log(data['erro'][i]);
+                            mostrarInfo(data['erro'][i]);
+                            
+                        }
+                      
+                        window.scrollTo(0, 0);
+                       
+                       
+                    }
+
+
+                })
+
+
+
+            });
+
+        });
+
+
+
+    }
+
+
+    
+</script>
