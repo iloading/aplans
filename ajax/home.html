@@ -123,7 +123,7 @@
         
 
             
-            var home = '<main id="main" class="text-white bg-azul-aplans d-flex flex-column align-items-start"> <div class="container p-3"> <section class="row d-flex" style="align-items: center;"> <div class="col-6 text-left" style="height: 100%;"> <div class="div-logo"><a href="index.php"><img class="mw-100" src="assets/aplans.png" alt="logotipo"></a></div> </div><div class="col-6 text-right dropdown" style="height:100%"> <div class="avatar-circular">'+avatar+'</div> <div id="myDropdown" class="dropdown-content_avatar"><div id="abrirPerfil" class="d-flex justify-content-between"><div><img src="images/others/utilizador.png" style="width:20px;"></div><div><p class="m-0">Perfil</p></div></div><div class="d-flex justify-content-between"><div><img src="images/others/settings.png" style="width:20px;"></div><div><p class="m-0">Admin</p></div></div><div id="logout" class="d-flex justify-content-between" style="background-color: rgba(240,52,52,0.5);/* background-color: white; */"><div><img src="images/others/sair.png" style="width:20px;"></div><div><p class="m-0 font-weight-bold">Sair</p></div></div></div> </div> </section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos">Created Plans</p> </section> <section class="row justify-content-center" style="align-items: center;"> '+adicionarNovoEvento+' <div id="carouselExampleIndicators1" class="carousel slide col-8 m-auto" data-interval="false"> <ol class="carousel-indicators" style="bottom: -6vh;">'+indicators+'</ol> <div class="carousel-inner"> '+eventosCriados+' </div> '+setaEsquerda+' '+setaDireita+'</div> </section> </div> <div class="container p-3"><section class="row pl-3"> <p class="index-titulos col-6 p-0">Planos Futuros</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a data-toggle="modal" data-target="#mostarPlanos">Ver todos</a></p> </section><section class="row">'+upcoming+'</section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos col-6 p-0">Meus Amigos</p> <p class="index-titulos text-right col-6 " style="font-size:small;">'+modalAmigos+'</p> </section> <section class="row" style="align-items: center;"> '+adicionarAmigos+'' + start_div +''+cardsAmigos+'' + end_div +' </section> </div> <div id="mostrarAmigosAdd" class="dropdown-content_amigosAdd"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharPessoasAdd"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="search_pessoas" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="mostrarTodosAmigosAdd" class="d-flex flex-column w-100 p-0 mt-2"></div><div id="verMais"><p>Ver Mais</p></div></div></div></main>'
+            var home = '<main id="main" class="text-white bg-azul-aplans d-flex flex-column align-items-start"> <div class="container p-3"> <section class="row d-flex" style="align-items: center;"> <div class="col-6 text-left" style="height: 100%;"> <div class="div-logo"><a href="index.php"><img class="mw-100" src="assets/aplans.png" alt="logotipo"></a></div> </div><div class="col-6 text-right dropdown" style="height:100%"> <div class="avatar-circular">'+avatar+'</div> <div id="myDropdown" class="dropdown-content_avatar"><div id="abrirPerfil" class="d-flex justify-content-between"><div><img src="images/others/utilizador.png" style="width:20px;"></div><div><p class="m-0">Perfil</p></div></div><div class="d-flex justify-content-between"><div><img src="images/others/settings.png" style="width:20px;"></div><div><p class="m-0">Admin</p></div></div><div id="logout" class="d-flex justify-content-between" style="background-color: rgba(240,52,52,0.5);/* background-color: white; */"><div><img src="images/others/sair.png" style="width:20px;"></div><div><p class="m-0 font-weight-bold">Sair</p></div></div></div> </div> </section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos">Created Plans</p> </section> <section class="row justify-content-center" style="align-items: center;"> '+adicionarNovoEvento+' <div id="carouselExampleIndicators1" class="carousel slide col-8 m-auto" data-interval="false"> <ol class="carousel-indicators" style="bottom: -6vh;">'+indicators+'</ol> <div class="carousel-inner"> '+eventosCriados+' </div> '+setaEsquerda+' '+setaDireita+'</div> </section> </div> <div class="container p-3"><section class="row pl-3"> <p class="index-titulos col-6 p-0">Planos Futuros</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a id="mostrarTodosPlanos">Ver todos</a></p> </section><section class="row">'+upcoming+'</section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos col-6 p-0">Meus Amigos</p> <p class="index-titulos text-right col-6 " style="font-size:small;">'+modalAmigos+'</p> </section> <section class="row" style="align-items: center;"> '+adicionarAmigos+'' + start_div +''+cardsAmigos+'' + end_div +' </section> </div> <div id="mostrarAmigosAdd" class="dropdown-content_amigosAdd"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharPessoasAdd"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="search_pessoas" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="mostrarTodosAmigosAdd" class="d-flex flex-column w-100 p-0 mt-2"></div><div id="verMais"><p>Ver Mais</p></div></div></div><div id="mostrarTodosEventoss" class="dropdown-content_amigosAdd"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharEventos"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="search_eventos" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="MostrarResultadosEventos" class="d-flex flex-column w-100 p-0 mt-2"></div><div id="verMaisEventos"><p>Ver Mais</p></div></div></div></main>'
 
             $('#conteudoPagina').append(home);
             $('#amigosBody').append(listaAmigos);
@@ -178,7 +178,7 @@
 
 
             /*Utiliza a barra de pesquisa, para pesquisar por os amigos de um utilizador*/
-           
+            var paginaEventos = 1;
             var pagina = 1; /*Iniciar var globar para ser lida mais a frente*/
             $('#searchAmigos').keyup(function() {
                 
@@ -203,6 +203,15 @@
                 if (search == '') {
                     search = 'vazio';
                 }
+               
+                pesquisarAmigos(search,pagina)/*pedido de ajax de acordo com a barra de pesquisa*/
+            })
+
+            $('#verMaisEventos').on("click", function () { /*quando se clica no btn VER MAIS*/
+
+                paginaEventos++ /*pagina aumenta, faz com que sejam apresnetados mais resultados (Infinite scroll)*/
+                search = $("#search_eventos").val();/*mantem o nome que estiver no input*/
+                
                
                 pesquisarAmigos(search,pagina)/*pedido de ajax de acordo com a barra de pesquisa*/
             })
@@ -273,6 +282,42 @@
 
     }
 
+    function pesquisarEventos(nome_evento,pagina) {
+        
+         query_nome_evento = "nome=" + nome_evento + "&pag=" + pagina;
+        console.log(nome_evento, pagina);
+        // console.log(nome_amigos);
+        $.ajax({ // ajax call starts
+            url: 'scripts/sc_search_eventos.php',
+            data: query_nome_evento,
+            dataType: 'json', // Choosing a JSON datatype
+            type: 'GET',
+
+        })
+            .done(function (data) {
+                
+                if (data.modal_eventos != undefined) {
+
+                    
+                    /*Codigo HTML de cada amigo*/
+                    for (let i = 0; i < data.modal_eventos.length; i++) {
+                        mostrarListaEventos = '<div id="'+data.modal_eventos[i]["id"]+'" class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div class="btn-evento lista-event"><img class="avatar-circular-eventos-lista" src="images' + data.modal_eventos[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.modal_eventos[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Ver evento</button></div></div>';
+
+
+
+                        $('#MostrarResultadosEventos').append(mostrarListaEventos);
+                    }
+
+
+
+                }
+
+               
+
+            })
+
+    }
+
     /*Quando o user carrega no Ver todos nos amigos*/
     function menu_amigos() {
         $('#mostrarTodosAmigos').html(' ');
@@ -291,6 +336,24 @@
 
     $(document).on("click", "#fecharAmigos", function() {
         $("#mostrarAmigos").removeClass("showAmigos");
+    });
+
+
+
+
+    /*QUANDO SE CLICA APRA VER TODOS OS EVENTOS*/
+    $(document).on("click", "#mostrarTodosPlanos", function () {
+        $('#MostrarResultadosEventos').html(' ');
+        $("#mostrarTodosEventoss").css("display", "block");
+        searchEventos = $("#search_eventos").val();/*le o valor que esta na input*/
+         
+        
+        pesquisarEventos(searchEventos,1)
+
+    });
+    /*QUANDO SE CLICA APRA FECHAR TODOS OS EVENTOS*/
+    $(document).on("click", "#fecharEventos", function () {
+        $("#mostrarTodosEventoss").css("display", "none");
     });
 
 
@@ -315,34 +378,10 @@
 
     
 
-          $(window).on('resize', function(){
-              location.reload();
-          })
+    $(window).on('resize', function(){
+        location.reload();
+    })
 </script>
 
 
 
-
-
-
-<!------------------------------- MODAIS -------------------------------->
-
-<!-- Modal -->
-<div class="modal fade" id="mostarPlanos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Planos</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div id="upcomingPlans" class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
