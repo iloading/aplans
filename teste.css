@@ -678,7 +678,22 @@ ul li{
 
 /*/Pagina de Criação de Evento*/
 
+/*Botao atualizar evento (settings)*/
+.botaoAtualizarEvento{
+    font-size: 1.4rem; 
+    background-color: rgba(109, 63, 230, 0.2); 
+    border-radius: 20px; 
+    color: #6F41E9; 
+    font-weight: 500; 
+    border: none;
+    width:60%;
+}
 
+.botaoAtualizarEvento:focus {
+    outline:none;
+}
+
+/*/Botao atualizar evento (settings)*/
 
 /* Dropdown Button */
 .dropbtn {
@@ -1330,6 +1345,14 @@ button:focus{
   max-width:calc(100px + 5vw);
   height: calc(100px + 5vw);
 }
+
+.cameraUpload {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    
+   
+  }
 
 
 
