@@ -69,7 +69,7 @@ if (isset($_SESSION['email_aplans'])) {
                 }
             }
 
-
+            /*Sistema de Mensagem de Informação funcional em todas as páginas da app*/
             function mostrarInfo(msg) {
 
                 switch (msg) {
@@ -152,6 +152,12 @@ if (isset($_SESSION['email_aplans'])) {
                 }, 5000);
 
             }
+            /*Quando se clica na mensagem, ela desaparece*/
+            $('#mensagemInfo').on('click', function() {
+                $(this).addClass("d-none");
+                $(this).html(" ");
+
+            })
 
             /*Carrega a página Home quando a página index.php é carregada pela primeira vez*/
             $(document).ready(function() {
@@ -191,13 +197,7 @@ if (isset($_SESSION['email_aplans'])) {
 
 
 
-            $('#mensagemInfo').on('click', function() {
-
-                $(this).html(" ");
-                <?php
-                unset($_SESSION['msg'])
-                ?>
-            })
+            
         </script>
 
 
