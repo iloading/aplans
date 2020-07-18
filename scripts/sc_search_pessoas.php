@@ -10,17 +10,19 @@ $link = new_db_connection();
 if (isset($_GET['nome'])) {
 
     $search = $_GET['nome'];
-    
+    $pagina = $_GET['pag'];
+    $items = 4;
+    $pos_pesquisa = ($pagina - 1) * $items;
 
     $wildcard = "%$search%";
 
     $stmt = mysqli_stmt_init($link);
 
     if ($search != "") {
-        $query = "SELECT id, nome, url FROM users WHERE nome LIKE ?";
+        $query = "SELECT id, nome, url FROM users WHERE nome LIKE ? ORDER BY nome LIMIT ?,?";
 
         if (mysqli_stmt_prepare($stmt, $query)) { 
-            mysqli_stmt_bind_param($stmt, 's',  $wildcard);
+            mysqli_stmt_bind_param($stmt, 'sii',$wildcard, $pos_pesquisa, $items);
             if (mysqli_stmt_execute($stmt)) {
                 mysqli_stmt_bind_result($stmt, $id, $nome, $url);
 
