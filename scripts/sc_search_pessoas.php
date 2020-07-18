@@ -10,6 +10,7 @@ $link = new_db_connection();
 if (isset($_GET['nome'])) {
 
     $search = $_GET['nome'];
+    
 
     $wildcard = "%$search%";
 

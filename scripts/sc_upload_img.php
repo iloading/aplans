@@ -13,6 +13,38 @@ $data = array();
 
 
 
+
+$link = new_db_connection();
+
+$stmt = mysqli_stmt_init($link);
+
+$query = "SELECT url FROM users WHERE users.id = ?";
+
+if (mysqli_stmt_prepare($stmt, $query)) {
+    mysqli_stmt_bind_param($stmt, 'i', $id_user);
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_bind_result($stmt, $urlAdquirido);
+        mysqli_stmt_fetch($stmt);
+
+        if(file_exists('../images' . $urlAdquirido)){
+            unlink('../images' . $urlAdquirido);
+        }
+
+
+        mysqli_stmt_close($stmt);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
 if($_FILES["file"]["error"] > 0){
 
     $data["avatar"] = 'error';
@@ -22,6 +54,7 @@ if($_FILES["file"]["error"] > 0){
 
 
 }else{
+
 
     
  
@@ -54,7 +87,7 @@ if($_FILES["file"]["error"] > 0){
         
         $path = "/"."upload/".$newfilename;
 
-        $link = new_db_connection();
+  
 
         $stmt = mysqli_stmt_init($link);
 

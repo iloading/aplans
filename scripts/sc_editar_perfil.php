@@ -73,16 +73,9 @@ if (isset($_SESSION['id_user_aplans'])) {
             }
 
 
-       
-
-       
+    
             $genero = $_GET['generoPerfil'];
       
-
-
-
-     
-     
             $descricao = $_GET['descricaoPerfil'];
 
 
@@ -101,13 +94,15 @@ if (isset($_SESSION['id_user_aplans'])) {
 
         $stmt = mysqli_stmt_init($link);
 
-        $query = "UPDATE users SET nome = ?, email = ?, morada = ?, codigo_postal = ?, telemovel = ?, url = ?, descricao = ?, ref_genero_id = ? WHERE users.id = ?";
+        $query = "UPDATE users SET nome = ?, email = ?, morada = ?, codigo_postal = ?, telemovel = ?, descricao = ?, ref_genero_id = ? WHERE users.id = ?";
 
         if (mysqli_stmt_prepare($stmt, $query)) {
-            mysqli_stmt_bind_param($stmt, 'ssssissii', $nome,$email,$morada,$codigo_postal,$telemovel,$url,$descricao,$genero,$criador);
+            mysqli_stmt_bind_param($stmt, 'ssssisii', $nome,$email,$morada,$codigo_postal,$telemovel,$descricao,$genero,$criador);
             if (mysqli_stmt_execute($stmt)) {
 
                 $data['updatePerfil'] = 'sucesso';
+
+                mysqli_stmt_close($stmt);
             }
         }
 
@@ -120,6 +115,9 @@ if (isset($_SESSION['id_user_aplans'])) {
 
 
     }
+
+
+
 
     print json_encode($data);
 }
