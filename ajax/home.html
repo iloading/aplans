@@ -136,7 +136,7 @@
         
 
             
-            var home = '<main id="main" class="text-white bg-azul-aplans d-flex flex-column align-items-start"> <div class="container p-3"> <section class="row d-flex" style="align-items: center;"> <div class="col-6 text-left" style="height: 100%;"> <div class="div-logo"><a href="index.php"><img class="mw-100" src="assets/aplans.png" alt="logotipo"></a></div> </div><div class="col-6 text-right dropdown" style="height:100%"> <div class="avatar-circular">'+avatar+'</div> <div id="myDropdown" class="dropdown-content_avatar"><div id="abrirPerfil" class="d-flex justify-content-between"><div><img src="images/others/utilizador.png" style="width:20px;"></div><div><p class="m-0">Perfil</p></div></div>'+adminBtn+'<div id="logout" class="d-flex justify-content-between" style="background-color: rgba(240,52,52,0.5);/* background-color: white; */"><div><img src="images/others/sair.png" style="width:20px;"></div><div><p class="m-0 font-weight-bold">Sair</p></div></div></div> </div> </section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos">Created Plans</p> </section> <section class="row justify-content-center" style="align-items: center;"> '+adicionarNovoEvento+' <div id="carouselExampleIndicators1" class="carousel slide col-8 m-auto" data-interval="false"> <ol class="carousel-indicators" style="bottom: -6vh;">'+indicators+'</ol> <div class="carousel-inner"> '+eventosCriados+' </div> '+setaEsquerda+' '+setaDireita+'</div> </section> </div> <div class="container p-3"><section class="row pl-3"> <p class="index-titulos col-6 p-0">Planos Futuros</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a id="mostrarTodosPlanos">Ver todos</a></p> </section><section class="row">'+upcoming+'</section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos col-6 p-0">Meus Amigos</p> <p class="index-titulos text-right col-6 " style="font-size:small;">'+modalAmigos+'</p> </section> <section class="row" style="align-items: center;"> '+adicionarAmigos+'' + start_div +''+cardsAmigos+'' + end_div +' </section> </div> <div id="mostrarAmigosAdd" class="dropdown-content_amigosAdd"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharPessoasAdd"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="search_pessoas" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="mostrarTodosAmigosAdd" class="d-flex flex-column w-100 p-0 mt-2"></div><div id="verMais"><p>Ver Mais</p></div></div></div><div id="mostrarTodosEventoss" class="dropdown-content_amigosAdd"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharEventos"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="search_eventos" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="MostrarResultadosEventos" class="d-flex flex-column w-100 p-0 mt-2"></div><div id="verMaisEventos"><p>Ver Mais</p></div></div></div></main>'
+            var home = '<main id="main" class="text-white bg-azul-aplans d-flex flex-column align-items-start"> <div class="container p-3"> <section class="row d-flex" style="align-items: center;"> <div class="col-6 text-left" style="height: 100%;"> <div class="div-logo"><a href="index.php"><img class="mw-100" src="assets/aplans.png" alt="logotipo"></a></div> </div><div class="col-6 text-right dropdown" style="height:100%"> <div class="avatar-circular">'+avatar+'</div> <div id="myDropdown" class="dropdown-content_avatar"><div id="abrirPerfil" class="d-flex justify-content-between"><div><img src="images/others/utilizador.png" style="width:20px;"></div><div><p class="m-0">Perfil</p></div></div>'+adminBtn+'<div id="logout" class="d-flex justify-content-between" style="background-color: rgba(240,52,52,0.5);/* background-color: white; */"><div><img src="images/others/sair.png" style="width:20px;"></div><div><p class="m-0 font-weight-bold">Sair</p></div></div></div> </div> </section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos">Created Plans</p> </section> <section class="row justify-content-center" style="align-items: center;"> '+adicionarNovoEvento+' <div id="carouselExampleIndicators1" class="carousel slide col-8 m-auto" data-interval="false"> <ol class="carousel-indicators" style="bottom: -6vh;">'+indicators+'</ol> <div class="carousel-inner"> '+eventosCriados+' </div> '+setaEsquerda+' '+setaDireita+'</div> </section> </div> <div class="container p-3"><section class="row pl-3"> <p class="index-titulos col-6 p-0">Planos Futuros</p> <p class="index-titulos text-right col-6 " style="font-size:small;"><a id="mostrarTodosPlanos">Ver todos</a></p> </section><section class="row">'+upcoming+'</section> </div> <div class="container p-3"> <section class="row pl-3"> <p class="index-titulos col-6 p-0">Meus Amigos</p> <p class="index-titulos text-right col-6 " style="font-size:small;">'+modalAmigos+'</p> </section> <section class="row" style="align-items: center;"> '+adicionarAmigos+'' + start_div +''+cardsAmigos+'' + end_div +' </section> </div> <div id="mostrarAmigosAdd" class="dropdown-content_amigosAdd"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharPessoasAdd"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="search_pessoas" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="mostrarTodosAmigosAdd" class="d-flex flex-column w-100 p-0 mt-2"></div><div id="verMaisUsers"><p>Ver Mais</p></div></div></div><div id="mostrarTodosEventoss" class="dropdown-content_amigosAdd"><div class="d-flex flex-column p-0"><div class="w-100 justify-content-center" id="fecharEventos"><img src="images/others/close.png" style="width:3rem;"></div><div class="d-flex mt-2 w-100" style="background-color: #3C5E77"><div><img src="images/others/search.png" style="width:20px;"></div><div><input id="search_eventos" type="text" class="m-0 searchPessoas" placeholder="Procurar"></div></div><div id="MostrarResultadosEventos" class="d-flex flex-column w-100 p-0 mt-2"></div><div id="verMaisEventos"><p>Ver Mais</p></div></div></div></main>'
 
             $('#conteudoPagina').append(home);
             $('#amigosBody').append(listaAmigos);
@@ -144,69 +144,42 @@
             
            
             
-            /*Utiliza a barra de pesquisa, para pesquisar por todos os users*/
-            $('#search_pessoas').keyup(function() {
-                search = $(this).val();
-                console.log(search);
-                if (search != '') {
-                    nome_inserido = "nome=" + search;
-                
-                    $.ajax({ // ajax call starts
-                    url: 'scripts/sc_search_pessoas.php',
-                    data: nome_inserido,
-                    dataType: 'json', // Choosing a JSON datatype
-                    type: 'GET',
-
-                    })
-                    .done(function (data) {
-                    
-                    
-                    
-                    if (data.utilizadores != undefined) {
-                        $('#mostrarTodosAmigosAdd').html(' ');
-                        if (data.utilizadores == 'vazio') {
-                            $('#mostrarTodosAmigosAdd').html(' ');
-                        }else{
-                            /*Lista de todos os users da app para seram adicionados*/
-                            for (let i = 0; i < data.utilizadores.length; i++) {
-                                mostrarListaAmigosAdd = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Adicionar</button></div></div>';
-
-                                $('#mostrarTodosAmigosAdd').append(mostrarListaAmigosAdd);
-                            }
-                        }
-
-                      
-                        
-                    }
-
-                    
-
-                    })
-                }else{
-                    $('#mostrarTodosAmigosAdd').html(' ');
-                }
-
-               
-            });
+            
 
 
             /*Utiliza a barra de pesquisa, para pesquisar por os amigos de um utilizador*/
+            var paginaPessoas = 1;
             var paginaEventos = 1;
             var pagina = 1; /*Iniciar var globar para ser lida mais a frente*/
             $('#searchAmigos').keyup(function() {
-                
-                pagina = 1; /*sem que e mudado o nome na search bar pag da reset a 1*/
+
                 search = $(this).val();
                 if (search == '') {
                     search = 'vazio';
                 }
-                   
-
-
+                pagina = 1; /*sempre que e mudado o nome na search bar pag da reset a 1*/
                 $('#mostrarTodosAmigos').html(' ');/*Limpa os resultados que possam estar anteriormwente apresentados*/
                 pesquisarAmigos(search,pagina);/*pedido de ajax de acordo com a barra de pesquisa */
 
                
+            });
+
+            /*Utiliza a barra de pesquisa, para pesquisar por todos os users*/
+            $('#search_pessoas').keyup(function() {
+                search = $(this).val();
+                paginaPessoas = 1; /*sempre que e mudado o nome na search bar pag da reset a 1*/
+                $('#mostrarTodosAmigosAdd').html(' ');/*Limpa os resultados que possam estar anteriormwente apresentados*/
+                pesquisarUsers(search,1)/*pedido de ajax de acordo com a barra de pesquisa *//*sempre que e mudado o nome na search bar pag da reset a 1*/
+
+            });
+
+            /*Utiliza a barra de pesquisa, para pesquisar por todos os users*/
+            $('#search_eventos').keyup(function() {
+                paginaEventos = 1;/*sempre que e mudado o nome na search bar pag da reset a 1*/
+                search = $(this).val();
+                $('#MostrarResultadosEventos').html(' ');/*Limpa os resultados que possam estar anteriormwente apresentados*/
+                pesquisarEventos(search,paginaEventos)/*pedido de ajax de acordo com a barra de pesquisa */
+
             });
 
             $('#verMais').on("click", function () { /*quando se clica no btn VER MAIS*/
@@ -220,14 +193,67 @@
                 pesquisarAmigos(search,pagina)/*pedido de ajax de acordo com a barra de pesquisa*/
             })
 
+            $('#verMaisUsers').on("click", function () { /*quando se clica no btn VER MAIS*/
+
+                paginaPessoas++ /*pagina aumenta, faz com que sejam apresnetados mais resultados (Infinite scroll)*/
+                search = $("#search_pessoas").val();/*mantem o nome que estiver no input*/
+                if (search == '') {
+                    search = 'vazio';
+                }
+               
+                pesquisarUsers(search,paginaPessoas)/*pedido de ajax de acordo com a barra de pesquisa*/
+            })
+
             $('#verMaisEventos').on("click", function () { /*quando se clica no btn VER MAIS*/
 
                 paginaEventos++ /*pagina aumenta, faz com que sejam apresnetados mais resultados (Infinite scroll)*/
                 search = $("#search_eventos").val();/*mantem o nome que estiver no input*/
                 
                
-                pesquisarAmigos(search,pagina)/*pedido de ajax de acordo com a barra de pesquisa*/
+                pesquisarEventos(search,paginaEventos)/*pedido de ajax de acordo com a barra de pesquisa*/
             })
+
+             $(document).on("click", "#menuAmigos", function() {
+                menu_amigos();
+            });
+
+            $(document).on("click", "#fecharAmigos", function() {
+                pagina = 1;
+                $("#mostrarAmigos").removeClass("showAmigos");
+            });
+
+
+
+
+            /*QUANDO SE CLICA APRA VER TODOS OS EVENTOS*/
+            $(document).on("click", "#mostrarTodosPlanos", function () {
+                $('#MostrarResultadosEventos').html(' ');
+                $("#mostrarTodosEventoss").css("display", "block");
+                searchEventos = $("#search_eventos").val();/*le o valor que esta na input*/
+                
+                
+                pesquisarEventos(searchEventos,1)
+
+            });
+            /*QUANDO SE CLICA APRA FECHAR TODOS OS EVENTOS*/
+            $(document).on("click", "#fecharEventos", function () {
+                paginaEventos = 1;
+                $("#mostrarTodosEventoss").css("display", "none");
+            });
+
+            /*QUANDO SE CLICA PARA ABRIR O MODAL DE ADICIONAR AMIGOS*/
+            $(document).on("click", "#abrirListaAdd", function () {
+                menu_amigosAdd();
+            });
+
+            $(document).on("click", "#abrirListaAdd2", function () {
+                    menu_amigosAdd();
+            });
+            /*QUANDO SE CLICA PARA FECHAR O MODAL DE ADICIONAR AMIGOS*/
+            $(document).on("click", "#fecharPessoasAdd", function () {
+                $("#mostrarAmigosAdd").removeClass('showAmigosAdd');
+            });
+
 
             alturaConteudo()
         })
@@ -243,7 +269,7 @@
 
 
         
-        // O dropdown fecha se o utilizador clicar fora dele 
+        // O dropdown qundo se clica no avatar fecha se o utilizador clicar fora dele 
         window.onclick = function(event) {
           if (!event.target.matches('.dropbtn')) {
             var dropdowns = document.getElementsByClassName("dropdown-content_avatar");
@@ -257,7 +283,46 @@
           }
         }
 
+    function pesquisarUsers(search,pagina) {
+        if (search != '') {
+            
+                nome_inserido = "nome=" + search + "&pag=" + pagina;;
+            
+                $.ajax({ // ajax call starts
+                url: 'scripts/sc_search_pessoas.php',
+                data: nome_inserido,
+                dataType: 'json', // Choosing a JSON datatype
+                type: 'GET',
 
+                })
+                .done(function (data) {
+                
+                
+                
+                if (data.utilizadores != undefined) {
+                    
+                    if (data.utilizadores == 'vazio') {
+                        $('#mostrarTodosAmigosAdd').html(' ');
+                    }else{
+                        /*Lista de todos os users da app para seram adicionados*/
+                        for (let i = 0; i < data.utilizadores.length; i++) {
+                            mostrarListaAmigosAdd = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Adicionar</button></div></div>';
+
+                            $('#mostrarTodosAmigosAdd').append(mostrarListaAmigosAdd);
+                        }
+                    }
+
+                  
+                    
+                }
+
+                
+
+                })
+            }else{
+                $('#mostrarTodosAmigosAdd').html(' ');
+            }
+    }
 
     function pesquisarAmigos(nome_amigos,pagina) {
 
@@ -297,9 +362,9 @@
 
     function pesquisarEventos(nome_evento,pagina) {
         
-         query_nome_evento = "nome=" + nome_evento + "&pag=" + pagina;
-        console.log(nome_evento, pagina);
-        // console.log(nome_amigos);
+        query_nome_evento = "nome=" + nome_evento + "&pag=" + pagina;
+        
+        
         $.ajax({ // ajax call starts
             url: 'scripts/sc_search_eventos.php',
             data: query_nome_evento,
@@ -343,32 +408,7 @@
           pesquisarAmigos(search,1)/*quando se abre o modal apresenta apenas alguns amigos*/
     }
 
-    $(document).on("click", "#menuAmigos", function() {
-        menu_amigos();
-    });
-
-    $(document).on("click", "#fecharAmigos", function() {
-        $("#mostrarAmigos").removeClass("showAmigos");
-    });
-
-
-
-
-    /*QUANDO SE CLICA APRA VER TODOS OS EVENTOS*/
-    $(document).on("click", "#mostrarTodosPlanos", function () {
-        $('#MostrarResultadosEventos').html(' ');
-        $("#mostrarTodosEventoss").css("display", "block");
-        searchEventos = $("#search_eventos").val();/*le o valor que esta na input*/
-         
-        
-        pesquisarEventos(searchEventos,1)
-
-    });
-    /*QUANDO SE CLICA APRA FECHAR TODOS OS EVENTOS*/
-    $(document).on("click", "#fecharEventos", function () {
-        $("#mostrarTodosEventoss").css("display", "none");
-    });
-
+   
 
 
 
@@ -377,17 +417,7 @@
         $("#mostrarAmigosAdd").addClass("showAmigosAdd");
     }
 
-    $(document).on("click", "#abrirListaAdd", function () {
-        menu_amigosAdd();
-    });
-
-    $(document).on("click", "#abrirListaAdd2", function () {
-            menu_amigosAdd();
-    });
-
-    $(document).on("click", "#fecharPessoasAdd", function () {
-        $("#mostrarAmigosAdd").removeClass('showAmigosAdd');
-    });
+    
 
     
 
