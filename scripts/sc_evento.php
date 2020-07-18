@@ -17,7 +17,7 @@ $link = new_db_connection();
 /*------------------------------INTERFACE HOME----------------------*/
 $stmt = mysqli_stmt_init($link);
 
-$query = "SELECT event_type.url, ref_creator_id, name, date, slots, short_description, last_message_update, local FROM event INNER JOIN event_type ON event_type.id = ref_event_type_id WHERE event.id = ?";
+$query = "SELECT event_type.id, event_type.url, ref_creator_id, name, date, slots, short_description, last_message_update, local FROM event INNER JOIN event_type ON event_type.id = ref_event_type_id WHERE event.id = ?";
 
 
 
@@ -26,7 +26,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     // Devemos validar também o resultado do execute!
 
     if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_bind_result($stmt, $tipoEvento, $criador, $nomeEvento, $dataEvento, $slots, $descricao, $ultimoUpdate, $local);
+        mysqli_stmt_bind_result($stmt, $idTipoEvento , $tipoEvento, $criador, $nomeEvento, $dataEvento, $slots, $descricao, $ultimoUpdate, $local);
 
         /* fetch values */
 
@@ -84,6 +84,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
 
             $row_result = array();
+            $row_result["idtipo"] = htmlspecialchars($idTipoEvento);
             $row_result["tipo"] = htmlspecialchars($tipoEvento);
             $row_result["criador"] = htmlspecialchars($criador);
             $row_result["nome"] = htmlspecialchars($nomeEvento);

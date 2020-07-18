@@ -113,8 +113,26 @@ if (isset($_SESSION['email_aplans'])) {
                         break;
                     case '13':
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Evento eliminado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
-                        break;    
-
+                        break;
+                    case '14':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Nome de evento inválido!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                    break;
+                    case '15':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Data de evento inválida!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                    break;
+                    case '16':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Local de evento inválido!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                    break;
+                    case '17':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Descrição de evento inválida!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                    break;
+                    case '18':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Número de participantes inválido!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                    break;
+                    case '19':
+                        msgConteudo = '<div class="alert alert-success m-0 p-3">Evento alterado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                    break;
+                   
 
 
 
