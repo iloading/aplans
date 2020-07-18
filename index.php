@@ -116,23 +116,23 @@ if (isset($_SESSION['email_aplans'])) {
                         break;
                     case '14':
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Nome de evento inválido!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
-                    break;
+                        break;
                     case '15':
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Data de evento inválida!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
-                    break;
+                        break;
                     case '16':
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Local de evento inválido!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
-                    break;
+                        break;
                     case '17':
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Descrição de evento inválida!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
-                    break;
+                        break;
                     case '18':
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Número de participantes inválido!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
-                    break;
+                        break;
                     case '19':
                         msgConteudo = '<div class="alert alert-success m-0 p-3">Evento alterado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
-                    break;
-                   
+                        break;
+
 
 
 
@@ -175,7 +175,7 @@ if (isset($_SESSION['email_aplans'])) {
 
                 mostrarEvento(idEvento)
 
-                
+
             });
 
             /* Quando se clica no botão de adicionar evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova funçao que irá mostrar a interface de criação do evento*/
@@ -193,11 +193,9 @@ if (isset($_SESSION['email_aplans'])) {
             $(document).on('click', '#logout', function() {
                 document.location.href = 'scripts/sc_logout.php';
             });
-
-
-
-
-            
+            $(document).on('click', '#abrirAdmin', function() {
+                document.location.href = 'admin/pages/users.php';
+            });
         </script>
 
 

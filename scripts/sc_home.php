@@ -213,12 +213,12 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
 $stmt = mysqli_stmt_init($link);
 
-$query = "SELECT id, url FROM users WHERE id = ?";
+$query = "SELECT id, url, ref_roles_id FROM users WHERE id = ?";
 
 if (mysqli_stmt_prepare($stmt, $query)) {
     mysqli_stmt_bind_param($stmt, 'i', $id_user);
     if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_bind_result($stmt, $id, $url);
+        mysqli_stmt_bind_result($stmt, $id, $url, $role);
 
 
         while (mysqli_stmt_fetch($stmt)) {
@@ -228,6 +228,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result = array();
             $row_result["id"] = htmlspecialchars($id);
             $row_result["url"] = htmlspecialchars($url);
+            $row_result["role"] = htmlspecialchars($role);
          
 
             $data['user'][] = $row_result;
