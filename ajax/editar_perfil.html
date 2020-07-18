@@ -55,6 +55,9 @@
                 var generoPerfil = $('#novo_organizador option:selected').val()
                 var descricaoPerfil = $("#descricaoEditar").html();
                 var codigo_postal_perfil = $("#postalEditar").html();
+               
+
+             
                 
 
 
@@ -76,30 +79,49 @@
                         var formData = new FormData();
                         formData.append("file", fileData)
 
-                           $.ajax({
-                            // ajax call starts
-                            url: "scripts/sc_upload_img.php",
-                            dataType: "json", // Choosing a JSON datatype
-                            type: "POST",
-                            data: formData,
-                            cache: false,
-                            contentType: false,
-                            processData: false,
+                        console.log(fileData);
 
-                        }).done(function (data) {
 
-                            if (data['avatar'] == 'sucesso'){
-                                window.scrollTo(0, 0);
-                                console.log('sucesso');
-                                mostrarInfo("6");
-                                perfil()
-                            }else{
-                                window.scrollTo(0, 0);
-                                mostrarInfo(data['erro']);
-                            }
-                                
+                        if(fileData != undefined){
 
-                        })
+                            console.log('entroui');
+                        
+
+                                $.ajax({
+                                // ajax call starts
+                                url: "scripts/sc_upload_img.php",
+                                dataType: "json", // Choosing a JSON datatype
+                                type: "POST",
+                                data: formData,
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+
+                            }).done(function (data) {
+
+                                if (data['avatar'] == 'sucesso'){
+                                    window.scrollTo(0, 0);
+                                    console.log('sucesso');
+                                    mostrarInfo("6");
+                                    perfil()
+                                }else{
+                                    window.scrollTo(0, 0);
+                                    mostrarInfo(data['erro']);
+                                }
+
+
+                            })
+                        }else{
+
+                            window.scrollTo(0, 0);
+                            console.log('sucesso');
+                            mostrarInfo("6");
+                            perfil()
+                       
+
+
+                        }
+                       
 
                        
                         
