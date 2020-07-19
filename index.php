@@ -132,6 +132,10 @@ if (isset($_SESSION['email_aplans'])) {
                     case '19':
                         msgConteudo = '<div class="alert alert-success m-0 p-3">Evento alterado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
+                    case '20':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Data do evento inválida!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+
 
 
 
@@ -195,7 +199,7 @@ if (isset($_SESSION['email_aplans'])) {
             $(document).on('click', '#logout', function() {
                 document.location.href = 'scripts/sc_logout.php';
             });
-            
+
             $(document).on('click', '#abrirAdmin', function() {
                 document.location.href = 'admin/pages/users.php';
             });

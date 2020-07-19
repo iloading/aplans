@@ -2,7 +2,7 @@
 require_once "../connections/connection.php";
 
 session_start();
-$data = array();
+$data_display = array();
 
 if (isset($_SESSION['id_user_aplans'])) {
 
@@ -42,6 +42,7 @@ if (isset($_SESSION['id_user_aplans'])) {
                 $evento_data = $_GET['data_input'];
             }else{
                 $sucesso = 0;
+                $row[] = '20';
             }
    
         }else {
@@ -68,8 +69,14 @@ if (isset($_SESSION['id_user_aplans'])) {
         }
         
         if ($_GET['participantes'] != "") {
+
+            if ($_GET['participantes'] >= 2 && $_GET['participantes'] <= 250) {
+                $evento_participantes = $_GET['participantes'];
+            }else{
+                $sucesso = 0;
+                $row[] = '18';
+            }
            
-            $evento_participantes = $_GET['participantes'];
             
         }else {
             $sucesso = 0;
@@ -97,7 +104,7 @@ if (isset($_SESSION['id_user_aplans'])) {
             mysqli_stmt_bind_param($stmt, 'ssssiii',  $evento_nome ,  $evento_data , $evento_local , $evento_descricao , $evento_participantes, $imgTipoEvento, $idEvento);
             if (mysqli_stmt_execute($stmt)) {
 
-                $data['updateSettings'] = 'sucesso';
+                $data_display['update_Settings'] = 'sucesso';
                 
             }
         }
@@ -106,13 +113,13 @@ if (isset($_SESSION['id_user_aplans'])) {
        
     }else{
 
-        $data['erro'] = $row;
+        $data_display['erro'] = $row;
        
 
 
     }
 
-    print json_encode($data);
+    print json_encode($data_display);
 }
 
 

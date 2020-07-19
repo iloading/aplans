@@ -181,7 +181,7 @@
 
           var settingsQuery ="tipoEventoId=" + imagemTipoEvento + "&nome_evento=" + eventoNome + "&data_input=" + eventoData + "&local_evento=" + eventoLocal + "&descricao_evento=" + eventoDescricao + "&participantes=" + eventoParticipantes + "&idEvento=" + idEvento;
          
-         
+         console.log(settingsQuery);
           $.ajax({
             // ajax call starts
             url: "scripts/sc_update_settings.php",
@@ -189,11 +189,13 @@
             type: "GET",
             data: settingsQuery,
           }).done(function (data) {
-            if (data["updateSettings"] == "sucesso") {
+            if (data["update_Settings"] == "sucesso") {
                 
                 mostrarEvento(idEvento);
                 mostrarInfo('19');
             
+            }else{
+              mostrarInfo(data['erro'][0]);
             }
           });
         });
