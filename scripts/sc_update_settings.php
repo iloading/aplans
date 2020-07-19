@@ -8,6 +8,12 @@ if (isset($_SESSION['id_user_aplans'])) {
 
     $sucesso = 1;
     $row_results_erro = array();
+
+
+    $data = date('Y-m-d');
+    $hora = date('H:i');
+    $dataAtual = $data . 'T' . $hora;
+  
     
 
 
@@ -31,9 +37,13 @@ if (isset($_SESSION['id_user_aplans'])) {
         }
 
         if ($_GET['data_input'] != "") {
-           
-            $evento_data = $_GET['data_input'];
-            
+
+            if ($_GET['data_input'] > $dataAtual) {
+                $evento_data = $_GET['data_input'];
+            }else{
+                $sucesso = 0;
+            }
+   
         }else {
             $sucesso = 0;
             $row[] = '15';

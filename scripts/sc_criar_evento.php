@@ -10,6 +10,14 @@
         $criador = $_SESSION['id_user_aplans'];
         $num_tarefas = $_GET['numTarefas'];
 
+
+        $data = date('Y-m-d');
+        $hora = date('H:i');
+        $dataAtual = $data . 'T' . $hora;
+  
+        
+      
+
         /*Verificações para se algum campo não estiver preenchido,*/
 
         
@@ -28,8 +36,16 @@
         }
 
         if (isset($_GET['dataEvento']) && empty(trim($_GET['dataEvento'])) == false) {
-            $dataEvento = $_GET['dataEvento'];
-            $row_results_erro['dataEvento'] = htmlspecialchars($_GET['dataEvento']);
+
+
+            if($_GET['dataEvento'] > $dataAtual){
+                $dataEvento = $_GET['dataEvento'];
+                $row_results_erro['dataEvento'] = htmlspecialchars($_GET['dataEvento']);
+            }else{
+                $sucesso = 0;
+                echo ('data menor');
+            }
+           
         } else {
             $sucesso = 0;
         }

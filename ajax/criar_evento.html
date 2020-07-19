@@ -25,23 +25,14 @@
 
     
         
+            var dia = new Date();
+            var dd = String(dia.getDate()).padStart(2, '0');
+            var mm = String(dia.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = dia.getFullYear();
+            var hora_min = dia.getHours() + ':' + String(dia.getMinutes()).padStart(2, '0');
 
-            // Date object
-            var today = new Date();
-
-            // Current Date
-            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-            
-
-          
-            // Current Time
-            var time = today.getHours() + ":" + today.getMinutes();
-
-    
-            // Current Date and Time
-            var dateTime = date + 'T' + time;
-
-            console.log(dateTime);
+            dia = yyyy + '-' + mm + '-' + dd + 'T' + hora_min;
+            console.log(dia);
 
             
             
@@ -49,7 +40,7 @@
 
             /*Interface de Criar Evento*/
 
-            var criarEvento = '<main class="position-relative text-black bg-white d-flex flex-column align-items-start topRedondo"> <div class="w-100 d-flex flex-column" id="alturaCriarEvento"> <div class="d-flex" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta"> <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"> <div class="align-items-center"> <div class="d-flex align-items-center pr-3"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div> <div class="d-flex justify-content-center" id="imagem"> <div class="text-center"> <div class="img_tipo_evento menu_tipo_evento" style="position:relative;"><img  id="tipoEventoImg" class="dropbtn" src="images/others/click.png" style="width: 40%;"> <div id="dropdown_tipo" class="dropdown-content"> '+cardTipoEvento+' </div> <div class="text_alterarTipo">Alterar tipo de evento</div> </div> </div> </div> <div class="d-flex flex-column align-items-center mt-2"> <div class="mb-2 mt-2 pt-2" style="width: 100%;"> <span class="textareaEventoNome" role="textbox" contenteditable></span> </div> <div id="data_evento" style="position:relative;"> <input id="dataEvento" type="datetime-local" value="' + dateTime +'" max="2040-07-14T00:00"style="background:none;color:white;border:none;font-size:0.9rem;"> </div> </div> </div> </article> </div> <div class="w-100 pt-3" id="margem_conteudo"> <div class="container-fluid"> <h2 class="font-weight-bold mb-3">Dados do Evento</h2> <div class="mb-4"> <h5 class="font-weight-bold">Local</h5> <span class="textareaLocal" role="textbox" contenteditable></span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Descrição</h5> <span class="textareaDescricao" role="textbox" contenteditable></span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Nº máximo participantes</h5> <div class="container-fluid pt-2 pl-0"> <input class="nParticipantes" id="participantes" type="number" value="2" min="2" max="250"></input> </div> </div> <div class="mb-4"> <h5 class="font-weight-bold">Adicionar tarefa</h5> <div class="d-flex"> <div class="position-relative" style="width: 70%;"> <div class="d-flex"> <p class="mr-4" style="color: gray">Cor da tarefa :</p> <input id="corTarefa" type="color"> </div><span class="textareaTarefasNome mb-3" role="textbox" contenteditable></span> <span class="textareaTarefasDescricao mb-3" role="textbox" contenteditable></span> </div> <div style="width:30%;display:flex;"> <div id="adicionarTarefa" class="botao-circular">+</div> </div> </div> <div id="tarefasAdicionadas"></div> </div> <div class="tarefas_restantes_div"></div> </div> </div> </div> <div class="position-relative w-100 d-flex botao_criar_evento_align justify-content-center pb-4 pt-4"> <button class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Criar Evento</button> </div> <input id="selectTipo" class="d-none" type="number"></main>'
+            var criarEvento = '<main class="position-relative text-black bg-white d-flex flex-column align-items-start topRedondo"> <div class="w-100 d-flex flex-column" id="alturaCriarEvento"> <div class="d-flex" style="width: inherit; background-color: #F1F3F6; z-index:2" id="navCompleta"> <article class="container d-flex flex-column pl-3 pr-3 pt-4 pb-4" style="max-width:inherit; background-color: #3C5E77;" id="nav"> <div class="align-items-center"> <div class="d-flex align-items-center pr-3"> <img style="width: 1.1rem; height:1.1rem" src="images/others/back (5).png"> </div> <div class="d-flex justify-content-center" id="imagem"> <div class="text-center"> <div class="img_tipo_evento menu_tipo_evento" style="position:relative;"><img  id="tipoEventoImg" class="dropbtn" src="images/others/click.png" style="width: 40%;"> <div id="dropdown_tipo" class="dropdown-content"> '+cardTipoEvento+' </div> <div class="text_alterarTipo">Alterar tipo de evento</div> </div> </div> </div> <div class="d-flex flex-column align-items-center mt-2"> <div class="mb-2 mt-2 pt-2" style="width: 100%;"> <span class="textareaEventoNome" role="textbox" contenteditable></span> </div> <div id="data_evento" style="position:relative;width:60%"> <input id="dataEvento" type="datetime-local" value="' + dia +'" min="'+dia+'" max="2040-07-14T00:00" style="background:none;color:white;border:none;font-size:0.9rem;"> </div> </div> </div> </article> </div> <div class="w-100 pt-3" id="margem_conteudo"> <div class="container-fluid"> <h2 class="font-weight-bold mb-3">Dados do Evento</h2> <div class="mb-4"> <h5 class="font-weight-bold">Local</h5> <span class="textareaLocal" role="textbox" contenteditable></span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Descrição</h5> <span class="textareaDescricao" role="textbox" contenteditable></span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Nº máximo participantes</h5> <div class="container-fluid pt-2 pl-0"> <input class="nParticipantes" id="participantes" type="number" value="2" min="2" max="250"></input> </div> </div> <div class="mb-4"> <h5 class="font-weight-bold">Adicionar tarefa</h5> <div class="d-flex"> <div class="position-relative" style="width: 70%;"> <div class="d-flex"> <p class="mr-4" style="color: gray">Cor da tarefa :</p> <input id="corTarefa" type="color"> </div><span class="textareaTarefasNome mb-3" role="textbox" contenteditable></span> <span class="textareaTarefasDescricao mb-3" role="textbox" contenteditable></span> </div> <div style="width:30%;display:flex;"> <div id="adicionarTarefa" class="botao-circular">+</div> </div> </div> <div id="tarefasAdicionadas"></div> </div> <div class="tarefas_restantes_div"></div> </div> </div> </div> <div class="position-relative w-100 d-flex botao_criar_evento_align justify-content-center pb-4 pt-4"> <button class="pl-3 pr-3 pt-1 pb-1 botaoCriarEvento">Criar Evento</button> </div> <input id="selectTipo" class="d-none" type="number"></main>'
 
             
 
@@ -90,17 +81,18 @@
                     var descricaoTarefaEvento = $(".textareaTarefasDescricao").html();
                     var corTarefa = $("#corTarefa").val();
 
-                    var novaTarefa = '<div id="Tarefa'+num_tarefas+'" class="Tarefa pt-4 mt-3 d-flex"> <div style="width: 10%;"></div> <div style="width: 60%;"> <div class="pl-3 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsTituloTab m-0" style="color:'+corTarefa+'">'+nomeTarefaEvento+'</p> </div> <div class="pl-3 pt-1 d-flex align-items-center" style="border-left: 3px solid '+corTarefa+'"> <p class="settingsDescTab m-0" style="font-size: 1rem">'+descricaoTarefaEvento+'</p> </div> </div> <div class="d-flex align-items-center justify-content-center eliminarTarefa" style="width: 30%;"> <img style="width: 20%;" src="images/settings/minus.png"> </div> </div>'
+
+                    if(nomeTarefaEvento != '' && descricaoTarefaEvento != '' && corTarefa != ''){
+
+                        var novaTarefa = '<div id="Tarefa' + num_tarefas + '" class="Tarefa pt-4 mt-3 d-flex"> <div style="width: 10%;"></div> <div style="width: 60%;"> <div class="pl-3 d-flex align-items-center" style="border-left: 3px solid ' + corTarefa + '"> <p class="settingsTituloTab m-0" style="color:' + corTarefa + '">' + nomeTarefaEvento + '</p> </div> <div class="pl-3 pt-1 d-flex align-items-center" style="border-left: 3px solid ' + corTarefa + '"> <p class="settingsDescTab m-0" style="font-size: 1rem">' + descricaoTarefaEvento + '</p> </div> </div> <div class="d-flex align-items-center justify-content-center eliminarTarefa" style="width: 30%;"> <img style="width: 20%;" src="images/settings/minus.png"> </div> </div>'
+                        
+                    }
+                    
 
 
                     $('#tarefasAdicionadas').append(novaTarefa);
 
 
-                     console.log($('#Tarefa'+num_tarefas+'').offset().top);
-                     $('html body').animate({
-                        
-                         scrollTop: ($('#selectTipo').offset().top)
-                     }, 2000);
                 })
                    
                    

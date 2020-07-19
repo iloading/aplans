@@ -55,8 +55,9 @@
                        
                     }else{
                 
-                        eventosCriados += '<div id="' + data.created[i]["id_evento"] + '" class="carousel-item btn-evento"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12">' + data.created[i]["dataEventoCriado"] + '</p> </div> </div> </div>';
-                        indicators += '<li data-target="#carouselExampleIndicators1" data-slide-to="' + i + '"></li>';
+                      eventosCriados += '<div id="' + data.created[i]["id_evento"] + '" class="carousel-item btn-evento"> <div class="events container-fluid"> <div class="row"> <p class="col-12">' + data.created[i]["nomeEventoCriado"] + '</p> <p class="col-12 data_evento">' + data.created[i]["diaEventoCriado"] + '</p> <p class="col-12 data_evento">' + data.created[i]["horaEventoCriado"] + '</p></div> </div> </div>';
+                
+                    indicators += '<li data-target="#carouselExampleIndicators1" data-slide-to="' + i + '"></li>';
                     }
                         
                 }
