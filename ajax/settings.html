@@ -36,6 +36,17 @@
       var idtipoEvento = data["home"]["idtipo"];
 
 
+      var dia = new Date();
+      var dd = String(dia.getDate()).padStart(2, '0');
+      var mm = String(dia.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = dia.getFullYear();
+      var hora_min = dia.getHours() + ':' + String(dia.getMinutes()).padStart(2, '0');
+
+      dia = yyyy + '-' + mm + '-' + dd + 'T' + hora_min;
+      console.log(dia);
+
+
+
       /*Interface de Settings do Evento*/
 
       var settingsEvento =
@@ -46,8 +57,7 @@
         ' </div> <div class="text_alterarTipo">Alterar tipo de Evento</div> </div> </div> </div> <div class="d-flex flex-column align-items-center mt-2"> <div class="mb-2 mt-2" style="width: 100%;"> <span id="nome_evento" class="textareaEventoNome" role="textbox" contenteditable>' +
         nomeEvento +
         '</span> </div> <div id="data_evento" style="position:relative;"> <input id="data_input" type="datetime-local" value="' +
-        dataEvento +
-        '" style="background:none;color:white;border:none;font-size:0.9rem;"> </div> </div> </div> </article> </div> <div class="w-100 pt-3"> <div class="container-fluid"> <h2 class="font-weight-bold mb-3">Dados do Evento</h2> <form> <div class="mb-4"> <h5 class="font-weight-bold">Local</h5> <span id="local_evento" class="textareaLocal" role="textbox" contenteditable>' +
+        dataEvento +'" min='+dia+' style="background:none;color:white;border:none;font-size:0.9rem;"> </div> </div> </div> </article> </div> <div class="w-100 pt-3"> <div class="container-fluid"> <h2 class="font-weight-bold mb-3">Dados do Evento</h2> <form> <div class="mb-4"> <h5 class="font-weight-bold">Local</h5> <span id="local_evento" class="textareaLocal" role="textbox" contenteditable>' +
         localEvento +
         '</span> </div> <div class="mb-4"> <h5 class="font-weight-bold pt-2">Descrição</h5> <span id="descricao_evento" class="textareaDescricao" role="textbox" contenteditable>' +
         descricaoEvento +
