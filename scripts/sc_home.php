@@ -64,7 +64,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
 $stmt = mysqli_stmt_init($link);
 
-$query = "SELECT event.id, event.name, event_type.url FROM event INNER JOIN event_type ON event_type.id = ref_event_type_id";
+$query = "SELECT event.id, event.name, event_type.url FROM event INNER JOIN event_type ON event_type.id = ref_event_type_id ORDER BY event.date";
 
 
 
