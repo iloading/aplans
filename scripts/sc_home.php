@@ -120,7 +120,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
 $stmt = mysqli_stmt_init($link);
 
-$query = "SELECT users.nome,users.url FROM users INNER JOIN amigos ON users.id = user_id1  WHERE user_id2 = ?";
+$query = "SELECT users.nome,users.url,users.id FROM users INNER JOIN amigos ON users.id = user_id1  WHERE user_id2 = ?";
 
 
 
@@ -129,7 +129,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     // Devemos validar também o resultado do execute!
 
     if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_bind_result($stmt, $nomeAmigo, $imagemAmigo);
+        mysqli_stmt_bind_result($stmt, $nomeAmigo,$imagemAmigo, $id_utilizador);
 
         /* fetch values */
 
@@ -137,6 +137,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result = array();
             $row_result["nomesAmigos"] = htmlspecialchars($nomeAmigo);
             $row_result["imagem_amigo"] = htmlspecialchars($imagemAmigo);
+            $row_result["id_utilizador"] = htmlspecialchars($id_utilizador);
             $data["amigos"][] = $row_result;
         }
         if (mysqli_stmt_num_rows($stmt) == 0) {
@@ -164,7 +165,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
 $stmt = mysqli_stmt_init($link);
 
-$query = "SELECT users.nome,users.url FROM users INNER JOIN amigos ON users.id = user_id2  WHERE user_id1 = ?";
+$query = "SELECT users.nome,users.url,users.id FROM users INNER JOIN amigos ON users.id = user_id2  WHERE user_id1 = ?";
 
 
 
@@ -173,7 +174,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     // Devemos validar também o resultado do execute!
 
     if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_bind_result($stmt, $nomeAmigo, $imagemAmigo);
+        mysqli_stmt_bind_result($stmt, $nomeAmigo, $imagemAmigo, $id_utilizador);
 
         /* fetch values */
 
@@ -181,6 +182,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $row_result = array();
             $row_result["nomesAmigos"] = htmlspecialchars($nomeAmigo);
             $row_result["imagem_amigo"] = htmlspecialchars($imagemAmigo);
+            $row_result["id_utilizador"] = htmlspecialchars($id_utilizador);
             $data["amigos"][] = $row_result;
         }
 

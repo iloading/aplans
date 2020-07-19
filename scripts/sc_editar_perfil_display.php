@@ -2,7 +2,22 @@
     require_once "../connections/connection.php";
 
     session_start();
-    $id_user = $_SESSION['id_user_aplans'];
+
+    if(isset($_GET['idUtilizador'])){
+
+        $id_user = $_GET['idUtilizador'];
+
+        if ($id_user == "") {
+
+            $id_user = $_SESSION['id_user_aplans'];
+        }
+    }else{
+        $id_user = $_SESSION['id_user_aplans'];
+    }
+
+    
+
+    $id_user_log =$_SESSION['id_user_aplans'];
     $data = array();
 
 
@@ -29,13 +44,15 @@
                 $data['tipoEvento'][] = $row_result;
 
             }
+
+            mysqli_stmt_close($stmt);
         }
     }
 
 
 
 
-$link = new_db_connection();
+
 
 /*----------------- Ir buscar os dados do utilizador logado ----------------*/
 
@@ -71,12 +88,12 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
            
         }
+        mysqli_stmt_close($stmt);
     }
 }
 
 
 
-$link = new_db_connection();
 
 /*----------------- Ir buscar os generos ----------------*/
 
@@ -98,9 +115,23 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
             $data['genero'][] = $row_result;
         }
+
+        mysqli_stmt_close($stmt);
     }
 }
 
+
+//IMG de editar so aparece no perfil do user logado
+if (isset($_GET['idUtilizador'])) {
+
+    if ($id_user == $id_user_log) {
+
+        $data['data_editar'] = 1;
+    } else {
+        $data['data_editar'] = 0;
+    }
+  
+}
 
 
 

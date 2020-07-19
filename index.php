@@ -185,16 +185,28 @@ if (isset($_SESSION['email_aplans'])) {
 
 
             $(document).on('click', '#abrirPerfil', function() {
-                perfil()
+                perfil("")
             });
+
             $(document).on('click', '#editarPerfil', function() {
                 editarPerfil()
             });
+
             $(document).on('click', '#logout', function() {
                 document.location.href = 'scripts/sc_logout.php';
             });
+            
             $(document).on('click', '#abrirAdmin', function() {
                 document.location.href = 'admin/pages/users.php';
+            });
+
+
+            $(document).on('click', '.amigosPerfil', function() {
+                idUtilizador = $(this).attr("id")
+
+                perfil(idUtilizador)
+
+
             });
         </script>
 
