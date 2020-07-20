@@ -48,7 +48,7 @@
           avatar_url_user = data["pessoas"][a]["avatar_user"];
           user_organizador = data["pessoas"][a]["user_organizador"];
 
-          div_participante = '<div class="pessoas_largura d-flex flex-column justify-content-center position-relative" id="' + id_user_evento + '"> <div class="mt-2 d-flex justify-content-center position-absolute" style="top:0;"> <img class="avatar-circular-pessoas" src="images' + avatar_url_user + '" alt="user" /><span class="estado-online" style="position:absolute;bottom:-5%;"></span> </div> <div class="mt-3 position-absolute"  style="bottom:15%;"> <p class="pt-2 mb-2">' + nome_user_evento +'</p></div> </div>'
+          div_participante = '<div class="pessoas_largura d-flex flex-column justify-content-center position-relative amigosPerfil" id="' + id_user_evento + '"> <div class="mt-2 d-flex justify-content-center position-absolute" style="top:0;"> <img class="avatar-circular-pessoas" src="images' + avatar_url_user + '" alt="user" /><span class="estado-online" style="position:absolute;bottom:-5%;"></span> </div> <div class="mt-3 position-absolute"  style="bottom:15%;"> <p class="pt-2 mb-2">' + nome_user_evento +'</p></div> </div>'
           
           if (id_user_evento != criador) {
             opcaoMenuTrocarOrganizador = '<option value="'+id_user_evento+'">'+nome_user_evento+'</option>'
@@ -61,7 +61,7 @@
             //QUANDO O USER NA INTERFACE PESSOAS É O ORGANIZADOR
             //METER O BOTAO ROXO DE ORGANIZADOR QUE TINHAMOS
           
-            div_participante = '<div class="pessoas_largura d-flex flex-column justify-content-center position-relative" id="'+id_user_evento+'"> <div class="mt-2 d-flex justify-content-center position-absolute" style="top:0;"> <img class="avatar-circular-pessoas" src="images'+ avatar_url_user+'" alt="user" /><span class="estado-online" style="position:absolute;bottom:-5%;"></span> </div> <div class="mt-3 mb-3 position-absolute"  style="bottom:0%;"> <p class="pt-2 mb-3">'+nome_user_evento+'</p><span class="pl-2 pr-2 pt-1 pb-1" style="border-radius: 20px; background-color: rgba(111,65,233,0.3); color: rgb(111,65,233); font-weight: 600;border:2px solid rgba(111,65,233,0.5);font-size:smaller;">Organizador</span> </div> </div>'
+            div_participante = '<div class="pessoas_largura d-flex flex-column justify-content-center position-relative amigosPerfil" id="'+id_user_evento+'"> <div class="mt-2 d-flex justify-content-center position-absolute" style="top:0;"> <img class="avatar-circular-pessoas" src="images'+ avatar_url_user+'" alt="user" /><span class="estado-online" style="position:absolute;bottom:-5%;"></span> </div> <div class="mt-3 mb-3 position-absolute"  style="bottom:0%;"> <p class="pt-2 mb-3">'+nome_user_evento+'</p><span class="pl-2 pr-2 pt-1 pb-1" style="border-radius: 20px; background-color: rgba(111,65,233,0.3); color: rgb(111,65,233); font-weight: 600;border:2px solid rgba(111,65,233,0.5);font-size:smaller;">Organizador</span> </div> </div>'
             
             
           }
