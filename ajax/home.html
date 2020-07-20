@@ -307,7 +307,7 @@
                     }else{
                         /*Lista de todos os users da app para seram adicionados*/
                         for (let i = 0; i < data.utilizadores.length; i++) {
-                            mostrarListaAmigosAdd = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Adicionar</button></div></div>';
+                            mostrarListaAmigosAdd = '<div id="' + data.utilizadores[i]["id"] + '" class="w-100 position-relative amigosPerfil"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Adicionar</button></div></div>';
 
                             $('#mostrarTodosAmigosAdd').append(mostrarListaAmigosAdd);
                         }
@@ -344,7 +344,7 @@
 
                     /*Codigo HTML de cada amigo*/
                     for (let i = 0; i < data.utilizadores.length; i++) {
-                        mostrarListaAmigos = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Remover</button></div></div>';
+                        mostrarListaAmigos = '<div id="' + data.utilizadores[i]["id"] + '" class="w-100 position-relative amigosPerfil"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Remover</button></div></div>';
 
 
 
@@ -380,7 +380,7 @@
                     
                     /*Codigo HTML de cada amigo*/
                     for (let i = 0; i < data.modal_eventos.length; i++) {
-                        mostrarListaEventos = '<div id="'+data.modal_eventos[i]["id"]+'" class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div class="btn-evento lista-event"><img class="avatar-circular-eventos-lista" src="images' + data.modal_eventos[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.modal_eventos[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button id="' + data.modal_eventos[i]["id"] +'" type="button" class="btn perfilUpcoming" style="background-color: #BAE4AC;">Ver evento</button></div></div>';
+                        mostrarListaEventos = '<div id="'+data.modal_eventos[i]["id"]+'" class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div class="lista-event"><img class="avatar-circular-eventos-lista" src="images' + data.modal_eventos[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.modal_eventos[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button id="' + data.modal_eventos[i]["id"] +'" type="button" class="btn perfilUpcoming" style="background-color: #BAE4AC;">Ver evento</button></div></div>';
 
 
 
