@@ -11,7 +11,7 @@ if (isset($_GET['nome'])) {
     
     $search = $_GET['nome'];
     $pagina = $_GET['pag'];
-    $items = 2;
+    $items = 4;
     $pos_pesquisa = ($pagina-1) * $items;
 
     $wildcard = "%$search%";

@@ -143,7 +143,7 @@
             $('#amigosBody').append(listaAmigos);
             $('#upcomingPlans').append(listaPlanos);
             
-           
+         
             
             
 
@@ -218,9 +218,7 @@
                
             })
 
-             $(document).on("click", "#menuAmigos", function() {
-                menu_amigos();
-            });
+            
 
             $(document).on("click", "#fecharAmigos", function() {
                 pagina = 1;
@@ -230,30 +228,14 @@
 
 
 
-            /*QUANDO SE CLICA APRA VER TODOS OS EVENTOS*/
-            $(document).on("click", "#mostrarTodosPlanos", function () {
-                $('#MostrarResultadosEventos').html(' ');
-                $("#mostrarTodosEventoss").css("display", "block");
-                searchEventos = $("#search_eventos").val();/*le o valor que esta na input*/
-                
-                
-                pesquisarEventos(searchEventos,1)
-
-            });
+         
             /*QUANDO SE CLICA APRA FECHAR TODOS OS EVENTOS*/
             $(document).on("click", "#fecharEventos", function () {
                 paginaEventos = 1;
                 $("#mostrarTodosEventoss").css("display", "none");
             });
 
-            /*QUANDO SE CLICA PARA ABRIR O MODAL DE ADICIONAR AMIGOS*/
-            $(document).on("click", "#abrirListaAdd", function () {
-                menu_amigosAdd();
-            });
-
-            $(document).on("click", "#abrirListaAdd2", function () {
-                    menu_amigosAdd();
-            });
+          
             /*QUANDO SE CLICA PARA FECHAR O MODAL DE ADICIONAR AMIGOS*/
             $(document).on("click", "#fecharPessoasAdd", function () {
                 $("#mostrarAmigosAdd").removeClass('showAmigosAdd');
@@ -311,7 +293,7 @@
                     }else{
                         /*Lista de todos os users da app para seram adicionados*/
                         for (let i = 0; i < data.utilizadores.length; i++) {
-                            mostrarListaAmigosAdd = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img id="' + data.utilizadores[i]["id"] + '" class="avatar-circular-amigos  amigosPerfil" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p id="' + data.utilizadores[i]["id"] + '" class="col-12 pt-2  amigosPerfil">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Adicionar</button></div></div>';
+                            mostrarListaAmigosAdd = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img id="' + data.utilizadores[i]["id"] + '" class="avatar-circular-amigos  amigosPerfil" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p id="' + data.utilizadores[i]["id"] + '" class="col-12 pt-2  amigosPerfil">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button id="' + data.utilizadores[i]["id"] + '" type="button" class="btn add_Amigo" style="background-color: #BAE4AC;">Adicionar</button></div></div>';
 
                             $('#mostrarTodosAmigosAdd').append(mostrarListaAmigosAdd);
 
@@ -353,7 +335,7 @@
                 
                 if (data.utilizadores != undefined) {
 
-
+                   console.log(data.utilizadores);
                     /*Codigo HTML de cada amigo*/
                     for (let i = 0; i < data.utilizadores.length; i++) {
                         mostrarListaAmigos = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img id="' + data.utilizadores[i]["id"] + '" class="avatar-circular-amigos amigosPerfil" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p id="' + data.utilizadores[i]["id"] + '" class="col-12 pt-2 amigosPerfil">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button id="' + data.utilizadores[i]["id"] + '" type="button" class="btn removerAmigo" style="background-color: #BAE4AC;">Remover</button></div></div>';
@@ -478,6 +460,37 @@
         
         
     }
+
+
+     function add_Amigo(idUtilizadorAdd) {
+
+            console.log(idUtilizadorAdd);
+
+
+            query_adicionar = "id_add=" + idUtilizadorAdd;
+
+            $.ajax({ // ajax call starts
+                url: 'scripts/sc_adicionar_amigo.php',
+                data: query_adicionar,
+                dataType: 'json', // Choosing a JSON datatype
+                type: 'GET',
+
+            })
+
+                .done(function (data) {
+
+                    if (data['amizade_adicionada'] == 'sucesso') {
+
+                        mostrarInfo("22");
+                        mostrarHome()
+                      
+                    }
+
+
+                });
+
+
+        }
 
 
 

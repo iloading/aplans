@@ -139,6 +139,10 @@ if (isset($_SESSION['email_aplans'])) {
                         msgConteudo = '<div class="alert alert-success m-0 p-3">Amigo removido com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
 
+                    case '22':
+                        msgConteudo = '<div class="alert alert-success m-0 p-3">Amigo adicionado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+
 
 
 
@@ -240,6 +244,39 @@ if (isset($_SESSION['email_aplans'])) {
                 idUtilizadorRemover = $(this).attr("id")
                 removerAmigo(idUtilizadorRemover);
             });
+
+            $(document).on('click', '.add_Amigo', function() {
+                idUtilizadorAdd = $(this).attr("id")
+                add_Amigo(idUtilizadorAdd);
+
+            });
+
+
+            $(document).on("click", "#menuAmigos", function() {
+
+                menu_amigos();
+            });
+
+            /*QUANDO SE CLICA PARA ABRIR O MODAL DE ADICIONAR AMIGOS*/
+            $(document).on("click", "#abrirListaAdd", function() {
+                menu_amigosAdd();
+            });
+            /*QUANDO SE CLICA PARA ABRIR O MODAL DE ADICIONAR AMIGOS - quando nao ha amigos ainda*/
+            $(document).on("click", "#abrirListaAdd2", function() {
+                menu_amigosAdd();
+            });
+
+            /*QUANDO SE CLICA APRA VER TODOS OS EVENTOS*/
+            $(document).on("click", "#mostrarTodosPlanos", function() {
+                $('#MostrarResultadosEventos').html(' ');
+                $("#mostrarTodosEventoss").css("display", "block");
+                searchEventos = $("#search_eventos").val(); /*le o valor que esta na input*/
+
+
+                pesquisarEventos(searchEventos, 1)
+
+            });
+
 
 
 
