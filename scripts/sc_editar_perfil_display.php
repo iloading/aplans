@@ -3,6 +3,7 @@
 
     session_start();
 
+    /*Diferenças entre mostrar o nosso perfil ou o perfil de outros utilizadores*/
     if(isset($_GET['idUtilizador'])){
 
         $id_user = $_GET['idUtilizador'];

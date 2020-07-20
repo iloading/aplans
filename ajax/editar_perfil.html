@@ -62,7 +62,7 @@
 
 
                  var perfilQuery = "nomePerfil=" + nomePerfil + "&emailPerfil=" + emailPerfil + "&moradaPerfil=" + moradaPerfil + "&telemovelPerfil=" + telemovelPerfil + "&generoPerfil=" + generoPerfil + "&descricaoPerfil=" + descricaoPerfil + "&codigo_postal_perfil=" +codigo_postal_perfil;
-
+                console.log(perfilQuery);
             
                 $.ajax({
                     // ajax call starts
@@ -74,7 +74,7 @@
                 }).done(function (data) {
 
                     if(data['updatePerfil'] == 'sucesso'){
-
+                        idUser = data['idUser'];
                         var fileData = $('#fileToUpload').prop("files")[0];
                         var formData = new FormData();
                         formData.append("file", fileData)
@@ -103,7 +103,7 @@
                                     window.scrollTo(0, 0);
                                     console.log('sucesso');
                                     mostrarInfo("6");
-                                    perfil()
+                                    perfil(idUser)
                                 }else{
                                     window.scrollTo(0, 0);
                                     mostrarInfo(data['erro']);
@@ -116,7 +116,7 @@
                             window.scrollTo(0, 0);
                             console.log('sucesso');
                             mostrarInfo("6");
-                            perfil()
+                            perfil(idUser)
                        
 
 

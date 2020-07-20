@@ -101,6 +101,7 @@ if (isset($_SESSION['id_user_aplans'])) {
             if (mysqli_stmt_execute($stmt)) {
 
                 $data['updatePerfil'] = 'sucesso';
+                $data['idUser'] = $criador;
 
                 mysqli_stmt_close($stmt);
             }
