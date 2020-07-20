@@ -141,8 +141,11 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $data["amigos"][] = $row_result;
         }
         if (mysqli_stmt_num_rows($stmt) == 0) {
-            $row_result = "vazio";
-            $data['amigos'][] = $row_result;
+
+            $amigos1 = 0;
+
+        }else{
+            $amigos1 = 1;
         }
 
         //print json_encode($data);
@@ -186,6 +189,14 @@ if (mysqli_stmt_prepare($stmt, $query)) {
             $data["amigos"][] = $row_result;
         }
 
+        if (mysqli_stmt_num_rows($stmt) == 0) {
+
+            $amigos2 = 0;
+        
+        } else {
+            $amigos2 = 1;
+        }
+
         //print json_encode($data);
 
 
@@ -202,6 +213,14 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     $data[] = $row_result;
     print json_encode($data);
 }
+
+
+    if ($amigos1 == 0 && $amigos2 == 0) {
+
+        $row_result = "vazio";
+        $data['amigos'][] = $row_result;
+        
+    }
 
 
 

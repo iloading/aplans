@@ -135,6 +135,9 @@ if (isset($_SESSION['email_aplans'])) {
                     case '20':
                         msgConteudo = '<div class="alert alert-warning m-0 p-3">Data do evento inválida!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
+                    case '21':
+                        msgConteudo = '<div class="alert alert-success m-0 p-3">Amigo removido com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
 
 
 
@@ -232,6 +235,12 @@ if (isset($_SESSION['email_aplans'])) {
             $(document).on('click', '.botaoAbandonar', function() {
                 abandonarEvento(idEvento)
             });
+
+            $(document).on('click', '.removerAmigo', function() {
+                idUtilizadorRemover = $(this).attr("id")
+                removerAmigo(idUtilizadorRemover);
+            });
+
 
 
             $(document).on('click', '.perfilUpcoming', function() {

@@ -356,7 +356,7 @@
 
                     /*Codigo HTML de cada amigo*/
                     for (let i = 0; i < data.utilizadores.length; i++) {
-                        mostrarListaAmigos = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img id="' + data.utilizadores[i]["id"] + '" class="avatar-circular-amigos amigosPerfil" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p id="' + data.utilizadores[i]["id"] + '" class="col-12 pt-2 amigosPerfil">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Remover</button></div></div>';
+                        mostrarListaAmigos = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img id="' + data.utilizadores[i]["id"] + '" class="avatar-circular-amigos amigosPerfil" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p id="' + data.utilizadores[i]["id"] + '" class="col-12 pt-2 amigosPerfil">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button id="' + data.utilizadores[i]["id"] + '" type="button" class="btn removerAmigo" style="background-color: #BAE4AC;">Remover</button></div></div>';
 
 
 
@@ -449,6 +449,37 @@
         }
         
     }
+
+    function removerAmigo(idUtilizadorRemover) {
+
+        console.log(idUtilizadorRemover);
+
+    
+        query_remover = "id_remover=" + idUtilizadorRemover;
+
+        $.ajax({ // ajax call starts
+            url: 'scripts/sc_remover_amigo.php',
+            data: query_remover,
+            dataType: 'json', // Choosing a JSON datatype
+            type: 'GET',
+
+        })
+
+        .done(function (data) {
+
+            if(data['amizade_removida'] == 'sucesso'){
+
+                mostrarInfo("21");
+                mostrarHome()
+            }
+
+
+        });
+        
+        
+    }
+
+
 
     
 
