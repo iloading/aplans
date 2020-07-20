@@ -212,6 +212,18 @@ if (isset($_SESSION['email_aplans'])) {
 
 
             });
+
+            $(document).on('click', '#voltarHome', function() {
+                mostrarHome();
+            });
+
+            $(document).on('click', '#voltarPerfil', function() {
+                perfil("");
+            });
+
+            $(document).on('click', '#voltarEvento', function() {
+                mostrarEvento(idEvento);
+            });
         </script>
 
 
