@@ -307,7 +307,7 @@
                     }else{
                         /*Lista de todos os users da app para seram adicionados*/
                         for (let i = 0; i < data.utilizadores.length; i++) {
-                            mostrarListaAmigosAdd = '<div id="' + data.utilizadores[i]["id"] + '" class="w-100 position-relative amigosPerfil"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Adicionar</button></div></div>';
+                            mostrarListaAmigosAdd = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img id="' + data.utilizadores[i]["id"] + '" class="avatar-circular-amigos  amigosPerfil" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p id="' + data.utilizadores[i]["id"] + '" class="col-12 pt-2  amigosPerfil">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Adicionar</button></div></div>';
 
                             $('#mostrarTodosAmigosAdd').append(mostrarListaAmigosAdd);
                         }
@@ -344,7 +344,7 @@
 
                     /*Codigo HTML de cada amigo*/
                     for (let i = 0; i < data.utilizadores.length; i++) {
-                        mostrarListaAmigos = '<div id="' + data.utilizadores[i]["id"] + '" class="w-100 position-relative amigosPerfil"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img class="avatar-circular-amigos" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p class="col-12 pt-2">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Remover</button></div></div>';
+                        mostrarListaAmigos = '<div class="w-100 position-relative"style="background-color: #3C5E77;border-bottom:1px solid white;" ><div><img id="' + data.utilizadores[i]["id"] + '" class="avatar-circular-amigos amigosPerfil" src="images' + data.utilizadores[i]["url"] + '" alt="user"></div><div><p id="' + data.utilizadores[i]["id"] + '" class="col-12 pt-2 amigosPerfil">' + data.utilizadores[i]["nome"] + '</p></div><div class="position-absolute" style="right:0;"><button type="button" class="btn" style="background-color: #BAE4AC;">Remover</button></div></div>';
 
 
 
