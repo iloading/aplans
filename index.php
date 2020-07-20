@@ -212,6 +212,24 @@ if (isset($_SESSION['email_aplans'])) {
 
 
             });
+
+            $(document).on('click', '.botaoParticipar', function() {
+                participarEvento(idEvento)
+
+            });
+            $(document).on('click', '.botaoAbandonar', function() {
+                abandonarEvento(idEvento)
+            });
+
+
+
+
+
+            /*Quando se clica no botão das settings dentro de um evento, o conteudo da div "conteudoPagina" é apagado e reescrito através desta nova função que irá mostrar ainterface das settings de um evento*/
+            $(document).on('click', '#settings_evento', function() {
+                console.log(idEvento);
+                settingsEvento(idEvento)
+            });
         </script>
 
 

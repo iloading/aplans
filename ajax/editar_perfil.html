@@ -81,7 +81,7 @@
 
                         console.log(fileData);
 
-
+                        /*Se não for posta uma nova imagem, não executa o script de upload de imagem*/
                         if(fileData != undefined){
 
                             console.log('entroui');
@@ -98,13 +98,14 @@
                                 processData: false,
 
                             }).done(function (data) {
-
+                                /*Caso a imagem tenha sido definida com sucesso*/
                                 if (data['avatar'] == 'sucesso'){
                                     window.scrollTo(0, 0);
                                     console.log('sucesso');
                                     mostrarInfo("6");
                                     perfil(idUser)
                                 }else{
+                                    /*Caso a imagem tenha dado erro*/
                                     window.scrollTo(0, 0);
                                     mostrarInfo(data['erro']);
                                 }
@@ -112,14 +113,11 @@
 
                             })
                         }else{
-
+                            /*Caso não tenha sido mudada a imagem*/
                             window.scrollTo(0, 0);
-                            console.log('sucesso');
                             mostrarInfo("6");
                             perfil(idUser)
                        
-
-
                         }
                        
 
@@ -127,7 +125,7 @@
                         
 
                     }else{
-
+                        /*Mostrar o erro encontrado*/
                         for (let i = 0; i < data['erro'].length; i++) {
                             console.log(data['erro'][i]);
                             mostrarInfo(data['erro'][i]);
