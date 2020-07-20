@@ -223,6 +223,8 @@ if (isset($_SESSION['email_aplans'])) {
 
             $(document).on('click', '#voltarEvento', function() {
                 mostrarEvento(idEvento);
+            });
+            
             $(document).on('click', '.botaoParticipar', function() {
                 participarEvento(idEvento)
 

@@ -39,7 +39,7 @@
         num_pessoas_evento = data["pessoas"].length;
 
         $("#num_pessoas_evento").html(num_pessoas_evento);
-        percentagem_slots= (num_pessoas_evento/slotsMax)*100 ;
+        percentagem_slots= (num_pessoas_evento/slotsMax)*100;
         $("#myBarHome1").css("width",percentagem_slots+"%")
 
         for (let a = 0; a < data["pessoas"].length; a++) {
