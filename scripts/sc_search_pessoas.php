@@ -16,6 +16,61 @@ if (isset($_GET['nome'])) {
 
     $wildcard = "%$search%";
 
+
+    $stmt = mysqli_stmt_init($link);
+
+    $query = "SELECT user_id1, user_id2 FROM amigos WHERE user_id1 = ? OR user_id2 = ?";
+
+    if (mysqli_stmt_prepare($stmt, $query)) {
+        mysqli_stmt_bind_param($stmt, 'ii',$id_user,$id_user);
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_bind_result($stmt,$user1, $user2);
+
+            $amigos = array();
+
+            while (mysqli_stmt_fetch($stmt)) {
+
+                if($user1 != $id_user){
+
+                    $amigos[]=$user1;
+
+                }
+
+
+                if ($user2 != $id_user) {
+
+                    $amigos[] = $user2;
+                }
+
+
+
+            }
+
+
+
+          
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $stmt = mysqli_stmt_init($link);
 
     if ($search != "") {
@@ -29,12 +84,18 @@ if (isset($_GET['nome'])) {
 
                 while (mysqli_stmt_fetch($stmt)) {
 
-                    $row_result = array();
-                    $row_result["nome"] = htmlspecialchars($nome);
-                    $row_result["id"] = htmlspecialchars($id);
-                    $row_result["url"] = htmlspecialchars($url);
-                    
-                    $data['utilizadores'][] = $row_result;
+                    if(!in_array($id,$amigos)){
+
+                        $row_result = array();
+                        $row_result["nome"] = htmlspecialchars($nome);
+                        $row_result["id"] = htmlspecialchars($id);
+                        $row_result["url"] = htmlspecialchars($url);
+
+                        $data['utilizadores'][] = $row_result;
+
+                    }
+
+                   
 
                 }
             }
