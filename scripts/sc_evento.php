@@ -293,6 +293,9 @@ if ($sem_tarefas == 0) {
                 
                 /*Escreve os users na respetiva task */
                 for ($i=0; $i <count($data['tasks']); $i++) {
+
+                    echo($data['tasks'][$i]['id']);
+                    echo($row_result_no_need["id_task"]);
                     if ($data['tasks'][$i]['id'] == $row_result_no_need["id_task"]) {
                         $data['tasks'][$i]['users'][] = $row_result;
                     }

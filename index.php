@@ -142,6 +142,9 @@ if (isset($_SESSION['email_aplans'])) {
                     case '22':
                         msgConteudo = '<div class="alert alert-success m-0 p-3">Amigo adicionado com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
+                    case '23':
+                        msgConteudo = '<div class="alert alert-success m-0 p-3">Tarefa associada com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
 
 
 
@@ -287,6 +290,16 @@ if (isset($_SESSION['email_aplans'])) {
 
 
             });
+
+            $(document).on("click", ".checkboxTarefas", function() {
+                id_tarefa_evento = $(this).attr("id")
+
+                entrar_tarefa(id_tarefa_evento);
+
+            });
+
+
+
 
 
 
