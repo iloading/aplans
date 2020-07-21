@@ -145,6 +145,12 @@ if (isset($_SESSION['email_aplans'])) {
                     case '23':
                         msgConteudo = '<div class="alert alert-success m-0 p-3">Tarefa associada com sucesso!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
                         break;
+                    case '24':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Tarefa já está associada a si!<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
+                    case '25':
+                        msgConteudo = '<div class="alert alert-warning m-0 p-3">Foi desassociado da tarefa !<span id="tempoClose"></span><span id="close-info" class="close">x</span></li></div>';
+                        break;
 
 
 
@@ -293,8 +299,15 @@ if (isset($_SESSION['email_aplans'])) {
 
             $(document).on("click", ".checkboxTarefas", function() {
                 id_tarefa_evento = $(this).attr("id")
+                if ($(".checkboxTarefas").is(':checked')) {
+                    
+                    entrar_tarefa(id_tarefa_evento);
 
-                entrar_tarefa(id_tarefa_evento);
+                } else {
+                    
+                    sair_tarefa(id_tarefa_evento);
+                }
+
 
             });
 

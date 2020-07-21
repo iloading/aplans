@@ -22,14 +22,14 @@ $stmt = mysqli_stmt_init($link);
 $query = "SELECT ref_event_id FROM tasks_do_evento WHERE id = ?";
 
 if (mysqli_stmt_prepare($stmt, $query)) {
-    mysqli_stmt_bind_param($stmt,'i',$id_tarefa_evento);
+    mysqli_stmt_bind_param($stmt, 'i', $id_tarefa_evento);
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_bind_result($stmt, $id_evento);
 
 
-      mysqli_stmt_fetch($stmt);
+        mysqli_stmt_fetch($stmt);
 
-       
+
 
         mysqli_stmt_close($stmt);
     }
@@ -39,15 +39,14 @@ $stmt = mysqli_stmt_init($link);
 $query = "SELECT id FROM users_nos_eventos WHERE ref_user_id = ? AND ref_event_id = ?";
 
 if (mysqli_stmt_prepare($stmt, $query)) {
-    mysqli_stmt_bind_param($stmt, 'ii', $id_user_log,$id_evento);
+    mysqli_stmt_bind_param($stmt, 'ii', $id_user_log, $id_evento);
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_bind_result($stmt, $id_user_no_evento);
 
 
-        
+
 
         while (mysqli_stmt_fetch($stmt)) {
-           
         }
 
 
@@ -62,17 +61,17 @@ $query = "SELECT id FROM tasks_de_users WHERE ref_users_nos_eventos_id = ? AND r
 if (mysqli_stmt_prepare($stmt, $query)) {
     mysqli_stmt_bind_param($stmt, 'ii', $id_user_no_evento, $id_tarefa_evento);
     if (mysqli_stmt_execute($stmt)) {
-        
+
 
 
 
 
         while (mysqli_stmt_fetch($stmt)) {
         }
-        
+
         if (mysqli_stmt_num_rows($stmt) >= 1) {
             $user_ja_na_tarefa = 1;
-        }else {
+        } else {
             $user_ja_na_tarefa = 0;
         }
 
@@ -81,9 +80,10 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     }
 }
 
-if ($user_ja_na_tarefa == 0) {
+if ($user_ja_na_tarefa == 1) {
     $stmt = mysqli_stmt_init($link);
-    $query = "INSERT INTO tasks_de_users (ref_users_nos_eventos_id, ref_tasks_do_evento_id) VALUES (?,?)";
+    $query = "DELETE FROM tasks_de_users WHERE ref_users_nos_eventos_id = ? AND ref_tasks_do_evento_id = ?";
+    
 
     if (mysqli_stmt_prepare($stmt, $query)) {
         mysqli_stmt_bind_param($stmt, 'ii', $id_user_no_evento, $id_tarefa_evento);
@@ -98,11 +98,7 @@ if ($user_ja_na_tarefa == 0) {
             mysqli_stmt_close($stmt);
         }
     }
-}else {
+} else {
     $data['user_tarefa'] = 'erro';
-    
 }
-print json_encode($data);  
-
-
-
+print json_encode($data);

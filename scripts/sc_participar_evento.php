@@ -30,6 +30,9 @@
     } else {
         $data['inserir'] = "erro";
     }
+
+
+    
     // echo $user_ja_no_evento;
     if ($user_ja_no_evento == 0) {
         /*----------------- INSERIR O USER LOGADO NO EVENTO SELECIONADO ----------------*/

@@ -266,56 +266,62 @@ if ($evento_existe == true) {
     
     
 if ($sem_tarefas == 0) {
+    for ($i=0; $i < count($data['tasks']); $i++) {
+        $stmt = mysqli_stmt_init($link);
 
 
-    $stmt = mysqli_stmt_init($link);
+        $query = "SELECT users_nos_eventos.ref_user_id, tasks_do_evento.id, users.url  FROM tasks_de_users INNER JOIN users_nos_eventos ON ref_users_nos_eventos_id = users_nos_eventos.id INNER JOIN tasks_do_evento ON tasks_do_evento.id = ref_tasks_do_evento_id INNER JOIN users ON users.id = users_nos_eventos.ref_user_id WHERE tasks_do_evento.id = ?";
 
+        
+        if (mysqli_stmt_prepare($stmt, $query)) {
+            mysqli_stmt_bind_param($stmt, 'i', $data['tasks'][$i]['id']);
+            // Devemos validar também o resultado do execute!
 
-    $query = "SELECT users_nos_eventos.ref_user_id, tasks_do_evento.id, users.url  FROM tasks_de_users INNER JOIN users_nos_eventos ON ref_users_nos_eventos_id = users_nos_eventos.id INNER JOIN tasks_do_evento ON tasks_do_evento.id = ref_tasks_do_evento_id INNER JOIN users ON users.id = users_nos_eventos.ref_user_id WHERE tasks_do_evento.id = ?";
+            if (mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_bind_result($stmt, $id_user_na_task, $id_task_do_user, $url_avatar_user);
 
-
-    if (mysqli_stmt_prepare($stmt, $query)) {
-        mysqli_stmt_bind_param($stmt, 'i', $id_evento);
-        // Devemos validar também o resultado do execute!
-
-        if (mysqli_stmt_execute($stmt)) {
-            mysqli_stmt_bind_result($stmt, $id_user_na_task, $id_task_do_user, $url_avatar_user);
-
-            /* fetch values */
-            
-            while (mysqli_stmt_fetch($stmt)) {
-                $row_result = array();
-                /*Gravar todas as tasks do evento em questão*/
+                /* fetch values */  
+                $user_a_participar_na_tarefa = 0;
+                while (mysqli_stmt_fetch($stmt)) {
+                    
+                    $row_result = array();
+                    /*Gravar todas as tasks do evento em questão*/
                 
-                $row_result['id_user'] = htmlspecialchars($id_user_na_task);
-                $row_result['url_user'] = htmlspecialchars($url_avatar_user);
-                $row_result_no_need["id_task"] = htmlspecialchars($id_task_do_user);
-                
-                /*Escreve os users na respetiva task */
-                for ($i=0; $i <count($data['tasks']); $i++) {
+                    $row_result['id_user'] = htmlspecialchars($id_user_na_task);
+                    $row_result['url_user'] = htmlspecialchars($url_avatar_user);
+                    
+                    $row_result_no_need["id_task"] = htmlspecialchars($id_task_do_user);
+                    
+                    /*Escreve os users na respetiva task */
+                    for ($i=0; $i <count($data['tasks']); $i++) {
+                        
+                        if ($data['tasks'][$i]['id'] == $row_result_no_need["id_task"]) {
+                            $data['tasks'][$i]['users'][] = $row_result;
+                        }
+                            if ($id_user_na_task == $id_user) {
+                                $user_a_participar_na_tarefa = 1;
 
-                    echo($data['tasks'][$i]['id']);
-                    echo($row_result_no_need["id_task"]);
-                    if ($data['tasks'][$i]['id'] == $row_result_no_need["id_task"]) {
-                        $data['tasks'][$i]['users'][] = $row_result;
+                                $data['tasks'][$i]['user_a_participar'] = $user_a_participar_na_tarefa;
+                            }
                     }
+                    
                 }
+        
+            
+
+
+            
+                mysqli_stmt_close($stmt);
+            } else {
+                $row_result["erro"] = '1';
+                $data[] = $row_result;
+                print json_encode($data);
             }
-
-            
-
-
-            
-            mysqli_stmt_close($stmt);
         } else {
-            $row_result["erro"] = '1';
+            $row_result["erro"] = '2';
             $data[] = $row_result;
             print json_encode($data);
         }
-    } else {
-        $row_result["erro"] = '2';
-        $data[] = $row_result;
-        print json_encode($data);
     }
 }
 
