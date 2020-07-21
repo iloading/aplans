@@ -14,6 +14,6 @@
 <link rel="stylesheet" href="css/plugins.css">
 
 <!-- Custom css -->
-<link rel="stylesheet" href="teste.css">
+<link rel="stylesheet" href="estilos.css">
 
 <link href="css/jquery.nice-number.css" rel="stylesheet">
